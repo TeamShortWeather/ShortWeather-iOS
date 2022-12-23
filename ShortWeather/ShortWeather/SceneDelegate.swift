@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  ShortWeather
 //
-//  Created by Mac Book Pro on 2022/12/22.
+//  Created by Mac Book Pro on 2022/12/23.
 //
 
 import UIKit
