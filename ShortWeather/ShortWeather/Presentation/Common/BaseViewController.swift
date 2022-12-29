@@ -7,15 +7,21 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+import Moya
+import SnapKit
+import Then
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
+final class BaseViewController: UIViewController {
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: - UI Components
+    
+    private let button: UIButton = UIButton()
+    private let label: UILabel = UILabel()
+    private let imageView: UIImageView = UIImageView()
+    
+    // MARK: - Initializer
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +29,28 @@ class BaseViewController: UIViewController {
         setLayout()
         setDataBind()
     }
+}
 
-    func setUI() { }
-    func setLayout() { }
-    func setDataBind() { }
-
+extension BaseViewController {
+    
+    // MARK: - Properties
+    
+    private func setUI() {
+        view.backgroundColor = Color.mainColor
+    }
+    
+    // MARK: - Layout Helper
+    
+    private func setLayout() {
+        
+    }
+    
+    // MARK: - Methods
+    
+    private func setDataBind() {
+        
+    }
+    
+    // MARK: - @objc Methods
 }
 

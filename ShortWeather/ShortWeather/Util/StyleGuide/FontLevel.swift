@@ -10,21 +10,16 @@ import Foundation
 public enum FontLevel {
     
     case display1           // 32pt / semibold
-    
     case headline1          // 24pt / semibold
     case headline2          // 20pt / semibold
-    
     case subhead1           // 20pt / medium
     case subhead2           // 16pt / semibold
     case subhead3           // 14pt / semibold
     case subhead4           // 16pt / bold
-    
     case body1              // 16pt / regular
     case body2              // 14pt / regular
-    
     case caption1           // 12pt / regular
     case caption2           // 12pt / semibold
-    
     case weather1           // 70pt / regular
     case weather2           // 16pt / regular
 }
