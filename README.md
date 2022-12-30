@@ -15,7 +15,7 @@
 
 ## 💻 Development Environment
 
-<img src ="https://img.shields.io/badge/Swift-5.5-orange?logo=swift"> <img src ="https://img.shields.io/badge/Xcode-14.2-blue?logo=xcode"> <img src ="https://img.shields.io/badge/iOS-16.2-white.svg">
+<img src ="https://img.shields.io/badge/Swift-5.5-orange?logo=swift" height="30"> <img src ="https://img.shields.io/badge/Xcode-14.2-blue?logo=xcode" height="30"> <img src ="https://img.shields.io/badge/iOS-15.0-white.svg" height="30">
 
 <br>
 
