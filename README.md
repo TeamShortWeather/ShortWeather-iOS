@@ -543,10 +543,12 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
 <summary> 💦기타규칙 </summary>
 <div markdown="1">
 
-- `self` 는 최대한 사용을 지양
-- `viewDidLoad()` 에서는 함수호출만
+```
+- `self` 는 최대한 사용을 지양
+- `viewDidLoad()` 에서는 함수호출만
 - delegate 지정, UI관련 설정 등등 모두 함수와 역할에 따라서 extension 으로 빼기
 - 필요없는 주석 및 Mark 구문들 제거
+```
 
 </details>
 
