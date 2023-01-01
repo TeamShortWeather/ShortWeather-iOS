@@ -16,6 +16,9 @@ class BaseViewController: UIViewController {
     // MARK: - UI Components
     
     private let sideMenuView: UIView = UIView()
+    private let hamburgerButton: UIButton = UIButton()
+    private let addLocationButton: UIButton = UIButton()
+    private let viewTitleLabel: UILabel = UILabel()
     
     // MARK: - Initializer
     
@@ -35,6 +38,10 @@ extension BaseViewController {
     
     private func setUI() {
         view.backgroundColor = Color.white
+        [sideMenuView, hamburgerButton, addLocationButton, viewTitleLabel].forEach {
+            view.addSubview($0)
+        }
+        
     }
     
     // MARK: - Layout Helper
@@ -46,7 +53,6 @@ extension BaseViewController {
     // MARK: - Methods
     
     private func setDataBind() {
-        
     }
     
     // MARK: - @objc Methods
