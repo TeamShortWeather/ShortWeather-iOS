@@ -8,5 +8,6 @@
 import Foundation
 
 public enum Image {
-//    public static let
+    
+//    public static let hamburgerMenu
 }

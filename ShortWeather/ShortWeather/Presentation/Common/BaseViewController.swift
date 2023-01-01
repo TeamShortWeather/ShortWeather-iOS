@@ -11,7 +11,7 @@ import Moya
 import SnapKit
 import Then
 
-final class BaseViewController: UIViewController {
+class BaseViewController: UIViewController {
     
     // MARK: - UI Components
     
