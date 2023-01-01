@@ -28,7 +28,7 @@ final class SplashViewController: UIViewController {
 
 extension SplashViewController {
     
-    // MARK: - Properties
+    // MARK: - UI Components Property
     
     private func setUI() {
         view.backgroundColor = .white
