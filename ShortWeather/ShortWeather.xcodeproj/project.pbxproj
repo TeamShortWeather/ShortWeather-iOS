@@ -20,6 +20,10 @@
 		52CBA4AB295C88C600DE6AE9 /*  .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 52CBA4AA295C88C600DE6AE9 /*  .gitkeep */; };
 		52CBA4AE295C891200DE6AE9 /* GerneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA4AD295C891200DE6AE9 /* GerneralResponse.swift */; };
 		52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA4BC295C8EC800DE6AE9 /* PretendardType.swift */; };
+		52D6A3792961573200BF4287 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 52D6A3782961573200BF4287 /* splash.json */; };
+		52D6A37B296157CE00BF4287 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A37A296157CE00BF4287 /* SplashViewController.swift */; };
+		52D6A37E29615A1C00BF4287 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52D6A37D29615A1C00BF4287 /* Lottie */; };
+		52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A37F2961653000BF4287 /* UIViewController +.swift */; };
 		52FBA6AB295590D500F263B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBA6AA295590D500F263B3 /* AppDelegate.swift */; };
 		52FBA6AD295590D500F263B3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBA6AC295590D500F263B3 /* SceneDelegate.swift */; };
 		52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBA6AE295590D500F263B3 /* BaseViewController.swift */; };
@@ -57,6 +61,9 @@
 		52CBA4BA295C8DC900DE6AE9 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		52CBA4BB295C8DCB00DE6AE9 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		52CBA4BC295C8EC800DE6AE9 /* PretendardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PretendardType.swift; sourceTree = "<group>"; };
+		52D6A3782961573200BF4287 /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
+		52D6A37A296157CE00BF4287 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		52D6A37F2961653000BF4287 /* UIViewController +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController +.swift"; sourceTree = "<group>"; };
 		52FBA6A7295590D500F263B3 /* ShortWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52FBA6AA295590D500F263B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52FBA6AC295590D500F263B3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +83,7 @@
 				52FBA6C02955922000F263B3 /* Moya in Frameworks */,
 				52FBA6C62955924E00F263B3 /* Then in Frameworks */,
 				52FBA6C32955924200F263B3 /* SnapKit in Frameworks */,
+				52D6A37E29615A1C00BF4287 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +150,14 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		52D6A3772961571A00BF4287 /* Gif */ = {
+			isa = PBXGroup;
+			children = (
+				52D6A3782961573200BF4287 /* splash.json */,
+			);
+			path = Gif;
+			sourceTree = "<group>";
+		};
 		52FBA69E295590D500F263B3 = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +192,7 @@
 			children = (
 				52FBA6D32955BC6500F263B3 /* AssetCatalog */,
 				52FBA6D42955BC9400F263B3 /* Font */,
+				52D6A3772961571A00BF4287 /* Gif */,
 				52FBA6B8295590D700F263B3 /* Info.plist */,
 				52FBA6B5295590D700F263B3 /* LaunchScreen.storyboard */,
 			);
@@ -269,6 +286,7 @@
 			children = (
 				52CBA4A6295C865A00DE6AE9 /* Encodable +.swift */,
 				52CBA496295C774A00DE6AE9 /* UIFont +.swift */,
+				52D6A37F2961653000BF4287 /* UIViewController +.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -277,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				52FBA6AE295590D500F263B3 /* BaseViewController.swift */,
+				52D6A37A296157CE00BF4287 /* SplashViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -301,6 +320,7 @@
 				52FBA6BF2955922000F263B3 /* Moya */,
 				52FBA6C22955924200F263B3 /* SnapKit */,
 				52FBA6C52955924E00F263B3 /* Then */,
+				52D6A37D29615A1C00BF4287 /* Lottie */,
 			);
 			productName = ShortWeather;
 			productReference = 52FBA6A7295590D500F263B3 /* ShortWeather.app */;
@@ -334,6 +354,7 @@
 				52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */,
 				52FBA6C12955924200F263B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				52FBA6C42955924E00F263B3 /* XCRemoteSwiftPackageReference "Then" */,
+				52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 52FBA6A8295590D500F263B3 /* Products */;
 			projectDirPath = "";
@@ -351,6 +372,7 @@
 			files = (
 				52FBA6B7295590D700F263B3 /* LaunchScreen.storyboard in Resources */,
 				52FBA6D22955BC4E00F263B3 /* Image.xcassets in Resources */,
+				52D6A3792961573200BF4287 /* splash.json in Resources */,
 				52FBA6B4295590D700F263B3 /* Assets.xcassets in Resources */,
 				52FBA6D02955BC3B00F263B3 /* Color.xcassets in Resources */,
 				52CBA4AB295C88C600DE6AE9 /*  .gitkeep in Resources */,
@@ -374,11 +396,13 @@
 				52CBA4AE295C891200DE6AE9 /* GerneralResponse.swift in Sources */,
 				52CBA4A0295C814000DE6AE9 /* MainService.swift in Sources */,
 				52FBA6AB295590D500F263B3 /* AppDelegate.swift in Sources */,
+				52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */,
 				52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */,
 				52CBA4A9295C881400DE6AE9 /* NetworkLoggerPlugin.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
 				52FBA6AD295590D500F263B3 /* SceneDelegate.swift in Sources */,
 				52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */,
+				52D6A37B296157CE00BF4287 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +612,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -615,6 +647,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		52D6A37D29615A1C00BF4287 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		52FBA6BF2955922000F263B3 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */;

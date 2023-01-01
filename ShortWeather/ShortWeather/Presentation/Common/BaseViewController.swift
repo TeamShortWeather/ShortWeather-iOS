@@ -15,9 +15,7 @@ final class BaseViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let button: UIButton = UIButton()
-    private let label: UILabel = UILabel()
-    private let imageView: UIImageView = UIImageView()
+    private let sideMenuView: UIView = UIView()
     
     // MARK: - Initializer
     
@@ -36,7 +34,7 @@ extension BaseViewController {
     // MARK: - Properties
     
     private func setUI() {
-        view.backgroundColor = Color.mainColor
+        view.backgroundColor = Color.white
     }
     
     // MARK: - Layout Helper
