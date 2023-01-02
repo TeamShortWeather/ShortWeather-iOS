@@ -53,7 +53,9 @@ extension SplashViewController {
     private func isExistInform(){
         let isUser: Bool = true
         if isUser {
-            modifyRootViewController(BaseViewController())
+            let vc = BaseViewController()
+            let rootView = UINavigationController(rootViewController: vc)
+            modifyRootViewController(rootView)
         } else {
             modifyRootViewController(BaseViewController())
         }
