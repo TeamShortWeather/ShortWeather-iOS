@@ -10,6 +10,6 @@ import UIKit
 extension UIFont {
         
     public static func fontGuide(_ fontLevel: FontLevel) -> UIFont {
-        return UIFont(name: fontLevel.fontWeight, size: fontLevel.fontSize) ?? UIFont.systemFont(ofSize: 10)
+        return UIFont(name: fontLevel.fontWeight, size: fontLevel.fontSize)!
     }
 }
