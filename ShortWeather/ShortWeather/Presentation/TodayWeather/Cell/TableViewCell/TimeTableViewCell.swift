@@ -14,11 +14,11 @@ class TimeTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
     
-    private let titleLabel = UILabel()
-    private let weatherButton = UIButton()
-    private let fineDustButton = UIButton()
-    private let precipitationButton = UIButton()
-    private lazy var buttonStackView = UIStackView()
+    private let titleLabel: UILabel = UILabel()
+    private let weatherButton: UIButton = UIButton()
+    private let fineDustButton: UIButton = UIButton()
+    private let precipitationButton: UIButton = UIButton()
+    private lazy var buttonStackView: UIStackView = UIStackView()
     private lazy var hourCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal

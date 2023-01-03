@@ -14,21 +14,21 @@ class CommuteTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
     
-    private let outLabel = UILabel()
-    private let outTimeLabel = UILabel()
-    private lazy var outTimeStackView = UIStackView()
-    private let outWeatherImageView = UIImageView()
-    private let outTemperatureLabel = UILabel()
-    private lazy var outStackView = UIStackView()
+    private let outLabel: UILabel = UILabel()
+    private let outTimeLabel: UILabel = UILabel()
+    private lazy var outTimeStackView: UIStackView = UIStackView()
+    private let outWeatherImageView: UIImageView = UIImageView()
+    private let outTemperatureLabel: UILabel = UILabel()
+    private lazy var outStackView: UIStackView = UIStackView()
     
-    private let comeLabel = UILabel()
-    private let comeTimeLabel = UILabel()
-    private lazy var comeTimeStackView = UIStackView()
-    private let comeWeatherImageView = UIImageView()
-    private let comeTemperatureLabel = UILabel()
-    private lazy var comeStackView = UIStackView()
+    private let comeLabel: UILabel = UILabel()
+    private let comeTimeLabel: UILabel = UILabel()
+    private lazy var comeTimeStackView: UIStackView = UIStackView()
+    private let comeWeatherImageView: UIImageView = UIImageView()
+    private let comeTemperatureLabel: UILabel = UILabel()
+    private lazy var comeStackView: UIStackView = UIStackView()
     
-    private lazy var baseStackView = UIStackView()
+    private lazy var baseStackView: UIStackView = UIStackView()
     
     
     // MARK: - Initializer
