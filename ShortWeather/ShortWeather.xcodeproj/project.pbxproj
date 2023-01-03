@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		521317642962B5A3009371E1 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317632962B5A2009371E1 /* UIView +.swift */; };
 		521317662962B5CA009371E1 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317652962B5CA009371E1 /* UIStackView +.swift */; };
+		521317692963F313009371E1 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317682963F313009371E1 /* Letter.swift */; };
+		5213176D2963F6D0009371E1 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5213176C2963F6D0009371E1 /* MenuTableViewCell.swift */; };
+		521317702963F8B2009371E1 /* UITableView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5213176F2963F8B2009371E1 /* UITableView +.swift */; };
+		521317722963F934009371E1 /* NSObject +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317712963F934009371E1 /* NSObject +.swift */; };
+		521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317732963F9D5009371E1 /* UICollectionView +.swift */; };
 		523BB081295D69990004B343 /* FontLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523BB080295D69990004B343 /* FontLevel.swift */; };
 		523BB083295D73350004B343 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523BB082295D73350004B343 /* Image.swift */; };
 		523BB085295D735D0004B343 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523BB084295D735D0004B343 /* Color.swift */; };
@@ -51,6 +56,11 @@
 /* Begin PBXFileReference section */
 		521317632962B5A2009371E1 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
 		521317652962B5CA009371E1 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
+		521317682963F313009371E1 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		5213176C2963F6D0009371E1 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		5213176F2963F8B2009371E1 /* UITableView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView +.swift"; sourceTree = "<group>"; };
+		521317712963F934009371E1 /* NSObject +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject +.swift"; sourceTree = "<group>"; };
+		521317732963F9D5009371E1 /* UICollectionView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView +.swift"; sourceTree = "<group>"; };
 		523BB080295D69990004B343 /* FontLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLevel.swift; sourceTree = "<group>"; };
 		523BB082295D73350004B343 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		523BB084295D735D0004B343 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -105,6 +115,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5213176A2963F65B009371E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52D6A38C2961A08D00BF4287 /* SideMenuView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5213176B2963F65F009371E1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5213176C2963F6D0009371E1 /* MenuTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		523BB07F295D697C0004B343 /* StyleGuide */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,12 +199,13 @@
 			path = Gif;
 			sourceTree = "<group>";
 		};
-		52D6A3882961A00700BF4287 /* View */ = {
+		52D6A3882961A00700BF4287 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				52D6A38C2961A08D00BF4287 /* SideMenuView.swift */,
+				5213176B2963F65F009371E1 /* Cell */,
+				5213176A2963F65B009371E1 /* View */,
 			);
-			path = View;
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		52D6A3892961A03D00BF4287 /* Splash */ = {
@@ -192,7 +219,7 @@
 		52D6A38A2961A04C00BF4287 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				52D6A3882961A00700BF4287 /* View */,
+				52D6A3882961A00700BF4287 /* SideMenu */,
 				52D6A38B2961A06100BF4287 /* ViewController */,
 			);
 			path = Base;
@@ -320,6 +347,7 @@
 			children = (
 				523BB084295D735D0004B343 /* Color.swift */,
 				523BB082295D73350004B343 /* Image.swift */,
+				521317682963F313009371E1 /* Letter.swift */,
 				52CBA4BC295C8EC800DE6AE9 /* PretendardType.swift */,
 			);
 			path = NameSpace;
@@ -330,10 +358,13 @@
 			children = (
 				52D6A38E2961A2F800BF4287 /* CGFloat +.swift */,
 				52CBA4A6295C865A00DE6AE9 /* Encodable +.swift */,
+				521317712963F934009371E1 /* NSObject +.swift */,
+				521317732963F9D5009371E1 /* UICollectionView +.swift */,
 				52CBA496295C774A00DE6AE9 /* UIFont +.swift */,
+				521317652962B5CA009371E1 /* UIStackView +.swift */,
+				5213176F2963F8B2009371E1 /* UITableView +.swift */,
 				521317632962B5A2009371E1 /* UIView +.swift */,
 				52D6A37F2961653000BF4287 /* UIViewController +.swift */,
-				521317652962B5CA009371E1 /* UIStackView +.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -473,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */,
+				521317722963F934009371E1 /* NSObject +.swift in Sources */,
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
 				AB09FF642962BD7A004C54EE /* TestViewController.swift in Sources */,
 				52CBA4A7295C865A00DE6AE9 /* Encodable +.swift in Sources */,
@@ -484,6 +516,9 @@
 				52D6A38D2961A08D00BF4287 /* SideMenuView.swift in Sources */,
 				52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */,
 				52D6A38F2961A2F800BF4287 /* CGFloat +.swift in Sources */,
+				5213176D2963F6D0009371E1 /* MenuTableViewCell.swift in Sources */,
+				521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */,
+				521317692963F313009371E1 /* Letter.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
 				52CBA4AE295C891200DE6AE9 /* GerneralResponse.swift in Sources */,
 				52CBA4A0295C814000DE6AE9 /* MainService.swift in Sources */,
@@ -491,6 +526,7 @@
 				52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */,
 				52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */,
 				52CBA4A9295C881400DE6AE9 /* NetworkLoggerPlugin.swift in Sources */,
+				521317702963F8B2009371E1 /* UITableView +.swift in Sources */,
 				521317662962B5CA009371E1 /* UIStackView +.swift in Sources */,
 				AB09FF6929630D7A004C54EE /* CellType.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
