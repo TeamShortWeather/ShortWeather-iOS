@@ -44,6 +44,8 @@
 		52FBA6D22955BC4E00F263B3 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6D12955BC4E00F263B3 /* Image.xcassets */; };
 		AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */; };
 		AB09FF642962BD7A004C54EE /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF632962BD7A004C54EE /* TestViewController.swift */; };
+		AB09FF6929630D7A004C54EE /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF6829630D7A004C54EE /* CellType.swift */; };
+		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,8 @@
 		52FBA6D12955BC4E00F263B3 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTodayWeatherView.swift; sourceTree = "<group>"; };
 		AB09FF632962BD7A004C54EE /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		AB09FF6829630D7A004C54EE /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,10 +350,36 @@
 		AB09FF602962BB0B004C54EE /* TodayWeather */ = {
 			isa = PBXGroup;
 			children = (
-				AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */,
-				AB09FF632962BD7A004C54EE /* TestViewController.swift */,
+				AB868C352963D43500A9AF94 /* Cell */,
+				AB09FF6629630D2A004C54EE /* View */,
+				AB09FF6529630D21004C54EE /* ViewController */,
 			);
 			path = TodayWeather;
+			sourceTree = "<group>";
+		};
+		AB09FF6529630D21004C54EE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AB09FF632962BD7A004C54EE /* TestViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		AB09FF6629630D2A004C54EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB868C352963D43500A9AF94 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AB09FF6829630D7A004C54EE /* CellType.swift */,
+				AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,6 +476,7 @@
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
 				AB09FF642962BD7A004C54EE /* TestViewController.swift in Sources */,
 				52CBA4A7295C865A00DE6AE9 /* Encodable +.swift in Sources */,
+				AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */,
 				52CBA4A2295C814600DE6AE9 /* MainAPI.swift in Sources */,
 				523BB083295D73350004B343 /* Image.swift in Sources */,
 				AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */,
@@ -461,6 +492,7 @@
 				52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */,
 				52CBA4A9295C881400DE6AE9 /* NetworkLoggerPlugin.swift in Sources */,
 				521317662962B5CA009371E1 /* UIStackView +.swift in Sources */,
+				AB09FF6929630D7A004C54EE /* CellType.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
 				52FBA6AD295590D500F263B3 /* SceneDelegate.swift in Sources */,
 				52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */,
