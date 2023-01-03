@@ -46,6 +46,7 @@ extension SecondTodayWeatherView {
             $0.dataSource = self
             
             $0.registerCell(CommuteTableViewCell.self)
+            $0.registerCell(TimeTableViewCell.self)
         }
     }
      
@@ -74,7 +75,8 @@ extension SecondTodayWeatherView: UITableViewDataSource {
             let cell = tableView.dequeueCell(type: CommuteTableViewCell.self, indexPath: indexPath)
             return cell
         case CellType.time.rawValue:
-            return UITableViewCell()
+            let cell = tableView.dequeueCell(type: TimeTableViewCell.self, indexPath: indexPath)
+            return cell
         case CellType.today.rawValue:
             return UITableViewCell()
         default:
@@ -91,7 +93,7 @@ extension SecondTodayWeatherView: UITableViewDelegate {
         case CellType.commute.rawValue:
             return 225
         case CellType.time.rawValue:
-            return 400
+            return 195
         case CellType.today.rawValue:
             return 400
         default:

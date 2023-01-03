@@ -50,6 +50,8 @@
 		AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */; };
 		AB09FF642962BD7A004C54EE /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF632962BD7A004C54EE /* TestViewController.swift */; };
 		AB09FF6929630D7A004C54EE /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF6829630D7A004C54EE /* CellType.swift */; };
+		AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2590C5296427A2008FEC2A /* TimeTableViewCell.swift */; };
+		AB2590C92964522A008FEC2A /* HourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2590C82964522A008FEC2A /* HourCollectionViewCell.swift */; };
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +99,8 @@
 		AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTodayWeatherView.swift; sourceTree = "<group>"; };
 		AB09FF632962BD7A004C54EE /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		AB09FF6829630D7A004C54EE /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		AB2590C5296427A2008FEC2A /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		AB2590C82964522A008FEC2A /* HourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -409,6 +413,8 @@
 			children = (
 				AB09FF6829630D7A004C54EE /* CellType.swift */,
 				AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */,
+				AB2590C5296427A2008FEC2A /* TimeTableViewCell.swift */,
+				AB2590C82964522A008FEC2A /* HourCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */,
 				521317692963F313009371E1 /* Letter.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
+				AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */,
 				52CBA4AE295C891200DE6AE9 /* GerneralResponse.swift in Sources */,
 				52CBA4A0295C814000DE6AE9 /* MainService.swift in Sources */,
 				52FBA6AB295590D500F263B3 /* AppDelegate.swift in Sources */,
@@ -530,6 +537,7 @@
 				521317662962B5CA009371E1 /* UIStackView +.swift in Sources */,
 				AB09FF6929630D7A004C54EE /* CellType.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
+				AB2590C92964522A008FEC2A /* HourCollectionViewCell.swift in Sources */,
 				52FBA6AD295590D500F263B3 /* SceneDelegate.swift in Sources */,
 				52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */,
 				52D6A37B296157CE00BF4287 /* SplashViewController.swift in Sources */,
