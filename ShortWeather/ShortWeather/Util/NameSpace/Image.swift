@@ -27,6 +27,7 @@ public enum Image {
     public static let icnSetting = UIImage(named: "icn_setting")
     public static let icnToday = UIImage(named: "icn_today")
     public static let icnWeek = UIImage(named: "icn_week")
+    public static let iconExpandDown2 = UIImage(named: "icn_expand_down2")
     
     //MARK: - Weather Icon Image
 
