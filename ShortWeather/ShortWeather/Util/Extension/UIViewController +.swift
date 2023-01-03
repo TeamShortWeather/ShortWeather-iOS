@@ -9,10 +9,11 @@ import UIKit
 
 extension UIViewController {
 
-    public func modifyRootViewController (_ viewController: UIViewController) {
+    public static func modifyRootViewController (_ viewController: UIViewController) {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController = viewController
+        let navigationViewController = UINavigationController(rootViewController: viewController)
+        sceneDelegate?.window?.rootViewController = navigationViewController
         sceneDelegate?.window?.makeKeyAndVisible()
     }
 }

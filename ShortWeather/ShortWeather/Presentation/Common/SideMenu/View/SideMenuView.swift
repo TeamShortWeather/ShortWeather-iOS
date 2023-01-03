@@ -15,7 +15,7 @@ class SideMenuView: UIView {
     private let logoTextImageView: UIImageView = UIImageView()
     private let closeButton: UIButton = UIButton()
     private let menuLabel: UILabel = UILabel()
-    private let menuTableView: UITableView = UITableView()
+    private let menuTableView: UITableView = UITableView(frame: .zero, style: .grouped)
     
     // MARK: - UI Components
     
@@ -55,13 +55,36 @@ extension SideMenuView: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-}
-
-extension SideMenuView: UITableViewDelegate {
     
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return section == 0 ? menuIcons.count-1 : 1
-//    }
+    private func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            return tableView.dequeueReusableView(type: MenuLineHeaderView.self)
+        }
+        return UIView()
+    }
+
+    private func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 20
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Cell Tap!!")
+        switch indexPath.row {
+        case 0:
+            UIViewController.modifyRootViewController(BaseViewController())
+        case 1:
+            UIViewController.modifyRootViewController(BaseViewController())
+        case 2:
+            UIViewController.modifyRootViewController(BaseViewController())
+        case 3:
+            UIViewController.modifyRootViewController(BaseViewController())
+        default:
+            UIViewController.modifyRootViewController(BaseViewController())
+        }
+    }
 }
 
 extension SideMenuView {
@@ -69,6 +92,7 @@ extension SideMenuView {
     // MARK: - UI Components Property
     
     private func setUI() {
+        backgroundColor = .red
         logoIconImageView.do {
             $0.image = Image.logoIcon
         }
@@ -81,15 +105,18 @@ extension SideMenuView {
             $0.textColor = Color.gray6
         }
         menuTableView.do {
-            $0.registerCell(MenuTableViewCell.self)
+            $0.backgroundColor = Color.white
             $0.separatorStyle = .none
+            $0.isScrollEnabled = false
+            $0.registerCell(MenuTableViewCell.self)
+            $0.registerReusableView(MenuLineHeaderView.self)
         }
         
     }
     
     // MARK: - Layout Helper
     
-    private func setLayout( ){
+    private func setLayout() {
         addSubviews(logoIconImageView, logoTextImageView, closeButton, menuLabel, menuTableView)
         logoIconImageView.snp.makeConstraints {
             $0.width.height.equalTo(36)
@@ -116,8 +143,9 @@ extension SideMenuView {
             $0.leading.trailing.bottom.equalToSuperview()
         }
     }
+    
+    // MARK: - Methods
     private func setDelegate() {
         menuTableView.dataSource = self
-        menuTableView.delegate = self
     }
 }
