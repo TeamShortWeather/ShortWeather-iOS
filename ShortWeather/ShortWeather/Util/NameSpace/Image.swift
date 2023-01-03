@@ -9,6 +9,11 @@ import UIKit
 
 public enum Image {
 
+    //MARK: - Logo Image
+    
+    public static let logoIcon = UIImage(named: "logo_icon")
+    public static let logoText = UIImage(named: "logo_text")
+    
     //MARK: - Common Icon Image
     
     public static let icnAdd = UIImage(named: "icn_add")
