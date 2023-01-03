@@ -408,13 +408,29 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AB2590CA2964761A008FEC2A /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */,
+				AB2590C5296427A2008FEC2A /* TimeTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		AB2590CB2964762A008FEC2A /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB2590C82964522A008FEC2A /* HourCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		AB868C352963D43500A9AF94 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				AB09FF6829630D7A004C54EE /* CellType.swift */,
-				AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */,
-				AB2590C5296427A2008FEC2A /* TimeTableViewCell.swift */,
-				AB2590C82964522A008FEC2A /* HourCollectionViewCell.swift */,
+				AB2590CA2964761A008FEC2A /* TableViewCell */,
+				AB2590CB2964762A008FEC2A /* CollectionViewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
