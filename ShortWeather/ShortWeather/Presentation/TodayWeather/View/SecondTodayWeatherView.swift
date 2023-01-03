@@ -23,7 +23,6 @@ class SecondTodayWeatherView: UIView {
         
         setUI()
         setLayout()
-//        registerCell()
     }
     
     required init?(coder: NSCoder) { 
@@ -60,12 +59,6 @@ extension SecondTodayWeatherView {
             $0.bottom.equalToSuperview()
         }
     }
-    
-    // MARK: - Methods
-    
-//    private func registerCell() {
-//        weatherTableView.register(CommuteTableViewCell.self, forCellReuseIdentifier: CommuteTableViewCell.identifier)
-//    }
 }
 
 // MARK: - UITableViewDataSource
