@@ -94,7 +94,7 @@ extension SecondTodayWeatherView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case CellType.commute.rawValue:
-            return 236
+            return 225
         case CellType.time.rawValue:
             return 400
         case CellType.today.rawValue:
