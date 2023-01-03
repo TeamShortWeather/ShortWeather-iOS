@@ -23,7 +23,7 @@ class SecondTodayWeatherView: UIView {
         
         setUI()
         setLayout()
-        registerCell()
+//        registerCell()
     }
     
     required init?(coder: NSCoder) { 
@@ -45,6 +45,8 @@ extension SecondTodayWeatherView {
             
             $0.delegate = self
             $0.dataSource = self
+            
+            $0.registerCell(CommuteTableViewCell.self)
         }
     }
      
@@ -61,9 +63,9 @@ extension SecondTodayWeatherView {
     
     // MARK: - Methods
     
-    private func registerCell() {
-        weatherTableView.register(CommuteTableViewCell.self, forCellReuseIdentifier: CommuteTableViewCell.identifier)
-    }
+//    private func registerCell() {
+//        weatherTableView.register(CommuteTableViewCell.self, forCellReuseIdentifier: CommuteTableViewCell.identifier)
+//    }
 }
 
 // MARK: - UITableViewDataSource
@@ -76,7 +78,7 @@ extension SecondTodayWeatherView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case CellType.commute.rawValue:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CommuteTableViewCell.identifier, for: indexPath) as? CommuteTableViewCell else { return UITableViewCell() }
+            let cell = tableView.dequeueCell(type: CommuteTableViewCell.self, indexPath: indexPath)
             return cell
         case CellType.time.rawValue:
             return UITableViewCell()

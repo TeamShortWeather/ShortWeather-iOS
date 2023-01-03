@@ -14,7 +14,7 @@ class CommuteTableViewCell: UITableViewCell {
 
     // MARK: - Identifier
     
-    static let identifier = "CommuteTableViewCell"
+//    static let identifier = "CommuteTableViewCell"
     
     // MARK: - UI Components
     
