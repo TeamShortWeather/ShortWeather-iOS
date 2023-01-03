@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
             
-            let rootVC = SplashViewController()
+            let rootVC = FirstInfoViewController()
+//            let rootVC = SplashViewController()
 //            let rootVC = BaseViewController()
 //            let navigationController = UINavigationController(rootViewController: rootVC)
 //            window.rootViewController = navigationController
