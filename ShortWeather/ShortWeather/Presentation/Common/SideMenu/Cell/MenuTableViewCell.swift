@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuTableViewCell: UITableViewCell {
+final class MenuTableViewCell: UITableViewCell {
 
     // MARK: - UI Components
     
