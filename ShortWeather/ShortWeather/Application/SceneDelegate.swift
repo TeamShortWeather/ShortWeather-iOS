@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            let rootVC = TodayWeatherViewController()
             let navigationController = UINavigationController(rootViewController: FirstInfoViewController())
             window.rootViewController = navigationController
+            navigationController.isNavigationBarHidden = true // 정보입력폼에서 확인해본거임
             
 //            let rootVC = SplashViewController()
 //            window.rootViewController = rootVC

@@ -17,15 +17,14 @@ class ListTableViewCell: UITableViewCell {
     
     // MARK: - View Life Cycle
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setUI()
+        setLayout()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -51,6 +50,7 @@ extension ListTableViewCell {
     private func setLayout() {
         listLabel.snp.makeConstraints {
             $0.width.equalTo(319)
+            $0.height.equalTo(44)
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
@@ -62,10 +62,10 @@ extension ListTableViewCell {
         listLabel.text = model.listName
     }
     
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                backgroundColor = Color.gray1            }
-        }
-    }
+//    override var isSelected: Bool {
+//        didSet {
+//            if isSelected {
+//                backgroundColor = Color.gray1            }
+//        }
+//    }
 }

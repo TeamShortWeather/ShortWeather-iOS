@@ -17,21 +17,33 @@ final class ListViewController: UIViewController {
     
     private let titleLabel: UILabel = UILabel()
     private lazy var listTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.backgroundColor = .red
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .white
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.dataSource = self
+        tableView.delegate = self
         return tableView
     }()
     
     // MARK: - Properties
     
-    private let titleText: String = ""
-    private let listDatas: [List] = [] // 변수이게맞냐
+    private var titleText: String
+    private var listDatas: [List] // 변수이게맞냐
     
     // MARK: - Initializer
     
     // MARK: - View Life Cycle
+    
+    init(titleText: String, listDatas: [List]) {
+        self.titleText = titleText
+        self.listDatas = listDatas
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,20 +97,41 @@ extension ListViewController {
 
 
 extension ListViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
     }
 }
 
 extension ListViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return listDatas.count // 섹션 개수
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listDatas.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
         
-        cell.setDataBind(model: listDatas[indexPath.item])
+        cell.setDataBind(model: listDatas[indexPath.section])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(listDatas[indexPath.section].listName)
+        if self.navigationController == nil {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }

@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		033E7F6D2965A0380051B349 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */; };
 		033E7F712965A8560051B349 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F702965A8560051B349 /* ListViewController.swift */; };
+		033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */; };
 		0346A2F62964344000E37FD2 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F52964344000E37FD2 /* Info.swift */; };
 		0346A2F829644B7600E37FD2 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */; };
 		0346A2FE2964969000E37FD2 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2FD2964969000E37FD2 /* List.swift */; };
-		0346A3002964B6B000E37FD2 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2FF2964B6B000E37FD2 /* ListCollectionViewCell.swift */; };
 		0346A30229658F3000E37FD2 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A30129658F3000E37FD2 /* ListTableViewCell.swift */; };
 		5212EADA296493380084B95E /* TodayWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAD9296493380084B95E /* TodayWeatherViewController.swift */; };
 		5212EADD296496DD0084B95E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EADC296496DD0084B95E /* LocationView.swift */; };
@@ -74,10 +74,10 @@
 /* Begin PBXFileReference section */
 		033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstInfoViewController.swift; path = ../../../../../../../../../Info/FirstInfoViewController.swift; sourceTree = "<group>"; };
 		033E7F702965A8560051B349 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
 		0346A2F52964344000E37FD2 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		0346A2FD2964969000E37FD2 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		0346A2FF2964B6B000E37FD2 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		0346A30129658F3000E37FD2 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		5212EAD9296493380084B95E /* TodayWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherViewController.swift; sourceTree = "<group>"; };
 		5212EADC296496DD0084B95E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
@@ -165,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */,
-				0346A2FF2964B6B000E37FD2 /* ListCollectionViewCell.swift */,
 				0346A30129658F3000E37FD2 /* ListTableViewCell.swift */,
 			);
 			path = Cell;
@@ -184,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */,
+				033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */,
 				033E7F702965A8560051B349 /* ListViewController.swift */,
 			);
 			path = ViewController;
@@ -653,7 +653,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0346A3002964B6B000E37FD2 /* ListCollectionViewCell.swift in Sources */,
 				52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */,
 				0346A2FE2964969000E37FD2 /* List.swift in Sources */,
 				5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */,
@@ -670,6 +669,7 @@
 				033E7F712965A8560051B349 /* ListViewController.swift in Sources */,
 				52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */,
 				5212EAE42965636B0084B95E /* FirstTodayWeatherView.swift in Sources */,
+				033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */,
 				52D6A38F2961A2F800BF4287 /* CGFloat +.swift in Sources */,
 				5213176D2963F6D0009371E1 /* MenuTableViewCell.swift in Sources */,
 				033E7F6D2965A0380051B349 /* FirstInfoViewController.swift in Sources */,
