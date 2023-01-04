@@ -40,6 +40,7 @@ final class TimeTableViewCell: UITableViewCell {
         
         setUI()
         setLayout()
+        setAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -55,6 +56,7 @@ extension TimeTableViewCell {
     private func setUI() {
         contentView.backgroundColor = .white
         self.selectionStyle = .none
+        weatherButton.isSelected = true
         
         titleLabel.do {
             $0.text = "시간대별 날씨"
@@ -64,24 +66,42 @@ extension TimeTableViewCell {
         weatherButton.do {
             $0.titleLabel?.font = .fontGuide(.subhead3)
             $0.setTitle("날씨", for: .normal)
+
             $0.setTitleColor(Color.gray7, for: .normal)
-            $0.backgroundColor = Color.gray0
+            $0.setBackgroundColor(Color.gray0, for: .normal)
+            
+            $0.setTitleColor(Color.white, for: .selected)
+            $0.setBackgroundColor(Color.pointColor, for: .selected)
+
+            $0.clipsToBounds = true
             $0.layer.cornerRadius = 16
         }
         
         dustButton.do {
             $0.titleLabel?.font = .fontGuide(.subhead3)
             $0.setTitle("미세먼지", for: .normal)
+            
             $0.setTitleColor(Color.gray7, for: .normal)
-            $0.backgroundColor = Color.gray0
+            $0.setBackgroundColor(Color.gray0, for: .normal)
+            
+            $0.setTitleColor(Color.white, for: .selected)
+            $0.setBackgroundColor(Color.pointColor, for: .selected)
+            
+            $0.clipsToBounds = true
             $0.layer.cornerRadius = 16
         }
         
         precipitationButton.do {
             $0.titleLabel?.font = .fontGuide(.subhead3)
             $0.setTitle("강수", for: .normal)
+            
             $0.setTitleColor(Color.gray7, for: .normal)
-            $0.backgroundColor = Color.gray0
+            $0.setBackgroundColor(Color.gray0, for: .normal)
+            
+            $0.setTitleColor(Color.white, for: .selected)
+            $0.setBackgroundColor(Color.pointColor, for: .selected)
+
+            $0.clipsToBounds = true
             $0.layer.cornerRadius = 16
         }
         
@@ -115,6 +135,37 @@ extension TimeTableViewCell {
             $0.trailing.equalToSuperview().offset(-25)
             $0.bottom.equalToSuperview().offset(-15)
         }
+    }
+    
+    // MARK: - Methods
+    
+    private func setAddTarget() {
+        weatherButton.addTarget(self, action: #selector(weatherButtonDidTap), for: .touchUpInside)
+        dustButton.addTarget(self, action: #selector(dustButtonDidTap), for: .touchUpInside)
+        precipitationButton.addTarget(self, action: #selector(precipitationButtonDidTap), for: .touchUpInside)
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func weatherButtonDidTap() {
+        weatherButton.isSelected = true
+        dustButton.isSelected = false
+        precipitationButton.isSelected = false
+        print("날씨 버튼 눌림")
+    }
+    
+    @objc private func dustButtonDidTap() {
+        dustButton.isSelected = true
+        weatherButton.isSelected = false
+        precipitationButton.isSelected = false
+        print("미세먼지 버튼 눌림")
+    }
+    
+    @objc private func precipitationButtonDidTap() {
+        precipitationButton.isSelected = true
+        weatherButton.isSelected = false
+        dustButton.isSelected = false
+        print("강수 버튼 눌림")
     }
 }
 
