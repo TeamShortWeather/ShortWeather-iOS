@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0346A2F0296412C700E37FD2 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2EF296412C700E37FD2 /* FirstInfoViewController.swift */; };
 		0346A2F62964344000E37FD2 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F52964344000E37FD2 /* Info.swift */; };
 		0346A2F829644B7600E37FD2 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */; };
 		0346A2FA296467D700E37FD2 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F9296467D700E37FD2 /* GenderViewController.swift */; };
@@ -18,12 +17,12 @@
 		5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EADE29649C950084B95E /* BaseLocationViewController.swift */; };
 		5212EAE22964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */; };
 		5212EAE42965636B0084B95E /* FirstTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */; };
-		5212EAE6296563780084B95E /* SecondTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE5296563780084B95E /* SecondTodayWeatherView.swift */; };
+		5212EAE6296563780084B95E /* testSecondWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE5296563780084B95E /* testSecondWeatherView.swift */; };
 		5212EAE9296575170084B95E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAE8296575170084B95E /* Then */; };
 		5212EAEC296575210084B95E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAEB296575210084B95E /* SnapKit */; };
 		5212EAEF2965752F0084B95E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAEE2965752F0084B95E /* Moya */; };
 		5212EAF2296575490084B95E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAF1296575490084B95E /* Lottie */; };
-		5212EAF52965781B0084B95E /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAF42965781B0084B95E /* PartialSheet */; };
+		5212EAF729657C0B0084B95E /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAF629657C0B0084B95E /* FirstInfoViewController.swift */; };
 		521317642962B5A3009371E1 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317632962B5A2009371E1 /* UIView +.swift */; };
 		521317662962B5CA009371E1 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317652962B5CA009371E1 /* UIStackView +.swift */; };
 		521317692963F313009371E1 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317682963F313009371E1 /* Letter.swift */; };
@@ -72,7 +71,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0346A2EF296412C700E37FD2 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstInfoViewController.swift; path = ../../../../../../../../Info/FirstInfoViewController.swift; sourceTree = "<group>"; };
 		0346A2F52964344000E37FD2 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		0346A2F9296467D700E37FD2 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +81,8 @@
 		5212EADE29649C950084B95E /* BaseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocationViewController.swift; sourceTree = "<group>"; };
 		5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTodayWeatherView.swift; sourceTree = "<group>"; };
-		5212EAE5296563780084B95E /* SecondTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTodayWeatherView.swift; sourceTree = "<group>"; };
+		5212EAE5296563780084B95E /* testSecondWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSecondWeatherView.swift; sourceTree = "<group>"; };
+		5212EAF629657C0B0084B95E /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
 		521317632962B5A2009371E1 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
 		521317652962B5CA009371E1 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		521317682963F313009371E1 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
@@ -144,7 +143,6 @@
 				5212EAEC296575210084B95E /* SnapKit in Frameworks */,
 				5212EAEF2965752F0084B95E /* Moya in Frameworks */,
 				5212EAF2296575490084B95E /* Lottie in Frameworks */,
-				5212EAF52965781B0084B95E /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +152,7 @@
 		0346A2EC2964126000E37FD2 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				0346A2EF296412C700E37FD2 /* FirstInfoViewController.swift */,
+				5212EAF629657C0B0084B95E /* FirstInfoViewController.swift */,
 				0346A2F9296467D700E37FD2 /* GenderViewController.swift */,
 				0346A2F42964343000E37FD2 /* Model */,
 				0346A2F1296412D500E37FD2 /* Cells */,
@@ -202,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */,
-				5212EAE5296563780084B95E /* SecondTodayWeatherView.swift */,
+				5212EAE5296563780084B95E /* testSecondWeatherView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -575,7 +573,6 @@
 				5212EAEB296575210084B95E /* SnapKit */,
 				5212EAEE2965752F0084B95E /* Moya */,
 				5212EAF1296575490084B95E /* Lottie */,
-				5212EAF42965781B0084B95E /* PartialSheet */,
 			);
 			productName = ShortWeather;
 			productReference = 52FBA6A7295590D500F263B3 /* ShortWeather.app */;
@@ -610,7 +607,6 @@
 				5212EAEA296575210084B95E /* XCRemoteSwiftPackageReference "SnapKit" */,
 				5212EAED2965752F0084B95E /* XCRemoteSwiftPackageReference "Moya" */,
 				5212EAF0296575490084B95E /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				5212EAF32965781B0084B95E /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = 52FBA6A8295590D500F263B3 /* Products */;
 			projectDirPath = "";
@@ -651,7 +647,6 @@
 				0346A2FE2964969000E37FD2 /* List.swift in Sources */,
 				5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */,
 				521317722963F934009371E1 /* NSObject +.swift in Sources */,
-				0346A2F0296412C700E37FD2 /* FirstInfoViewController.swift in Sources */,
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
 				AB09FF642962BD7A004C54EE /* TestViewController.swift in Sources */,
 				52CBA4A7295C865A00DE6AE9 /* Encodable +.swift in Sources */,
@@ -668,10 +663,11 @@
 				521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */,
 				521317692963F313009371E1 /* Letter.swift in Sources */,
 				5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */,
-				5212EAE6296563780084B95E /* SecondTodayWeatherView.swift in Sources */,
+				5212EAE6296563780084B95E /* testSecondWeatherView.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
 				AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */,
 				52CBA4AE295C891200DE6AE9 /* GerneralResponse.swift in Sources */,
+				5212EAF729657C0B0084B95E /* FirstInfoViewController.swift in Sources */,
 				0346A2F62964344000E37FD2 /* Info.swift in Sources */,
 				52CBA4A0295C814000DE6AE9 /* MainService.swift in Sources */,
 				5212EAE22964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift in Sources */,
@@ -936,14 +932,6 @@
 				kind = branch;
 			};
 		};
-		5212EAF32965781B0084B95E /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -966,11 +954,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5212EAF0296575490084B95E /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		5212EAF42965781B0084B95E /* PartialSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5212EAF32965781B0084B95E /* XCRemoteSwiftPackageReference "PartialSheet" */;
-			productName = PartialSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
