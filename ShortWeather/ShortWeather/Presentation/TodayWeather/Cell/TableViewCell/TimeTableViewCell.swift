@@ -10,6 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
+enum HourButton {
+    case weather
+    case dust
+    case precipitation
+}
+
 final class TimeTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
@@ -32,6 +38,10 @@ final class TimeTableViewCell: UITableViewCell {
         
         return collectionView
     }()
+    
+    // MARK: - Properties
+    
+    var hourButtonState: HourButton = .weather
     
     // MARK: - Initializer
 
@@ -145,26 +155,40 @@ extension TimeTableViewCell {
         precipitationButton.addTarget(self, action: #selector(precipitationButtonDidTap), for: .touchUpInside)
     }
     
+    private func checkHourButton() {
+        switch hourButtonState {
+        case .weather:
+            weatherButton.isSelected = true
+            dustButton.isSelected = false
+            precipitationButton.isSelected = false
+        case .dust:
+            dustButton.isSelected = true
+            weatherButton.isSelected = false
+            precipitationButton.isSelected = false
+        case .precipitation:
+            precipitationButton.isSelected = true
+            weatherButton.isSelected = false
+            dustButton.isSelected = false
+        }
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func weatherButtonDidTap() {
-        weatherButton.isSelected = true
-        dustButton.isSelected = false
-        precipitationButton.isSelected = false
+        hourButtonState = .weather
+        checkHourButton()
         print("날씨 버튼 눌림")
     }
     
     @objc private func dustButtonDidTap() {
-        dustButton.isSelected = true
-        weatherButton.isSelected = false
-        precipitationButton.isSelected = false
+        hourButtonState = .dust
+        checkHourButton()
         print("미세먼지 버튼 눌림")
     }
     
     @objc private func precipitationButtonDidTap() {
-        precipitationButton.isSelected = true
-        weatherButton.isSelected = false
-        dustButton.isSelected = false
+        hourButtonState = .precipitation
+        checkHourButton()
         print("강수 버튼 눌림")
     }
 }
