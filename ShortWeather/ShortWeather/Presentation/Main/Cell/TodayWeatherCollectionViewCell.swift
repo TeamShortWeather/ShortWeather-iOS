@@ -36,12 +36,6 @@ extension TodayWeatherCollectionViewCell {
         scrollView.do {
             $0.isPagingEnabled = true
         }
-        /*
-        contentView.backgroundColor = Color.mainColor
-        scrollView.backgroundColor = Color.pointColor
-        firstTodayWeatherView.backgroundColor = .red
-        secondTodayWeatherView.backgroundColor = .blue
-         */
     }
     
     // MARK: - Layout Helper

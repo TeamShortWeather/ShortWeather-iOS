@@ -74,7 +74,7 @@ extension BaseLocationViewController {
         locationCollectionView.snp.makeConstraints {
             $0.top.equalTo(locationView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
+            $0.height.equalTo(CGFloat(667).adjusted)
         }
     }
     
@@ -88,7 +88,6 @@ extension BaseLocationViewController {
 extension BaseLocationViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var height = (self.navigationController?.navigationBar.frame.height ?? CGFloat(44).adjusted) + 62
-        return CGSize(width: view.frame.size.width, height: view.frame.size.height-height)
+        return CGSize(width: view.frame.size.width, height: CGFloat(666).adjusted)
     }
 }

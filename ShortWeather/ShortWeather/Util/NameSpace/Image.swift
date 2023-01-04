@@ -9,12 +9,12 @@ import UIKit
 
 public enum Image {
 
-    //MARK: - Logo Image
+    //MARK: - ShortWeather Logo
     
     public static let logoIcon = UIImage(named: "logo_icon")
     public static let logoText = UIImage(named: "logo_text")
     
-    //MARK: - Common Icon Image
+    //MARK: - Common Icon
     
     public static let icnAdd = UIImage(named: "icn_add")
     public static let icnCloth = UIImage(named: "icn_cloth")
@@ -29,7 +29,7 @@ public enum Image {
     public static let icnWeek = UIImage(named: "icn_week")
     public static let iconExpandDown2 = UIImage(named: "icn_expand_down2")
     
-    //MARK: - Weather Icon Image
+    //MARK: - Weather Icon
 
     public static let icnClearDay = UIImage(named: "icn_clear_day")
     public static let icnClearNight = UIImage(named: "icn_clear_night")
@@ -68,4 +68,27 @@ public enum Image {
     public static let icnSunset = UIImage(named: "icn_sunset")
     public static let icnWindy = UIImage(named: "icn_windy")
     public static let icnYellowdust = UIImage(named: "icn_yellowdust")
+    
+    //MARK: - Weather Image
+    
+    public static let imgClearDay = UIImage(named: "img_clear_day")
+    public static let imgClearNight = UIImage(named: "img_clear_night")
+    public static let imgCloudy = UIImage(named: "img_cloudy")
+    public static let imgFog = UIImage(named: "img_fog")
+    public static let imgHail = UIImage(named: "img_hail")
+    public static let imgHeavyrain = UIImage(named: "img_heavyrain")
+    public static let imgHeavysnow = UIImage(named: "img_heavysnow")
+    public static let imgLightning = UIImage(named: "img_lightning")
+    public static let imgLightrain = UIImage(named: "img_lightrain")
+    public static let imgLightsnow = UIImage(named: "img_lightsnow")
+    public static let imgLittlecloudDay = UIImage(named: "img_littlecloud_day")
+    public static let imgLotcloudDay = UIImage(named: "img_lotcloud_day")
+    public static let imgLittlecloudNight = UIImage(named: "img_littlecloud_night")
+    public static let imgLotcloudNight = UIImage(named: "img_lotcloud_night")
+    public static let imgRain = UIImage(named: "img_rain")
+    public static let imgRainsnow = UIImage(named: "img_rainsnow")
+    public static let imgShower = UIImage(named: "img_shower")
+    public static let imgSnow = UIImage(named: "img_snow")
+    public static let imgWindy = UIImage(named: "img_windy")
+    public static let imgYellowdust = UIImage(named: "img_yellowdust")
 }
