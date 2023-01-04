@@ -41,6 +41,7 @@ extension SecondTodayWeatherView {
             $0.backgroundColor = .yellow
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.separatorStyle = .none
+            $0.showsVerticalScrollIndicator = false
             
             $0.delegate = self
             $0.dataSource = self
