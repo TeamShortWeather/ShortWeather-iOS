@@ -133,6 +133,20 @@ extension SecondInfoViewController {
         // our custom stuff
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc private func halfModal(title: String) { // half modal
+        let vc = TimeViewController(titleText: title)
+        vc.modalPresentationStyle = .pageSheet
+        
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()] // 반만 고정
+//            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
+            sheet.delegate = self
+            sheet.prefersGrabberVisible = true
+        }
+        
+        self.present(vc, animated: true, completion: nil);
+    }
 }
 
 extension SecondInfoViewController: UICollectionViewDelegateFlowLayout {
@@ -159,19 +173,26 @@ extension SecondInfoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch (indexPath.item) {
         case 0:
-            let listVC = TimeViewController(titleText: "기상시간 설정")
-            listVC.modalPresentationStyle = .formSheet
-            self.present(listVC, animated: true, completion: nil);
+            halfModal(title: "기상시간 설정")
         case 1:
-            let listVC = TimeViewController(titleText: "외출시간 설정")
-            listVC.modalPresentationStyle = .formSheet
-            self.present(listVC, animated: true, completion: nil);
+            halfModal(title: "외출시간 설정")
+//            let listVC = TimeViewController(titleText: "외출시간 설정")
+//            listVC.modalPresentationStyle = .formSheet
+//            self.present(listVC, animated: true, completion: nil);
         case 2:
-            let listVC = TimeViewController(titleText: "귀가시간 설정")
-            listVC.modalPresentationStyle = .formSheet
-            self.present(listVC, animated: true, completion: nil);
+            halfModal(title: "귀가시간 설정")
+//            let listVC = TimeViewController(titleText: "귀가시간 설정")
+//            listVC.modalPresentationStyle = .formSheet
+//            self.present(listVC, animated: true, completion: nil);
         default:
             print("SecondInfoViewController 오류")
         }
+    }
+}
+
+extension SecondInfoViewController: UISheetPresentationControllerDelegate {
+    func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
+        //크기 변경 됐을 경우
+        print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
     }
 }

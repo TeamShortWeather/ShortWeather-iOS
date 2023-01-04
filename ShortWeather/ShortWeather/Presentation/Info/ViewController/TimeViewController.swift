@@ -21,7 +21,7 @@ final class TimeViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var titleText: String = ""
+    private var titleText: String
     
     // MARK: - Initializer
     
@@ -54,7 +54,7 @@ extension TimeViewController {
         }
         
         titleLabel.do {
-            $0.text = "기상시간 알림"
+            $0.text = titleText
             $0.font = UIFont.fontGuide(.headline1)
             $0.textColor = .black
         }
@@ -106,6 +106,14 @@ extension TimeViewController {
     
     @objc
     private func backButton() {
+        // 데이터 추출
         self.dismiss(animated: true, completion: nil)
+        let timeFormatter = DateFormatter()
+//        timeFormatter.timeStyle = .short
+        timeFormatter.timeStyle = .none
+        timeFormatter.dateFormat = "hhmm" // 서버전달 방식 (근데오후가 없네)
+        
+        let strDate = timeFormatter.string(from: datePicker.date) // String으로 변환
+        print(strDate)
     }
 }
