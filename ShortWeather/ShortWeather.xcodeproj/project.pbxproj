@@ -19,6 +19,11 @@
 		5212EAE22964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */; };
 		5212EAE42965636B0084B95E /* FirstTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */; };
 		5212EAE6296563780084B95E /* SecondTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE5296563780084B95E /* SecondTodayWeatherView.swift */; };
+		5212EAE9296575170084B95E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAE8296575170084B95E /* Then */; };
+		5212EAEC296575210084B95E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAEB296575210084B95E /* SnapKit */; };
+		5212EAEF2965752F0084B95E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAEE2965752F0084B95E /* Moya */; };
+		5212EAF2296575490084B95E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAF1296575490084B95E /* Lottie */; };
+		5212EAF52965781B0084B95E /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAF42965781B0084B95E /* PartialSheet */; };
 		521317642962B5A3009371E1 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317632962B5A2009371E1 /* UIView +.swift */; };
 		521317662962B5CA009371E1 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317652962B5CA009371E1 /* UIStackView +.swift */; };
 		521317692963F313009371E1 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317682963F313009371E1 /* Letter.swift */; };
@@ -42,7 +47,6 @@
 		52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA4BC295C8EC800DE6AE9 /* PretendardType.swift */; };
 		52D6A3792961573200BF4287 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 52D6A3782961573200BF4287 /* splash.json */; };
 		52D6A37B296157CE00BF4287 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A37A296157CE00BF4287 /* SplashViewController.swift */; };
-		52D6A37E29615A1C00BF4287 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52D6A37D29615A1C00BF4287 /* Lottie */; };
 		52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A37F2961653000BF4287 /* UIViewController +.swift */; };
 		52D6A38D2961A08D00BF4287 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A38C2961A08D00BF4287 /* SideMenuView.swift */; };
 		52D6A38F2961A2F800BF4287 /* CGFloat +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A38E2961A2F800BF4287 /* CGFloat +.swift */; };
@@ -55,9 +59,6 @@
 		52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBA6AE295590D500F263B3 /* BaseViewController.swift */; };
 		52FBA6B4295590D700F263B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6B3295590D700F263B3 /* Assets.xcassets */; };
 		52FBA6B7295590D700F263B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6B5295590D700F263B3 /* LaunchScreen.storyboard */; };
-		52FBA6C02955922000F263B3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 52FBA6BF2955922000F263B3 /* Moya */; };
-		52FBA6C32955924200F263B3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 52FBA6C22955924200F263B3 /* SnapKit */; };
-		52FBA6C62955924E00F263B3 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 52FBA6C52955924E00F263B3 /* Then */; };
 		52FBA6D02955BC3B00F263B3 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6CF2955BC3B00F263B3 /* Color.xcassets */; };
 		52FBA6D22955BC4E00F263B3 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6D12955BC4E00F263B3 /* Image.xcassets */; };
 		AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */; };
@@ -139,10 +140,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52FBA6C02955922000F263B3 /* Moya in Frameworks */,
-				52FBA6C62955924E00F263B3 /* Then in Frameworks */,
-				52FBA6C32955924200F263B3 /* SnapKit in Frameworks */,
-				52D6A37E29615A1C00BF4287 /* Lottie in Frameworks */,
+				5212EAE9296575170084B95E /* Then in Frameworks */,
+				5212EAEC296575210084B95E /* SnapKit in Frameworks */,
+				5212EAEF2965752F0084B95E /* Moya in Frameworks */,
+				5212EAF2296575490084B95E /* Lottie in Frameworks */,
+				5212EAF52965781B0084B95E /* PartialSheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,10 +571,11 @@
 			);
 			name = ShortWeather;
 			packageProductDependencies = (
-				52FBA6BF2955922000F263B3 /* Moya */,
-				52FBA6C22955924200F263B3 /* SnapKit */,
-				52FBA6C52955924E00F263B3 /* Then */,
-				52D6A37D29615A1C00BF4287 /* Lottie */,
+				5212EAE8296575170084B95E /* Then */,
+				5212EAEB296575210084B95E /* SnapKit */,
+				5212EAEE2965752F0084B95E /* Moya */,
+				5212EAF1296575490084B95E /* Lottie */,
+				5212EAF42965781B0084B95E /* PartialSheet */,
 			);
 			productName = ShortWeather;
 			productReference = 52FBA6A7295590D500F263B3 /* ShortWeather.app */;
@@ -603,10 +606,11 @@
 			);
 			mainGroup = 52FBA69E295590D500F263B3;
 			packageReferences = (
-				52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */,
-				52FBA6C12955924200F263B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				52FBA6C42955924E00F263B3 /* XCRemoteSwiftPackageReference "Then" */,
-				52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				5212EAE7296575170084B95E /* XCRemoteSwiftPackageReference "Then" */,
+				5212EAEA296575210084B95E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				5212EAED2965752F0084B95E /* XCRemoteSwiftPackageReference "Moya" */,
+				5212EAF0296575490084B95E /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				5212EAF32965781B0084B95E /* XCRemoteSwiftPackageReference "PartialSheet" */,
 			);
 			productRefGroup = 52FBA6A8295590D500F263B3 /* Products */;
 			projectDirPath = "";
@@ -900,31 +904,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		52FBA6C12955924200F263B3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-		52FBA6C42955924E00F263B3 /* XCRemoteSwiftPackageReference "Then" */ = {
+		5212EAE7296575170084B95E /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
 			requirement = {
@@ -932,28 +912,65 @@
 				kind = branch;
 			};
 		};
+		5212EAEA296575210084B95E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		5212EAED2965752F0084B95E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		5212EAF0296575490084B95E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		5212EAF32965781B0084B95E /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		52D6A37D29615A1C00BF4287 /* Lottie */ = {
+		5212EAE8296575170084B95E /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
+			package = 5212EAE7296575170084B95E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
-		52FBA6BF2955922000F263B3 /* Moya */ = {
+		5212EAEB296575210084B95E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
-		};
-		52FBA6C22955924200F263B3 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 52FBA6C12955924200F263B3 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 5212EAEA296575210084B95E /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		52FBA6C52955924E00F263B3 /* Then */ = {
+		5212EAEE2965752F0084B95E /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 52FBA6C42955924E00F263B3 /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
+			package = 5212EAED2965752F0084B95E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		5212EAF1296575490084B95E /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5212EAF0296575490084B95E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		5212EAF42965781B0084B95E /* PartialSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5212EAF32965781B0084B95E /* XCRemoteSwiftPackageReference "PartialSheet" */;
+			productName = PartialSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
