@@ -31,8 +31,6 @@ final class ListViewController: UIViewController {
     private var titleText: String
     private var listDatas: [List] // 변수이게맞냐
     
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     init(titleText: String, listDatas: [List]) {
@@ -64,7 +62,7 @@ extension ListViewController {
         }
         
         titleLabel.do {
-            $0.text = "성별을 선택해 주세요"
+            $0.text = titleText
             $0.font = UIFont.fontGuide(.headline1)
             $0.textColor = .black
         }
@@ -73,7 +71,6 @@ extension ListViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(41)
             $0.centerX.equalToSuperview()

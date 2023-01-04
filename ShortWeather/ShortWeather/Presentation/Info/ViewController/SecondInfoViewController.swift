@@ -48,6 +48,14 @@ final class SecondInfoViewController: UIViewController {
         setUI()
         setLayout()
         register()
+        
+        // 네비게이션 바 커스텀
+        navigationItem.leftBarButtonItem = UIBarButtonItem (
+            image: UIImage(named: "icn_expand_left"),
+            style: .plain,
+            target: self,
+            action: #selector(popToPrevious)
+        )
     }
 }
 
@@ -86,7 +94,7 @@ extension SecondInfoViewController {
     private func setLayout() {
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(73)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(29) // 네비바 44 (73-44)
             $0.centerX.equalTo(view.safeAreaLayoutGuide)
             $0.width.equalTo(320)
         }
@@ -120,6 +128,11 @@ extension SecondInfoViewController {
     
     
     // MARK: - @objc Methods
+    
+    @objc private func popToPrevious() {
+        // our custom stuff
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension SecondInfoViewController: UICollectionViewDelegateFlowLayout {
@@ -141,5 +154,24 @@ extension SecondInfoViewController: UICollectionViewDataSource {
 
         cell.setDataBind(model: infoModel[indexPath.item])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch (indexPath.item) {
+        case 0:
+            let listVC = TimeViewController(titleText: "기상시간 설정")
+            listVC.modalPresentationStyle = .formSheet
+            self.present(listVC, animated: true, completion: nil);
+        case 1:
+            let listVC = TimeViewController(titleText: "외출시간 설정")
+            listVC.modalPresentationStyle = .formSheet
+            self.present(listVC, animated: true, completion: nil);
+        case 2:
+            let listVC = TimeViewController(titleText: "귀가시간 설정")
+            listVC.modalPresentationStyle = .formSheet
+            self.present(listVC, animated: true, completion: nil);
+        default:
+            print("SecondInfoViewController 오류")
+        }
     }
 }
