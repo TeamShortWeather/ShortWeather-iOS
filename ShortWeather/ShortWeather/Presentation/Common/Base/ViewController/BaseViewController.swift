@@ -26,6 +26,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setAddTarget()
     }
 }
 
@@ -34,13 +35,8 @@ extension BaseViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        tapBackgroundViewGesture.addTarget(self, action: #selector(hideSideMenuView))
-        view.backgroundColor = Color.mainColor
-         [backgroundView, sideMenuView].forEach {
-            view.addSubview($0)
-        }
-        
-        sideMenuView.backgroundColor = .white
+        view.backgroundColor = Color.white
+        view.addSubviews(backgroundView, sideMenuView)
         backgroundView.do {
             $0.isHidden = true
             $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
@@ -53,6 +49,12 @@ extension BaseViewController {
         navigationItem.title = "오늘 날씨"
         navigationItem.leftBarButtonItem?.tintColor = .black
         navigationItem.rightBarButtonItem?.tintColor = .black
+    }
+    
+    // MARK: - Methods
+    
+    private func setAddTarget() {
+        tapBackgroundViewGesture.addTarget(self, action: #selector(hideSideMenuView))
     }
     
     // MARK: - Layout Helper

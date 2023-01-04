@@ -98,7 +98,7 @@ extension SideMenuView {
     // MARK: - UI Components Property
     
     private func setUI() {
-        backgroundColor = .red
+        backgroundColor = Color.white
         logoIconImageView.do {
             $0.image = Image.logoIcon
         }

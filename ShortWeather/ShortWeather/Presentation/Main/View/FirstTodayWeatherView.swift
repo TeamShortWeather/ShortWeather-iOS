@@ -13,6 +13,7 @@ final class FirstTodayWeatherView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = Color.mainColor
     }
     
     required init?(coder: NSCoder) {

@@ -35,10 +35,9 @@ extension SecondTodayWeatherView {
     // MARK: - UI Components
     
     private func setUI() {
-        self.backgroundColor = .white
+        self.backgroundColor = .blue
         
         weatherTableView.do {
-            $0.backgroundColor = .yellow
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.separatorStyle = .none
             $0.showsVerticalScrollIndicator = false
@@ -58,7 +57,7 @@ extension SecondTodayWeatherView {
         self.addSubviews(weatherTableView)
         
         weatherTableView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(self.safeAreaLayoutGuide)
+            $0.top.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
     }
