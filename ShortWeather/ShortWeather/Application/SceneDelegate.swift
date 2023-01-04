@@ -22,12 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let window = UIWindow(windowScene: windowScene)
             window.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
-            
-            let rootVC = FirstInfoViewController()
-//            let rootVC = SplashViewController()
-//            let navigationController = UINavigationController(rootViewController: FirstInfoViewController())
-//            window.rootViewController = navigationController
 
+//            let rootVC = TodayWeatherViewController()
+//            let navigationController = UINavigationController(rootViewController: rootVC)
+//            window.rootViewController = navigationController
+            
+            let rootVC = SplashViewController()
             window.rootViewController = rootVC
             window.makeKeyAndVisible()
             self.window = window
