@@ -43,8 +43,8 @@ extension SplashViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        splashImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        splashImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     
@@ -53,11 +53,9 @@ extension SplashViewController {
     private func isExistInform(){
         let isUser: Bool = true
         if isUser {
-            let vc = BaseViewController()
-            let rootView = UINavigationController(rootViewController: vc)
-            modifyRootViewController(rootView)
+            UIViewController.modifyRootViewController(TodayWeatherViewController())
         } else {
-            modifyRootViewController(BaseViewController())
+            UIViewController.modifyRootViewController(TodayWeatherViewController())
         }
     }
 }

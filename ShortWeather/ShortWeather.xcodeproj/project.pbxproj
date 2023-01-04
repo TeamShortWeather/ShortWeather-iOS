@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		033E7F6D2965A0380051B349 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */; };
+		033E7F712965A8560051B349 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F702965A8560051B349 /* ListViewController.swift */; };
 		0346A2F62964344000E37FD2 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F52964344000E37FD2 /* Info.swift */; };
 		0346A2F829644B7600E37FD2 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */; };
-		0346A2FA296467D700E37FD2 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F9296467D700E37FD2 /* GenderViewController.swift */; };
 		0346A2FE2964969000E37FD2 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2FD2964969000E37FD2 /* List.swift */; };
 		0346A3002964B6B000E37FD2 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2FF2964B6B000E37FD2 /* ListCollectionViewCell.swift */; };
 		0346A30229658F3000E37FD2 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A30129658F3000E37FD2 /* ListTableViewCell.swift */; };
+		5212EADA296493380084B95E /* TodayWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAD9296493380084B95E /* TodayWeatherViewController.swift */; };
+		5212EADD296496DD0084B95E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EADC296496DD0084B95E /* LocationView.swift */; };
+		5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EADE29649C950084B95E /* BaseLocationViewController.swift */; };
+		5212EAE22964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */; };
+		5212EAE42965636B0084B95E /* FirstTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */; };
+		5212EAE6296563780084B95E /* testSecondWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAE5296563780084B95E /* testSecondWeatherView.swift */; };
+		5212EAE9296575170084B95E /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAE8296575170084B95E /* Then */; };
+		5212EAEC296575210084B95E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAEB296575210084B95E /* SnapKit */; };
+		5212EAEF2965752F0084B95E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAEE2965752F0084B95E /* Moya */; };
+		5212EAF2296575490084B95E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAF1296575490084B95E /* Lottie */; };
 		521317642962B5A3009371E1 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317632962B5A2009371E1 /* UIView +.swift */; };
 		521317662962B5CA009371E1 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317652962B5CA009371E1 /* UIStackView +.swift */; };
 		521317692963F313009371E1 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317682963F313009371E1 /* Letter.swift */; };
@@ -21,6 +31,7 @@
 		521317702963F8B2009371E1 /* UITableView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5213176F2963F8B2009371E1 /* UITableView +.swift */; };
 		521317722963F934009371E1 /* NSObject +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317712963F934009371E1 /* NSObject +.swift */; };
 		521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317732963F9D5009371E1 /* UICollectionView +.swift */; };
+		5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5213177629641479009371E1 /* MenuLineHeaderView.swift */; };
 		523BB081295D69990004B343 /* FontLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523BB080295D69990004B343 /* FontLevel.swift */; };
 		523BB083295D73350004B343 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523BB082295D73350004B343 /* Image.swift */; };
 		523BB085295D735D0004B343 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523BB084295D735D0004B343 /* Color.swift */; };
@@ -36,7 +47,6 @@
 		52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA4BC295C8EC800DE6AE9 /* PretendardType.swift */; };
 		52D6A3792961573200BF4287 /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 52D6A3782961573200BF4287 /* splash.json */; };
 		52D6A37B296157CE00BF4287 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A37A296157CE00BF4287 /* SplashViewController.swift */; };
-		52D6A37E29615A1C00BF4287 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52D6A37D29615A1C00BF4287 /* Lottie */; };
 		52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A37F2961653000BF4287 /* UIViewController +.swift */; };
 		52D6A38D2961A08D00BF4287 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A38C2961A08D00BF4287 /* SideMenuView.swift */; };
 		52D6A38F2961A2F800BF4287 /* CGFloat +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6A38E2961A2F800BF4287 /* CGFloat +.swift */; };
@@ -49,9 +59,6 @@
 		52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FBA6AE295590D500F263B3 /* BaseViewController.swift */; };
 		52FBA6B4295590D700F263B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6B3295590D700F263B3 /* Assets.xcassets */; };
 		52FBA6B7295590D700F263B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6B5295590D700F263B3 /* LaunchScreen.storyboard */; };
-		52FBA6C02955922000F263B3 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 52FBA6BF2955922000F263B3 /* Moya */; };
-		52FBA6C32955924200F263B3 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 52FBA6C22955924200F263B3 /* SnapKit */; };
-		52FBA6C62955924E00F263B3 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 52FBA6C52955924E00F263B3 /* Then */; };
 		52FBA6D02955BC3B00F263B3 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6CF2955BC3B00F263B3 /* Color.xcassets */; };
 		52FBA6D22955BC4E00F263B3 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6D12955BC4E00F263B3 /* Image.xcassets */; };
 		AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */; };
@@ -66,12 +73,18 @@
 
 /* Begin PBXFileReference section */
 		033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstInfoViewController.swift; path = ../../../../../../../../../Info/FirstInfoViewController.swift; sourceTree = "<group>"; };
+		033E7F702965A8560051B349 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		0346A2F52964344000E37FD2 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
-		0346A2F9296467D700E37FD2 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 		0346A2FD2964969000E37FD2 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		0346A2FF2964B6B000E37FD2 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		0346A30129658F3000E37FD2 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		5212EAD9296493380084B95E /* TodayWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherViewController.swift; sourceTree = "<group>"; };
+		5212EADC296496DD0084B95E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
+		5212EADE29649C950084B95E /* BaseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocationViewController.swift; sourceTree = "<group>"; };
+		5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTodayWeatherView.swift; sourceTree = "<group>"; };
+		5212EAE5296563780084B95E /* testSecondWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSecondWeatherView.swift; sourceTree = "<group>"; };
 		521317632962B5A2009371E1 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
 		521317652962B5CA009371E1 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		521317682963F313009371E1 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
@@ -79,6 +92,7 @@
 		5213176F2963F8B2009371E1 /* UITableView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView +.swift"; sourceTree = "<group>"; };
 		521317712963F934009371E1 /* NSObject +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject +.swift"; sourceTree = "<group>"; };
 		521317732963F9D5009371E1 /* UICollectionView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView +.swift"; sourceTree = "<group>"; };
+		5213177629641479009371E1 /* MenuLineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLineHeaderView.swift; sourceTree = "<group>"; };
 		523BB080295D69990004B343 /* FontLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLevel.swift; sourceTree = "<group>"; };
 		523BB082295D73350004B343 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		523BB084295D735D0004B343 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -127,10 +141,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52FBA6C02955922000F263B3 /* Moya in Frameworks */,
-				52FBA6C62955924E00F263B3 /* Then in Frameworks */,
-				52FBA6C32955924200F263B3 /* SnapKit in Frameworks */,
-				52D6A37E29615A1C00BF4287 /* Lottie in Frameworks */,
+				5212EAE9296575170084B95E /* Then in Frameworks */,
+				5212EAEC296575210084B95E /* SnapKit in Frameworks */,
+				5212EAEF2965752F0084B95E /* Moya in Frameworks */,
+				5212EAF2296575490084B95E /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,9 +184,52 @@
 			isa = PBXGroup;
 			children = (
 				033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */,
-				0346A2F9296467D700E37FD2 /* GenderViewController.swift */,
+				033E7F702965A8560051B349 /* ListViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5212EAD6296492E90084B95E /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5212EAE02964AD300084B95E /* Cell */,
+				5212EAD8296493100084B95E /* View */,
+				5212EAD7296493090084B95E /* ViewController */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5212EAD7296493090084B95E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5212EAD9296493380084B95E /* TodayWeatherViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5212EAD8296493100084B95E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */,
+				5212EAE5296563780084B95E /* testSecondWeatherView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5212EADB296496AF0084B95E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5212EADC296496DD0084B95E /* LocationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5212EAE02964AD300084B95E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		5213176A2963F65B009371E1 /* View */ = {
@@ -189,6 +246,14 @@
 				5213176C2963F6D0009371E1 /* MenuTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		52131775296413F5009371E1 /* ReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				5213177629641479009371E1 /* MenuLineHeaderView.swift */,
+			);
+			path = ReusableView;
 			sourceTree = "<group>";
 		};
 		523BB07F295D697C0004B343 /* StyleGuide */ = {
@@ -262,6 +327,7 @@
 		52D6A3882961A00700BF4287 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				52131775296413F5009371E1 /* ReusableView */,
 				5213176B2963F65F009371E1 /* Cell */,
 				5213176A2963F65B009371E1 /* View */,
 			);
@@ -279,7 +345,7 @@
 		52D6A38A2961A04C00BF4287 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				52D6A3882961A00700BF4287 /* SideMenu */,
+				5212EADB296496AF0084B95E /* View */,
 				52D6A38B2961A06100BF4287 /* ViewController */,
 			);
 			path = Base;
@@ -289,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				52FBA6AE295590D500F263B3 /* BaseViewController.swift */,
+				5212EADE29649C950084B95E /* BaseLocationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -347,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				0346A2EC2964126000E37FD2 /* Info */,
+				5212EAD6296492E90084B95E /* Main */,
 				52FBA6D92955C85300F263B3 /* Common */,
 				AB09FF602962BB0B004C54EE /* TodayWeather */,
 			);
@@ -434,6 +502,7 @@
 		52FBA6D92955C85300F263B3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				52D6A3882961A00700BF4287 /* SideMenu */,
 				52D6A38A2961A04C00BF4287 /* Base */,
 				52D6A3892961A03D00BF4287 /* Splash */,
 			);
@@ -511,10 +580,10 @@
 			);
 			name = ShortWeather;
 			packageProductDependencies = (
-				52FBA6BF2955922000F263B3 /* Moya */,
-				52FBA6C22955924200F263B3 /* SnapKit */,
-				52FBA6C52955924E00F263B3 /* Then */,
-				52D6A37D29615A1C00BF4287 /* Lottie */,
+				5212EAE8296575170084B95E /* Then */,
+				5212EAEB296575210084B95E /* SnapKit */,
+				5212EAEE2965752F0084B95E /* Moya */,
+				5212EAF1296575490084B95E /* Lottie */,
 			);
 			productName = ShortWeather;
 			productReference = 52FBA6A7295590D500F263B3 /* ShortWeather.app */;
@@ -545,10 +614,10 @@
 			);
 			mainGroup = 52FBA69E295590D500F263B3;
 			packageReferences = (
-				52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */,
-				52FBA6C12955924200F263B3 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				52FBA6C42955924E00F263B3 /* XCRemoteSwiftPackageReference "Then" */,
-				52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				5212EAE7296575170084B95E /* XCRemoteSwiftPackageReference "Then" */,
+				5212EAEA296575210084B95E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				5212EAED2965752F0084B95E /* XCRemoteSwiftPackageReference "Moya" */,
+				5212EAF0296575490084B95E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 52FBA6A8295590D500F263B3 /* Products */;
 			projectDirPath = "";
@@ -587,6 +656,7 @@
 				0346A3002964B6B000E37FD2 /* ListCollectionViewCell.swift in Sources */,
 				52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */,
 				0346A2FE2964969000E37FD2 /* List.swift in Sources */,
+				5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */,
 				521317722963F934009371E1 /* NSObject +.swift in Sources */,
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
 				AB09FF642962BD7A004C54EE /* TestViewController.swift in Sources */,
@@ -597,27 +667,33 @@
 				AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */,
 				523BB085295D735D0004B343 /* Color.swift in Sources */,
 				52D6A38D2961A08D00BF4287 /* SideMenuView.swift in Sources */,
+				033E7F712965A8560051B349 /* ListViewController.swift in Sources */,
 				52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */,
+				5212EAE42965636B0084B95E /* FirstTodayWeatherView.swift in Sources */,
 				52D6A38F2961A2F800BF4287 /* CGFloat +.swift in Sources */,
 				5213176D2963F6D0009371E1 /* MenuTableViewCell.swift in Sources */,
 				033E7F6D2965A0380051B349 /* FirstInfoViewController.swift in Sources */,
 				521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */,
 				521317692963F313009371E1 /* Letter.swift in Sources */,
+				5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */,
+				5212EAE6296563780084B95E /* testSecondWeatherView.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
 				AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */,
 				52CBA4AE295C891200DE6AE9 /* GerneralResponse.swift in Sources */,
 				0346A2F62964344000E37FD2 /* Info.swift in Sources */,
 				52CBA4A0295C814000DE6AE9 /* MainService.swift in Sources */,
+				5212EAE22964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift in Sources */,
 				52FBA6AB295590D500F263B3 /* AppDelegate.swift in Sources */,
 				AB102EB729655CA400BEBF90 /* UIButton+.swift in Sources */,
 				52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */,
 				0346A2F829644B7600E37FD2 /* SelectCollectionViewCell.swift in Sources */,
-				0346A2FA296467D700E37FD2 /* GenderViewController.swift in Sources */,
 				AB2590CD29647C55008FEC2A /* TodayTableViewCell.swift in Sources */,
 				52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */,
 				0346A30229658F3000E37FD2 /* ListTableViewCell.swift in Sources */,
 				52CBA4A9295C881400DE6AE9 /* NetworkLoggerPlugin.swift in Sources */,
 				521317702963F8B2009371E1 /* UITableView +.swift in Sources */,
+				5212EADD296496DD0084B95E /* LocationView.swift in Sources */,
+				5212EADA296493380084B95E /* TodayWeatherViewController.swift in Sources */,
 				521317662962B5CA009371E1 /* UIStackView +.swift in Sources */,
 				AB09FF6929630D7A004C54EE /* CellType.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
@@ -836,23 +912,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		5212EAE7296575170084B95E /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Moya/Moya";
+			repositoryURL = "https://github.com/devxoul/Then";
 			requirement = {
 				branch = master;
 				kind = branch;
 			};
 		};
-		52FBA6C12955924200F263B3 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		5212EAEA296575210084B95E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -860,9 +928,17 @@
 				kind = branch;
 			};
 		};
-		52FBA6C42955924E00F263B3 /* XCRemoteSwiftPackageReference "Then" */ = {
+		5212EAED2965752F0084B95E /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/devxoul/Then";
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		5212EAF0296575490084B95E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -871,25 +947,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		52D6A37D29615A1C00BF4287 /* Lottie */ = {
+		5212EAE8296575170084B95E /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 52D6A37C29615A1C00BF4287 /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
+			package = 5212EAE7296575170084B95E /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
-		52FBA6BF2955922000F263B3 /* Moya */ = {
+		5212EAEB296575210084B95E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 52FBA6BE2955922000F263B3 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
-		};
-		52FBA6C22955924200F263B3 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 52FBA6C12955924200F263B3 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 5212EAEA296575210084B95E /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		52FBA6C52955924E00F263B3 /* Then */ = {
+		5212EAEE2965752F0084B95E /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 52FBA6C42955924E00F263B3 /* XCRemoteSwiftPackageReference "Then" */;
-			productName = Then;
+			package = 5212EAED2965752F0084B95E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		5212EAF1296575490084B95E /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5212EAF0296575490084B95E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

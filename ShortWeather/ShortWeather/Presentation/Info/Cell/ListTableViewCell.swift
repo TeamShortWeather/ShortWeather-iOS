@@ -9,6 +9,8 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
+    static let identifier = "ListTableViewCell"
+    
     // MARK: - UI Components
     
     private let listLabel: UILabel = UILabel()

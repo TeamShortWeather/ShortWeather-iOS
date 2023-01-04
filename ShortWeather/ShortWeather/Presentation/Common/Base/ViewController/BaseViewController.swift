@@ -16,11 +16,9 @@ class BaseViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let sideMenuView: SideMenuView = SideMenuView()
-    private let backgroundView: UIView = UIView()
+    let sideMenuView: SideMenuView = SideMenuView()
+    let backgroundView: UIView = UIView()
     private let tapBackgroundViewGesture: UITapGestureRecognizer = UITapGestureRecognizer()
-    
-    // MARK: - Initializer
     
     // MARK: - View Life Cycle
     
@@ -67,8 +65,8 @@ extension BaseViewController {
             $0.width.equalTo(sideMenuViewWidth)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(-sideMenuViewWidth)
         }
-        backgroundView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     
