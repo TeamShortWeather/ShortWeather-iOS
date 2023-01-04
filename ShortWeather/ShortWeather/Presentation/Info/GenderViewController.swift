@@ -40,6 +40,8 @@ final class GenderViewController: UIViewController {
         List(listName: "남자")
     ]
     
+    var completionHandler: ((String) -> (String))? // 컴플리션 핸들러
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -117,6 +119,8 @@ extension GenderViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(listModel[indexPath.row].listName)
+        _ = completionHandler?(self.listModel[indexPath.row].listName ?? "")
         if self.navigationController == nil {
             self.dismiss(animated: true, completion: nil)
         }
