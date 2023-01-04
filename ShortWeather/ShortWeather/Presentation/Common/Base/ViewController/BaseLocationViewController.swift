@@ -20,7 +20,6 @@ class BaseLocationViewController: BaseViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-62)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
@@ -32,6 +31,7 @@ class BaseLocationViewController: BaseViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDelegate()
     }
 }
 
@@ -76,5 +76,19 @@ extension BaseLocationViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    // MARK: - Methods
+    
+    private func setDelegate() {
+        locationCollectionView.delegate = self
+    }
+}
+
+extension BaseLocationViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var height = (self.navigationController?.navigationBar.frame.height ?? CGFloat(44).adjusted) + 62
+        return CGSize(width: view.frame.size.width, height: view.frame.size.height-height)
     }
 }
