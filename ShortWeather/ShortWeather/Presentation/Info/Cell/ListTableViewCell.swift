@@ -9,23 +9,21 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
-    static let identifier = "ListTableViewCell"
-    
     // MARK: - UI Components
     
     private let listLabel: UILabel = UILabel()
     
     // MARK: - View Life Cycle
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setUI()
-        setLayout()
-        layoutSubviews()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
 }
 
@@ -34,8 +32,8 @@ extension ListTableViewCell {
     // MARK: - UI Components Property
     
     private func setUI() {
-        backgroundColor = .cyan
-        contentView.backgroundColor = .red
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
         [listLabel].forEach {
             contentView.addSubview($0)
         }
@@ -60,5 +58,12 @@ extension ListTableViewCell {
     
     func setDataBind(model: List) {
         listLabel.text = model.listName
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = Color.gray1            }
+        }
     }
 }
