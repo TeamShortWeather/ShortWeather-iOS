@@ -27,8 +27,8 @@ final class SecondInfoViewController: UIViewController {
         collectionView.backgroundColor = .clear
         collectionView.isScrollEnabled = false
         collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         return collectionView
     }()
     
@@ -47,6 +47,7 @@ final class SecondInfoViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        register()
     }
 }
 
@@ -105,14 +106,40 @@ extension SecondInfoViewController {
         }
         
         addInfoLabel.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(14)
+            $0.bottom.equalTo(checkButton.snp.bottom).inset(71)
             $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(320)
+            $0.width.equalTo(320)
         }
     }
     
     // MARK: - Methods
     
+    private func register() {
+        selectCollectionView.registerCell(SelectCollectionViewCell.self)
+    }
+    
     
     // MARK: - @objc Methods
+}
+
+extension SecondInfoViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 320, height: 64)
+    }
+}
+
+extension SecondInfoViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier,
+                                                            for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
+
+        cell.setDataBind(model: infoModel[indexPath.item])
+        return cell
+    }
 }
