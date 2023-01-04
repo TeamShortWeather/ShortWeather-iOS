@@ -69,6 +69,7 @@ extension SelectCollectionViewCell {
     // MARK: - Layout Helper
     
     private func setLayout() {
+        
         joinLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
         }
@@ -97,6 +98,17 @@ extension SelectCollectionViewCell {
 
     func setDataBind(model: Info) {
         joinLabel.text = model.labelName
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                lineView.backgroundColor = Color.weatherBlue
+            }
+            else {
+                lineView.backgroundColor = Color.gray0
+            }
+        }
     }
 }
 

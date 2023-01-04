@@ -25,8 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let rootVC = FirstInfoViewController()
 //            let rootVC = SplashViewController()
-//            let rootVC = BaseViewController()
-//            let navigationController = UINavigationController(rootViewController: rootVC)
+//            let navigationController = UINavigationController(rootViewController: FirstInfoViewController())
 //            window.rootViewController = navigationController
 
             window.rootViewController = rootVC

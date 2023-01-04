@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct List {
+    let listName: String
+}

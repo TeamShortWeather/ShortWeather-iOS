@@ -121,4 +121,14 @@ extension GenderViewController: UICollectionViewDataSource {
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+//        guard let cell = collectionView.cellForItem(at: indexPath) as?
+//                ListCollectionViewCell else { return true }
+//        if cell.isSelected {
+//            listCollectionView.deselectItem(at: indexPath, animated: true)
+//            return false
+//        }
+//        else { return true }
+//    }
 }
