@@ -4,6 +4,10 @@
 
 # 어제와 비교하여 오늘의 날씨를 쉽게 알아보는, 숏웨더 ☔️
 
+날씨를 어제와 비교하여 알고싶다면?
+
+미세먼지 농도, 기온 등 수치만 봐서는 알 수 없는 정보들을 좀 더 직관적으로 알아보자!
+
 <br><br>
 ##  🫶 Short Weather iOS Developers
 
@@ -26,7 +30,7 @@
 Moya | 서버 통신 | SPM
 SnapKit | UI Layout | SPM
 Then | UI 선언 | SPM
-Kingfisher | 이미지 처리 | SPM
+Lottie | 스플래쉬 화면 | SPM
 
 <br>
 
@@ -567,7 +571,7 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
     - 브랜치 이름 : feature/#이슈 번호-작업 내용
 3. Upstream develop 브랜치와 충돌 해결 후 Origin 레포에 브랜치 생성 및 푸쉬
 4. Origin 레포 → Upstream 레포  PR 날리기
-5. Upstream PR 머지 했으면  Upstream → Origin, Local main(develop) 브랜치도 머지 시켜주기
+5. Upstream PR 머지 했으면  Upstream → Local main(develop) 브랜치도 머지 시켜주기
 
 </details>
 
