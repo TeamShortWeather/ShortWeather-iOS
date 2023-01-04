@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SideMenuView: UIView {
+final class SideMenuView: UIView {
     
     // MARK: - UI Components
     
@@ -16,6 +16,7 @@ class SideMenuView: UIView {
     private let closeButton: UIButton = UIButton()
     private let menuLabel: UILabel = UILabel()
     private let menuTableView: UITableView = UITableView(frame: .zero, style: .grouped)
+//    private let menuTableView: UITableView = UITableView()
     
     // MARK: - UI Components
     
@@ -33,6 +34,26 @@ class SideMenuView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension SideMenuView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 20
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            return tableView.dequeueReusableView(type: MenuLineHeaderView.self)
+        }
+        return UIView()
     }
 }
 
@@ -56,33 +77,18 @@ extension SideMenuView: UITableViewDataSource {
         return 2
     }
     
-    private func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 {
-            return tableView.dequeueReusableView(type: MenuLineHeaderView.self)
-        }
-        return UIView()
-    }
-
-    private func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return 20
-        }
-        return 0
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Cell Tap!!")
         switch indexPath.row {
         case 0:
-            UIViewController.modifyRootViewController(BaseViewController())
+            UIViewController.modifyRootViewController(TodayWeatherViewController())
         case 1:
-            UIViewController.modifyRootViewController(BaseViewController())
+            UIViewController.modifyRootViewController(TodayWeatherViewController())
         case 2:
-            UIViewController.modifyRootViewController(BaseViewController())
+            UIViewController.modifyRootViewController(TodayWeatherViewController())
         case 3:
-            UIViewController.modifyRootViewController(BaseViewController())
+            UIViewController.modifyRootViewController(TodayWeatherViewController())
         default:
-            UIViewController.modifyRootViewController(BaseViewController())
+            UIViewController.modifyRootViewController(TodayWeatherViewController())
         }
     }
 }
@@ -147,5 +153,6 @@ extension SideMenuView {
     // MARK: - Methods
     private func setDelegate() {
         menuTableView.dataSource = self
+        menuTableView.delegate = self
     }
 }

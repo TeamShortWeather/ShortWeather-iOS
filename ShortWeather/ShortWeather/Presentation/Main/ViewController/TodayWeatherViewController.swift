@@ -15,43 +15,52 @@ final class TodayWeatherViewController: BaseLocationViewController {
     
     // MARK: - UI Components
     
-//    private let locationView: LocationView = LocationView()
-    
     // MARK: - Initializer
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setUI()
-//        setLayout()
+        setUI()
+        setLayout()
+        setDelegate()
     }
 }
-/*
+
 extension TodayWeatherViewController {
     
     // MARK: - UI Components Property
     
     private func setUI() {
-        locationView.do {
-            $0.setDataBind(Letter.tempLocation)
-        }
+        locationCollectionView.registerCell(TodayWeatherCollectionViewCell.self)
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
-        view.addSubview(locationView)
-        locationView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(62)
-        }
+        
     }
     
     // MARK: - Methods
     
+    private func setDelegate() {
+        locationCollectionView.dataSource = self
+    }
+    
     // MARK: - @objc Methods
 }
 
- */
-
+extension TodayWeatherViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = locationCollectionView.dequeueCell(type: TodayWeatherCollectionViewCell.self, indexPath: indexPath)
+        return cell
+    }
+}

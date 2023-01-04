@@ -7,11 +7,11 @@
 
 import UIKit
 
-class MenuLineHeaderView: UITableViewHeaderFooterView {
+final class MenuLineHeaderView: UITableViewHeaderFooterView {
 
     // MARK: - UI Components
     
-    private let lineView: UIImageView = UIImageView()
+    private let lineView: UIView = UIView()
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

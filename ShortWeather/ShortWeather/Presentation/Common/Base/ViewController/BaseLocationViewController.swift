@@ -16,11 +16,12 @@ class BaseLocationViewController: BaseViewController {
     // MARK: - UI Components
     
     public let locationView: LocationView = LocationView()
-    private let locationCollectionView: UICollectionView = {
+    public let locationCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-62)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     private let pageController: UIPageControl = UIPageControl()
@@ -47,6 +48,10 @@ extension BaseLocationViewController {
             $0.currentPageIndicatorTintColor = Color.pointColor
             $0.numberOfPages = 3
         }
+        locationCollectionView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.isPagingEnabled = true
+        }
     }
     
     // MARK: - Layout Helper
@@ -54,6 +59,8 @@ extension BaseLocationViewController {
     private func setLayout() {
         view.addSubviews(locationView, locationCollectionView)
         locationView.addSubview(pageController)
+        view.bringSubviewToFront(super.backgroundView)
+        view.bringSubviewToFront(super.sideMenuView)
         locationView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(62)

@@ -16,8 +16,8 @@ class BaseViewController: UIViewController {
     
     // MARK: - UI Components
     
-    private let sideMenuView: SideMenuView = SideMenuView()
-    private let backgroundView: UIView = UIView()
+    let sideMenuView: SideMenuView = SideMenuView()
+    let backgroundView: UIView = UIView()
     private let tapBackgroundViewGesture: UITapGestureRecognizer = UITapGestureRecognizer()
     
     // MARK: - View Life Cycle
