@@ -20,7 +20,7 @@ final class TodayTableViewCell: UITableViewCell {
     private let humidityTitleLabel: UILabel = UILabel()
     private let humidityImageView: UIImageView = UIImageView()
     private let humidityLabel: UILabel = UILabel()
-    private lazy var humidityStackView: UIStackView = UIStackView()
+    private let humidityStateView: UIView = UIView()
     
     private let sunView: UIView = UIView()
     private let sunTitleLabel: UILabel = UILabel()
@@ -36,13 +36,13 @@ final class TodayTableViewCell: UITableViewCell {
     private let dustTitleLabel: UILabel = UILabel()
     private let dustImageView: UIImageView = UIImageView()
     private let dustStateLabel: UILabel = UILabel()
-    private lazy var dustStackView: UIStackView = UIStackView()
+    private let dustStateView: UIView = UIView()
     
     private let fineDustView: UIView = UIView()
     private let fineDustTitleLabel: UILabel = UILabel()
     private let fineDustImageView: UIImageView = UIImageView()
     private let fineDustStateLabel: UILabel = UILabel()
-    private lazy var fineDustStackView: UIStackView = UIStackView()
+    private let fineDustStateView: UIView = UIView()
 
     private lazy var todayStackView: UIStackView = UIStackView()
 
@@ -90,7 +90,6 @@ extension TodayTableViewCell {
         humidityLabel.do {
             $0.text = "00%"
             $0.font = .fontGuide(.subhead2)
-            $0.textAlignment = .right
         }
         
         sunView.do {
@@ -154,7 +153,6 @@ extension TodayTableViewCell {
         dustStateLabel.do {
             $0.text = "좋음"
             $0.font = .fontGuide(.subhead2)
-            $0.textAlignment = .right
         }
 
         fineDustView.do {
@@ -173,7 +171,6 @@ extension TodayTableViewCell {
         fineDustStateLabel.do {
             $0.text = "보통"
             $0.font = .fontGuide(.subhead2)
-            $0.textAlignment = .right
         }
         
         todayStackView.do {
@@ -188,19 +185,19 @@ extension TodayTableViewCell {
     private func setLayout() {
         contentView.addSubviews(titleLabel, todayStackView)
         
-        humidityStackView.addArrangedSubviews(humidityImageView, humidityLabel)
-        humidityView.addSubviews(humidityTitleLabel, humidityStackView)
+        humidityStateView.addSubviews(humidityImageView, humidityLabel)
+        humidityView.addSubviews(humidityTitleLabel, humidityStateView)
         
         sunView.addSubviews(sunTitleLabel, sunStackView)
         sunriseStackView.addArrangedSubviews(sunriseImageView, sunriseTimeLabel)
         sunsetStackView.addArrangedSubviews(sunsetImageView, sunsetTimeLabel)
         sunStackView.addArrangedSubviews(sunriseStackView, sunsetStackView)
         
-        dustStackView.addArrangedSubviews(dustImageView, dustStateLabel)
-        dustView.addSubviews(dustTitleLabel, dustStackView)
+        dustStateView.addSubviews(dustImageView, dustStateLabel)
+        dustView.addSubviews(dustTitleLabel, dustStateView)
         
-        fineDustStackView.addArrangedSubviews(fineDustImageView, fineDustStateLabel)
-        fineDustView.addSubviews(fineDustTitleLabel, fineDustStackView)
+        fineDustStateView.addSubviews(fineDustImageView, fineDustStateLabel)
+        fineDustView.addSubviews(fineDustTitleLabel, fineDustStateView)
         
         todayStackView.addArrangedSubviews(humidityView, sunView, dustView, fineDustView)
          
@@ -221,12 +218,16 @@ extension TodayTableViewCell {
             $0.leading.equalToSuperview().offset(30)
         }
         
+        humidityLabel.snp.makeConstraints {
+            $0.centerY.trailing.equalToSuperview()
+        }
+        
         humidityImageView.snp.makeConstraints {
             $0.height.equalToSuperview()
             $0.width.equalTo(humidityImageView.snp.height)
         }
         
-        humidityStackView.snp.makeConstraints {
+        humidityStateView.snp.makeConstraints {
             $0.width.equalTo(82)
             $0.height.equalTo(30)
             $0.centerY.equalToSuperview()
@@ -257,13 +258,17 @@ extension TodayTableViewCell {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
         }
+        
+        dustStateLabel.snp.makeConstraints {
+            $0.centerY.trailing.equalToSuperview()
+        }
 
         dustImageView.snp.makeConstraints {
             $0.height.equalToSuperview()
             $0.width.equalTo(dustImageView.snp.height)
         }
         
-        dustStackView.snp.makeConstraints {
+        dustStateView.snp.makeConstraints {
             $0.width.equalTo(82)
             $0.height.equalTo(30)
             $0.centerY.equalToSuperview()
@@ -275,12 +280,16 @@ extension TodayTableViewCell {
             $0.leading.equalToSuperview().offset(30)
         }
         
+        fineDustStateLabel.snp.makeConstraints {
+            $0.centerY.trailing.equalToSuperview()
+        }
+        
         fineDustImageView.snp.makeConstraints {
             $0.height.equalToSuperview()
             $0.width.equalTo(fineDustImageView.snp.height)
         }
         
-        fineDustStackView.snp.makeConstraints {
+        fineDustStateView.snp.makeConstraints {
             $0.width.equalTo(82)
             $0.height.equalTo(30)
             $0.centerY.equalToSuperview()
