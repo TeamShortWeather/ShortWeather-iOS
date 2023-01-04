@@ -133,7 +133,7 @@ extension FirstInfoViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.item == 0){
-            let listVC = GenderViewController(title: "설별을 ", contents: gender)
+            let listVC = GenderViewController()
             listVC.modalPresentationStyle = .formSheet
             self.present(listVC, animated: true, completion: nil)
         }
