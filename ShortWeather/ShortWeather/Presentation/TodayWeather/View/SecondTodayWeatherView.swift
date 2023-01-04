@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SecondTodayWeatherView: UIView {
+final class SecondTodayWeatherView: UIView {
     
     // MARK: - UI Components
     

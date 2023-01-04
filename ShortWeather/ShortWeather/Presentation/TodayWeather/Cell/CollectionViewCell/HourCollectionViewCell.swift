@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HourCollectionViewCell: UICollectionViewCell {
+final class HourCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     

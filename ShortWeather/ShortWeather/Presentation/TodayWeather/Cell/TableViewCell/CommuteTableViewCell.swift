@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class CommuteTableViewCell: UITableViewCell {
+final class CommuteTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
     

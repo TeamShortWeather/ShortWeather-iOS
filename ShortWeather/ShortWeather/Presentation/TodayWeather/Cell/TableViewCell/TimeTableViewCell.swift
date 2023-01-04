@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class TimeTableViewCell: UITableViewCell {
+final class TimeTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
     
