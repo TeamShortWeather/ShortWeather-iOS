@@ -16,7 +16,7 @@ class TimeTableViewCell: UITableViewCell {
     
     private let titleLabel: UILabel = UILabel()
     private let weatherButton: UIButton = UIButton()
-    private let fineDustButton: UIButton = UIButton()
+    private let dustButton: UIButton = UIButton()
     private let precipitationButton: UIButton = UIButton()
     private lazy var buttonStackView: UIStackView = UIStackView()
     private lazy var hourCollectionView: UICollectionView = {
@@ -69,7 +69,7 @@ extension TimeTableViewCell {
             $0.layer.cornerRadius = 16
         }
         
-        fineDustButton.do {
+        dustButton.do {
             $0.titleLabel?.font = .fontGuide(.subhead3)
             $0.setTitle("미세먼지", for: .normal)
             $0.setTitleColor(Color.gray7, for: .normal)
@@ -95,7 +95,7 @@ extension TimeTableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(titleLabel, buttonStackView, hourCollectionView)
-        buttonStackView.addArrangedSubviews(weatherButton, fineDustButton, precipitationButton)
+        buttonStackView.addArrangedSubviews(weatherButton, dustButton, precipitationButton)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(11)
