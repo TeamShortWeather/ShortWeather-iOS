@@ -90,8 +90,6 @@
 		5212EADE29649C950084B95E /* BaseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocationViewController.swift; sourceTree = "<group>"; };
 		5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTodayWeatherView.swift; sourceTree = "<group>"; };
-		5212EAE5296563780084B95E /* testSecondWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSecondWeatherView.swift; sourceTree = "<group>"; };
-		5212EAF629657C0B0084B95E /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
 		521317632962B5A2009371E1 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
 		521317652962B5CA009371E1 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		521317682963F313009371E1 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
@@ -272,12 +270,12 @@
 			path = StyleGuide;
 			sourceTree = "<group>";
 		};
-		52625C45296805A4007F483D /* CustomComponent */ = {
+		52625C482968682A007F483D /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
 				52625C46296805B7007F483D /* PaddingLabel.swift */,
 			);
-			path = CustomComponent;
+			path = CustomClass;
 			sourceTree = "<group>";
 		};
 		52CBA498295C7BBA00DE6AE9 /* Foundation */ = {
@@ -343,8 +341,8 @@
 		52D6A3882961A00700BF4287 /* SideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				52131775296413F5009371E1 /* ReusableView */,
 				5213176B2963F65F009371E1 /* Cell */,
+				52131775296413F5009371E1 /* ReusableView */,
 				5213176A2963F65B009371E1 /* View */,
 			);
 			path = SideMenu;
@@ -480,7 +478,7 @@
 		52FBA6D62955C67B00F263B3 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				52625C45296805A4007F483D /* CustomComponent */,
+				52625C482968682A007F483D /* CustomClass */,
 				52FBA6D82955C69D00F263B3 /* Extension */,
 				52FBA6D72955C68B00F263B3 /* NameSpace */,
 				52CBA4AF295C8B4000DE6AE9 /* Protocol */,
@@ -506,14 +504,14 @@
 				52D6A38E2961A2F800BF4287 /* CGFloat +.swift */,
 				52CBA4A6295C865A00DE6AE9 /* Encodable +.swift */,
 				521317712963F934009371E1 /* NSObject +.swift */,
+				AB102EB629655CA400BEBF90 /* UIButton +.swift */,
 				521317732963F9D5009371E1 /* UICollectionView +.swift */,
 				52CBA496295C774A00DE6AE9 /* UIFont +.swift */,
+				52625C3F2967DDF9007F483D /* UILabel +.swift */,
 				521317652962B5CA009371E1 /* UIStackView +.swift */,
 				5213176F2963F8B2009371E1 /* UITableView +.swift */,
 				521317632962B5A2009371E1 /* UIView +.swift */,
 				52D6A37F2961653000BF4287 /* UIViewController +.swift */,
-				AB102EB629655CA400BEBF90 /* UIButton +.swift */,
-				52625C3F2967DDF9007F483D /* UILabel +.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -725,7 +723,6 @@
 				521317692963F313009371E1 /* Letter.swift in Sources */,
 				5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */,
 				AB3D5B492968084000105FC9 /* AlarmTableViewCell.swift in Sources */,
-				5212EAE6296563780084B95E /* testSecondWeatherView.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
 				52625C402967DDF9007F483D /* UILabel +.swift in Sources */,
 				033E7F752965DA2A0051B349 /* TimeViewController.swift in Sources */,

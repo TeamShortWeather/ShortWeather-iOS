@@ -19,6 +19,7 @@ final class FirstTodayWeatherView: UIView {
     private let compareWeatherLabel: UILabel = UILabel()
     private let reportCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
@@ -71,7 +72,7 @@ extension FirstTodayWeatherView {
         }
         
         reportCollectionView.do {
-            $0.backgroundColor = .red
+            $0.registerCell(ReportCollectionViewCell.self)
         }
         
         gradationView.do {
@@ -215,7 +216,6 @@ extension FirstTodayWeatherView {
     public func setDataBind() {
         compareTempLabel.text = firstTodayWeather.compareTemp
         compareWeatherLabel.text = firstTodayWeather.compareWeather
-//        reportCollectionView. = fistTodayWeather.reportCollection
         weatherImageView.image = firstTodayWeather.weatherImage
         weatherLabel.text = firstTodayWeather.weathehr
         gradationView.image = Image.backViewDay
@@ -223,7 +223,6 @@ extension FirstTodayWeatherView {
         lowestTempLabel.text = firstTodayWeather.lowestTemp
         highestTempLabel.text = firstTodayWeather.highestTemp
         todayWeatherLabel.text = firstTodayWeather.todayWeather
-        
         yesterdayWeatherLabel.text = firstTodayWeather.yesterdayWeather
         yesterdayWeatherLabel.asFontColor(targetString: "어제 -19로", font: .fontGuide(.caption1), color: Color.black)
     }
@@ -233,14 +232,65 @@ extension FirstTodayWeatherView {
     }
     
     private func setDelegate() {
-        
+        reportCollectionView.delegate = self
+        reportCollectionView.dataSource = self
     }
     // MARK: - @objc Methods
     
     @objc private func showYesterdayButtonDidTap(){
         yesterdayWeatherLabel.isHidden.toggle()
     }
-    
 }
 
+extension FirstTodayWeatherView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            if firstTodayWeather.mainReportType == .none {
+                return 0
+            } else {
+                return 1
+            }
+        } else {
+            return 2
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(type: ReportCollectionViewCell.self, indexPath: indexPath)
+        if indexPath.section == 0 {
+            cell.setMainReportCellData(reportType: firstTodayWeather.mainReportType, mainReport: firstTodayWeather.mainReport)
+            return cell
+        } else {
+            if indexPath.row == 0 {
+                cell.setDustCellBind(dustType: .dust, dustState: firstTodayWeather.dustReport)
+            } else {
+                cell.setDustCellBind(dustType: .fineDust, dustState: firstTodayWeather.fineDustReport)
+            }
+        }
+        return cell
+    }
+}
 
+extension FirstTodayWeatherView: UICollectionViewDelegate {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+}
+
+extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cell = collectionView.dequeueCell(type: ReportCollectionViewCell.self, indexPath: indexPath)
+        if indexPath.section == 0 {
+            return cell.adjustCellSize(label: firstTodayWeather.mainReport)
+        } else {
+            if indexPath.row == 0 {
+                return cell.adjustCellSize(label: Letter.dust)
+            } else {
+                return cell.adjustCellSize(label: Letter.fineDust)
+            }
+        }
+    }
+}
