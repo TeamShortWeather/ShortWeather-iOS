@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		033E7F6D2965A0380051B349 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */; };
 		033E7F712965A8560051B349 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F702965A8560051B349 /* ListViewController.swift */; };
 		033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */; };
 		033E7F752965DA2A0051B349 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F742965DA2A0051B349 /* TimeViewController.swift */; };
@@ -74,11 +73,11 @@
 		AB3D5B4B29680EEF00105FC9 /* AlarmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B4A29680EEF00105FC9 /* AlarmSetting.swift */; };
 		AB3D5B4D29681C9200105FC9 /* CommuteTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B4C29681C9200105FC9 /* CommuteTimeViewController.swift */; };
 		AB3D5B4F29681CBA00105FC9 /* WakeUpTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B4E29681CBA00105FC9 /* WakeUpTimeViewController.swift */; };
+		AB3D5B51296828E800105FC9 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */; };
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstInfoViewController.swift; path = ../../../../../../../../../Info/FirstInfoViewController.swift; sourceTree = "<group>"; };
 		033E7F702965A8560051B349 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
 		033E7F742965DA2A0051B349 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +144,7 @@
 		AB3D5B4A29680EEF00105FC9 /* AlarmSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetting.swift; sourceTree = "<group>"; };
 		AB3D5B4C29681C9200105FC9 /* CommuteTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTimeViewController.swift; sourceTree = "<group>"; };
 		AB3D5B4E29681CBA00105FC9 /* WakeUpTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeViewController.swift; sourceTree = "<group>"; };
+		AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,10 +184,10 @@
 		0346A3032965906B00E37FD2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */,
 				033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */,
 				033E7F702965A8560051B349 /* ListViewController.swift */,
 				033E7F742965DA2A0051B349 /* TimeViewController.swift */,
+				AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -715,7 +715,6 @@
 				033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */,
 				52D6A38F2961A2F800BF4287 /* CGFloat +.swift in Sources */,
 				5213176D2963F6D0009371E1 /* MenuTableViewCell.swift in Sources */,
-				033E7F6D2965A0380051B349 /* FirstInfoViewController.swift in Sources */,
 				521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */,
 				AB3D5B472967F69600105FC9 /* AlarmSettingViewController.swift in Sources */,
 				521317692963F313009371E1 /* Letter.swift in Sources */,
@@ -725,6 +724,7 @@
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
 				033E7F752965DA2A0051B349 /* TimeViewController.swift in Sources */,
 				AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */,
+				AB3D5B51296828E800105FC9 /* FirstInfoViewController.swift in Sources */,
 				52CBA4AE295C891200DE6AE9 /* GerneralResponse.swift in Sources */,
 				52CBA4A0295C814000DE6AE9 /* MainService.swift in Sources */,
 				5212EAE22964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift in Sources */,
@@ -733,7 +733,6 @@
 				52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */,
 				0346A2F829644B7600E37FD2 /* SelectCollectionViewCell.swift in Sources */,
 				AB3D5B4B29680EEF00105FC9 /* AlarmSetting.swift in Sources */,
-				0346A2FA296467D700E37FD2 /* GenderViewController.swift in Sources */,
 				AB2590CD29647C55008FEC2A /* TodayTableViewCell.swift in Sources */,
 				AB3D5B3D2967E86700105FC9 /* SettingViewController.swift in Sources */,
 				52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */,
