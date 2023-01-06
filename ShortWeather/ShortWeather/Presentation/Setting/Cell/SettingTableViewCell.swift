@@ -21,7 +21,6 @@ final class SettingTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setUI()
         setLayout()
     }
@@ -36,7 +35,7 @@ extension SettingTableViewCell {
     // MARK: - UI Components Property
     
     private func setUI() {
-        self.selectionStyle = .none
+        selectionStyle = .none
         
         titleLabel.do {
             $0.font = .fontGuide(.subhead2)

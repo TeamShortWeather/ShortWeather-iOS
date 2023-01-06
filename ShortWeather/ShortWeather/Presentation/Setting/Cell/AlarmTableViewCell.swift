@@ -23,7 +23,6 @@ final class AlarmTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setUI()
         setLayout()
     }
@@ -64,6 +63,7 @@ extension AlarmTableViewCell {
     
     private func setLayout() {
         alarmLabelStackView.addArrangedSubviews(alarmLabel, alarmDescriptionLabel)
+        
         contentView.addSubviews(alarmLabelStackView, alarmSwitchButton)
         
         alarmLabelStackView.snp.makeConstraints {

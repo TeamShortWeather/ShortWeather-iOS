@@ -24,7 +24,6 @@ final class SettingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUI()
         setLayout()
         setDelegate()
@@ -70,6 +69,7 @@ extension SettingViewController {
 // MARK: - UITableViewDataSource
 
 extension SettingViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settingList.count
     }
@@ -84,6 +84,7 @@ extension SettingViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension SettingViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 58
     }

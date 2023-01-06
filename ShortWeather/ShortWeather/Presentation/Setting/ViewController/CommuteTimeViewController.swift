@@ -12,13 +12,10 @@ import Then
 
 final class CommuteTimeViewController: UIViewController {
     
-    // MARK: - UI Components
-    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUI()
         setLayout()
     }

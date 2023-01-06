@@ -20,7 +20,6 @@ final class SecondTodayWeatherView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setUI()
         setLayout()
         setDelegate()
@@ -36,13 +35,12 @@ extension SecondTodayWeatherView {
     // MARK: - UI Components
     
     private func setUI() {
-        self.backgroundColor = .blue
+        backgroundColor = .blue
         
         weatherTableView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.separatorStyle = .none
             $0.showsVerticalScrollIndicator = false
-            
             $0.registerCell(CommuteTableViewCell.self)
             $0.registerCell(TimeTableViewCell.self)
             $0.registerCell(TodayTableViewCell.self)
@@ -52,7 +50,7 @@ extension SecondTodayWeatherView {
     // MARK: - Layout Helepr
     
     private func setLayout() {
-        self.addSubviews(weatherTableView)
+        addSubviews(weatherTableView)
         
         weatherTableView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
@@ -71,6 +69,7 @@ extension SecondTodayWeatherView {
 // MARK: - UITableViewDataSource
 
 extension SecondTodayWeatherView: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -95,6 +94,7 @@ extension SecondTodayWeatherView: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension SecondTodayWeatherView: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case CellType.commute.rawValue:

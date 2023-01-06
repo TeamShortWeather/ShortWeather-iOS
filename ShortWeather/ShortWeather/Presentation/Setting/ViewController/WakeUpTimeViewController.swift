@@ -16,7 +16,6 @@ final class WakeUpTimeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUI()
         setLayout()
     }

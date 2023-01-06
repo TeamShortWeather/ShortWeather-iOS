@@ -60,7 +60,6 @@
 		52FBA6D02955BC3B00F263B3 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6CF2955BC3B00F263B3 /* Color.xcassets */; };
 		52FBA6D22955BC4E00F263B3 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6D12955BC4E00F263B3 /* Image.xcassets */; };
 		AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */; };
-		AB09FF642962BD7A004C54EE /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF632962BD7A004C54EE /* TestViewController.swift */; };
 		AB09FF6929630D7A004C54EE /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF6829630D7A004C54EE /* CellType.swift */; };
 		AB102EB729655CA400BEBF90 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB102EB629655CA400BEBF90 /* UIButton+.swift */; };
 		AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2590C5296427A2008FEC2A /* TimeTableViewCell.swift */; };
@@ -131,7 +130,6 @@
 		52FBA6CF2955BC3B00F263B3 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		52FBA6D12955BC4E00F263B3 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTodayWeatherView.swift; sourceTree = "<group>"; };
-		AB09FF632962BD7A004C54EE /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		AB09FF6829630D7A004C54EE /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		AB102EB629655CA400BEBF90 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		AB2590C5296427A2008FEC2A /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -518,17 +516,8 @@
 			children = (
 				AB868C352963D43500A9AF94 /* Cell */,
 				AB09FF6629630D2A004C54EE /* View */,
-				AB09FF6529630D21004C54EE /* ViewController */,
 			);
 			path = TodayWeather;
-			sourceTree = "<group>";
-		};
-		AB09FF6529630D21004C54EE /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				AB09FF632962BD7A004C54EE /* TestViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		AB09FF6629630D2A004C54EE /* View */ = {
@@ -699,7 +688,6 @@
 				5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */,
 				521317722963F934009371E1 /* NSObject +.swift in Sources */,
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
-				AB09FF642962BD7A004C54EE /* TestViewController.swift in Sources */,
 				52CBA4A7295C865A00DE6AE9 /* Encodable +.swift in Sources */,
 				AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */,
 				52CBA4A2295C814600DE6AE9 /* MainAPI.swift in Sources */,

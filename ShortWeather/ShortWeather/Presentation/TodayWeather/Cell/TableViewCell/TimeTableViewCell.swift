@@ -29,9 +29,6 @@ final class TimeTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.registerCell(HourCollectionViewCell.self)
         return collectionView
     }()
     
@@ -70,16 +67,20 @@ extension TimeTableViewCell {
             $0.font = .fontGuide(.subhead4)
         }
         
+        hourCollectionView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.showsHorizontalScrollIndicator = false
+            $0.registerCell(HourCollectionViewCell.self)
+        }
+        
         weatherButton.do {
-            $0.titleLabel?.font = .fontGuide(.subhead3)
-            $0.setTitle("날씨", for: .normal)
-
             $0.setTitleColor(Color.gray7, for: .normal)
             $0.setBackgroundColor(Color.gray0, for: .normal)
-            
             $0.setTitleColor(Color.white, for: .selected)
             $0.setBackgroundColor(Color.pointColor, for: .selected)
-
+            
+            $0.titleLabel?.font = .fontGuide(.subhead3)
+            $0.setTitle("날씨", for: .normal)
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 16
         }
@@ -122,6 +123,7 @@ extension TimeTableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(titleLabel, buttonStackView, hourCollectionView)
+        
         buttonStackView.addArrangedSubviews(weatherButton, dustButton, precipitationButton)
         
         titleLabel.snp.makeConstraints {
@@ -198,6 +200,7 @@ extension TimeTableViewCell {
 // MARK: - UICollectionViewDataSource
 
 extension TimeTableViewCell: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -211,6 +214,7 @@ extension TimeTableViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension TimeTableViewCell: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 60, height: 82)
     }

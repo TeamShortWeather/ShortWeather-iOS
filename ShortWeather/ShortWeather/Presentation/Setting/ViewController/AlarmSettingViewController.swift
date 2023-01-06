@@ -32,7 +32,6 @@ final class AlarmSettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUI()
         setLayout()
         setAddTarget()
@@ -96,6 +95,7 @@ extension AlarmSettingViewController {
     private func setLayout() {
         allAlarmLabelStackView.addArrangedSubviews(allAlarmLabel, allAlarmDescriptionLabel)
         allAlarmView.addSubviews(allAlarmLabelStackView, allAlarmSwitchButton)
+        
         view.addSubviews(titleLabel, allAlarmView, alarmTableView)
         
         titleLabel.snp.makeConstraints {
@@ -165,9 +165,11 @@ extension AlarmSettingViewController {
 // MARK: - UITableViewDataSource
 
 extension AlarmSettingViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarmSettingList.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: AlarmTableViewCell.self, indexPath: indexPath)
         cell.dataBind(alarmSettingList[indexPath.row])
@@ -178,6 +180,7 @@ extension AlarmSettingViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension AlarmSettingViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(88)
     }

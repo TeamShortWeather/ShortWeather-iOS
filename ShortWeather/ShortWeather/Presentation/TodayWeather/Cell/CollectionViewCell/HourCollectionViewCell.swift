@@ -19,7 +19,6 @@ final class HourCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setUI()
         setLayout()
     }
@@ -50,7 +49,6 @@ extension HourCollectionViewCell {
             $0.text = "22°"
             $0.font = .fontGuide(.caption1)
         }
-        
     }
     
     // MARK: - Layout Helper

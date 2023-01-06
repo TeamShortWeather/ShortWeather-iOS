@@ -15,13 +15,11 @@ final class TodayTableViewCell: UITableViewCell {
     // MARK: - UI Components
     
     private let titleLabel: UILabel = UILabel()
-    
     private let humidityView: UIView = UIView()
     private let humidityTitleLabel: UILabel = UILabel()
     private let humidityImageView: UIImageView = UIImageView()
     private let humidityLabel: UILabel = UILabel()
     private let humidityStateView: UIView = UIView()
-    
     private let sunView: UIView = UIView()
     private let sunTitleLabel: UILabel = UILabel()
     private let sunriseImageView: UIImageView = UIImageView()
@@ -31,26 +29,22 @@ final class TodayTableViewCell: UITableViewCell {
     private let sunsetTimeLabel: UILabel = UILabel()
     private lazy var sunsetStackView: UIStackView = UIStackView()
     private lazy var sunStackView: UIStackView = UIStackView()
-    
     private let dustView: UIView = UIView()
     private let dustTitleLabel: UILabel = UILabel()
     private let dustImageView: UIImageView = UIImageView()
     private let dustStateLabel: UILabel = UILabel()
     private let dustStateView: UIView = UIView()
-    
     private let fineDustView: UIView = UIView()
     private let fineDustTitleLabel: UILabel = UILabel()
     private let fineDustImageView: UIImageView = UIImageView()
     private let fineDustStateLabel: UILabel = UILabel()
     private let fineDustStateView: UIView = UIView()
-
     private lazy var todayStackView: UIStackView = UIStackView()
 
     // MARK: - Initializer
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setUI()
         setLayout()
     }
@@ -66,7 +60,9 @@ extension TodayTableViewCell {
     
     private func setUI() {
         contentView.backgroundColor = .clear
-        self.selectionStyle = .none
+        
+        selectionStyle = .none
+        
         setTodayView(humidityView, sunView, dustView, fineDustView)
         
         titleLabel.do {
@@ -184,21 +180,16 @@ extension TodayTableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(titleLabel, todayStackView)
-        
         humidityStateView.addSubviews(humidityImageView, humidityLabel)
         humidityView.addSubviews(humidityTitleLabel, humidityStateView)
-        
         sunView.addSubviews(sunTitleLabel, sunStackView)
         sunriseStackView.addArrangedSubviews(sunriseImageView, sunriseTimeLabel)
         sunsetStackView.addArrangedSubviews(sunsetImageView, sunsetTimeLabel)
         sunStackView.addArrangedSubviews(sunriseStackView, sunsetStackView)
-        
         dustStateView.addSubviews(dustImageView, dustStateLabel)
         dustView.addSubviews(dustTitleLabel, dustStateView)
-        
         fineDustStateView.addSubviews(fineDustImageView, fineDustStateLabel)
         fineDustView.addSubviews(fineDustTitleLabel, fineDustStateView)
-        
         todayStackView.addArrangedSubviews(humidityView, sunView, dustView, fineDustView)
          
         titleLabel.snp.makeConstraints {
