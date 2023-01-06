@@ -40,11 +40,13 @@ extension MenuTableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(menuImageView, menuLabel)
+        
         menuImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(28)
             $0.width.height.equalTo(22)
         }
+        
         menuLabel.snp.makeConstraints {
             $0.top.centerY.equalTo(menuImageView)
             $0.leading.equalTo(menuImageView.snp.trailing).offset(10)

@@ -13,47 +13,28 @@ import Then
 
 final class TodayWeatherViewController: BaseLocationViewController {
     
-    // MARK: - UI Components
-    
-    // MARK: - Initializer
-    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-        setLayout()
+        setRegister()
         setDelegate()
     }
 }
 
 extension TodayWeatherViewController {
     
-    // MARK: - UI Components Property
-    
-    private func setUI() {
-        locationCollectionView.registerCell(TodayWeatherCollectionViewCell.self)
-    }
-    
-    // MARK: - Layout Helper
-    
-    private func setLayout() {
-        
-    }
-    
     // MARK: - Methods
     
+    private func setRegister() {
+        locationCollectionView.registerCell(TodayWeatherCollectionViewCell.self)
+    }
     private func setDelegate() {
         locationCollectionView.dataSource = self
     }
-    
-    // MARK: - @objc Methods
 }
 
 extension TodayWeatherViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
