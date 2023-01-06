@@ -20,7 +20,7 @@ public enum Letter {
 
 extension Letter {
     
-    
     //MARK: - Temporary Letter
+    
     public static let tempLocation = "서울, 중구 명동"
 }

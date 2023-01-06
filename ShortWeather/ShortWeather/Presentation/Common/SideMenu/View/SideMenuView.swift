@@ -78,17 +78,19 @@ extension SideMenuView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            UIViewController.modifyRootViewController(TodayWeatherViewController())
-        case 1:
-            UIViewController.modifyRootViewController(TodayWeatherViewController())
-        case 2:
-            UIViewController.modifyRootViewController(TodayWeatherViewController())
-        case 3:
-            UIViewController.modifyRootViewController(TodayWeatherViewController())
-        default:
-            UIViewController.modifyRootViewController(TodayWeatherViewController())
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                UIViewController.modifyRootViewController(TodayWeatherViewController())
+            case 1:
+                UIViewController.modifyRootViewController(TodayWeatherViewController())
+            case 2:
+                UIViewController.modifyRootViewController(TodayWeatherViewController())
+            default:
+                UIViewController.modifyRootViewController(TodayWeatherViewController())
+            }
+        } else {
+            UIViewController.modifyRootViewController(SettingViewController())
         }
     }
 }

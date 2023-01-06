@@ -13,8 +13,6 @@ import Then
 
 final class GenderViewController: UIViewController {
     
-    static let identifier = "GenderViewController"
-    
     // MARK: - UI Components
     private let titleLabel: UILabel = UILabel()
     private lazy var listCollectionView: UICollectionView = {
@@ -32,8 +30,6 @@ final class GenderViewController: UIViewController {
     }()
     
     // MARK: - Properties
-    
-    // MARK: - Initializer
     
     var listModel: [List] = [
         List(listName: "여자"),
