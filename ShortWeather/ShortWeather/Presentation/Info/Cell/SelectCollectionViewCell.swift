@@ -19,7 +19,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                lineView.backgroundColor = Color.weatherBlue
+                lineView.backgroundColor = Color.pointColor
             }
             else {
                 lineView.backgroundColor = Color.gray0
@@ -105,6 +105,18 @@ extension SelectCollectionViewCell {
     public func setDataBind(info: String, pickData: String) {
         explainLabel.text = info
         selectDataLabel.text = pickData
+    }
+    
+    public func statusChange(status: String) {
+        if (status == "blue") {
+            lineView.backgroundColor = Color.pointColor
+        }
+        else if (status == "red") {
+            lineView.backgroundColor = Color.dustBad2
+        }
+        else if (status == ""){
+            lineView.backgroundColor = Color.gray0
+        }
     }
 }
 

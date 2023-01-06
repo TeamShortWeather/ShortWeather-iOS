@@ -12,7 +12,7 @@ import SnapKit
 import Then
 
 protocol ListViewControllerDelegate: AnyObject {
-    func sendData(pickData: String, listType: FirstInfoType)
+    func sendData(pickData: String, listType: FirstInfoType, status: String)
 }
 
 final class ListViewController: UIViewController {
@@ -28,13 +28,15 @@ final class ListViewController: UIViewController {
     public weak var delegate: ListViewControllerDelegate?
     private var titleText: String
     private var listDatas: [String]
+    private var selectStatus: String
     
     // MARK: - Initializer
     
-    init(titleText: String, listDatas: [String], listType: FirstInfoType) {
+    init(titleText: String, listDatas: [String], listType: FirstInfoType, status: String) {
         self.titleText = titleText
         self.listDatas = listDatas
         self.listType = listType
+        self.selectStatus = status
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -132,7 +134,8 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.sendData(pickData: listDatas[indexPath.section], listType: listType)
+        selectStatus = "blue"
+        delegate?.sendData(pickData: listDatas[indexPath.section], listType: listType, status: selectStatus)
         if navigationController == nil {
             dismiss(animated: true, completion: nil)
         }

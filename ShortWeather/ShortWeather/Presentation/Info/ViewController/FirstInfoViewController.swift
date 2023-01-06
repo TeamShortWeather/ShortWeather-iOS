@@ -36,6 +36,7 @@ class FirstInfoViewController: UIViewController {
     var gender: String?
     var age: String?
     var tempResponse: String?
+    var selectStatus: String?
     
     var infoModel: [String] = [
         "성별을 선택해 주세요",
@@ -140,8 +141,8 @@ extension FirstInfoViewController {
 //        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
-    private func halfModal(title: String, listData: [String], listType: FirstInfoType) {
-        let vc = ListViewController(titleText: title, listDatas: listData, listType: listType)
+    private func halfModal(title: String, listData: [String], listType: FirstInfoType, status: String) {
+        let vc = ListViewController(titleText: title, listDatas: listData, listType: listType, status: status)
         vc.modalPresentationStyle = .pageSheet
         vc.delegate = self
         if let sheet = vc.sheetPresentationController {
@@ -177,10 +178,26 @@ extension FirstInfoViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
         if indexPath.item == 0 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: gender ?? "")
+//            cell.statusChange(status: selectStatus ?? "")
+            
+            if let _ = gender {
+                cell.statusChange(status: selectStatus ?? "")
+            }
+            print("1")
         } else if indexPath.item == 1 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: age ?? "")
-        } else {
+//            cell.statusChange(status: selectStatus ?? "")
+//            print("2")
+            if let _ = age {
+                cell.statusChange(status: selectStatus ?? "")
+            }
+        } else if indexPath.item == 2 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: tempResponse ?? "")
+//            cell.statusChange(status: selectStatus ?? "")
+//            print("3")
+            if let _ = tempResponse {
+                cell.statusChange(status: selectStatus ?? "")
+            }
         }
         return cell
     }
@@ -188,17 +205,17 @@ extension FirstInfoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch (indexPath.item) {
         case 0:
-            halfModal(title: "성별을 선택해 주세요", listData: genderListModel, listType: .gender)
+            halfModal(title: "성별을 선택해 주세요", listData: genderListModel, listType: .gender, status: "")
 //            let listVC = ListViewController(titleText: "성별을 선택해 주세요", listDatas: genderListModel)
 //            listVC.modalPresentationStyle = .formSheet
 //            self.present(listVC, animated: true, completion: nil);
         case 1:
-            halfModal(title: "연령대를 선택해 주세요", listData: ageListModel, listType: .age)
+            halfModal(title: "연령대를 선택해 주세요", listData: ageListModel, listType: .age, status: "")
 //            let listVC = ListViewController(titleText: "연령대를 선택해 주세요", listDatas: ageListModel)
 //            listVC.modalPresentationStyle = .formSheet
 //            self.present(listVC, animated: true, completion: nil);
         case 2:
-            halfModal(title: "온도민감도를 알려주세요", listData: temListModel, listType: .tempResponse)
+            halfModal(title: "온도민감도를 알려주세요", listData: temListModel, listType: .tempResponse, status: "")
 //            let listVC = ListViewController(titleText: "온도민감도를 알려주세요", listDatas: temListModel)
 //            listVC.modalPresentationStyle = .formSheet
 //            self.present(listVC, animated: true, completion: nil);
@@ -216,14 +233,17 @@ extension FirstInfoViewController: UISheetPresentationControllerDelegate {
 }
 
 extension FirstInfoViewController: ListViewControllerDelegate {
-    func sendData(pickData: String, listType: FirstInfoType) {
+    func sendData(pickData: String, listType: FirstInfoType, status: String) {
         switch listType {
         case .gender:
             self.gender = pickData
+            self.selectStatus = status
         case .age:
             self.age = pickData
+            self.selectStatus = status
         case .tempResponse:
             self.tempResponse = pickData
+            self.selectStatus = status
         }
         selectCollectionView.reloadData()
     }

@@ -186,9 +186,9 @@ extension SecondInfoViewController: UICollectionViewDataSource {
         case 1:
             halfModal(title: "외출시간 설정", listType: .goingOutTime)
         case 2:
-                        halfModal(title: "귀가시간 설정", listType: .goingHomeTime)
+            halfModal(title: "귀가시간 설정", listType: .goingHomeTime)
         default:
-                        halfModal(title: "귀가시간 설정", listType: .goingHomeTime)
+            halfModal(title: "귀가시간 설정", listType: .goingHomeTime)
         }
     }
 }
