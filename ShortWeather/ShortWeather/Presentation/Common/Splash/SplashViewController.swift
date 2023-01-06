@@ -33,6 +33,7 @@ extension SplashViewController {
     private func setUI() {
         view.backgroundColor = .white
         view.addSubview(splashImageView)
+        
         splashImageView.do {
             $0.play { [weak self] _ in
                 self?.isExistInform()
@@ -51,11 +52,11 @@ extension SplashViewController {
     // MARK: - Methods
     
     private func isExistInform(){
-        let isUser: Bool = true
+        let isUser: Bool = false
         if isUser {
             UIViewController.modifyRootViewController(TodayWeatherViewController())
         } else {
-            UIViewController.modifyRootViewController(TodayWeatherViewController())
+            UIViewController.modifyRootViewController(FirstInfoViewController())
         }
     }
 }

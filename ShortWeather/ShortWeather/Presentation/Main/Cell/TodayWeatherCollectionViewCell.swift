@@ -42,14 +42,17 @@ extension TodayWeatherCollectionViewCell {
     
     private func setLayout() {
         contentView.addSubview(scrollView)
+        
         scrollView.addSubviews(firstTodayWeatherView, secondTodayWeatherView)
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
         firstTodayWeatherView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.height.equalTo(contentView)
         }
+        
         secondTodayWeatherView.snp.makeConstraints {
             $0.top.equalTo(firstTodayWeatherView.snp.bottom)
             $0.leading.trailing.height.equalTo(firstTodayWeatherView)

@@ -35,6 +35,7 @@ extension LocationView {
         locationImageView.do {
             $0.image = Image.icnLocation
         }
+        
         locationLabel.do {
             $0.font = .fontGuide(.headline2)
         }
@@ -44,11 +45,13 @@ extension LocationView {
     
     private func setLayout() {
         addSubviews(locationImageView, locationLabel)
+        
         locationImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(28)
             $0.centerY.equalToSuperview()
             $0.width.height.equalTo(24)
         }
+        
         locationLabel.snp.makeConstraints {
             $0.leading.equalTo(locationImageView.snp.trailing).offset(4)
             $0.centerY.equalToSuperview()

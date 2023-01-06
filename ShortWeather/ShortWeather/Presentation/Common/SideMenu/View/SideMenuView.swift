@@ -16,7 +16,6 @@ final class SideMenuView: UIView {
     private let closeButton: UIButton = UIButton()
     private let menuLabel: UILabel = UILabel()
     private let menuTableView: UITableView = UITableView(frame: .zero, style: .grouped)
-//    private let menuTableView: UITableView = UITableView()
     
     // MARK: - UI Components
     
@@ -38,6 +37,7 @@ final class SideMenuView: UIView {
 }
 
 extension SideMenuView: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
@@ -102,14 +102,17 @@ extension SideMenuView {
         logoIconImageView.do {
             $0.image = Image.logoIcon
         }
+        
         logoTextImageView.do {
             $0.image = Image.logoText
         }
+        
         menuLabel.do {
             $0.text = "메뉴"
             $0.font = .fontGuide(.subhead2)
             $0.textColor = Color.gray6
         }
+        
         menuTableView.do {
             $0.backgroundColor = Color.white
             $0.separatorStyle = .none
@@ -117,33 +120,37 @@ extension SideMenuView {
             $0.registerCell(MenuTableViewCell.self)
             $0.registerReusableView(MenuLineHeaderView.self)
         }
-        
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         addSubviews(logoIconImageView, logoTextImageView, closeButton, menuLabel, menuTableView)
+        
         logoIconImageView.snp.makeConstraints {
             $0.width.height.equalTo(36)
             $0.leading.equalToSuperview().offset(28)
             $0.top.equalToSuperview().offset(52)
         }
+        
         logoTextImageView.snp.makeConstraints {
             $0.bottom.equalTo(logoIconImageView)
             $0.height.equalTo(20)
             $0.width.equalTo(59)
             $0.leading.equalTo(logoIconImageView.snp.trailing).offset(8)
         }
+        
         closeButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(63)
             $0.width.height.equalTo(29)
             $0.trailing.equalToSuperview().offset(14)
         }
+        
         menuLabel.snp.makeConstraints {
             $0.top.equalTo(logoIconImageView.snp.bottom).offset(32)
             $0.leading.equalTo(logoIconImageView)
         }
+        
         menuTableView.snp.makeConstraints {
             $0.top.equalTo(menuLabel.snp.bottom).offset(6)
             $0.leading.trailing.bottom.equalToSuperview()
