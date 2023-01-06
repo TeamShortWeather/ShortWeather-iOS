@@ -21,7 +21,6 @@ class ListTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
         setLayout()
-        layoutSubviews()
     }
     
     required init?(coder: NSCoder) {
@@ -34,8 +33,8 @@ extension ListTableViewCell {
     // MARK: - UI Components Property
     
     private func setUI() {
-        backgroundColor = .cyan
-        contentView.backgroundColor = .red
+        backgroundColor = .clear
+        contentView.backgroundColor = .clear
         [listLabel].forEach {
             contentView.addSubview($0)
         }
@@ -51,6 +50,7 @@ extension ListTableViewCell {
     private func setLayout() {
         listLabel.snp.makeConstraints {
             $0.width.equalTo(319)
+            $0.height.equalTo(44)
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
@@ -58,7 +58,7 @@ extension ListTableViewCell {
     
     // MARK: - Methods
     
-    func setDataBind(model: List) {
-        listLabel.text = model.listName
+    func setDataBind(model: String) {
+        listLabel.text = model
     }
 }

@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0346A2F62964344000E37FD2 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F52964344000E37FD2 /* Info.swift */; };
+		033E7F6D2965A0380051B349 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */; };
+		033E7F712965A8560051B349 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F702965A8560051B349 /* ListViewController.swift */; };
+		033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */; };
+		033E7F752965DA2A0051B349 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F742965DA2A0051B349 /* TimeViewController.swift */; };
 		0346A2F829644B7600E37FD2 /* SelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */; };
-		0346A2FA296467D700E37FD2 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F9296467D700E37FD2 /* GenderViewController.swift */; };
-		0346A2FE2964969000E37FD2 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2FD2964969000E37FD2 /* List.swift */; };
-		0346A3002964B6B000E37FD2 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2FF2964B6B000E37FD2 /* ListCollectionViewCell.swift */; };
+		0346A30229658F3000E37FD2 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A30129658F3000E37FD2 /* ListTableViewCell.swift */; };
 		5212EADA296493380084B95E /* TodayWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAD9296493380084B95E /* TodayWeatherViewController.swift */; };
 		5212EADD296496DD0084B95E /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EADC296496DD0084B95E /* LocationView.swift */; };
 		5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EADE29649C950084B95E /* BaseLocationViewController.swift */; };
@@ -22,7 +23,6 @@
 		5212EAEC296575210084B95E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAEB296575210084B95E /* SnapKit */; };
 		5212EAEF2965752F0084B95E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAEE2965752F0084B95E /* Moya */; };
 		5212EAF2296575490084B95E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 5212EAF1296575490084B95E /* Lottie */; };
-		5212EAF729657C0B0084B95E /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5212EAF629657C0B0084B95E /* FirstInfoViewController.swift */; };
 		521317642962B5A3009371E1 /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317632962B5A2009371E1 /* UIView +.swift */; };
 		521317662962B5CA009371E1 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317652962B5CA009371E1 /* UIStackView +.swift */; };
 		521317692963F313009371E1 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521317682963F313009371E1 /* Letter.swift */; };
@@ -71,18 +71,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0346A2F52964344000E37FD2 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FirstInfoViewController.swift; path = ../../../../../../../../../Info/FirstInfoViewController.swift; sourceTree = "<group>"; };
+		033E7F702965A8560051B349 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
+		033E7F742965DA2A0051B349 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionViewCell.swift; sourceTree = "<group>"; };
-		0346A2F9296467D700E37FD2 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
-		0346A2FD2964969000E37FD2 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		0346A2FF2964B6B000E37FD2 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		0346A30129658F3000E37FD2 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		5212EAD9296493380084B95E /* TodayWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherViewController.swift; sourceTree = "<group>"; };
 		5212EADC296496DD0084B95E /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		5212EADE29649C950084B95E /* BaseLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLocationViewController.swift; sourceTree = "<group>"; };
 		5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		5212EAE32965636B0084B95E /* FirstTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTodayWeatherView.swift; sourceTree = "<group>"; };
 		5212EAE5296563780084B95E /* testSecondWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testSecondWeatherView.swift; sourceTree = "<group>"; };
-		5212EAF629657C0B0084B95E /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
 		521317632962B5A2009371E1 /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView +.swift"; sourceTree = "<group>"; };
 		521317652962B5CA009371E1 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		521317682963F313009371E1 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
@@ -152,30 +152,30 @@
 		0346A2EC2964126000E37FD2 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				5212EAF629657C0B0084B95E /* FirstInfoViewController.swift */,
-				0346A2F9296467D700E37FD2 /* GenderViewController.swift */,
-				0346A2F42964343000E37FD2 /* Model */,
-				0346A2F1296412D500E37FD2 /* Cells */,
+				0346A3032965906B00E37FD2 /* ViewController */,
+				0346A2F1296412D500E37FD2 /* Cell */,
 			);
 			path = Info;
 			sourceTree = "<group>";
 		};
-		0346A2F1296412D500E37FD2 /* Cells */ = {
+		0346A2F1296412D500E37FD2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */,
-				0346A2FF2964B6B000E37FD2 /* ListCollectionViewCell.swift */,
+				0346A30129658F3000E37FD2 /* ListTableViewCell.swift */,
 			);
-			path = Cells;
+			path = Cell;
 			sourceTree = "<group>";
 		};
-		0346A2F42964343000E37FD2 /* Model */ = {
+		0346A3032965906B00E37FD2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0346A2F52964344000E37FD2 /* Info.swift */,
-				0346A2FD2964969000E37FD2 /* List.swift */,
+				033E7F6C2965A0380051B349 /* FirstInfoViewController.swift */,
+				033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */,
+				033E7F702965A8560051B349 /* ListViewController.swift */,
+				033E7F742965DA2A0051B349 /* TimeViewController.swift */,
 			);
-			path = Model;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		5212EAD6296492E90084B95E /* Main */ = {
@@ -642,9 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0346A3002964B6B000E37FD2 /* ListCollectionViewCell.swift in Sources */,
 				52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */,
-				0346A2FE2964969000E37FD2 /* List.swift in Sources */,
 				5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */,
 				521317722963F934009371E1 /* NSObject +.swift in Sources */,
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
@@ -656,28 +654,30 @@
 				AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */,
 				523BB085295D735D0004B343 /* Color.swift in Sources */,
 				52D6A38D2961A08D00BF4287 /* SideMenuView.swift in Sources */,
+				033E7F712965A8560051B349 /* ListViewController.swift in Sources */,
 				52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */,
 				5212EAE42965636B0084B95E /* FirstTodayWeatherView.swift in Sources */,
+				033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */,
 				52D6A38F2961A2F800BF4287 /* CGFloat +.swift in Sources */,
 				5213176D2963F6D0009371E1 /* MenuTableViewCell.swift in Sources */,
+				033E7F6D2965A0380051B349 /* FirstInfoViewController.swift in Sources */,
 				521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */,
 				521317692963F313009371E1 /* Letter.swift in Sources */,
 				5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */,
 				5212EAE6296563780084B95E /* testSecondWeatherView.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
+				033E7F752965DA2A0051B349 /* TimeViewController.swift in Sources */,
 				AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */,
 				52CBA4AE295C891200DE6AE9 /* GerneralResponse.swift in Sources */,
-				5212EAF729657C0B0084B95E /* FirstInfoViewController.swift in Sources */,
-				0346A2F62964344000E37FD2 /* Info.swift in Sources */,
 				52CBA4A0295C814000DE6AE9 /* MainService.swift in Sources */,
 				5212EAE22964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift in Sources */,
 				52FBA6AB295590D500F263B3 /* AppDelegate.swift in Sources */,
 				AB102EB729655CA400BEBF90 /* UIButton+.swift in Sources */,
 				52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */,
 				0346A2F829644B7600E37FD2 /* SelectCollectionViewCell.swift in Sources */,
-				0346A2FA296467D700E37FD2 /* GenderViewController.swift in Sources */,
 				AB2590CD29647C55008FEC2A /* TodayTableViewCell.swift in Sources */,
 				52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */,
+				0346A30229658F3000E37FD2 /* ListTableViewCell.swift in Sources */,
 				52CBA4A9295C881400DE6AE9 /* NetworkLoggerPlugin.swift in Sources */,
 				521317702963F8B2009371E1 /* UITableView +.swift in Sources */,
 				5212EADD296496DD0084B95E /* LocationView.swift in Sources */,
