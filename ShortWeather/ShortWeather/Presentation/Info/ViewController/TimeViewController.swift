@@ -110,10 +110,15 @@ extension TimeViewController {
     
     @objc private func backButton() {
         let timeFormatter = DateFormatter()
-//        timeFormatter.timeStyle = .short
         timeFormatter.timeStyle = .none
-        timeFormatter.dateFormat = "hh시 mm분" // 서버전달 방식 (근데오후가 없네)
+        timeFormatter.dateFormat = "a h시 mm분"
+        
         let strDate = timeFormatter.string(from: datePicker.date) // String으로 변환
+        
+        timeFormatter.dateFormat = "a"
+        let a = timeFormatter.string(from: datePicker.date)
+        print(a)
+        
         print(strDate)
         delegate?.sendData(pickData: strDate, listType: listType)
         self.dismiss(animated: true, completion: nil)
