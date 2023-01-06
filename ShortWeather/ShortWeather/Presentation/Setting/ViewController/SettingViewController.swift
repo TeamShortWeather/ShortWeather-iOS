@@ -76,7 +76,7 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: SettingTableViewCell.self, indexPath: indexPath)
-        cell.dataBind(settingList[indexPath.row])
+        cell.setDataBind(settingList[indexPath.row])
         return cell
     }
 }
