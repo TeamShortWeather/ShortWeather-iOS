@@ -31,6 +31,8 @@ extension ReportCollectionViewCell {
     // MARK: - UI Components Property
     
     private func setUI() {
+        contentView.layer.cornerRadius = 13
+        contentView.clipsToBounds = true
         reportLabel.font = .fontGuide(.caption1)
     }
     
@@ -52,11 +54,11 @@ extension ReportCollectionViewCell {
         case .none:
             break
         case .hot:
-            reportLabel.backgroundColor = Color.dustBad2
+            contentView.backgroundColor = Color.dustBad2
         case .cold:
-            reportLabel.backgroundColor = Color.pointColor
+            contentView.backgroundColor = Color.pointColor
         case .dust:
-            reportLabel.backgroundColor = Color.weatherYellow
+            contentView.backgroundColor = Color.weatherYellow
         }
         reportLabel.text = mainReport
         reportLabel.textColor = Color.white
@@ -90,6 +92,7 @@ extension ReportCollectionViewCell {
     }
     
     private func setCellColor(_ color: UIColor) {
+        contentView.layer.borderWidth = 1
         contentView.layer.borderColor = color.cgColor
         reportLabel.textColor = color
     }

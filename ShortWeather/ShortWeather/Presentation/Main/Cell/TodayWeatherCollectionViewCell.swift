@@ -35,6 +35,7 @@ extension TodayWeatherCollectionViewCell {
     private func setUI() {
         scrollView.do {
             $0.isPagingEnabled = true
+            $0.showsVerticalScrollIndicator = false
         }
     }
     
