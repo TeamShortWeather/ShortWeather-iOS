@@ -11,6 +11,10 @@ import Moya
 import SnapKit
 import Then
 
+protocol TimeViewControllerDelegate: AnyObject {
+    func sendData(pickData: String, listType: SecondInfoType)
+}
+
 final class TimeViewController: UIViewController {
     
     // MARK: - UI Components
@@ -21,20 +25,23 @@ final class TimeViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let listType: SecondInfoType
     private var titleText: String
+    public weak var delegate: TimeViewControllerDelegate?
     
     // MARK: - Initializer
     
-    // MARK: - View Life Cycle
-    
-    init(titleText: String) {
+    init(titleText: String, listType: SecondInfoType) {
         self.titleText = titleText
+        self.listType = listType
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +56,10 @@ extension TimeViewController {
     
     private func setUI() {
         view.backgroundColor = .white
-        [titleLabel, datePicker, saveButton].forEach {
-            view.addSubview($0)
-        }
         
         titleLabel.do {
             $0.text = titleText
-            $0.font = UIFont.fontGuide(.headline1)
+            $0.font = .fontGuide(.headline1)
             $0.textColor = .black
         }
         
@@ -79,6 +83,8 @@ extension TimeViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
+        view.addSubviews(titleLabel, datePicker, saveButton)
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(41)
             $0.centerX.equalToSuperview()
@@ -100,20 +106,16 @@ extension TimeViewController {
         }
     }
     
-    // MARK: - Methods
-    
     // MARK: - @objc Methods
     
-    @objc
-    private func backButton() {
-        // 데이터 추출
-        self.dismiss(animated: true, completion: nil)
+    @objc private func backButton() {
         let timeFormatter = DateFormatter()
 //        timeFormatter.timeStyle = .short
         timeFormatter.timeStyle = .none
-        timeFormatter.dateFormat = "hhmm" // 서버전달 방식 (근데오후가 없네)
-        
+        timeFormatter.dateFormat = "hh시 mm분" // 서버전달 방식 (근데오후가 없네)
         let strDate = timeFormatter.string(from: datePicker.date) // String으로 변환
         print(strDate)
+        delegate?.sendData(pickData: strDate, listType: listType)
+        self.dismiss(animated: true, completion: nil)
     }
 }

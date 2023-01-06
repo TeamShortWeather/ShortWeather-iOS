@@ -58,14 +58,7 @@ extension ListTableViewCell {
     
     // MARK: - Methods
     
-    func setDataBind(model: List) {
-        listLabel.text = model.listName
+    func setDataBind(model: String) {
+        listLabel.text = model
     }
-    
-//    override var isSelected: Bool {
-//        didSet {
-//            if isSelected {
-//                backgroundColor = Color.gray1            }
-//        }
-//    }
 }

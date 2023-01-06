@@ -11,33 +11,34 @@ import Moya
 import SnapKit
 import Then
 
+protocol ListViewControllerDelegate: AnyObject {
+    func sendData(pickData: String, listType: FirstInfoType)
+}
+
 final class ListViewController: UIViewController {
     
     // MARK: - UI Components
     
     private let titleLabel: UILabel = UILabel()
-    private lazy var listTableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.backgroundColor = .white
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorStyle = .none
-        tableView.dataSource = self
-        tableView.delegate = self
-        return tableView
-    }()
+    private let listTableView: UITableView = UITableView(frame: .zero, style: .grouped)
     
     // MARK: - Properties
     
+    public let listType: FirstInfoType
+    public weak var delegate: ListViewControllerDelegate?
     private var titleText: String
-    private var listDatas: [List] // 변수이게맞냐
+    private var listDatas: [String]
     
-    // MARK: - View Life Cycle
+    // MARK: - Initializer
     
-    init(titleText: String, listDatas: [List]) {
+    init(titleText: String, listDatas: [String], listType: FirstInfoType) {
         self.titleText = titleText
         self.listDatas = listDatas
+        self.listType = listType
         super.init(nibName: nil, bundle: nil)
     }
+    
+    // MARK: - View Life Cycle
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -47,7 +48,7 @@ final class ListViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
-        register()
+        setDelegate()
     }
 }
 
@@ -57,20 +58,26 @@ extension ListViewController {
     
     private func setUI() {
         view.backgroundColor = .white
-        [titleLabel, listTableView].forEach {
-            view.addSubview($0)
-        }
         
         titleLabel.do {
             $0.text = titleText
-            $0.font = UIFont.fontGuide(.headline1)
+            $0.font = .fontGuide(.headline1)
             $0.textColor = .black
+        }
+        
+        listTableView.do {
+            $0.backgroundColor = .white
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.separatorStyle = .none
+            $0.registerCell(ListTableViewCell.self)
         }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
+        view.addSubviews(titleLabel, listTableView)
+        
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(41)
             $0.centerX.equalToSuperview()
@@ -87,11 +94,11 @@ extension ListViewController {
     
     // MARK: - Methods
     
-    private func register() {
-        listTableView.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
+    private func setDelegate() {
+        listTableView.delegate = self
+        listTableView.dataSource = self
     }
 }
-
 
 extension ListViewController: UITableViewDelegate {
     
@@ -111,7 +118,7 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return listDatas.count // 섹션 개수
+        return listDatas.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,16 +126,15 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else { return UITableViewCell() }
-        
+        let cell = tableView.dequeueCell(type: ListTableViewCell.self, indexPath: indexPath)
         cell.setDataBind(model: listDatas[indexPath.section])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(listDatas[indexPath.section].listName)
-        if self.navigationController == nil {
-            self.dismiss(animated: true, completion: nil)
+        delegate?.sendData(pickData: listDatas[indexPath.section], listType: listType)
+        if navigationController == nil {
+            dismiss(animated: true, completion: nil)
         }
     }
 }

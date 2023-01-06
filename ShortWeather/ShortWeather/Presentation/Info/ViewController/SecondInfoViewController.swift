@@ -11,17 +11,22 @@ import Moya
 import SnapKit
 import Then
 
+enum SecondInfoType {
+    case wakeUpTime
+    case goingOutTime
+    case goingHomeTime
+}
+
 final class SecondInfoViewController: UIViewController {
     
     // MARK: - UI Components
+    
     private let titleLabel: UILabel = UILabel()
     private let checkButton: UIButton = UIButton()
     private let addInfoLabel: UILabel = UILabel()
-    
     private lazy var selectCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
@@ -34,11 +39,14 @@ final class SecondInfoViewController: UIViewController {
     
     // MARK: - Properties
     
-    // SecondInfo
-    var infoModel: [Info] = [
-        Info(labelName: "기상시간"),
-        Info(labelName: "외출시간"),
-        Info(labelName: "귀가시간")
+    var wakeUpTime: String?
+    var goingOutTime: String?
+    var goingHomeTime: String?
+    
+    var info: [String] = [
+        "기상시간",
+        "외출시간",
+        "귀가시간"
     ]
     
     // MARK: - View Life Cycle
@@ -47,15 +55,6 @@ final class SecondInfoViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
-        register()
-        
-        // 네비게이션 바 커스텀
-        navigationItem.leftBarButtonItem = UIBarButtonItem (
-            image: UIImage(named: "icn_expand_left"),
-            style: .plain,
-            target: self,
-            action: #selector(popToPrevious)
-        )
     }
 }
 
@@ -65,9 +64,13 @@ extension SecondInfoViewController {
     
     private func setUI() {
         view.backgroundColor = .white
-         [titleLabel, selectCollectionView, checkButton, addInfoLabel].forEach {
-            view.addSubview($0)
-        }
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem (
+            image: Image.icnExpandLeft,
+            style: .plain,
+            target: self,
+            action: #selector(popToPrevious)
+        )
         
         titleLabel.do {
             $0.text = "여러분의 하루를 알려주세요"
@@ -87,11 +90,16 @@ extension SecondInfoViewController {
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray4
         }
+        
+        selectCollectionView.do {
+            $0.registerCell(SelectCollectionViewCell.self)
+        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
+        view.addSubviews(titleLabel, selectCollectionView, checkButton, addInfoLabel)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(29) // 네비바 44 (73-44)
@@ -122,29 +130,23 @@ extension SecondInfoViewController {
     
     // MARK: - Methods
     
-    private func register() {
-        selectCollectionView.registerCell(SelectCollectionViewCell.self)
-    }
-    
     
     // MARK: - @objc Methods
     
     @objc private func popToPrevious() {
-        // our custom stuff
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func halfModal(title: String) { // half modal
-        let vc = TimeViewController(titleText: title)
+    @objc private func halfModal(title: String) {
+        let vc = TimeViewController(titleText: title, listType: .goingHomeTime)
         vc.modalPresentationStyle = .pageSheet
-        
+        vc.delegate = self
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium()] // 반만 고정
 //            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }
-        
         self.present(vc, animated: true, completion: nil);
     }
 }
@@ -163,10 +165,8 @@ extension SecondInfoViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier,
-                                                            for: indexPath) as? SelectCollectionViewCell else { return UICollectionViewCell() }
-
-        cell.setDataBind(model: infoModel[indexPath.item])
+        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(info: info[indexPath.item], pickData: "")
         return cell
     }
     
@@ -176,23 +176,32 @@ extension SecondInfoViewController: UICollectionViewDataSource {
             halfModal(title: "기상시간 설정")
         case 1:
             halfModal(title: "외출시간 설정")
-//            let listVC = TimeViewController(titleText: "외출시간 설정")
-//            listVC.modalPresentationStyle = .formSheet
-//            self.present(listVC, animated: true, completion: nil);
         case 2:
             halfModal(title: "귀가시간 설정")
-//            let listVC = TimeViewController(titleText: "귀가시간 설정")
-//            listVC.modalPresentationStyle = .formSheet
-//            self.present(listVC, animated: true, completion: nil);
         default:
-            print("SecondInfoViewController 오류")
+            halfModal(title: "귀가시간 설정")
         }
     }
 }
 
 extension SecondInfoViewController: UISheetPresentationControllerDelegate {
+    
     func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
-        //크기 변경 됐을 경우
         print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
+    }
+}
+
+extension SecondInfoViewController: TimeViewControllerDelegate {
+    
+    func sendData(pickData: String, listType: SecondInfoType) {
+        switch listType {
+        case .wakeUpTime:
+            self.wakeUpTime = pickData
+        case .goingOutTime:
+            self.goingOutTime = pickData
+        case .goingHomeTime:
+            self.goingHomeTime = pickData
+        }
+        selectCollectionView.reloadData()
     }
 }

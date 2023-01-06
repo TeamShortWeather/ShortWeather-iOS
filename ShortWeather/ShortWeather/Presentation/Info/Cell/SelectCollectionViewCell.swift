@@ -13,18 +13,25 @@ import Then
 
 
 class SelectCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier = "SelectCollectionViewCell"
-    
+        
     // MARK: - UI Components
 
-    private let joinLabel: UILabel = UILabel()
-    private let joinImage: UIImageView = UIImageView()
-    private let joinTextField: UITextField = UITextField()
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                lineView.backgroundColor = Color.weatherBlue
+            }
+            else {
+                lineView.backgroundColor = Color.gray0
+            }
+        }
+    }
+    private let explainLabel: UILabel = UILabel()
+    private let bottomArrowImageView: UIImageView = UIImageView()
+    private let selectDataLabel: UILabel = UILabel()
     private let lineView: UIView = UIView()
     
-
-    // MARK: - View Life Cycle
+    // MARK: - Initializer
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,21 +51,20 @@ extension SelectCollectionViewCell {
     private func setUI() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        [joinLabel, joinImage, joinTextField, lineView].forEach {
-            contentView.addSubviews($0)
-        }
         
-        joinLabel.do {
-            $0.font = UIFont.fontGuide(.caption1)
+        explainLabel.do {
+            $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray7
         }
         
-        joinImage.do {
-            $0.image = Image.iconExpandDown2
+        bottomArrowImageView.do {
+            $0.image = UIImage(systemName: "chevron.down")
+            $0.tintColor = Color.gray4
         }
         
-        joinTextField.do {
-            $0.isUserInteractionEnabled = false // 키보드 안나타나게
+        selectDataLabel.do {
+            $0.font = .fontGuide(.subhead1)
+            $0.textColor = .black
         }
         
         lineView.do {
@@ -69,17 +75,18 @@ extension SelectCollectionViewCell {
     // MARK: - Layout Helper
     
     private func setLayout() {
+        addSubviews(explainLabel, bottomArrowImageView, selectDataLabel, lineView)
         
-        joinLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
+        explainLabel.snp.makeConstraints {
+            $0.top.leading.equalToSuperview()
         }
         
-        joinImage.snp.makeConstraints {
+        bottomArrowImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(30)
             $0.trailing.equalToSuperview().inset(10)
         }
         
-        joinTextField.snp.makeConstraints {
+        selectDataLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().offset(2)
             $0.width.equalTo(275)
             $0.height.equalTo(44)
@@ -93,22 +100,11 @@ extension SelectCollectionViewCell {
         }
     }
     
-
     // MARK: - Methods
 
-    func setDataBind(model: Info) {
-        joinLabel.text = model.labelName
-    }
-    
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                lineView.backgroundColor = Color.weatherBlue
-            }
-            else {
-                lineView.backgroundColor = Color.gray0
-            }
-        }
+    public func setDataBind(info: String, pickData: String) {
+        explainLabel.text = info
+        selectDataLabel.text = pickData
     }
 }
 
