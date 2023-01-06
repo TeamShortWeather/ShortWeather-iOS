@@ -23,6 +23,7 @@ final class SecondTodayWeatherView: UIView {
         
         setUI()
         setLayout()
+        setDelegate()
     }
     
     required init?(coder: NSCoder) { 
@@ -42,9 +43,6 @@ extension SecondTodayWeatherView {
             $0.separatorStyle = .none
             $0.showsVerticalScrollIndicator = false
             
-            $0.delegate = self
-            $0.dataSource = self
-            
             $0.registerCell(CommuteTableViewCell.self)
             $0.registerCell(TimeTableViewCell.self)
             $0.registerCell(TodayTableViewCell.self)
@@ -60,6 +58,13 @@ extension SecondTodayWeatherView {
             $0.top.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    // MARK: - Methods
+    
+    private func setDelegate() {
+        weatherTableView.delegate = self
+        weatherTableView.dataSource = self
     }
 }
 

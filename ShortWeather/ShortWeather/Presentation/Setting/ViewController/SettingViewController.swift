@@ -27,6 +27,7 @@ final class SettingViewController: BaseViewController {
 
         setUI()
         setLayout()
+        setDelegate()
     }
 }
 
@@ -43,10 +44,7 @@ extension SettingViewController {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
             $0.isScrollEnabled = false
-            
             $0.registerCell(SettingTableViewCell.self)
-            $0.dataSource = self
-            $0.delegate = self
         }
     }
     
@@ -60,6 +58,13 @@ extension SettingViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalToSuperview()
         }
+    }
+    
+    // MARK: - Methods
+    
+    private func setDelegate() {
+        settingTableView.dataSource = self
+        settingTableView.delegate = self
     }
 }
 

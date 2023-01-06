@@ -36,6 +36,7 @@ final class AlarmSettingViewController: UIViewController {
         setUI()
         setLayout()
         setAddTarget()
+        setDelegate()
         checkAlarmOn() 
     }
 }
@@ -47,9 +48,9 @@ extension AlarmSettingViewController {
     private func setUI() {
         view.backgroundColor = .white
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft, style: .plain, target: self, action: #selector(backButtonDidTap))
-        self.navigationItem.leftBarButtonItem?.tintColor = Color.black
-        self.navigationItem.title = "알림 설정"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft, style: .plain, target: self, action: #selector(backButtonDidTap))
+        navigationItem.leftBarButtonItem?.tintColor = Color.black
+        navigationItem.title = "알림 설정"
         
         titleLabel.do {
             $0.text = "알림 받을 시간대를\n설정해주세요"
@@ -83,10 +84,7 @@ extension AlarmSettingViewController {
             $0.backgroundColor = .clear
             $0.separatorStyle = .none
             $0.isScrollEnabled = false
-            
             $0.registerCell(AlarmTableViewCell.self)
-            $0.dataSource = self
-            $0.delegate = self
         }
     }
     
@@ -135,6 +133,11 @@ extension AlarmSettingViewController {
     
     private func setAddTarget() {
         allAlarmSwitchButton.addTarget(self, action: #selector(allAlarmButtonDidTap), for: .touchUpInside)
+    }
+    
+    private func setDelegate() {
+        alarmTableView.dataSource = self
+        alarmTableView.delegate = self
     }
     
     private func checkAlarmOn() {

@@ -25,17 +25,13 @@ final class TimeTableViewCell: UITableViewCell {
     private let dustButton: UIButton = UIButton()
     private let precipitationButton: UIButton = UIButton()
     private lazy var buttonStackView: UIStackView = UIStackView()
-    private lazy var hourCollectionView: UICollectionView = {
+    private let hourCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         collectionView.registerCell(HourCollectionViewCell.self)
-        
         return collectionView
     }()
     
@@ -51,6 +47,7 @@ final class TimeTableViewCell: UITableViewCell {
         setUI()
         setLayout()
         setAddTarget()
+        setDelegate()
     }
     
     required init?(coder: NSCoder) {
@@ -170,6 +167,11 @@ extension TimeTableViewCell {
             weatherButton.isSelected = false
             dustButton.isSelected = false
         }
+    }
+    
+    private func setDelegate() {
+        hourCollectionView.delegate = self
+        hourCollectionView.dataSource = self
     }
     
     // MARK: - @objc Methods
