@@ -89,8 +89,8 @@ extension SettingViewController: UITableViewDelegate {
         case 0:
             print("hi")
         case 1:
-            let vc = AlarmSettingViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            let alarmVC = AlarmSettingViewController()
+            self.navigationController?.pushViewController(alarmVC, animated: true)
         case 2:
             print("hi")
         default:
