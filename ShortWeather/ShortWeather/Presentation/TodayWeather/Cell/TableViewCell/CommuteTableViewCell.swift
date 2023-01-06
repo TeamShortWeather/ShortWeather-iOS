@@ -20,22 +20,18 @@ final class CommuteTableViewCell: UITableViewCell {
     private let outWeatherImageView: UIImageView = UIImageView()
     private let outTemperatureLabel: UILabel = UILabel()
     private lazy var outStackView: UIStackView = UIStackView()
-    
     private let comeLabel: UILabel = UILabel()
     private let comeTimeLabel: UILabel = UILabel()
     private lazy var comeTimeStackView: UIStackView = UIStackView()
     private let comeWeatherImageView: UIImageView = UIImageView()
     private let comeTemperatureLabel: UILabel = UILabel()
     private lazy var comeStackView: UIStackView = UIStackView()
-    
     private lazy var baseStackView: UIStackView = UIStackView()
-    
     
     // MARK: - Initializer
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setUI()
         setLayout()
     }
@@ -51,7 +47,7 @@ extension CommuteTableViewCell {
     
     private func setUI() {
         contentView.backgroundColor = .white
-        self.selectionStyle = .none
+        selectionStyle = .none
         
         outLabel.do {
             $0.text = "외출 시간"
@@ -120,7 +116,6 @@ extension CommuteTableViewCell {
         baseStackView.do {
             $0.spacing = 55
         }
-        
     }
     
     // MARK: - Layout Helper
