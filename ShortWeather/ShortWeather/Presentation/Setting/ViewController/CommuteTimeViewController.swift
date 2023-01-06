@@ -117,7 +117,7 @@ extension CommuteTimeViewController {
         popToSettingViewController()
     }
     
-    @objc private func halfModal(title: String ) {
+    @objc private func halfModal(title: String) {
         let vc = TimeViewController(titleText: title, listType: .goingHomeTime)
         vc.modalPresentationStyle = .pageSheet
         vc.delegate = self
