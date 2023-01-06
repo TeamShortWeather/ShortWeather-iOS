@@ -67,7 +67,7 @@ extension SettingTableViewCell {
     
     // MARK: - Methods
     
-    func dataBind(_ model: SettingTitle) {
-        titleLabel.text = model.title
+    func dataBind(_ title: String) {
+        titleLabel.text = title
     }
 }

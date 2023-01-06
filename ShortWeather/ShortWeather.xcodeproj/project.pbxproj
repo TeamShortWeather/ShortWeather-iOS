@@ -69,7 +69,9 @@
 		AB2590CD29647C55008FEC2A /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2590CC29647C55008FEC2A /* TodayTableViewCell.swift */; };
 		AB3D5B3D2967E86700105FC9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B3C2967E86700105FC9 /* SettingViewController.swift */; };
 		AB3D5B412967ED8400105FC9 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B402967ED8400105FC9 /* SettingTableViewCell.swift */; };
-		AB3D5B452967F3A000105FC9 /* SettingTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B442967F3A000105FC9 /* SettingTitle.swift */; };
+		AB3D5B472967F69600105FC9 /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B462967F69600105FC9 /* AlarmSettingViewController.swift */; };
+		AB3D5B492968084000105FC9 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B482968084000105FC9 /* AlarmTableViewCell.swift */; };
+		AB3D5B4B29680EEF00105FC9 /* AlarmSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B4A29680EEF00105FC9 /* AlarmSetting.swift */; };
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,7 +138,9 @@
 		AB2590CC29647C55008FEC2A /* TodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		AB3D5B3C2967E86700105FC9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		AB3D5B402967ED8400105FC9 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		AB3D5B442967F3A000105FC9 /* SettingTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTitle.swift; sourceTree = "<group>"; };
+		AB3D5B462967F69600105FC9 /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
+		AB3D5B482968084000105FC9 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
+		AB3D5B4A29680EEF00105FC9 /* AlarmSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSetting.swift; sourceTree = "<group>"; };
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -563,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				AB3D5B3C2967E86700105FC9 /* SettingViewController.swift */,
+				AB3D5B462967F69600105FC9 /* AlarmSettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -571,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				AB3D5B402967ED8400105FC9 /* SettingTableViewCell.swift */,
+				AB3D5B482968084000105FC9 /* AlarmTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -578,7 +584,7 @@
 		AB3D5B432967F38000105FC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AB3D5B442967F3A000105FC9 /* SettingTitle.swift */,
+				AB3D5B4A29680EEF00105FC9 /* AlarmSetting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -703,8 +709,10 @@
 				52D6A38F2961A2F800BF4287 /* CGFloat +.swift in Sources */,
 				5213176D2963F6D0009371E1 /* MenuTableViewCell.swift in Sources */,
 				521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */,
+				AB3D5B472967F69600105FC9 /* AlarmSettingViewController.swift in Sources */,
 				521317692963F313009371E1 /* Letter.swift in Sources */,
 				5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */,
+				AB3D5B492968084000105FC9 /* AlarmTableViewCell.swift in Sources */,
 				5212EAE6296563780084B95E /* testSecondWeatherView.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
 				AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */,
@@ -717,6 +725,7 @@
 				AB102EB729655CA400BEBF90 /* UIButton+.swift in Sources */,
 				52D6A3802961653000BF4287 /* UIViewController +.swift in Sources */,
 				0346A2F829644B7600E37FD2 /* SelectCollectionViewCell.swift in Sources */,
+				AB3D5B4B29680EEF00105FC9 /* AlarmSetting.swift in Sources */,
 				0346A2FA296467D700E37FD2 /* GenderViewController.swift in Sources */,
 				AB2590CD29647C55008FEC2A /* TodayTableViewCell.swift in Sources */,
 				AB3D5B3D2967E86700105FC9 /* SettingViewController.swift in Sources */,
@@ -730,7 +739,6 @@
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
 				AB2590C92964522A008FEC2A /* HourCollectionViewCell.swift in Sources */,
 				52FBA6AD295590D500F263B3 /* SceneDelegate.swift in Sources */,
-				AB3D5B452967F3A000105FC9 /* SettingTitle.swift in Sources */,
 				52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */,
 				52D6A37B296157CE00BF4287 /* SplashViewController.swift in Sources */,
 			);
