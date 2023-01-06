@@ -28,12 +28,6 @@ final class SecondInfoViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
-        collectionView.isScrollEnabled = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         return collectionView
     }()
     
@@ -55,6 +49,7 @@ final class SecondInfoViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDelegate()
     }
 }
 
@@ -92,6 +87,10 @@ extension SecondInfoViewController {
         }
         
         selectCollectionView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.backgroundColor = .clear
+            $0.isScrollEnabled = false
+            $0.showsHorizontalScrollIndicator = false
             $0.registerCell(SelectCollectionViewCell.self)
         }
     }
@@ -130,6 +129,10 @@ extension SecondInfoViewController {
     
     // MARK: - Methods
     
+    private func setDelegate() {
+        selectCollectionView.delegate = self
+        selectCollectionView.dataSource = self
+    }
     
     // MARK: - @objc Methods
     
@@ -137,7 +140,7 @@ extension SecondInfoViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func halfModal(title: String) {
+    @objc private func halfModal(title: String ) {
         let vc = TimeViewController(titleText: title, listType: .goingHomeTime)
         vc.modalPresentationStyle = .pageSheet
         vc.delegate = self
