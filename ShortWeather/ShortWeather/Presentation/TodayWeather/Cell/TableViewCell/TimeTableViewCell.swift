@@ -10,6 +10,12 @@ import UIKit
 import SnapKit
 import Then
 
+enum HourButton {
+    case weather
+    case dust
+    case precipitation
+}
+
 final class TimeTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
@@ -19,19 +25,16 @@ final class TimeTableViewCell: UITableViewCell {
     private let dustButton: UIButton = UIButton()
     private let precipitationButton: UIButton = UIButton()
     private lazy var buttonStackView: UIStackView = UIStackView()
-    private lazy var hourCollectionView: UICollectionView = {
+    private let hourCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.registerCell(HourCollectionViewCell.self)
-        
         return collectionView
     }()
+    
+    // MARK: - Properties
+    
+    var hourButtonState: HourButton = .weather
     
     // MARK: - Initializer
 
@@ -41,6 +44,7 @@ final class TimeTableViewCell: UITableViewCell {
         setUI()
         setLayout()
         setAddTarget()
+        setDelegate()
     }
     
     required init?(coder: NSCoder) {
@@ -63,16 +67,20 @@ extension TimeTableViewCell {
             $0.font = .fontGuide(.subhead4)
         }
         
+        hourCollectionView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.showsHorizontalScrollIndicator = false
+            $0.registerCell(HourCollectionViewCell.self)
+        }
+        
         weatherButton.do {
-            $0.titleLabel?.font = .fontGuide(.subhead3)
-            $0.setTitle("날씨", for: .normal)
-
             $0.setTitleColor(Color.gray7, for: .normal)
             $0.setBackgroundColor(Color.gray0, for: .normal)
-            
             $0.setTitleColor(Color.white, for: .selected)
             $0.setBackgroundColor(Color.pointColor, for: .selected)
-
+            
+            $0.titleLabel?.font = .fontGuide(.subhead3)
+            $0.setTitle("날씨", for: .normal)
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 16
         }
@@ -115,6 +123,7 @@ extension TimeTableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(titleLabel, buttonStackView, hourCollectionView)
+        
         buttonStackView.addArrangedSubviews(weatherButton, dustButton, precipitationButton)
         
         titleLabel.snp.makeConstraints {
@@ -145,26 +154,45 @@ extension TimeTableViewCell {
         precipitationButton.addTarget(self, action: #selector(precipitationButtonDidTap), for: .touchUpInside)
     }
     
+    private func checkHourButton() {
+        switch hourButtonState {
+        case .weather:
+            weatherButton.isSelected = true
+            dustButton.isSelected = false
+            precipitationButton.isSelected = false
+        case .dust:
+            dustButton.isSelected = true
+            weatherButton.isSelected = false
+            precipitationButton.isSelected = false
+        case .precipitation:
+            precipitationButton.isSelected = true
+            weatherButton.isSelected = false
+            dustButton.isSelected = false
+        }
+    }
+    
+    private func setDelegate() {
+        hourCollectionView.delegate = self
+        hourCollectionView.dataSource = self
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func weatherButtonDidTap() {
-        weatherButton.isSelected = true
-        dustButton.isSelected = false
-        precipitationButton.isSelected = false
+        hourButtonState = .weather
+        checkHourButton()
         print("날씨 버튼 눌림")
     }
     
     @objc private func dustButtonDidTap() {
-        dustButton.isSelected = true
-        weatherButton.isSelected = false
-        precipitationButton.isSelected = false
+        hourButtonState = .dust
+        checkHourButton()
         print("미세먼지 버튼 눌림")
     }
     
     @objc private func precipitationButtonDidTap() {
-        precipitationButton.isSelected = true
-        weatherButton.isSelected = false
-        dustButton.isSelected = false
+        hourButtonState = .precipitation
+        checkHourButton()
         print("강수 버튼 눌림")
     }
 }
@@ -172,6 +200,7 @@ extension TimeTableViewCell {
 // MARK: - UICollectionViewDataSource
 
 extension TimeTableViewCell: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -185,9 +214,11 @@ extension TimeTableViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension TimeTableViewCell: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 60, height: 82)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 6
     }
