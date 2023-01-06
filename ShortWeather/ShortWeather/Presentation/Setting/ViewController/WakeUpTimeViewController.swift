@@ -12,12 +12,22 @@ import Then
 
 final class WakeUpTimeViewController: UIViewController {
     
+    // MARK: - UI Components
+    
+    private let selectCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return collectionView
+    }()
+    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDelegate()
     }
 }
 
@@ -48,9 +58,19 @@ extension WakeUpTimeViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    private func setDelegate() {
+        selectCollectionView.dataSource = self
+        selectCollectionView.delegate = self
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func backButtonDidTap() {
         popToSettingViewController()
     }
+}
+
+extension WakeUpTimeViewController: UICollectionViewDataSource {
+    
+    
 }

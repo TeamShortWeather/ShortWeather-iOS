@@ -1,8 +1,8 @@
 //
-//  SelectCollectionViewCell.swift
+//  SetSelectCollectionViewCell.swift
 //  ShortWeather
 //
-//  Created by KJ on 2023/01/03.
+//  Created by 김민 on 2023/01/06.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ import SnapKit
 import Then
 
 
-class SelectCollectionViewCell: UICollectionViewCell {
+class SetSelectCollectionViewCell: UICollectionViewCell {
         
     // MARK: - UI Components
 
@@ -30,6 +30,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     private let bottomArrowImageView: UIImageView = UIImageView()
     private let selectDataLabel: UILabel = UILabel()
     private let lineView: UIView = UIView()
+    private let selectView: UIView = UIView()
     
     // MARK: - Initializer
 
@@ -44,7 +45,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension SelectCollectionViewCell {
+extension SetSelectCollectionViewCell {
 
     // MARK: - UI Components Property
     
@@ -70,32 +71,43 @@ extension SelectCollectionViewCell {
         lineView.do {
             $0.backgroundColor = Color.gray1
         }
+        
+        selectView.do {
+            $0.backgroundColor = .white
+        }
     }
 
     // MARK: - Layout Helper
     
     private func setLayout() {
-        addSubviews(explainLabel, bottomArrowImageView, selectDataLabel, lineView)
+        selectView.addSubviews(bottomArrowImageView, selectDataLabel)
+        addSubviews(explainLabel, selectView, lineView)
         
         explainLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
         }
         
-        bottomArrowImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(30)
-            $0.trailing.equalToSuperview().inset(10)
+        selectView.snp.makeConstraints {
+            $0.top.equalTo(explainLabel.snp.bottom).offset(2)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(44)
         }
         
-        selectDataLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.bottom.equalTo(lineView.snp.top)
+        bottomArrowImageView.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.centerY.equalToSuperview()
         }
         
         lineView.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.width.equalTo(320)
+            $0.top.equalTo(selectView.snp.bottom)
+            $0.leading.equalTo(selectView)
+            $0.width.equalTo(selectView)
             $0.height.equalTo(2)
-            $0.centerX.equalToSuperview()
+        }
+        
+        selectDataLabel.snp.makeConstraints {
+            $0.leading.equalTo(explainLabel)
+            $0.centerY.equalToSuperview()
         }
     }
     
