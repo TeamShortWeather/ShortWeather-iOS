@@ -48,7 +48,10 @@ extension AlarmSettingViewController {
     private func setUI() {
         view.backgroundColor = .white
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft, style: .plain, target: self, action: #selector(backButtonDidTap))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(backButtonDidTap))
         navigationItem.leftBarButtonItem?.tintColor = Color.black
         navigationItem.title = "알림 설정"
         
@@ -128,7 +131,7 @@ extension AlarmSettingViewController {
     // MARK: - Methods
     
     private func popToSettingViewController() {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     private func setAddTarget() {

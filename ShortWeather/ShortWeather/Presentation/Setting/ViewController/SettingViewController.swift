@@ -36,7 +36,6 @@ extension SettingViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        
         navigationItem.title = "설정"
         
         settingTableView.do {
@@ -92,14 +91,16 @@ extension SettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            print("hi")
+            let commuteVC = CommuteTimeViewController()
+            navigationController?.pushViewController(commuteVC, animated: true)
         case 1:
             let alarmVC = AlarmSettingViewController()
-            self.navigationController?.pushViewController(alarmVC, animated: true)
+            navigationController?.pushViewController(alarmVC, animated: true)
         case 2:
-            print("hi")
+            let wakeUpVC = WakeUpTimeViewController()
+            navigationController?.pushViewController(wakeUpVC, animated: true)
         default:
-            print("hi")
+            break
         }
     }
 }
