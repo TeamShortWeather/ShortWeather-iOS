@@ -28,12 +28,6 @@ class FirstInfoViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
-        collectionView.isScrollEnabled = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         return collectionView
     }()
     
@@ -73,6 +67,7 @@ class FirstInfoViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDelegate()
     }
 }
 
@@ -98,6 +93,10 @@ extension FirstInfoViewController {
         }
         
         selectCollectionView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.backgroundColor = .clear
+            $0.isScrollEnabled = false
+            $0.showsHorizontalScrollIndicator = false
             $0.registerCell(SelectCollectionViewCell.self)
         }
     }
@@ -129,6 +128,11 @@ extension FirstInfoViewController {
     }
     
     // MARK: - Methods
+    
+    private func setDelegate() {
+        selectCollectionView.delegate = self
+        selectCollectionView.dataSource = self
+    }
     
     private func pushToSecondVC() {
         let secondVC = SecondInfoViewController()

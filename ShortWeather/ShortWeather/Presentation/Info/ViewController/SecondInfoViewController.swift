@@ -134,14 +134,8 @@ extension SecondInfoViewController {
         selectCollectionView.dataSource = self
     }
     
-    // MARK: - @objc Methods
-    
-    @objc private func popToPrevious() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func halfModal(title: String ) {
-        let vc = TimeViewController(titleText: title, listType: .goingHomeTime)
+    private func halfModal(title: String, listType: SecondInfoType) {
+        let vc = TimeViewController(titleText: title, listType: listType)
         vc.modalPresentationStyle = .pageSheet
         vc.delegate = self
         if let sheet = vc.sheetPresentationController {
@@ -151,6 +145,12 @@ extension SecondInfoViewController {
             sheet.prefersGrabberVisible = true
         }
         self.present(vc, animated: true, completion: nil);
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func popToPrevious() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -169,20 +169,26 @@ extension SecondInfoViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(info: info[indexPath.item], pickData: "")
+        if indexPath.item == 0 {
+            cell.setDataBind(info: info[indexPath.item], pickData: wakeUpTime ?? "")
+        } else if indexPath.item == 1 {
+            cell.setDataBind(info: info[indexPath.item], pickData: goingOutTime ?? "")
+        } else {
+            cell.setDataBind(info: info[indexPath.item], pickData: goingHomeTime ?? "")
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch (indexPath.item) {
         case 0:
-            halfModal(title: "기상시간 설정")
+            halfModal(title: "기상시간 설정", listType: .wakeUpTime)
         case 1:
-            halfModal(title: "외출시간 설정")
+            halfModal(title: "외출시간 설정", listType: .goingOutTime)
         case 2:
-            halfModal(title: "귀가시간 설정")
+                        halfModal(title: "귀가시간 설정", listType: .goingHomeTime)
         default:
-            halfModal(title: "귀가시간 설정")
+                        halfModal(title: "귀가시간 설정", listType: .goingHomeTime)
         }
     }
 }

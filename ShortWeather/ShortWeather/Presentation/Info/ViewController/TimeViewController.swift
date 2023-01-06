@@ -115,9 +115,9 @@ extension TimeViewController {
         
         let strDate = timeFormatter.string(from: datePicker.date) // String으로 변환
         
-        timeFormatter.dateFormat = "a"
-        let a = timeFormatter.string(from: datePicker.date)
-        print(a)
+//        timeFormatter.dateFormat = "a"
+//        let a = timeFormatter.string(from: datePicker.date)
+//        print(a)
         
         print(strDate)
         delegate?.sendData(pickData: strDate, listType: listType)
