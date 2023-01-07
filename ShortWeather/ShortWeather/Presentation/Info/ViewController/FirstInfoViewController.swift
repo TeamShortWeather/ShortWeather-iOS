@@ -28,12 +28,6 @@ class FirstInfoViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .clear
-        collectionView.isScrollEnabled = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.delegate = self
-        collectionView.dataSource = self
         return collectionView
     }()
     
@@ -73,6 +67,7 @@ class FirstInfoViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         setLayout()
+        setDelegate()
     }
 }
 
@@ -98,6 +93,10 @@ extension FirstInfoViewController {
         }
         
         selectCollectionView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.backgroundColor = .clear
+            $0.isScrollEnabled = false
+            $0.showsHorizontalScrollIndicator = false
             $0.registerCell(SelectCollectionViewCell.self)
         }
     }
@@ -130,19 +129,23 @@ extension FirstInfoViewController {
     
     // MARK: - Methods
     
+    private func setDelegate() {
+        selectCollectionView.delegate = self
+        selectCollectionView.dataSource = self
+    }
+    
     private func pushToSecondVC() {
         let secondVC = SecondInfoViewController()
         self.navigationController?.pushViewController(secondVC, animated: true)
 //        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
-    private func halfModal(title: String, listData: [String], listType: FirstInfoType) {
-        let vc = ListViewController(titleText: title, listDatas: listData, listType: listType)
+    private func halfModal(title: String, listData: [String], listType: FirstInfoType, status: String) {
+        let vc = ListViewController(titleText: title, listDatas: listData, listType: listType, status: status)
         vc.modalPresentationStyle = .pageSheet
         vc.delegate = self
         if let sheet = vc.sheetPresentationController {
-//            sheet.detents = [.medium()] // 반만 고정
-            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
+            sheet.detents = [.medium(), .large()]
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }
@@ -173,31 +176,44 @@ extension FirstInfoViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
         if indexPath.item == 0 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: gender ?? "")
+            if let _ = gender {
+                cell.selectCell()
+            }
         } else if indexPath.item == 1 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: age ?? "")
-        } else {
+//            cell.statusChange(status: selectStatus ?? "")
+            if let _ = age {
+                cell.selectCell()
+                print("2")
+//                cell.statusChange(status: selectStatus ?? "")
+            }
+        } else if indexPath.item == 2 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: tempResponse ?? "")
+//            cell.statusChange(status: selectStatus ?? "")
+            if let _ = tempResponse {
+                print("3")
+                cell.selectCell()
+//                cell.statusChange(status: selectStatus ?? "")
+            }
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
+        cell.contentView.backgroundColor = .red
+        cell.selectCell()
+        collectionView.reloadData()
+        view.layoutIfNeeded()
+        
         switch (indexPath.item) {
         case 0:
-            halfModal(title: "성별을 선택해 주세요", listData: genderListModel, listType: .gender)
-//            let listVC = ListViewController(titleText: "성별을 선택해 주세요", listDatas: genderListModel)
-//            listVC.modalPresentationStyle = .formSheet
-//            self.present(listVC, animated: true, completion: nil);
+            halfModal(title: "성별을 선택해 주세요", listData: genderListModel, listType: .gender, status: "")
         case 1:
-            halfModal(title: "연령대를 선택해 주세요", listData: ageListModel, listType: .age)
-//            let listVC = ListViewController(titleText: "연령대를 선택해 주세요", listDatas: ageListModel)
-//            listVC.modalPresentationStyle = .formSheet
-//            self.present(listVC, animated: true, completion: nil);
+            halfModal(title: "연령대를 선택해 주세요", listData: ageListModel, listType: .age, status: "")
         case 2:
-            halfModal(title: "온도민감도를 알려주세요", listData: temListModel, listType: .tempResponse)
-//            let listVC = ListViewController(titleText: "온도민감도를 알려주세요", listDatas: temListModel)
-//            listVC.modalPresentationStyle = .formSheet
-//            self.present(listVC, animated: true, completion: nil);
+            halfModal(title: "온도민감도를 알려주세요", listData: temListModel, listType: .tempResponse, status: "")
         default:
             print("FirstInfoViewController 오류")
         }
@@ -212,7 +228,9 @@ extension FirstInfoViewController: UISheetPresentationControllerDelegate {
 }
 
 extension FirstInfoViewController: ListViewControllerDelegate {
-    func sendData(pickData: String, listType: FirstInfoType) {
+    
+    func sendData(pickData: String, listType: FirstInfoType, status: String) {
+//        self.selectStatus = status
         switch listType {
         case .gender:
             self.gender = pickData
@@ -223,5 +241,10 @@ extension FirstInfoViewController: ListViewControllerDelegate {
         }
         selectCollectionView.reloadData()
     }
+    
+//    func 데이터선택(status: String) {
+//        self.selectStatus = status
+//        selectCollectionView.reloadData()
+//    }
 }
 

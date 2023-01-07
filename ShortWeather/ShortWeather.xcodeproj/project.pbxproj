@@ -191,10 +191,10 @@
 		0346A3032965906B00E37FD2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */,
 				033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */,
 				033E7F702965A8560051B349 /* ListViewController.swift */,
 				033E7F742965DA2A0051B349 /* TimeViewController.swift */,
-				AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
