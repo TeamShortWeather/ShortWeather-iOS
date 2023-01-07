@@ -22,7 +22,7 @@ class SettingBaseViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private let checkButton: UIButton = UIButton()
+    let checkButton: UIButton = UIButton()
     
     // MARK: - Properties
     
@@ -34,7 +34,6 @@ class SettingBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUI()
         setLayout()
         setDelegate()
@@ -42,16 +41,11 @@ class SettingBaseViewController: UIViewController {
 }
 
 extension SettingBaseViewController {
+    
     // MARK: - UI Components Property
     
     private func setUI() {
         view.backgroundColor = .white
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(backButtonDidTap))
-        navigationItem.leftBarButtonItem?.tintColor = Color.black
 
         titleLabel.do {
             $0.font = .fontGuide(.headline1)
@@ -62,7 +56,7 @@ extension SettingBaseViewController {
             $0.showsHorizontalScrollIndicator = false
             $0.backgroundColor = .clear
             $0.isScrollEnabled = false
-            $0.registerCells(SetSelectCollectionViewCell.self)
+//            $0.registerCells(SetSelectCollectionViewCell.self)
         }
         
         checkButton.do {
@@ -100,19 +94,11 @@ extension SettingBaseViewController {
     
     // MARK: - Methods
     
-    private func popToSettingViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     private func setDelegate() {
         selectCollectionView.delegate = self
     }
     
     // MARK: - @objc Methods
-    
-    @objc private func backButtonDidTap() {
-        popToSettingViewController()
-    }
     
     @objc func halfModal(title: String) {
         let vc = TimeViewController(titleText: title, listType: .goingHomeTime)

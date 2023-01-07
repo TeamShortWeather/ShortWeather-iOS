@@ -36,6 +36,7 @@
 		52625C422967E00A007F483D /* FirstTodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C412967E00A007F483D /* FirstTodayWeatherData.swift */; };
 		52625C442967F62B007F483D /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C432967F62B007F483D /* ReportCollectionViewCell.swift */; };
 		52625C47296805B7007F483D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C46296805B7007F483D /* PaddingLabel.swift */; };
+		52625C4C29695A0C007F483D /* FirstInfoTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C4B29695A0C007F483D /* FirstInfoTestViewController.swift */; };
 		52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA496295C774A00DE6AE9 /* UIFont +.swift */; };
 		52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA499295C7BD800DE6AE9 /* URLConst.swift */; };
 		52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */; };
@@ -107,6 +108,7 @@
 		52625C412967E00A007F483D /* FirstTodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTodayWeatherData.swift; sourceTree = "<group>"; };
 		52625C432967F62B007F483D /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		52625C46296805B7007F483D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		52625C4B29695A0C007F483D /* FirstInfoTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoTestViewController.swift; sourceTree = "<group>"; };
 		52CBA496295C774A00DE6AE9 /* UIFont +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont +.swift"; sourceTree = "<group>"; };
 		52CBA499295C7BD800DE6AE9 /* URLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
 		52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
@@ -173,8 +175,8 @@
 		0346A2EC2964126000E37FD2 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				0346A3032965906B00E37FD2 /* ViewController */,
 				0346A2F1296412D500E37FD2 /* Cell */,
+				0346A3032965906B00E37FD2 /* ViewController */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -182,8 +184,8 @@
 		0346A2F1296412D500E37FD2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */,
 				0346A30129658F3000E37FD2 /* ListTableViewCell.swift */,
+				0346A2F729644B7600E37FD2 /* SelectCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -192,9 +194,10 @@
 			isa = PBXGroup;
 			children = (
 				AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */,
-				033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */,
 				033E7F702965A8560051B349 /* ListViewController.swift */,
+				033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */,
 				033E7F742965DA2A0051B349 /* TimeViewController.swift */,
+				52625C4B29695A0C007F483D /* FirstInfoTestViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -236,8 +239,8 @@
 		5212EAE02964AD300084B95E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */,
 				52625C432967F62B007F483D /* ReportCollectionViewCell.swift */,
+				5212EAE12964AD4E0084B95E /* TodayWeatherCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -372,8 +375,9 @@
 		52D6A38B2961A06100BF4287 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				52FBA6AE295590D500F263B3 /* BaseViewController.swift */,
 				5212EADE29649C950084B95E /* BaseLocationViewController.swift */,
+				52FBA6AE295590D500F263B3 /* BaseViewController.swift */,
+				AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -578,7 +582,6 @@
 		AB3D5B3E2967ED2100105FC9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */,
 				AB3D5B3C2967E86700105FC9 /* SettingViewController.swift */,
 				AB3D5B4C29681C9200105FC9 /* CommuteTimeViewController.swift */,
 				AB3D5B462967F69600105FC9 /* AlarmSettingViewController.swift */,
@@ -757,6 +760,7 @@
 				52625C422967E00A007F483D /* FirstTodayWeatherData.swift in Sources */,
 				AB09FF6929630D7A004C54EE /* CellType.swift in Sources */,
 				AB3D5B552968679D00105FC9 /* SetSelectCollectionViewCell.swift in Sources */,
+				52625C4C29695A0C007F483D /* FirstInfoTestViewController.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
 				AB2590C92964522A008FEC2A /* HourCollectionViewCell.swift in Sources */,
 				52FBA6AD295590D500F263B3 /* SceneDelegate.swift in Sources */,

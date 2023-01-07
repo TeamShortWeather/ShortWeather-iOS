@@ -23,7 +23,6 @@ class FirstInfoViewController: UIViewController {
     
     private let titleLabel: UILabel = UILabel()
     private let nextButton: UIButton = UIButton()
-
     private lazy var selectCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -36,15 +35,12 @@ class FirstInfoViewController: UIViewController {
     var gender: String?
     var age: String?
     var tempResponse: String?
-    
     var infoModel: [String] = [
         "성별을 선택해 주세요",
         "연령대를 선택해 주세요",
         "온도 민감도를 알려주세요"
     ]
-    
     var genderListModel: [String] = ["여자", "남자"]
-    
     var ageListModel: [String] = [
         "10대",
         "20대",
@@ -53,7 +49,6 @@ class FirstInfoViewController: UIViewController {
         "50대",
         "60대 이상"
     ]
-    
     var temListModel: [String] = [
         "추위를 잘 타요",
         "보통이에요",
@@ -77,6 +72,7 @@ extension FirstInfoViewController {
     
     private func setUI() {
         view.backgroundColor = .white
+        
         titleLabel.do {
             $0.text = "입력하신 정보를 바탕으로 \n생활에 맞는 날씨를 알려드릴게요"
             $0.font = .fontGuide(.headline1)
@@ -94,9 +90,8 @@ extension FirstInfoViewController {
         
         selectCollectionView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.backgroundColor = .clear
+//            $0.backgroundColor = .clear
             $0.isScrollEnabled = false
-            $0.showsHorizontalScrollIndicator = false
             $0.registerCell(SelectCollectionViewCell.self)
         }
     }
@@ -136,8 +131,7 @@ extension FirstInfoViewController {
     
     private func pushToSecondVC() {
         let secondVC = SecondInfoViewController()
-        self.navigationController?.pushViewController(secondVC, animated: true)
-//        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        navigationController?.pushViewController(secondVC, animated: true)
     }
     
     private func halfModal(title: String, listData: [String], listType: FirstInfoType, status: String) {
@@ -149,7 +143,7 @@ extension FirstInfoViewController {
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }
-        self.present(vc, animated: true, completion: nil);
+        present(vc, animated: true, completion: nil);
     }
     
     // MARK: - @objc Methods
@@ -176,47 +170,37 @@ extension FirstInfoViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
         if indexPath.item == 0 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: gender ?? "")
-            if let _ = gender {
-                cell.selectCell()
-            }
+//            if let _ = gender {
+//                cell.selectCell()
+//            }
         } else if indexPath.item == 1 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: age ?? "")
-//            cell.statusChange(status: selectStatus ?? "")
-            if let _ = age {
-                cell.selectCell()
-                print("2")
-//                cell.statusChange(status: selectStatus ?? "")
-            }
+//            if let _ = age {
+//                cell.selectCell()
+//            }
         } else if indexPath.item == 2 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: tempResponse ?? "")
-//            cell.statusChange(status: selectStatus ?? "")
-            if let _ = tempResponse {
-                print("3")
-                cell.selectCell()
-//                cell.statusChange(status: selectStatus ?? "")
-            }
+//            if let _ = tempResponse {
+//                cell.selectCell()
+//            }
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier, for: indexPath)
         let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
         cell.contentView.backgroundColor = .red
-        cell.selectCell()
-        collectionView.reloadData()
-        view.layoutIfNeeded()
         
-        switch (indexPath.item) {
-        case 0:
-            halfModal(title: "성별을 선택해 주세요", listData: genderListModel, listType: .gender, status: "")
-        case 1:
-            halfModal(title: "연령대를 선택해 주세요", listData: ageListModel, listType: .age, status: "")
-        case 2:
-            halfModal(title: "온도민감도를 알려주세요", listData: temListModel, listType: .tempResponse, status: "")
-        default:
-            print("FirstInfoViewController 오류")
-        }
+//        switch (indexPath.item) {
+//        case 0:
+//            halfModal(title: "성별을 선택해 주세요", listData: genderListModel, listType: .gender, status: "")
+//        case 1:
+//            halfModal(title: "연령대를 선택해 주세요", listData: ageListModel, listType: .age, status: "")
+//        case 2:
+//            halfModal(title: "온도민감도를 알려주세요", listData: temListModel, listType: .tempResponse, status: "")
+//        default:
+//            print("FirstInfoViewController 오류")
+//        }
     }
 }
 
@@ -229,8 +213,7 @@ extension FirstInfoViewController: UISheetPresentationControllerDelegate {
 
 extension FirstInfoViewController: ListViewControllerDelegate {
     
-    func sendData(pickData: String, listType: FirstInfoType, status: String) {
-//        self.selectStatus = status
+    func sendData(pickData: String, listType: FirstInfoType) {
         switch listType {
         case .gender:
             self.gender = pickData
@@ -239,12 +222,6 @@ extension FirstInfoViewController: ListViewControllerDelegate {
         case .tempResponse:
             self.tempResponse = pickData
         }
-        selectCollectionView.reloadData()
-    }
-    
-//    func 데이터선택(status: String) {
-//        self.selectStatus = status
 //        selectCollectionView.reloadData()
-//    }
+    }
 }
-

@@ -14,24 +14,26 @@ import Then
 
 class SelectCollectionViewCell: UICollectionViewCell {
     
-    let identifier = "SelectCollectionViewCell"
-        
     // MARK: - UI Components
-
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                lineView.backgroundColor = Color.weatherBlue
-            }
-            else {
-                lineView.backgroundColor = Color.dustBad2
-            }
-        }
-    }
+    
     private let explainLabel: UILabel = UILabel()
     private let bottomArrowImageView: UIImageView = UIImageView()
     private let selectDataLabel: UILabel = UILabel()
     public let lineView: UIView = UIView()
+    
+    // MARK: - Properties
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                print("cell Selected!")
+                lineView.backgroundColor = Color.weatherBlue
+            }
+            else {
+//                lineView.backgroundColor = Color.dustBad2
+            }
+        }
+    }
     
     // MARK: - Initializer
 
@@ -111,7 +113,6 @@ extension SelectCollectionViewCell {
     
     public func selectCell() {
         lineView.backgroundColor = Color.pointColor
-        print("Tapp!!!!")
     }
     
     public func unselectCell() {

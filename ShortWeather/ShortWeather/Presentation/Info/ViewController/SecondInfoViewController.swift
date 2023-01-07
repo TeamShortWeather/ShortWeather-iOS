@@ -60,12 +60,7 @@ extension SecondInfoViewController {
     private func setUI() {
         view.backgroundColor = .white
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem (
-            image: Image.icnExpandLeft,
-            style: .plain,
-            target: self,
-            action: #selector(popToPrevious)
-        )
+        addBackButtonNavigationBar()
         
         titleLabel.do {
             $0.text = "여러분의 하루를 알려주세요"
@@ -145,12 +140,6 @@ extension SecondInfoViewController {
             sheet.prefersGrabberVisible = true
         }
         self.present(vc, animated: true, completion: nil);
-    }
-    
-    // MARK: - @objc Methods
-    
-    @objc private func popToPrevious() {
-        navigationController?.popViewController(animated: true)
     }
 }
 

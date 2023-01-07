@@ -26,10 +26,15 @@ extension WakeUpTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
+        addBackButtonNavigationBar()
+        
         navigationItem.title = "기상시간 설정"
         
         titleLabel.do {
             $0.text = "기상시간을 변경해주세요"
+        }
+        selectCollectionView.do {
+            $0.registerCells(SetSelectCollectionViewCell.self)
         }
     }
     

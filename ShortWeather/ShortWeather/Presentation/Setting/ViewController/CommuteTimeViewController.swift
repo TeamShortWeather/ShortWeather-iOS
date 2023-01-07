@@ -30,10 +30,15 @@ extension CommuteTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
+        addBackButtonNavigationBar()
+        
         navigationItem.title = "외출 / 귀가시간대 설정"
         
         titleLabel.do {
             $0.text = "시간대를 변경해주세요"
+        }
+        selectCollectionView.do {
+            $0.registerCells(SetSelectCollectionViewCell.self)
         }
     }
     

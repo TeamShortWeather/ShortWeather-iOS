@@ -12,7 +12,7 @@ import SnapKit
 import Then
 
 protocol ListViewControllerDelegate: AnyObject {
-    func sendData(pickData: String, listType: FirstInfoType, status: String)
+    func sendData(pickData: String, listType: FirstInfoType)
 }
 
 final class ListViewController: UIViewController {
@@ -136,9 +136,7 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectStatus = "blue"
-        delegate?.sendData(pickData: listDatas[indexPath.section], listType: listType, status: selectStatus)
-//        print(selectStatus)
+        delegate?.sendData(pickData: listDatas[indexPath.section], listType: listType)
         if navigationController == nil {
             dismiss(animated: true, completion: nil)
         }
