@@ -26,7 +26,7 @@ class FirstInfoViewController: UIViewController {
 
     private lazy var selectCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
@@ -77,11 +77,20 @@ extension FirstInfoViewController {
     
     private func setUI() {
         view.backgroundColor = .white
+        
         titleLabel.do {
             $0.text = "입력하신 정보를 바탕으로 \n생활에 맞는 날씨를 알려드릴게요"
             $0.font = .fontGuide(.headline1)
             $0.textColor = Color.black
             $0.numberOfLines = 0
+        }
+        
+        selectCollectionView.do {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.showsHorizontalScrollIndicator = false
+            $0.backgroundColor = .clear
+            $0.isScrollEnabled = false
+            $0.registerCell(SelectCollectionViewCell.self)
         }
         
         nextButton.do {
@@ -91,38 +100,29 @@ extension FirstInfoViewController {
             $0.layer.cornerRadius = 15
             $0.addTarget(self, action: #selector(touchUpSecondVC), for: .touchUpInside)
         }
-        
-        selectCollectionView.do {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.backgroundColor = .clear
-            $0.isScrollEnabled = false
-            $0.showsHorizontalScrollIndicator = false
-            $0.registerCell(SelectCollectionViewCell.self)
-        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         view.addSubviews(titleLabel, selectCollectionView, nextButton)
-        
+
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(0)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview().offset(28)
         }
-        
+
         selectCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(46)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
-            $0.height.equalTo(350)
+            $0.leading.equalTo(titleLabel)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
-        
+
         nextButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(34)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
+            $0.bottom.equalToSuperview().offset(-34)
+            $0.leading.equalTo(titleLabel)
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(57)
         }
     }
@@ -136,7 +136,7 @@ extension FirstInfoViewController {
     
     private func pushToSecondVC() {
         let secondVC = SecondInfoViewController()
-        self.navigationController?.pushViewController(secondVC, animated: true)
+        navigationController?.pushViewController(secondVC, animated: true)
 //        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
@@ -160,9 +160,14 @@ extension FirstInfoViewController {
 }
 
 extension FirstInfoViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 320, height: 64)
+        let width = UIScreen.main.bounds.width - 56
+        return CGSize(width: width, height: 64)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(28)
     }
 }
 
@@ -175,24 +180,24 @@ extension FirstInfoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
         if indexPath.item == 0 {
-            cell.setDataBind(info: infoModel[indexPath.item], pickData: gender ?? "")
+            cell.setDataBind(info: infoModel[indexPath.row], pickData: gender ?? "")
             if let _ = gender {
-                cell.selectCell()
+//                cell.selectCell()
             }
         } else if indexPath.item == 1 {
-            cell.setDataBind(info: infoModel[indexPath.item], pickData: age ?? "")
+            cell.setDataBind(info: infoModel[indexPath.row], pickData: age ?? "")
 //            cell.statusChange(status: selectStatus ?? "")
             if let _ = age {
-                cell.selectCell()
-                print("2")
+//                cell.selectCell()
+//                print("2")
 //                cell.statusChange(status: selectStatus ?? "")
             }
         } else if indexPath.item == 2 {
-            cell.setDataBind(info: infoModel[indexPath.item], pickData: tempResponse ?? "")
+            cell.setDataBind(info: infoModel[indexPath.row], pickData: tempResponse ?? "")
 //            cell.statusChange(status: selectStatus ?? "")
             if let _ = tempResponse {
-                print("3")
-                cell.selectCell()
+//                print("3")
+//                cell.selectCell()
 //                cell.statusChange(status: selectStatus ?? "")
             }
         }
@@ -201,11 +206,11 @@ extension FirstInfoViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier, for: indexPath)
-        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
-        cell.contentView.backgroundColor = .red
-        cell.selectCell()
-        collectionView.reloadData()
-        view.layoutIfNeeded()
+//        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
+//        cell.contentView.backgroundColor = .red
+////        cell.selectCell()
+//        collectionView.reloadData()
+//        view.layoutIfNeeded()
         
         switch (indexPath.item) {
         case 0:

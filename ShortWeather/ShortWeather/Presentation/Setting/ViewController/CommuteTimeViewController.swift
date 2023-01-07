@@ -47,6 +47,7 @@ extension CommuteTimeViewController {
 // MARK: - UICollectionViewDataSource
 
 extension CommuteTimeViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
