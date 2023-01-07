@@ -12,7 +12,8 @@ import SnapKit
 import Then
 
 protocol TimeInfoViewControllerDelegate: AnyObject {
-    func sendData(pickData: String)
+    func getNullData()
+    func getInfoData(userInfoData: UserInfo)
 }
 
 final class TimeInfoViewController: UIViewController {
@@ -21,17 +22,19 @@ final class TimeInfoViewController: UIViewController {
     
     private let titleLabel: UILabel = UILabel()
     private let datePicker: UIDatePicker = UIDatePicker()
-    private let saveButton: UIButton = UIButton()
+    private let saveButton: CheckButton = CheckButton()
     
     // MARK: - Properties
     
-    private var titleText: String
     public weak var delegate: TimeInfoViewControllerDelegate?
+    private var titleText: String
+    private let infoType: InfoType
     
     // MARK: - Initializer
     
-    init(titleText: String) {
-        self.titleText = titleText
+    init(infoText: String, infoType: InfoType) {
+        self.titleText = infoText
+        self.infoType = infoType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -46,6 +49,11 @@ final class TimeInfoViewController: UIViewController {
         setUI()
         setLayout()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.getNullData()
+    }
 }
 
 extension TimeInfoViewController {
@@ -54,6 +62,7 @@ extension TimeInfoViewController {
     
     private func setUI() {
         view.backgroundColor = .white
+        
         titleLabel.do {
             $0.text = titleText
             $0.font = .fontGuide(.headline1)
@@ -61,19 +70,17 @@ extension TimeInfoViewController {
         }
         
         datePicker.do {
+            $0.backgroundColor = Color.white
             $0.datePickerMode = UIDatePicker.Mode.time
             $0.preferredDatePickerStyle = .wheels
-            $0.backgroundColor = Color.white
             $0.locale = Locale(identifier: "ko-KR")
             $0.minuteInterval = 30
         }
         
         saveButton.do {
             $0.setTitle("저장", for: .normal)
-            $0.setTitleColor(Color.white, for: .normal)
-            $0.backgroundColor = Color.pointColor
-            $0.layer.cornerRadius = 15
-            $0.addTarget(self, action: #selector(backButton), for: .touchUpInside)
+            $0.setState(.allow)
+            $0.addTarget(self, action: #selector(saveButtonDidTap), for: .touchUpInside)
         }
     }
     
@@ -104,19 +111,14 @@ extension TimeInfoViewController {
     
     // MARK: - @objc Methods
     
-    @objc private func backButton() {
+    @objc private func saveButtonDidTap() {
         let timeFormatter = DateFormatter()
         timeFormatter.timeStyle = .none
         timeFormatter.dateFormat = "a h시 mm분"
-        
-        let strDate = timeFormatter.string(from: datePicker.date) // String으로 변환
-        
+        let strDate = timeFormatter.string(from: datePicker.date)
         timeFormatter.dateFormat = "a"
-        let a = timeFormatter.string(from: datePicker.date)
-        print(a)
-        
-        print(strDate)
-        delegate?.sendData(pickData: strDate)
-        self.dismiss(animated: true, completion: nil)
+        let time = timeFormatter.string(from: datePicker.date)
+        delegate?.getInfoData(userInfoData: UserInfo(infoData: time, infoType: infoType))
+        self.dismiss(animated: true)
     }
 }

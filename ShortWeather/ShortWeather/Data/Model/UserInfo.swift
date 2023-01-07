@@ -16,4 +16,7 @@ enum InfoType {
     case gender
     case age
     case tempResponse
+    case wakeUpTime
+    case inTime
+    case outTime
 }

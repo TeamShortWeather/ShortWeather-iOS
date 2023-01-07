@@ -18,15 +18,15 @@ final class SecondInfoViewController: SettingBaseViewController {
     
     // MARK: - Properties
     
-    var wakeUpTime: String?
-    var goingOutTime: String?
-    var goingHomeTime: String?
-    
-    private let Info: [String] = [
+    private let info: [String] = [
         "기상시간",
         "외출시간",
         "귀가시간",
     ]
+    private var wakeUpTime: String = ""
+    private var outTime: String = ""
+    private var inTime: String = ""
+    private var isCellTouched: [Bool] = [false, false, false]
     
     // MARK: - View Life Cycle
     
@@ -35,6 +35,10 @@ final class SecondInfoViewController: SettingBaseViewController {
         setUI()
         setLayout()
         setDelegate()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
 }
 
@@ -53,6 +57,7 @@ extension SecondInfoViewController {
         
         checkButton.do {
             $0.setTitle("확인", for: .normal)
+            $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
         }
         
         addInfoLabel.do {
@@ -82,45 +87,101 @@ extension SecondInfoViewController {
         infoCollectionView.delegate = self
         infoCollectionView.dataSource = self
     }
+    
+    private func setCellState(cell: EnterInfoCollectionViewCell, indexPath: IndexPath) {
+        if isCellTouched[indexPath.row] {
+            switch indexPath.row {
+            case 0:
+                if wakeUpTime.isEmpty {
+                    cell.unselectCell()
+                } else {
+                    cell.selectCell()
+                }
+            case 1:
+                if outTime.isEmpty {
+                    cell.unselectCell()
+                } else {
+                    cell.selectCell()
+                }
+            case 2:
+                if inTime.isEmpty {
+                    cell.unselectCell()
+                } else {
+                    cell.selectCell()
+                }
+            default:
+                break
+            }
+        } else {
+            cell.untouched()
+        }
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func checkButtonDidTap() {
+        print("Check Button Tap!")
+    }
 }
-
-//extension SecondInfoViewController: UICollectionViewDelegateFlowLayout {
-//
-//    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = UIScreen.main.bounds.width - 56
-//        return CGSize(width: width, height: 64)
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return CGFloat(28)
-//    }
-//}
 
 extension SecondInfoViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return info.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
+        switch indexPath.row {
+        case 0:
+            cell.setDataBind(infoText: info[indexPath.row], data: wakeUpTime)
+        case 1:
+            cell.setDataBind(infoText: info[indexPath.row], data: outTime)
+        case 2:
+            cell.setDataBind(infoText: info[indexPath.row], data: inTime)
+        default:
+            break
+        }
+        setCellState(cell: cell, indexPath: indexPath)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        isCellTouched[indexPath.row] = true
+        switch indexPath.row {
+        case 0:
+            let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .wakeUpTime)
+            vc.delegate = self
+            presentToHalfModalViewController(vc)
+        case 1:
+            let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .outTime)
+            vc.delegate = self
+            presentToHalfModalViewController(vc)
+        case 2:
+            let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .inTime)
+            vc.delegate = self
+            presentToHalfModalViewController(vc)
+        default:
+            break
+        }
     }
 }
 
-//extension SecondInfoViewController: UISheetPresentationControllerDelegate {
-//    
-////    override func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
-////        print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
-////    }
-//}
-
 extension SecondInfoViewController: TimeInfoViewControllerDelegate {
     
-    func sendData(pickData: String) {
+    func getNullData() {
+        infoCollectionView.reloadData()
+    }
+    
+    func getInfoData(userInfoData: UserInfo) {
+        let infoType = userInfoData.infoType
+        if infoType == .wakeUpTime {
+            wakeUpTime = userInfoData.infoData
+        } else if infoType == .outTime {
+            outTime = userInfoData.infoData
+        } else if infoType == .inTime {
+            inTime = userInfoData.infoData
+        }
         infoCollectionView.reloadData()
     }
 }
