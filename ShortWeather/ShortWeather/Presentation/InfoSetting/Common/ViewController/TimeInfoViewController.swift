@@ -26,13 +26,15 @@ final class TimeInfoViewController: UIViewController {
     
     // MARK: - Properties
     
-    private var titleText: String
     public weak var delegate: TimeInfoViewControllerDelegate?
+    private var titleText: String
+    private let infoType: InfoType
     
     // MARK: - Initializer
     
-    init(titleText: String) {
-        self.titleText = titleText
+    init(infoText: String, infoType: InfoType) {
+        self.titleText = infoText
+        self.infoType = infoType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -47,6 +49,11 @@ final class TimeInfoViewController: UIViewController {
         setUI()
         setLayout()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.getNullData()
+    }
 }
 
 extension TimeInfoViewController {
@@ -55,6 +62,7 @@ extension TimeInfoViewController {
     
     private func setUI() {
         view.backgroundColor = .white
+        
         titleLabel.do {
             $0.text = titleText
             $0.font = .fontGuide(.headline1)
@@ -109,8 +117,8 @@ extension TimeInfoViewController {
         timeFormatter.dateFormat = "a h시 mm분"
         let strDate = timeFormatter.string(from: datePicker.date)
         timeFormatter.dateFormat = "a"
-        let a = timeFormatter.string(from: datePicker.date)
-        delegate?.getInfoData(userInfoData: UserInfo(infoData: a, infoType: .wakeUpTime))
-        self.dismiss(animated: true, completion: nil)
+        let time = timeFormatter.string(from: datePicker.date)
+        delegate?.getInfoData(userInfoData: UserInfo(infoData: time, infoType: infoType))
+        self.dismiss(animated: true)
     }
 }

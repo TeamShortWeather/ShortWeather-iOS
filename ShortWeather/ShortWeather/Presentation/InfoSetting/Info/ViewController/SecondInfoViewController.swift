@@ -98,13 +98,13 @@ extension SecondInfoViewController {
                     cell.selectCell()
                 }
             case 1:
-                if inTime.isEmpty {
+                if outTime.isEmpty {
                     cell.unselectCell()
                 } else {
                     cell.selectCell()
                 }
             case 2:
-                if outTime.isEmpty {
+                if inTime.isEmpty {
                     cell.unselectCell()
                 } else {
                     cell.selectCell()
@@ -136,9 +136,9 @@ extension SecondInfoViewController: UICollectionViewDataSource {
         case 0:
             cell.setDataBind(infoText: info[indexPath.row], data: wakeUpTime)
         case 1:
-            cell.setDataBind(infoText: info[indexPath.row], data: inTime)
-        case 2:
             cell.setDataBind(infoText: info[indexPath.row], data: outTime)
+        case 2:
+            cell.setDataBind(infoText: info[indexPath.row], data: inTime)
         default:
             break
         }
@@ -150,15 +150,15 @@ extension SecondInfoViewController: UICollectionViewDataSource {
         isCellTouched[indexPath.row] = true
         switch indexPath.row {
         case 0:
-            let vc = TimeInfoViewController(titleText: "\(info[indexPath.row]) 설정")
+            let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .wakeUpTime)
             vc.delegate = self
             presentToHalfModalViewController(vc)
         case 1:
-            let vc = TimeInfoViewController(titleText: "\(info[indexPath.row]) 설정")
+            let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .outTime)
             vc.delegate = self
             presentToHalfModalViewController(vc)
         case 2:
-            let vc = TimeInfoViewController(titleText: "\(info[indexPath.row]) 설정")
+            let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .inTime)
             vc.delegate = self
             presentToHalfModalViewController(vc)
         default:
@@ -185,22 +185,3 @@ extension SecondInfoViewController: TimeInfoViewControllerDelegate {
         infoCollectionView.reloadData()
     }
 }
-
-//extension SecondInfoViewController: UISheetPresentationControllerDelegate {
-//
-////    override func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
-////        print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
-////    }
-//}
-
-//extension SecondInfoViewController: UICollectionViewDelegateFlowLayout {
-//
-//    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width = UIScreen.main.bounds.width - 56
-//        return CGSize(width: width, height: 64)
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return CGFloat(28)
-//    }
-//}
