@@ -13,6 +13,8 @@ import Then
 
 
 class SelectCollectionViewCell: UICollectionViewCell {
+    
+    let identifier = "SelectCollectionViewCell"
         
     // MARK: - UI Components
 
@@ -29,7 +31,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     private let explainLabel: UILabel = UILabel()
     private let bottomArrowImageView: UIImageView = UIImageView()
     private let selectDataLabel: UILabel = UILabel()
-    private let lineView: UIView = UIView()
+    public let lineView: UIView = UIView()
     
     // MARK: - Initializer
 
@@ -37,6 +39,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setUI()
         setLayout()
+//        selectCell()
     }
     
     required init?(coder: NSCoder) {
@@ -104,6 +107,17 @@ extension SelectCollectionViewCell {
     public func setDataBind(info: String, pickData: String) {
         explainLabel.text = info
         selectDataLabel.text = pickData
+    }
+    
+    public func selectCell() {
+        lineView.backgroundColor = Color.pointColor
+        print("Tapp!!!!")
+    }
+    
+    public func unselectCell() {
+        lineView.backgroundColor = Color.dustBad2
+        explainLabel.textColor = Color.dustBad2
+        bottomArrowImageView.tintColor = Color.dustBad2
     }
 }
 
