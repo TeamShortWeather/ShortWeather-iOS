@@ -83,15 +83,13 @@ extension ListViewController {
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(41)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(319)
+            $0.leading.equalTo(28)
         }
         
         listTableView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(24)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(375)
-            $0.height.equalTo(500)
+            $0.leading.trailing.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
     }
     

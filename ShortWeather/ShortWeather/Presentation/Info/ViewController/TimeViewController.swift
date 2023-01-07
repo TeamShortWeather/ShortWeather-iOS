@@ -60,13 +60,13 @@ extension TimeViewController {
         titleLabel.do {
             $0.text = titleText
             $0.font = .fontGuide(.headline1)
-            $0.textColor = .black
+            $0.textColor = Color.black
         }
         
         datePicker.do {
             $0.datePickerMode = UIDatePicker.Mode.time
             $0.preferredDatePickerStyle = .wheels
-            $0.backgroundColor = UIColor.white
+            $0.backgroundColor = Color.white
             $0.locale = Locale(identifier: "ko-KR")
             $0.minuteInterval = 30
         }
@@ -86,22 +86,21 @@ extension TimeViewController {
         view.addSubviews(titleLabel, datePicker, saveButton)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(41)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(319)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(24)
+            $0.leading.equalToSuperview().offset(41)
         }
         
         datePicker.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(24)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(320)
+            $0.leading.equalTo(titleLabel)
+            $0.trailing.equalToSuperview().offset(-28)
             $0.height.equalTo(101)
         }
         
         saveButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(200)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
+            $0.top.equalTo(datePicker.snp.bottom).offset(75)
+            $0.leading.equalTo(datePicker)
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(57)
         }
     }
@@ -115,9 +114,9 @@ extension TimeViewController {
         
         let strDate = timeFormatter.string(from: datePicker.date) // String으로 변환
         
-//        timeFormatter.dateFormat = "a"
-//        let a = timeFormatter.string(from: datePicker.date)
-//        print(a)
+        timeFormatter.dateFormat = "a"
+        let a = timeFormatter.string(from: datePicker.date)
+        print(a)
         
         print(strDate)
         delegate?.sendData(pickData: strDate, listType: listType)

@@ -20,6 +20,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     private let bottomArrowImageView: UIImageView = UIImageView()
     private let selectDataLabel: UILabel = UILabel()
     public let lineView: UIView = UIView()
+    private let selectView: UIView = UIView()
     
     // MARK: - Properties
     
@@ -69,38 +70,48 @@ extension SelectCollectionViewCell {
         
         selectDataLabel.do {
             $0.font = .fontGuide(.subhead1)
-            $0.textColor = .black
+            $0.textColor = Color.black
         }
         
         lineView.do {
             $0.backgroundColor = Color.gray1
+        }
+        
+        selectView.do {
+            $0.backgroundColor = Color.white
         }
     }
 
     // MARK: - Layout Helper
     
     private func setLayout() {
-        addSubviews(explainLabel, bottomArrowImageView, selectDataLabel, lineView)
+        selectView.addSubviews(bottomArrowImageView, selectDataLabel)
+        addSubviews(explainLabel, lineView, selectView)
         
         explainLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
         }
         
+        selectView.snp.makeConstraints {
+            $0.top.equalTo(explainLabel.snp.bottom).offset(2)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(44)
+        }
+        
         bottomArrowImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(30)
-            $0.trailing.equalToSuperview().inset(10)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.centerY.equalToSuperview()
         }
         
         selectDataLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.bottom.equalTo(lineView.snp.top)
+            $0.leading.equalTo(explainLabel)
+            $0.centerY.equalToSuperview()
         }
         
         lineView.snp.makeConstraints {
-            $0.bottom.equalToSuperview()
-            $0.width.equalTo(320)
+            $0.top.equalTo(selectView.snp.bottom)
+            $0.leading.trailing.equalTo(selectView)
             $0.height.equalTo(2)
-            $0.centerX.equalToSuperview()
         }
     }
     
