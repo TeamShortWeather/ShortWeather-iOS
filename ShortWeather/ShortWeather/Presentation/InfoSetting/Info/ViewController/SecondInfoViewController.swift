@@ -86,7 +86,7 @@ extension SecondInfoViewController {
             $0.backgroundColor = .clear
             $0.isScrollEnabled = false
             $0.showsHorizontalScrollIndicator = false
-            $0.registerCell(SelectCollectionViewCell.self)
+            $0.registerCell(EnterInfoCollectionViewCell.self)
         }
     }
     
@@ -128,7 +128,7 @@ extension SecondInfoViewController {
     }
     
     private func halfModal(title: String, listType: SecondInfoType) {
-        let vc = TimeViewController(titleText: title, listType: listType)
+        let vc = TimeInfoViewController(titleText: title, listType: listType)
         vc.modalPresentationStyle = .pageSheet
         vc.delegate = self
         if let sheet = vc.sheetPresentationController {
@@ -160,7 +160,7 @@ extension SecondInfoViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
         if indexPath.item == 0 {
             cell.setDataBind(info: info[indexPath.item], pickData: wakeUpTime ?? "")
         } else if indexPath.item == 1 {
@@ -192,7 +192,7 @@ extension SecondInfoViewController: UISheetPresentationControllerDelegate {
     }
 }
 
-extension SecondInfoViewController: TimeViewControllerDelegate {
+extension SecondInfoViewController: TimeInfoViewControllerDelegate {
     
     func sendData(pickData: String, listType: SecondInfoType) {
         switch listType {

@@ -24,12 +24,6 @@ class SettingBaseViewController: UIViewController {
     }()
     let checkButton: UIButton = UIButton()
     
-    // MARK: - Properties
-    
-    var wakeUpTime: String?
-    var goingOutTime: String?
-    var goingHomeTime: String?
-    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -56,9 +50,9 @@ extension SettingBaseViewController {
             $0.showsHorizontalScrollIndicator = false
             $0.backgroundColor = .clear
             $0.isScrollEnabled = false
-//            $0.registerCells(SetSelectCollectionViewCell.self)
+            $0.registerCells(SetSelectCollectionViewCell.self)
         }
-        
+
         checkButton.do {
             $0.setTitle("확인", for: .normal)
             $0.setTitleColor(.black, for: .normal)
@@ -98,21 +92,16 @@ extension SettingBaseViewController {
         selectCollectionView.delegate = self
     }
     
-    // MARK: - @objc Methods
-    
-    @objc func halfModal(title: String) {
-        let vc = TimeViewController(titleText: title, listType: .goingHomeTime)
-        vc.modalPresentationStyle = .pageSheet
-        vc.delegate = self
-        if let sheet = vc.sheetPresentationController {
+    public func presentToHalfModalViewController(_ viewController: UIViewController) {
+        viewController.modalPresentationStyle = .pageSheet
+        if let sheet = viewController.sheetPresentationController {
             sheet.detents = [.medium()] // 반만 고정
 //            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }
-        self.present(vc, animated: true, completion: nil);
+        self.present(viewController, animated: true, completion: nil);
     }
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -135,22 +124,5 @@ extension SettingBaseViewController: UISheetPresentationControllerDelegate {
     
     func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
         print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
-    }
-}
-
-// MARK: - TimeViewControllerDelegate
-
-extension SettingBaseViewController: TimeViewControllerDelegate {
-    
-    func sendData(pickData: String, listType: SecondInfoType) {
-        switch listType {
-        case .wakeUpTime:
-            self.wakeUpTime = pickData
-        case .goingOutTime:
-            self.goingOutTime = pickData
-        case .goingHomeTime:
-            self.goingHomeTime = pickData
-        }
-        selectCollectionView.reloadData()
     }
 }

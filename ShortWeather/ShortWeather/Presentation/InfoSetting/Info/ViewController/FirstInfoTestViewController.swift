@@ -12,13 +12,17 @@ import Then
 
 final class FirstInfoTestViewController: SettingBaseViewController {
     
-    // MARK: - UI Components
     // MARK: - Properties
     
-    let info: [String] = [
+    private let info: [String] = [
         "성별을 선택해 주세요",
         "연령대를 선택해 주세요",
         "온도 민감도를 알려주세요"
+    ]
+    private let cellInfo: [[String]] = [
+        ["여자", "남자"],
+        ["10대", "20대", "30대", "40대", "50대", "60대 이상"],
+        ["추위를 잘 타요", "보통이에요", "더위를 잘 타요", "추위, 더위 모두 타요"]
     ]
     
     // MARK: - View Life Cycle
@@ -37,10 +41,10 @@ extension FirstInfoTestViewController {
     
     private func setUI() {
         checkButton.do {
-            $0.addTarget(self, action: #selector(touchUpSecondVC), for: .touchUpInside)
+            $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
         }
         selectCollectionView.do {
-            $0.registerCells(SelectCollectionViewCell.self)
+            $0.registerCells(EnterInfoCollectionViewCell.self)
         }
     }
     
@@ -63,7 +67,7 @@ extension FirstInfoTestViewController {
     
     // MARK: - @objc Methods
     
-    @objc private func touchUpSecondVC() {
+    @objc private func checkButtonDidTap() {
         pushToSecondVC()
     }
 }
@@ -77,12 +81,13 @@ extension FirstInfoTestViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(info: info[indexPath.row], pickData: "")
+        let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(infoText: info[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        halfModal(title: info[indexPath.row])
+        let vc = ListInfoViewController(titleText: <#T##String#>, listDatas: <#T##[String]#>, listType: <#T##FirstInfoType#>)
+        presentToHalfModalViewController(vc)
     }
 }

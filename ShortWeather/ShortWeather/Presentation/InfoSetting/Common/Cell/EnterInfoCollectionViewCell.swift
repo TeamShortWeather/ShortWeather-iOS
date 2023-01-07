@@ -1,5 +1,5 @@
 //
-//  SelectCollectionViewCell.swift
+//  InfoEnterCollectionViewCell.swift
 //  ShortWeather
 //
 //  Created by KJ on 2023/01/03.
@@ -12,15 +12,14 @@ import SnapKit
 import Then
 
 
-class SelectCollectionViewCell: UICollectionViewCell {
+class EnterInfoCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
     private let explainLabel: UILabel = UILabel()
     private let bottomArrowImageView: UIImageView = UIImageView()
-    private let selectDataLabel: UILabel = UILabel()
+    private let dataLabel: UILabel = UILabel()
     public let lineView: UIView = UIView()
-    private let selectView: UIView = UIView()
     
     // MARK: - Properties
     
@@ -50,7 +49,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension SelectCollectionViewCell {
+extension EnterInfoCollectionViewCell {
 
     // MARK: - UI Components Property
     
@@ -68,7 +67,7 @@ extension SelectCollectionViewCell {
             $0.tintColor = Color.gray4
         }
         
-        selectDataLabel.do {
+        dataLabel.do {
             $0.font = .fontGuide(.subhead1)
             $0.textColor = Color.black
         }
@@ -76,50 +75,39 @@ extension SelectCollectionViewCell {
         lineView.do {
             $0.backgroundColor = Color.gray1
         }
-        
-        selectView.do {
-            $0.backgroundColor = Color.white
-        }
     }
 
     // MARK: - Layout Helper
     
     private func setLayout() {
-        selectView.addSubviews(bottomArrowImageView, selectDataLabel)
-        addSubviews(explainLabel, lineView, selectView)
+        addSubviews(explainLabel, lineView, bottomArrowImageView, dataLabel)
         
         explainLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview()
         }
         
-        selectView.snp.makeConstraints {
+        dataLabel.snp.makeConstraints {
             $0.top.equalTo(explainLabel.snp.bottom).offset(2)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalTo(explainLabel)
             $0.height.equalTo(44)
         }
         
         bottomArrowImageView.snp.makeConstraints {
-            $0.trailing.equalToSuperview().offset(-10)
-            $0.centerY.equalToSuperview()
-        }
-        
-        selectDataLabel.snp.makeConstraints {
-            $0.leading.equalTo(explainLabel)
-            $0.centerY.equalToSuperview()
+            $0.centerY.equalTo(dataLabel)
+            $0.height.width.equalTo(24)
+            $0.trailing.equalToSuperview().inset(10)
         }
         
         lineView.snp.makeConstraints {
-            $0.top.equalTo(selectView.snp.bottom)
-            $0.leading.trailing.equalTo(selectView)
+            $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(2)
         }
     }
     
     // MARK: - Methods
 
-    public func setDataBind(info: String, pickData: String) {
-        explainLabel.text = info
-        selectDataLabel.text = pickData
+    public func setDataBind(infoText: String) {
+        explainLabel.text = infoText
     }
     
     public func selectCell() {

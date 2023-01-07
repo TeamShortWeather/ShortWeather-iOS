@@ -11,11 +11,11 @@ import Moya
 import SnapKit
 import Then
 
-protocol ListViewControllerDelegate: AnyObject {
-    func sendData(pickData: String, listType: FirstInfoType)
+protocol ListInfoViewControllerDelegate: AnyObject {
+    func getInfoData(selectData: String)
 }
 
-final class ListViewController: UIViewController {
+final class ListInfoViewController: UIViewController {
     
     // MARK: - UI Components
     
@@ -24,28 +24,22 @@ final class ListViewController: UIViewController {
     
     // MARK: - Properties
     
-    public let listType: FirstInfoType
-    public weak var delegate: ListViewControllerDelegate?
-    private var titleText: String
-    private var listDatas: [String]
-    private var selectStatus: String
-    private let data: String = ""
+    public weak var delegate: ListInfoViewControllerDelegate?
+    private var infoText: String
+    private var listData: [String]
     
     // MARK: - Initializer
     
-    init(titleText: String, listDatas: [String], listType: FirstInfoType, status: String) {
-        self.titleText = titleText
-        self.listDatas = listDatas
-        self.listType = listType
-        self.selectStatus = status
+    
+    init(infoText: String, listData: [String]) {
         super.init(nibName: nil, bundle: nil)
     }
-    
-    // MARK: - View Life Cycle
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +49,7 @@ final class ListViewController: UIViewController {
     }
 }
 
-extension ListViewController {
+extension ListInfoViewController {
     
     // MARK: - UI Components Property
     
@@ -63,7 +57,7 @@ extension ListViewController {
         view.backgroundColor = .white
         
         titleLabel.do {
-            $0.text = titleText
+            $0.text = infoText
             $0.font = .fontGuide(.headline1)
             $0.textColor = .black
         }
@@ -83,13 +77,13 @@ extension ListViewController {
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(41)
-            $0.leading.equalTo(28)
+            $0.leading.equalToSuperview().offset(28)
         }
         
         listTableView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(24)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
-            $0.centerY.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     
@@ -101,7 +95,7 @@ extension ListViewController {
     }
 }
 
-extension ListViewController: UITableViewDelegate {
+extension ListInfoViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
@@ -116,10 +110,10 @@ extension ListViewController: UITableViewDelegate {
     }
 }
 
-extension ListViewController: UITableViewDataSource {
+extension ListInfoViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return listDatas.count
+        return listData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,16 +121,13 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueCell(type: ListTableViewCell.self, indexPath: indexPath)
-        cell.setDataBind(model: listDatas[indexPath.section])
+        cell.setDataBind(model: listData[indexPath.section])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.sendData(pickData: listDatas[indexPath.section], listType: listType)
-        if navigationController == nil {
-            dismiss(animated: true, completion: nil)
-        }
+        delegate?.getInfoData(selectData: listData[indexPath.section])
+        dismiss(animated: true)
     }
 }

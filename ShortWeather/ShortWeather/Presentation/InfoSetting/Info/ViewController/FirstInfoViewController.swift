@@ -85,7 +85,7 @@ extension FirstInfoViewController {
             $0.showsHorizontalScrollIndicator = false
             $0.backgroundColor = .clear
             $0.isScrollEnabled = false
-            $0.registerCell(SelectCollectionViewCell.self)
+            $0.registerCell(EnterInfoCollectionViewCell.self)
         }
         
         nextButton.do {
@@ -100,7 +100,7 @@ extension FirstInfoViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
 //            $0.backgroundColor = .clear
             $0.isScrollEnabled = false
-            $0.registerCell(SelectCollectionViewCell.self)
+            $0.registerCell(EnterInfoCollectionViewCell.self)
         }
     }
     
@@ -143,7 +143,7 @@ extension FirstInfoViewController {
     }
     
     private func halfModal(title: String, listData: [String], listType: FirstInfoType, status: String) {
-        let vc = ListViewController(titleText: title, listDatas: listData, listType: listType, status: status)
+        let vc = ListInfoViewController(titleText: title, listDatas: listData, listType: listType, status: status)
         vc.modalPresentationStyle = .pageSheet
         vc.delegate = self
         if let sheet = vc.sheetPresentationController {
@@ -180,7 +180,7 @@ extension FirstInfoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
         if indexPath.item == 0 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: gender ?? "")
             if let _ = gender {
@@ -207,8 +207,8 @@ extension FirstInfoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier, for: indexPath)
-        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoEnterCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
         cell.contentView.backgroundColor = .red
         cell.selectCell()
         collectionView.reloadData()
@@ -234,7 +234,7 @@ extension FirstInfoViewController: UISheetPresentationControllerDelegate {
     }
 }
 
-extension FirstInfoViewController: ListViewControllerDelegate {
+extension FirstInfoViewController: ListInfoViewControllerDelegate {
     
     func sendData(pickData: String, listType: FirstInfoType) {
         switch listType {
