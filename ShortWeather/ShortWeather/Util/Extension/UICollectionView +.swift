@@ -8,6 +8,7 @@
 import UIKit
 
 extension UICollectionView {
+    
     func registerCell<T: UICollectionViewCell>(_ type: T.Type) {
         let className = type.className
         self.register(type.self, forCellWithReuseIdentifier: className)
@@ -18,7 +19,6 @@ extension UICollectionView {
             registerCell($0)
         }
     }
-
     /*
     func registerReusableView<T: UICollectionReusableView>(type: T.Type, kind: String = UICollectionElementKindSectionHeader) {
         let className = type.className

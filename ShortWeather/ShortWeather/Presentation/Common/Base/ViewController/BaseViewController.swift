@@ -16,8 +16,8 @@ class BaseViewController: UIViewController {
     
     // MARK: - UI Components
     
-    let sideMenuView: SideMenuView = SideMenuView()
-    let backgroundView: UIView = UIView()
+    private let sideMenuView: SideMenuView = SideMenuView()
+    private let backgroundView: UIView = UIView()
     private let tapBackgroundViewGesture: UITapGestureRecognizer = UITapGestureRecognizer()
     
     // MARK: - View Life Cycle
@@ -37,11 +37,13 @@ extension BaseViewController {
     private func setUI() {
         view.backgroundColor = Color.white
         view.addSubviews(backgroundView, sideMenuView)
+        
         backgroundView.do {
             $0.isHidden = true
             $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
             $0.addGestureRecognizer(tapBackgroundViewGesture)
         }
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnHamburgermenu,
                                                                 style: .done,
                                                                 target: self,
@@ -60,13 +62,14 @@ extension BaseViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        
         let sideMenuViewWidth = CGFloat(263).adjusted
+        
         sideMenuView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
             $0.width.equalTo(sideMenuViewWidth)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(-sideMenuViewWidth)
         }
+        
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -75,6 +78,8 @@ extension BaseViewController {
     // MARK: - @objc Methods
     
     @objc private func showSideMenuView() {
+        view.bringSubviewToFront(backgroundView)
+        view.bringSubviewToFront(sideMenuView)
         UIView.animate(withDuration: 0.5) {
             self.sideMenuView.snp.updateConstraints {
                 $0.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading)

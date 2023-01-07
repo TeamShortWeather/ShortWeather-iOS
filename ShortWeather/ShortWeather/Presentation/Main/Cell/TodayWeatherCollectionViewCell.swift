@@ -35,27 +35,25 @@ extension TodayWeatherCollectionViewCell {
     private func setUI() {
         scrollView.do {
             $0.isPagingEnabled = true
+            $0.showsVerticalScrollIndicator = false
         }
-        /*
-        contentView.backgroundColor = Color.mainColor
-        scrollView.backgroundColor = Color.pointColor
-        firstTodayWeatherView.backgroundColor = .red
-        secondTodayWeatherView.backgroundColor = .blue
-         */
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
         contentView.addSubview(scrollView)
+        
         scrollView.addSubviews(firstTodayWeatherView, secondTodayWeatherView)
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
         firstTodayWeatherView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.trailing.height.equalTo(contentView)
         }
+        
         secondTodayWeatherView.snp.makeConstraints {
             $0.top.equalTo(firstTodayWeatherView.snp.bottom)
             $0.leading.trailing.height.equalTo(firstTodayWeatherView)

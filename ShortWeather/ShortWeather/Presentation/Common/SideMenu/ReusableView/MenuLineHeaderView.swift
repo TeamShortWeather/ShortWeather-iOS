@@ -24,6 +24,7 @@ final class MenuLineHeaderView: UITableViewHeaderFooterView {
     
     private func setLineView() {
         addSubview(lineView)
+        
         lineView.backgroundColor = Color.gray2
         lineView.snp.makeConstraints {
             $0.height.equalTo(1)
