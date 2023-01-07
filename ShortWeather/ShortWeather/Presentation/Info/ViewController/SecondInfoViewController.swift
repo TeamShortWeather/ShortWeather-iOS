@@ -101,29 +101,27 @@ extension SecondInfoViewController {
         view.addSubviews(titleLabel, selectCollectionView, checkButton, addInfoLabel)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(29) // 네비바 44 (73-44)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(29)
+            $0.leading.equalToSuperview().offset(28)
         }
         
         selectCollectionView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(40)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
-            $0.height.equalTo(350)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(46)
+            $0.leading.equalTo(titleLabel)
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         
         checkButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(34)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
+            $0.bottom.equalToSuperview().offset(-34)
+            $0.leading.equalTo(titleLabel)
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(57)
         }
         
         addInfoLabel.snp.makeConstraints {
             $0.bottom.equalTo(checkButton.snp.bottom).inset(71)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
+            $0.leading.equalTo(checkButton)
         }
     }
     
@@ -157,7 +155,12 @@ extension SecondInfoViewController {
 extension SecondInfoViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 320, height: 64)
+        let width = UIScreen.main.bounds.width - 56
+        return CGSize(width: width, height: 64)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return CGFloat(28)
     }
 }
 

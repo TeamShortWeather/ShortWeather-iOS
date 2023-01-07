@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		033BF9922969669D008B5BFB /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033BF9912969669D008B5BFB /* CheckButton.swift */; };
 		033E7F712965A8560051B349 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F702965A8560051B349 /* ListViewController.swift */; };
 		033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */; };
 		033E7F752965DA2A0051B349 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F742965DA2A0051B349 /* TimeViewController.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		033BF9912969669D008B5BFB /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		033E7F702965A8560051B349 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
 		033E7F742965DA2A0051B349 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				52625C46296805B7007F483D /* PaddingLabel.swift */,
+				033BF9912969669D008B5BFB /* CheckButton.swift */,
 			);
 			path = CustomClass;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				521317742963F9D5009371E1 /* UICollectionView +.swift in Sources */,
 				AB3D5B472967F69600105FC9 /* AlarmSettingViewController.swift in Sources */,
 				521317692963F313009371E1 /* Letter.swift in Sources */,
+				033BF9922969669D008B5BFB /* CheckButton.swift in Sources */,
 				5212EADF29649C950084B95E /* BaseLocationViewController.swift in Sources */,
 				AB3D5B492968084000105FC9 /* AlarmTableViewCell.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,

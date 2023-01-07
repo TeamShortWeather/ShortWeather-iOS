@@ -65,7 +65,7 @@ extension SetSelectCollectionViewCell {
         
         selectDataLabel.do {
             $0.font = .fontGuide(.subhead1)
-            $0.textColor = .black
+            $0.textColor = Color.black
         }
         
         lineView.do {
@@ -73,7 +73,7 @@ extension SetSelectCollectionViewCell {
         }
         
         selectView.do {
-            $0.backgroundColor = .white
+            $0.backgroundColor = Color.white
         }
     }
 
