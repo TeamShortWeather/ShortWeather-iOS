@@ -52,7 +52,7 @@ extension SplashViewController {
     // MARK: - Methods
     
     private func isExistInform(){
-        let isUser: Bool = false
+        let isUser: Bool = true
         if isUser {
             UIViewController.modifyRootViewController(TodayWeatherViewController())
         } else {
