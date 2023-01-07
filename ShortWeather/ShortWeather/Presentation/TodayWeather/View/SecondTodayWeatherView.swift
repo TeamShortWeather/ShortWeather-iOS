@@ -76,13 +76,13 @@ extension SecondTodayWeatherView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case CellType.commute.rawValue:
+        case WeatherTableViewCellType.commute.rawValue:
             let cell = tableView.dequeueCell(type: CommuteTableViewCell.self, indexPath: indexPath)
             return cell
-        case CellType.time.rawValue:
+        case WeatherTableViewCellType.time.rawValue:
             let cell = tableView.dequeueCell(type: TimeTableViewCell.self, indexPath: indexPath)
             return cell
-        case CellType.today.rawValue:
+        case WeatherTableViewCellType.today.rawValue:
             let cell = tableView.dequeueCell(type: TodayTableViewCell.self, indexPath: indexPath)
             return cell
         default:
@@ -97,11 +97,11 @@ extension SecondTodayWeatherView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
-        case CellType.commute.rawValue:
+        case WeatherTableViewCellType.commute.rawValue:
             return 225
-        case CellType.time.rawValue:
+        case WeatherTableViewCellType.time.rawValue:
             return 195
-        case CellType.today.rawValue:
+        case WeatherTableViewCellType.today.rawValue:
             return 450
         default:
             return CGFloat()

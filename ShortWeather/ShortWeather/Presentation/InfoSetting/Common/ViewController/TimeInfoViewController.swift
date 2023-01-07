@@ -11,11 +11,11 @@ import Moya
 import SnapKit
 import Then
 
-protocol TimeViewControllerDelegate: AnyObject {
-    func sendData(pickData: String, listType: SecondInfoType)
+protocol TimeInfoViewControllerDelegate: AnyObject {
+    func sendData(pickData: String)
 }
 
-final class TimeViewController: UIViewController {
+final class TimeInfoViewController: UIViewController {
     
     // MARK: - UI Components
     
@@ -25,15 +25,13 @@ final class TimeViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let listType: SecondInfoType
     private var titleText: String
-    public weak var delegate: TimeViewControllerDelegate?
+    public weak var delegate: TimeInfoViewControllerDelegate?
     
     // MARK: - Initializer
     
-    init(titleText: String, listType: SecondInfoType) {
+    init(titleText: String) {
         self.titleText = titleText
-        self.listType = listType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -50,13 +48,12 @@ final class TimeViewController: UIViewController {
     }
 }
 
-extension TimeViewController {
+extension TimeInfoViewController {
     
     // MARK: - UI Components Property
     
     private func setUI() {
         view.backgroundColor = .white
-        
         titleLabel.do {
             $0.text = titleText
             $0.font = .fontGuide(.headline1)
@@ -119,7 +116,7 @@ extension TimeViewController {
         print(a)
         
         print(strDate)
-        delegate?.sendData(pickData: strDate, listType: listType)
+        delegate?.sendData(pickData: strDate)
         self.dismiss(animated: true, completion: nil)
     }
 }

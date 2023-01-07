@@ -19,6 +19,7 @@ class SetSelectCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
+                print("Hello.. ")
                 lineView.backgroundColor = Color.weatherBlue
             }
             else {

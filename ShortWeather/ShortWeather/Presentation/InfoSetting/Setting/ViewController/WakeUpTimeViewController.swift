@@ -1,5 +1,5 @@
 //
-//  CommuteSettingViewController.swift
+//  WakeUpTimeViewController.swift
 //  ShortWeather
 //
 //  Created by 김민 on 2023/01/06.
@@ -10,11 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class CommuteTimeViewController: SettingBaseViewController {
-    
-    // MARK: - Properties
-    
-    let info: [String] = ["외출시간", "귀가시간"]
+final class WakeUpTimeViewController: SettingBaseViewController {
     
     // MARK: - View Life Cycle
 
@@ -25,52 +21,51 @@ final class CommuteTimeViewController: SettingBaseViewController {
     }
 }
 
-extension CommuteTimeViewController {
+extension WakeUpTimeViewController {
     
     // MARK: - UI Components Property
     
     private func setUI() {
-        navigationItem.title = "외출 / 귀가시간대 설정"
+        addBackButtonNavigationBar()
+        
+        navigationItem.title = "기상시간 설정"
         
         titleLabel.do {
-            $0.text = "시간대를 변경해주세요"
+            $0.text = "기상시간을 변경해주세요"
+        }
+        infoCollectionView.do {
+            $0.registerCells(SetSelectCollectionViewCell.self)
         }
     }
     
     // MARK: - Methods
-
+    
     private func setDelegate() {
-        selectCollectionView.dataSource = self
+        infoCollectionView.dataSource = self
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
-extension CommuteTimeViewController: UICollectionViewDataSource {
+extension WakeUpTimeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: SetSelectCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(info: info[indexPath.row], pickData: "")
+        cell.setDataBind(info: "기상시간", pickData: "")
         return cell
     }
-}
-
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension CommuteTimeViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            halfModal(title: "외출시간 설정")
-        case 1:
-            halfModal(title: "귀가시간 설정")
-        default:
-            halfModal(title: "외출시간 설정")
-        }
+//        switch indexPath.row {
+//        case 0:
+//            halfModal(title: "기상시간 설정")
+//        default:
+//            halfModal(title: "기상시간 설정")
+//        }
     }
 }
+

@@ -46,12 +46,9 @@ extension AlarmSettingViewController {
     
     private func setUI() {
         view.backgroundColor = .white
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(backButtonDidTap))
-        navigationItem.leftBarButtonItem?.tintColor = Color.black
+        
+        addBackButtonNavigationBar()
+        
         navigationItem.title = "알림 설정"
         
         titleLabel.do {
@@ -152,10 +149,6 @@ extension AlarmSettingViewController {
     }
     
     // MARK: - @objc Methods
-    
-    @objc private func backButtonDidTap() {
-        popToSettingViewController()
-    }
     
     @objc private func allAlarmButtonDidTap() {
         checkAlarmOn()
