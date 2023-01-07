@@ -172,7 +172,7 @@ extension AlarmSettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: AlarmTableViewCell.self, indexPath: indexPath)
-        cell.dataBind(alarmSettingList[indexPath.row])
+        cell.setDataBind(alarmSettingList[indexPath.row])
         return cell
     }
 }

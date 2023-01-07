@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 import Then
 
-final class WakeUpTimeViewController: UIViewController {
+final class WakeUpTimeViewController: SettingBaseViewController {
     
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setLayout()
+        setDelegate()
     }
 }
 
@@ -26,31 +26,41 @@ extension WakeUpTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        view.backgroundColor = .white
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(backButtonDidTap))
-        navigationItem.leftBarButtonItem?.tintColor = Color.black
         navigationItem.title = "기상시간 설정"
-    }
-    
-    // MARK: - Layout Helper
-    
-    private func setLayout() {
         
+        titleLabel.do {
+            $0.text = "기상시간을 변경해주세요"
+        }
     }
     
     // MARK: - Methods
     
-    private func popToSettingViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: - @objc Methods
-    
-    @objc private func backButtonDidTap() {
-        popToSettingViewController()
+    private func setDelegate() {
+        selectCollectionView.dataSource = self
     }
 }
+
+// MARK: - UICollectionViewDataSource
+
+extension WakeUpTimeViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(type: SetSelectCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(info: "기상시간", pickData: "")
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            halfModal(title: "기상시간 설정")
+        default:
+            halfModal(title: "기상시간 설정")
+        }
+    }
+}
+
