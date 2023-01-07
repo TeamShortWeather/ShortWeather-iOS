@@ -75,6 +75,41 @@ extension FirstInfoViewController {
         navigationController?.pushViewController(secondVC, animated: true)
     }
     
+    private func setCellState(cell: EnterInfoCollectionViewCell, indexPath: IndexPath) {
+        if isCellTouched[indexPath.row] {
+            switch indexPath.row {
+            case 0:
+                if gender.isEmpty {
+                    cell.unselectCell()
+                } else {
+                    cell.selectCell()
+                }
+            case 1:
+                if age.isEmpty {
+                    cell.unselectCell()
+                } else {
+                    cell.selectCell()
+                }
+            case 2:
+                if tempResponse.isEmpty {
+                    cell.unselectCell()
+                } else {
+                    cell.selectCell()
+                }
+            default:
+                break
+            }
+        } else {
+            cell.untouched()
+        }
+    }
+    
+    private func presentToListViewController(indexPath: IndexPath, infoType: InfoType) {
+        let vc = ListInfoViewController(infoText: info[indexPath.row], listData: cellInfo[indexPath.row], infoType: infoType)
+        vc.delegate = self
+        presentToHalfModalViewController(vc)
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func checkButtonDidTap() {
@@ -102,51 +137,19 @@ extension FirstInfoViewController: UICollectionViewDataSource {
         default:
             break
         }
-        if isCellTouched[indexPath.row] {
-            switch indexPath.row {
-            case 0:
-                if gender.isEmpty {
-                    cell.unselectCell()
-                } else {
-                    cell.selectCell()
-                }
-            case 1:
-                cell.setDataBind(infoText: info[indexPath.row], data: age)
-                if age.isEmpty {
-                    cell.unselectCell()
-                } else {
-                    cell.selectCell()
-                }
-            case 2:
-                cell.setDataBind(infoText: info[indexPath.row], data: tempResponse)
-                if tempResponse.isEmpty {
-                    cell.unselectCell()
-                } else {
-                    cell.selectCell()
-                }
-            default:
-                break
-            }
-        } else {
-            cell.untouched()
-        }
+        setCellState(cell: cell, indexPath: indexPath)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         isCellTouched[indexPath.row] = true
         switch indexPath.row {
-        case 0:let vc = ListInfoViewController(infoText: info[indexPath.row], listData: cellInfo[indexPath.row], infoType: .gender)
-            vc.delegate = self
-            presentToHalfModalViewController(vc)
+        case 0:
+            presentToListViewController(indexPath: indexPath, infoType: .gender)
         case 1:
-            let vc = ListInfoViewController(infoText: info[indexPath.row], listData: cellInfo[indexPath.row], infoType: .age)
-            vc.delegate = self
-            presentToHalfModalViewController(vc)
+            presentToListViewController(indexPath: indexPath, infoType: .age)
         case 2:
-            let vc = ListInfoViewController(infoText: info[indexPath.row], listData: cellInfo[indexPath.row], infoType: .tempResponse)
-            vc.delegate = self
-            presentToHalfModalViewController(vc)
+            presentToListViewController(indexPath: indexPath, infoType: .tempResponse)
         default:
             break
         }
@@ -159,12 +162,12 @@ extension FirstInfoViewController: ListInfoViewControllerDelegate {
     }
     
     func getInfoData(userInfoData: UserInfo) {
-        switch userInfoData.infoType {
-        case .gender:
+        let infoType = userInfoData.infoType
+        if infoType == .gender {
             self.gender = userInfoData.infoData
-        case .age:
+        } else if infoType == .age {
             self.age = userInfoData.infoData
-        case .tempResponse:
+        } else if infoType == .tempResponse {
             self.tempResponse = userInfoData.infoData
         }
         infoCollectionView.reloadData()

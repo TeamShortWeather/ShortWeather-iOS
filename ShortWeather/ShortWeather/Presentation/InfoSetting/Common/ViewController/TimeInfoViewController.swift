@@ -12,7 +12,8 @@ import SnapKit
 import Then
 
 protocol TimeInfoViewControllerDelegate: AnyObject {
-    func sendData(pickData: String)
+    func getNullData()
+    func getInfoData(userInfoData: UserInfo)
 }
 
 final class TimeInfoViewController: UIViewController {
@@ -21,7 +22,7 @@ final class TimeInfoViewController: UIViewController {
     
     private let titleLabel: UILabel = UILabel()
     private let datePicker: UIDatePicker = UIDatePicker()
-    private let saveButton: UIButton = UIButton()
+    private let saveButton: CheckButton = CheckButton()
     
     // MARK: - Properties
     
@@ -61,19 +62,17 @@ extension TimeInfoViewController {
         }
         
         datePicker.do {
+            $0.backgroundColor = Color.white
             $0.datePickerMode = UIDatePicker.Mode.time
             $0.preferredDatePickerStyle = .wheels
-            $0.backgroundColor = Color.white
             $0.locale = Locale(identifier: "ko-KR")
             $0.minuteInterval = 30
         }
         
         saveButton.do {
             $0.setTitle("저장", for: .normal)
-            $0.setTitleColor(Color.white, for: .normal)
-            $0.backgroundColor = Color.pointColor
-            $0.layer.cornerRadius = 15
-            $0.addTarget(self, action: #selector(backButton), for: .touchUpInside)
+            $0.setState(.allow)
+            $0.addTarget(self, action: #selector(saveButtonDidTap), for: .touchUpInside)
         }
     }
     
@@ -104,19 +103,14 @@ extension TimeInfoViewController {
     
     // MARK: - @objc Methods
     
-    @objc private func backButton() {
+    @objc private func saveButtonDidTap() {
         let timeFormatter = DateFormatter()
         timeFormatter.timeStyle = .none
         timeFormatter.dateFormat = "a h시 mm분"
-        
-        let strDate = timeFormatter.string(from: datePicker.date) // String으로 변환
-        
+        let strDate = timeFormatter.string(from: datePicker.date)
         timeFormatter.dateFormat = "a"
         let a = timeFormatter.string(from: datePicker.date)
-        print(a)
-        
-        print(strDate)
-        delegate?.sendData(pickData: strDate)
+        delegate?.getInfoData(userInfoData: UserInfo(infoData: a, infoType: .wakeUpTime))
         self.dismiss(animated: true, completion: nil)
     }
 }
