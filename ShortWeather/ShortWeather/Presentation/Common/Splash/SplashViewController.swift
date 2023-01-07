@@ -34,7 +34,9 @@ extension SplashViewController {
         view.backgroundColor = .white
         view.addSubview(splashImageView)
         
+//        splashImageView.backgroundColor = .red
         splashImageView.do {
+            $0.contentMode = .scaleAspectFit
             $0.play { [weak self] _ in
                 self?.isExistInform()
             }
@@ -45,7 +47,9 @@ extension SplashViewController {
     
     private func setLayout() {
         splashImageView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.centerY.centerX.equalToSuperview()
+            $0.width.equalTo(CGFloat(108).adjusted)
+            $0.height.equalTo(CGFloat(153).adjusted)
         }
     }
     
@@ -56,7 +60,7 @@ extension SplashViewController {
         if isUser {
             UIViewController.modifyRootViewController(TodayWeatherViewController())
         } else {
-            UIViewController.modifyRootViewController(FirstInfoViewController())
+//            UIViewController.modifyRootViewController(FirstInfoViewController())
         }
     }
 }

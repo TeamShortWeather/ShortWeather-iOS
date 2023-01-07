@@ -16,25 +16,18 @@ class SettingBaseViewController: UIViewController {
     // MARK: - UI Components
     
     let titleLabel: UILabel = UILabel()
-    let selectCollectionView: UICollectionView = {
+    let infoCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private let checkButton: UIButton = UIButton()
-    
-    // MARK: - Properties
-    
-    var wakeUpTime: String?
-    var goingOutTime: String?
-    var goingHomeTime: String?
+    let checkButton: CheckButton = CheckButton()
     
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUI()
         setLayout()
         setDelegate()
@@ -42,48 +35,36 @@ class SettingBaseViewController: UIViewController {
 }
 
 extension SettingBaseViewController {
+    
     // MARK: - UI Components Property
     
     private func setUI() {
         view.backgroundColor = .white
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(backButtonDidTap))
-        navigationItem.leftBarButtonItem?.tintColor = Color.black
 
         titleLabel.do {
             $0.font = .fontGuide(.headline1)
         }
         
-        selectCollectionView.do {
+        infoCollectionView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.showsHorizontalScrollIndicator = false
             $0.backgroundColor = .clear
             $0.isScrollEnabled = false
             $0.registerCells(SetSelectCollectionViewCell.self)
         }
-        
-        checkButton.do {
-            $0.setTitle("확인", for: .normal)
-            $0.setTitleColor(.black, for: .normal)
-            $0.backgroundColor = Color.gray2
-            $0.layer.cornerRadius = 15
-        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
-        view.addSubviews(titleLabel, selectCollectionView, checkButton)
+        view.addSubviews(titleLabel, infoCollectionView, checkButton)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(29)
             $0.leading.equalToSuperview().offset(28)
         }
         
-        selectCollectionView.snp.makeConstraints {
+        infoCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(40)
             $0.leading.equalTo(titleLabel)
             $0.centerX.equalToSuperview()
@@ -100,33 +81,20 @@ extension SettingBaseViewController {
     
     // MARK: - Methods
     
-    private func popToSettingViewController() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     private func setDelegate() {
-        selectCollectionView.delegate = self
+        infoCollectionView.delegate = self
     }
     
-    // MARK: - @objc Methods
-    
-    @objc private func backButtonDidTap() {
-        popToSettingViewController()
-    }
-    
-    @objc func halfModal(title: String) {
-        let vc = TimeViewController(titleText: title, listType: .goingHomeTime)
-        vc.modalPresentationStyle = .pageSheet
-        vc.delegate = self
-        if let sheet = vc.sheetPresentationController {
+    public func presentToHalfModalViewController(_ viewController: UIViewController) {
+        viewController.modalPresentationStyle = .pageSheet
+        if let sheet = viewController.sheetPresentationController {
             sheet.detents = [.medium()] // 반만 고정
 //            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }
-        self.present(vc, animated: true, completion: nil);
+        self.present(viewController, animated: true, completion: nil);
     }
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -149,22 +117,5 @@ extension SettingBaseViewController: UISheetPresentationControllerDelegate {
     
     func sheetPresentationControllerDidChangeSelectedDetentIdentifier(_ sheetPresentationController: UISheetPresentationController) {
         print(sheetPresentationController.selectedDetentIdentifier == .large ? "large" : "medium")
-    }
-}
-
-// MARK: - TimeViewControllerDelegate
-
-extension SettingBaseViewController: TimeViewControllerDelegate {
-    
-    func sendData(pickData: String, listType: SecondInfoType) {
-        switch listType {
-        case .wakeUpTime:
-            self.wakeUpTime = pickData
-        case .goingOutTime:
-            self.goingOutTime = pickData
-        case .goingHomeTime:
-            self.goingHomeTime = pickData
-        }
-        selectCollectionView.reloadData()
     }
 }

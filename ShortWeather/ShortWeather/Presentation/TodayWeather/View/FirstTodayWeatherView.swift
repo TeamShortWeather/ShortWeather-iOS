@@ -20,7 +20,7 @@ final class FirstTodayWeatherView: UIView {
     private let reportCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 4
+        layout.minimumInteritemSpacing = 5
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
