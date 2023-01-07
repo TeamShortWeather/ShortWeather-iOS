@@ -16,7 +16,7 @@ class SettingBaseViewController: UIViewController {
     // MARK: - UI Components
     
     let titleLabel: UILabel = UILabel()
-    let selectCollectionView: UICollectionView = {
+    let infoCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -45,7 +45,7 @@ extension SettingBaseViewController {
             $0.font = .fontGuide(.headline1)
         }
         
-        selectCollectionView.do {
+        infoCollectionView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.showsHorizontalScrollIndicator = false
             $0.backgroundColor = .clear
@@ -64,14 +64,14 @@ extension SettingBaseViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        view.addSubviews(titleLabel, selectCollectionView, checkButton)
+        view.addSubviews(titleLabel, infoCollectionView, checkButton)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(29)
             $0.leading.equalToSuperview().offset(28)
         }
         
-        selectCollectionView.snp.makeConstraints {
+        infoCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(40)
             $0.leading.equalTo(titleLabel)
             $0.centerX.equalToSuperview()
@@ -89,7 +89,7 @@ extension SettingBaseViewController {
     // MARK: - Methods
     
     private func setDelegate() {
-        selectCollectionView.delegate = self
+        infoCollectionView.delegate = self
     }
     
     public func presentToHalfModalViewController(_ viewController: UIViewController) {

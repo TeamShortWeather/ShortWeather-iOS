@@ -37,7 +37,7 @@ extension CommuteTimeViewController {
         titleLabel.do {
             $0.text = "시간대를 변경해주세요"
         }
-        selectCollectionView.do {
+        infoCollectionView.do {
             $0.registerCells(SetSelectCollectionViewCell.self)
         }
     }
@@ -45,7 +45,7 @@ extension CommuteTimeViewController {
     // MARK: - Methods
 
     private func setDelegate() {
-        selectCollectionView.dataSource = self
+        infoCollectionView.dataSource = self
     }
 }
 

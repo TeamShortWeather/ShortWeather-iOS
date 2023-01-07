@@ -12,7 +12,8 @@ import SnapKit
 import Then
 
 protocol ListInfoViewControllerDelegate: AnyObject {
-    func getInfoData(selectData: String)
+    func getInfoData(userInfoData: UserInfo)
+    func getNullData()
 }
 
 final class ListInfoViewController: UIViewController {
@@ -27,13 +28,14 @@ final class ListInfoViewController: UIViewController {
     public weak var delegate: ListInfoViewControllerDelegate?
     private var infoText: String
     private var listData: [String]
+    private let infoType: InfoType
     
     // MARK: - Initializer
     
-    
-    init(infoText: String, listData: [String]) {
+    init(infoText: String, listData: [String], infoType: InfoType) {
         self.infoText = infoText
         self.listData = listData
+        self.infoType = infoType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -49,6 +51,12 @@ final class ListInfoViewController: UIViewController {
         setLayout()
         setDelegate()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.getNullData()
+    }
+
 }
 
 extension ListInfoViewController {
@@ -129,7 +137,7 @@ extension ListInfoViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.getInfoData(selectData: listData[indexPath.section])
+        delegate?.getInfoData(userInfoData: UserInfo(infoData: listData[indexPath.section], infoType: infoType))
         dismiss(animated: true)
     }
 }

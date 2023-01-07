@@ -37,8 +37,8 @@
 		52625C422967E00A007F483D /* FirstTodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C412967E00A007F483D /* FirstTodayWeatherData.swift */; };
 		52625C442967F62B007F483D /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C432967F62B007F483D /* ReportCollectionViewCell.swift */; };
 		52625C47296805B7007F483D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C46296805B7007F483D /* PaddingLabel.swift */; };
-		52625C4C29695A0C007F483D /* FirstInfoTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C4B29695A0C007F483D /* FirstInfoTestViewController.swift */; };
 		52625C5329696DD0007F483D /* ModalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C5229696DD0007F483D /* ModalType.swift */; };
+		52625C562969B2AF007F483D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C552969B2AF007F483D /* UserInfo.swift */; };
 		52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA496295C774A00DE6AE9 /* UIFont +.swift */; };
 		52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA499295C7BD800DE6AE9 /* URLConst.swift */; };
 		52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */; };
@@ -111,8 +111,8 @@
 		52625C412967E00A007F483D /* FirstTodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTodayWeatherData.swift; sourceTree = "<group>"; };
 		52625C432967F62B007F483D /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		52625C46296805B7007F483D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		52625C4B29695A0C007F483D /* FirstInfoTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoTestViewController.swift; sourceTree = "<group>"; };
 		52625C5229696DD0007F483D /* ModalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalType.swift; sourceTree = "<group>"; };
+		52625C552969B2AF007F483D /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		52CBA496295C774A00DE6AE9 /* UIFont +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont +.swift"; sourceTree = "<group>"; };
 		52CBA499295C7BD800DE6AE9 /* URLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
 		52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
@@ -191,7 +191,6 @@
 			children = (
 				AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */,
 				033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */,
-				52625C4B29695A0C007F483D /* FirstInfoTestViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -332,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				52625C412967E00A007F483D /* FirstTodayWeatherData.swift */,
+				52625C552969B2AF007F483D /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -768,9 +768,9 @@
 				52625C422967E00A007F483D /* FirstTodayWeatherData.swift in Sources */,
 				AB09FF6929630D7A004C54EE /* WeatherTableViewCellType.swift in Sources */,
 				AB3D5B552968679D00105FC9 /* SetSelectCollectionViewCell.swift in Sources */,
-				52625C4C29695A0C007F483D /* FirstInfoTestViewController.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
 				AB2590C92964522A008FEC2A /* HourCollectionViewCell.swift in Sources */,
+				52625C562969B2AF007F483D /* UserInfo.swift in Sources */,
 				52FBA6AD295590D500F263B3 /* SceneDelegate.swift in Sources */,
 				52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */,
 				AB3D5B4D29681C9200105FC9 /* CommuteTimeViewController.swift in Sources */,

@@ -33,7 +33,7 @@ extension WakeUpTimeViewController {
         titleLabel.do {
             $0.text = "기상시간을 변경해주세요"
         }
-        selectCollectionView.do {
+        infoCollectionView.do {
             $0.registerCells(SetSelectCollectionViewCell.self)
         }
     }
@@ -41,7 +41,7 @@ extension WakeUpTimeViewController {
     // MARK: - Methods
     
     private func setDelegate() {
-        selectCollectionView.dataSource = self
+        infoCollectionView.dataSource = self
     }
 }
 

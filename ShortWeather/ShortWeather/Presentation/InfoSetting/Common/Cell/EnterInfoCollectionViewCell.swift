@@ -29,11 +29,9 @@ class EnterInfoCollectionViewCell: UICollectionViewCell {
                 print("cell Selected!")
                 lineView.backgroundColor = Color.weatherBlue
             }
-            else {
-//                lineView.backgroundColor = Color.dustBad2
-            }
         }
     }
+    public var isTouched: Bool = false
     
     // MARK: - Initializer
 
@@ -106,12 +104,21 @@ extension EnterInfoCollectionViewCell {
     
     // MARK: - Methods
 
-    public func setDataBind(infoText: String) {
+    public func setDataBind(infoText: String, data: String) {
         explainLabel.text = infoText
+        dataLabel.text = data
     }
     
     public func selectCell() {
+        explainLabel.textColor = Color.gray7
+        bottomArrowImageView.tintColor = Color.gray4
         lineView.backgroundColor = Color.pointColor
+    }
+    
+    public func untouched() {
+        explainLabel.textColor = Color.gray7
+        bottomArrowImageView.tintColor = Color.gray4
+        lineView.backgroundColor = Color.gray1
     }
     
     public func unselectCell() {
