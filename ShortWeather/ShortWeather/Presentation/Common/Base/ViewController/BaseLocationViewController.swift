@@ -52,7 +52,6 @@ extension BaseLocationViewController {
         
         locationCollectionView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.showsHorizontalScrollIndicator = false
             $0.isPagingEnabled = true
         }
     }

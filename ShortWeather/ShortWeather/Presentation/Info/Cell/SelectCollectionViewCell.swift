@@ -22,7 +22,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
                 lineView.backgroundColor = Color.weatherBlue
             }
             else {
-                lineView.backgroundColor = Color.gray0
+                lineView.backgroundColor = Color.dustBad2
             }
         }
     }
