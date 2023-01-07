@@ -80,9 +80,8 @@ extension SelectCollectionViewCell {
         }
         
         selectDataLabel.snp.makeConstraints {
-            $0.bottom.equalToSuperview().offset(2)
-            $0.width.equalTo(275)
-            $0.height.equalTo(44)
+            $0.leading.equalToSuperview()
+            $0.bottom.equalTo(lineView.snp.top)
         }
         
         lineView.snp.makeConstraints {

@@ -81,7 +81,7 @@ extension AlarmTableViewCell {
     
     // MARK: - Methods
     
-    func dataBind(_ model: AlarmSetting) {
+    func setDataBind(_ model: AlarmSetting) {
         alarmLabel.text = model.title
         alarmDescriptionLabel.text = model.description
         alarmSwitchButton.isOn = model.isOn

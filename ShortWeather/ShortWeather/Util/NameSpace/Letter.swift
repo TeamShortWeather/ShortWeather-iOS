@@ -16,6 +16,10 @@ public enum Letter {
     public static let cloth = "옷"
     public static let setting = "설정"
     
+    
+    public static let dust = "미세"
+    public static let fineDust = "초미세"
+    
 }
 
 extension Letter {
