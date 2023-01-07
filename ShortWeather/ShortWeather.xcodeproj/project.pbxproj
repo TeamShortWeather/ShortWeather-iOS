@@ -174,13 +174,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0346A2EC2964126000E37FD2 /* Info */ = {
+		0346A2EC2964126000E37FD2 /* InfoSetting */ = {
 			isa = PBXGroup;
 			children = (
-				0346A2F1296412D500E37FD2 /* Cell */,
-				0346A3032965906B00E37FD2 /* ViewController */,
+				52625C4F2969698E007F483D /* Setting */,
+				52625C4E2969698A007F483D /* Info */,
+				52625C4D29696971007F483D /* BaseSetting */,
 			);
-			path = Info;
+			path = InfoSetting;
 			sourceTree = "<group>";
 		};
 		0346A2F1296412D500E37FD2 /* Cell */ = {
@@ -288,6 +289,33 @@
 			path = CustomClass;
 			sourceTree = "<group>";
 		};
+		52625C4D29696971007F483D /* BaseSetting */ = {
+			isa = PBXGroup;
+			children = (
+				AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */,
+			);
+			path = BaseSetting;
+			sourceTree = "<group>";
+		};
+		52625C4E2969698A007F483D /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				0346A2F1296412D500E37FD2 /* Cell */,
+				0346A3032965906B00E37FD2 /* ViewController */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		52625C4F2969698E007F483D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				AB3D5B3F2967ED7100105FC9 /* Cell */,
+				AB3D5B3E2967ED2100105FC9 /* ViewController */,
+				AB3D5B432967F38000105FC9 /* Model */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		52CBA498295C7BBA00DE6AE9 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,7 +408,6 @@
 			children = (
 				5212EADE29649C950084B95E /* BaseLocationViewController.swift */,
 				52FBA6AE295590D500F263B3 /* BaseViewController.swift */,
-				AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -438,11 +465,10 @@
 		52FBA6CC2955B8E700F263B3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				0346A2EC2964126000E37FD2 /* Info */,
+				0346A2EC2964126000E37FD2 /* InfoSetting */,
 				5212EAD6296492E90084B95E /* Main */,
 				52FBA6D92955C85300F263B3 /* Common */,
 				AB09FF602962BB0B004C54EE /* TodayWeather */,
-				AB3D5B392967E35B00105FC9 /* Setting */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -570,16 +596,6 @@
 				AB2590C82964522A008FEC2A /* HourCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
-			sourceTree = "<group>";
-		};
-		AB3D5B392967E35B00105FC9 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				AB3D5B432967F38000105FC9 /* Model */,
-				AB3D5B3F2967ED7100105FC9 /* Cell */,
-				AB3D5B3E2967ED2100105FC9 /* ViewController */,
-			);
-			path = Setting;
 			sourceTree = "<group>";
 		};
 		AB3D5B3E2967ED2100105FC9 /* ViewController */ = {
