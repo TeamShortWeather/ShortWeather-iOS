@@ -59,8 +59,12 @@ extension TimeTableViewCell {
     
     private func setUI() {
         contentView.backgroundColor = .white
-        self.selectionStyle = .none
+        
+        selectionStyle = .none
+        
         weatherButton.isSelected = true
+        
+        setHourButton(weatherButton, dustButton, precipitationButton)
         
         titleLabel.do {
             $0.text = "시간대별 날씨"
@@ -74,43 +78,15 @@ extension TimeTableViewCell {
         }
         
         weatherButton.do {
-            $0.setTitleColor(Color.gray7, for: .normal)
-            $0.setBackgroundColor(Color.gray0, for: .normal)
-            $0.setTitleColor(Color.white, for: .selected)
-            $0.setBackgroundColor(Color.pointColor, for: .selected)
-            
-            $0.titleLabel?.font = .fontGuide(.subhead3)
             $0.setTitle("날씨", for: .normal)
-            $0.clipsToBounds = true
-            $0.layer.cornerRadius = 16
         }
         
         dustButton.do {
-            $0.titleLabel?.font = .fontGuide(.subhead3)
             $0.setTitle("미세먼지", for: .normal)
-            
-            $0.setTitleColor(Color.gray7, for: .normal)
-            $0.setBackgroundColor(Color.gray0, for: .normal)
-            
-            $0.setTitleColor(Color.white, for: .selected)
-            $0.setBackgroundColor(Color.pointColor, for: .selected)
-            
-            $0.clipsToBounds = true
-            $0.layer.cornerRadius = 16
         }
         
         precipitationButton.do {
-            $0.titleLabel?.font = .fontGuide(.subhead3)
             $0.setTitle("강수", for: .normal)
-            
-            $0.setTitleColor(Color.gray7, for: .normal)
-            $0.setBackgroundColor(Color.gray0, for: .normal)
-            
-            $0.setTitleColor(Color.white, for: .selected)
-            $0.setBackgroundColor(Color.pointColor, for: .selected)
-
-            $0.clipsToBounds = true
-            $0.layer.cornerRadius = 16
         }
         
         buttonStackView.do {
@@ -174,6 +150,18 @@ extension TimeTableViewCell {
     private func setDelegate() {
         hourCollectionView.delegate = self
         hourCollectionView.dataSource = self
+    }
+    
+    private func setHourButton(_ buttons: UIButton...) {
+        buttons.forEach {
+            $0.titleLabel?.font = .fontGuide(.subhead3)
+            $0.setTitleColor(Color.gray7, for: .normal)
+            $0.setBackgroundColor(Color.gray0, for: .normal)
+            $0.setTitleColor(Color.white, for: .selected)
+            $0.setBackgroundColor(Color.pointColor, for: .selected)
+            $0.clipsToBounds = true
+            $0.layer.cornerRadius = 16
+        }
     }
     
     // MARK: - @objc Methods

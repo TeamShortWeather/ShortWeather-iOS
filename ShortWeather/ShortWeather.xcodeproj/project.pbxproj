@@ -76,6 +76,8 @@
 		AB3D5B4D29681C9200105FC9 /* CommuteTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B4C29681C9200105FC9 /* CommuteTimeViewController.swift */; };
 		AB3D5B4F29681CBA00105FC9 /* WakeUpTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B4E29681CBA00105FC9 /* WakeUpTimeViewController.swift */; };
 		AB3D5B51296828E800105FC9 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */; };
+		AB3D5B552968679D00105FC9 /* SetSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B542968679D00105FC9 /* SetSelectCollectionViewCell.swift */; };
+		AB3D5B572968909A00105FC9 /* SettingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */; };
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +150,8 @@
 		AB3D5B4C29681C9200105FC9 /* CommuteTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTimeViewController.swift; sourceTree = "<group>"; };
 		AB3D5B4E29681CBA00105FC9 /* WakeUpTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeViewController.swift; sourceTree = "<group>"; };
 		AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
+		AB3D5B542968679D00105FC9 /* SetSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSelectCollectionViewCell.swift; sourceTree = "<group>"; };
+		AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBaseViewController.swift; sourceTree = "<group>"; };
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -574,6 +578,7 @@
 		AB3D5B3E2967ED2100105FC9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */,
 				AB3D5B3C2967E86700105FC9 /* SettingViewController.swift */,
 				AB3D5B4C29681C9200105FC9 /* CommuteTimeViewController.swift */,
 				AB3D5B462967F69600105FC9 /* AlarmSettingViewController.swift */,
@@ -587,6 +592,7 @@
 			children = (
 				AB3D5B402967ED8400105FC9 /* SettingTableViewCell.swift */,
 				AB3D5B482968084000105FC9 /* AlarmTableViewCell.swift */,
+				AB3D5B542968679D00105FC9 /* SetSelectCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				033E7F712965A8560051B349 /* ListViewController.swift in Sources */,
 				52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */,
 				5212EAE42965636B0084B95E /* FirstTodayWeatherView.swift in Sources */,
+				AB3D5B572968909A00105FC9 /* SettingBaseViewController.swift in Sources */,
 				AB3D5B4F29681CBA00105FC9 /* WakeUpTimeViewController.swift in Sources */,
 				AB3D5B412967ED8400105FC9 /* SettingTableViewCell.swift in Sources */,
 				033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */,
@@ -749,6 +756,7 @@
 				52625C442967F62B007F483D /* ReportCollectionViewCell.swift in Sources */,
 				52625C422967E00A007F483D /* FirstTodayWeatherData.swift in Sources */,
 				AB09FF6929630D7A004C54EE /* CellType.swift in Sources */,
+				AB3D5B552968679D00105FC9 /* SetSelectCollectionViewCell.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
 				AB2590C92964522A008FEC2A /* HourCollectionViewCell.swift in Sources */,
 				52FBA6AD295590D500F263B3 /* SceneDelegate.swift in Sources */,

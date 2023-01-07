@@ -10,14 +10,18 @@ import UIKit
 import SnapKit
 import Then
 
-final class CommuteTimeViewController: UIViewController {
+final class CommuteTimeViewController: SettingBaseViewController {
+    
+    // MARK: - Properties
+    
+    let info: [String] = ["외출시간", "귀가시간"]
     
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setLayout()
+        setDelegate()
     }
 }
 
@@ -26,31 +30,46 @@ extension CommuteTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        view.backgroundColor = .white
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(backButtonDidTap))
-        navigationItem.leftBarButtonItem?.tintColor = Color.black
         navigationItem.title = "외출 / 귀가시간대 설정"
-    }
-    
-    // MARK: - Layout Helper
-    
-    private func setLayout() {
         
+        titleLabel.do {
+            $0.text = "시간대를 변경해주세요"
+        }
     }
     
     // MARK: - Methods
-    
-    private func popToSettingViewController() {
-        navigationController?.popViewController(animated: true)
+
+    private func setDelegate() {
+        selectCollectionView.dataSource = self
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension CommuteTimeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
     }
     
-    // MARK: - @objc Methods
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(type: SetSelectCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(info: info[indexPath.row], pickData: "")
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension CommuteTimeViewController {
     
-    @objc private func backButtonDidTap() {
-        popToSettingViewController()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            halfModal(title: "외출시간 설정")
+        case 1:
+            halfModal(title: "귀가시간 설정")
+        default:
+            halfModal(title: "외출시간 설정")
+        }
     }
 }
