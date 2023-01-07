@@ -32,6 +32,8 @@ final class ListInfoViewController: UIViewController {
     
     
     init(infoText: String, listData: [String]) {
+        self.infoText = infoText
+        self.listData = listData
         super.init(nibName: nil, bundle: nil)
     }
     

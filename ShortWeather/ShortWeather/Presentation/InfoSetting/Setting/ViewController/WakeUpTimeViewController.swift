@@ -60,12 +60,12 @@ extension WakeUpTimeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            halfModal(title: "기상시간 설정")
-        default:
-            halfModal(title: "기상시간 설정")
-        }
+//        switch indexPath.row {
+//        case 0:
+//            halfModal(title: "기상시간 설정")
+//        default:
+//            halfModal(title: "기상시간 설정")
+//        }
     }
 }
 

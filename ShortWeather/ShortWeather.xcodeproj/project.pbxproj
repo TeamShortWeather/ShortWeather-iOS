@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		033BF9922969669D008B5BFB /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033BF9912969669D008B5BFB /* CheckButton.swift */; };
-		033E7F712965A8560051B349 /* ListModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F702965A8560051B349 /* ListModalViewController.swift */; };
+		033E7F712965A8560051B349 /* ListInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F702965A8560051B349 /* ListInfoViewController.swift */; };
 		033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */; };
 		033E7F752965DA2A0051B349 /* TimeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F742965DA2A0051B349 /* TimeInfoViewController.swift */; };
 		0346A2F829644B7600E37FD2 /* EnterInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0346A2F729644B7600E37FD2 /* EnterInfoCollectionViewCell.swift */; };
@@ -86,7 +86,7 @@
 
 /* Begin PBXFileReference section */
 		033BF9912969669D008B5BFB /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
-		033E7F702965A8560051B349 /* ListModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModalViewController.swift; sourceTree = "<group>"; };
+		033E7F702965A8560051B349 /* ListInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfoViewController.swift; sourceTree = "<group>"; };
 		033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
 		033E7F742965DA2A0051B349 /* TimeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInfoViewController.swift; sourceTree = "<group>"; };
 		0346A2F729644B7600E37FD2 /* EnterInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */,
-				033E7F702965A8560051B349 /* ListModalViewController.swift */,
+				033E7F702965A8560051B349 /* ListInfoViewController.swift */,
 				033E7F742965DA2A0051B349 /* TimeInfoViewController.swift */,
 			);
 			path = ViewController;
@@ -726,7 +726,7 @@
 				AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */,
 				523BB085295D735D0004B343 /* Color.swift in Sources */,
 				52D6A38D2961A08D00BF4287 /* SideMenuView.swift in Sources */,
-				033E7F712965A8560051B349 /* ListModalViewController.swift in Sources */,
+				033E7F712965A8560051B349 /* ListInfoViewController.swift in Sources */,
 				52CBA4BD295C8EC800DE6AE9 /* PretendardType.swift in Sources */,
 				5212EAE42965636B0084B95E /* FirstTodayWeatherView.swift in Sources */,
 				AB3D5B572968909A00105FC9 /* SettingBaseViewController.swift in Sources */,

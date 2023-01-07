@@ -161,13 +161,13 @@ extension SecondInfoViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
-        if indexPath.item == 0 {
-            cell.setDataBind(info: info[indexPath.item], pickData: wakeUpTime ?? "")
-        } else if indexPath.item == 1 {
-            cell.setDataBind(info: info[indexPath.item], pickData: goingOutTime ?? "")
-        } else {
-            cell.setDataBind(info: info[indexPath.item], pickData: goingHomeTime ?? "")
-        }
+//        if indexPath.item == 0 {
+//            cell.setDataBind(info: info[indexPath.item], pickData: wakeUpTime ?? "")
+//        } else if indexPath.item == 1 {
+//            cell.setDataBind(info: info[indexPath.item], pickData: goingOutTime ?? "")
+//        } else {
+//            cell.setDataBind(info: info[indexPath.item], pickData: goingHomeTime ?? "")
+//        }
         return cell
     }
     

@@ -60,7 +60,7 @@ extension SplashViewController {
         if isUser {
             UIViewController.modifyRootViewController(TodayWeatherViewController())
         } else {
-            UIViewController.modifyRootViewController(FirstInfoViewController())
+//            UIViewController.modifyRootViewController(FirstInfoViewController())
         }
     }
 }

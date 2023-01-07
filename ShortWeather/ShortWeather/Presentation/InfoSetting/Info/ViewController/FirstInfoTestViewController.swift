@@ -30,7 +30,6 @@ final class FirstInfoTestViewController: SettingBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setLayout()
         setDelegate()
     }
 }
@@ -40,17 +39,18 @@ extension FirstInfoTestViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
+        titleLabel.do {
+            $0.text = "입력하신 정보를 바탕으로 \n생활에 맞는 날씨를 알려드릴게요"
+            $0.numberOfLines = 0
+        }
+        
         checkButton.do {
             $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
         }
+        
         selectCollectionView.do {
             $0.registerCells(EnterInfoCollectionViewCell.self)
         }
-    }
-    
-    // MARK: - Layout Helper
-    
-    private func setLayout() {
     }
     
     // MARK: - Methods
@@ -60,7 +60,7 @@ extension FirstInfoTestViewController {
         selectCollectionView.dataSource = self
     }
     
-    private func pushToSecondVC() {
+    private func pushToSecondViewController() {
         let secondVC = SecondInfoViewController()
         navigationController?.pushViewController(secondVC, animated: true)
     }
@@ -68,7 +68,7 @@ extension FirstInfoTestViewController {
     // MARK: - @objc Methods
     
     @objc private func checkButtonDidTap() {
-        pushToSecondVC()
+        pushToSecondViewController()
     }
 }
 
@@ -87,7 +87,15 @@ extension FirstInfoTestViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = ListInfoViewController(titleText: <#T##String#>, listDatas: <#T##[String]#>, listType: <#T##FirstInfoType#>)
+        let vc = ListInfoViewController(infoText: info[indexPath.row], listData: cellInfo[indexPath.row])
+        vc.delegate = self
         presentToHalfModalViewController(vc)
+    }
+}
+
+extension FirstInfoTestViewController: ListInfoViewControllerDelegate {
+    
+    func getInfoData(selectData: String) {
+        <#code#>
     }
 }

@@ -69,13 +69,13 @@ extension CommuteTimeViewController: UICollectionViewDataSource {
 extension CommuteTimeViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            halfModal(title: "외출시간 설정")
-        case 1:
-            halfModal(title: "귀가시간 설정")
-        default:
-            halfModal(title: "외출시간 설정")
-        }
+//        switch indexPath.row {
+//        case 0:
+//            halfModal(title: "외출시간 설정")
+//        case 1:
+//            halfModal(title: "귀가시간 설정")
+//        default:
+//            halfModal(title: "외출시간 설정")
+//        }
     }
 }
