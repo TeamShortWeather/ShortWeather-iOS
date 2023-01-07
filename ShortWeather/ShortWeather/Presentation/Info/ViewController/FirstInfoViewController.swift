@@ -36,7 +36,6 @@ class FirstInfoViewController: UIViewController {
     var gender: String?
     var age: String?
     var tempResponse: String?
-    var selectStatus: String?
     
     var infoModel: [String] = [
         "성별을 선택해 주세요",
@@ -146,8 +145,7 @@ extension FirstInfoViewController {
         vc.modalPresentationStyle = .pageSheet
         vc.delegate = self
         if let sheet = vc.sheetPresentationController {
-//            sheet.detents = [.medium()] // 반만 고정
-            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
+            sheet.detents = [.medium(), .large()]
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }
@@ -178,47 +176,44 @@ extension FirstInfoViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
         if indexPath.item == 0 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: gender ?? "")
-//            cell.statusChange(status: selectStatus ?? "")
-            
             if let _ = gender {
-                cell.statusChange(status: selectStatus ?? "")
+                cell.selectCell()
             }
-            print("1")
         } else if indexPath.item == 1 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: age ?? "")
 //            cell.statusChange(status: selectStatus ?? "")
-//            print("2")
             if let _ = age {
-                cell.statusChange(status: selectStatus ?? "")
+                cell.selectCell()
+                print("2")
+//                cell.statusChange(status: selectStatus ?? "")
             }
         } else if indexPath.item == 2 {
             cell.setDataBind(info: infoModel[indexPath.item], pickData: tempResponse ?? "")
 //            cell.statusChange(status: selectStatus ?? "")
-//            print("3")
             if let _ = tempResponse {
-                cell.statusChange(status: selectStatus ?? "")
+                print("3")
+                cell.selectCell()
+//                cell.statusChange(status: selectStatus ?? "")
             }
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueCell(type: SelectCollectionViewCell.self, indexPath: indexPath)
+        cell.contentView.backgroundColor = .red
+        cell.selectCell()
+        collectionView.reloadData()
+        view.layoutIfNeeded()
+        
         switch (indexPath.item) {
         case 0:
             halfModal(title: "성별을 선택해 주세요", listData: genderListModel, listType: .gender, status: "")
-//            let listVC = ListViewController(titleText: "성별을 선택해 주세요", listDatas: genderListModel)
-//            listVC.modalPresentationStyle = .formSheet
-//            self.present(listVC, animated: true, completion: nil);
         case 1:
             halfModal(title: "연령대를 선택해 주세요", listData: ageListModel, listType: .age, status: "")
-//            let listVC = ListViewController(titleText: "연령대를 선택해 주세요", listDatas: ageListModel)
-//            listVC.modalPresentationStyle = .formSheet
-//            self.present(listVC, animated: true, completion: nil);
         case 2:
             halfModal(title: "온도민감도를 알려주세요", listData: temListModel, listType: .tempResponse, status: "")
-//            let listVC = ListViewController(titleText: "온도민감도를 알려주세요", listDatas: temListModel)
-//            listVC.modalPresentationStyle = .formSheet
-//            self.present(listVC, animated: true, completion: nil);
         default:
             print("FirstInfoViewController 오류")
         }
@@ -233,19 +228,23 @@ extension FirstInfoViewController: UISheetPresentationControllerDelegate {
 }
 
 extension FirstInfoViewController: ListViewControllerDelegate {
+    
     func sendData(pickData: String, listType: FirstInfoType, status: String) {
+//        self.selectStatus = status
         switch listType {
         case .gender:
             self.gender = pickData
-            self.selectStatus = status
         case .age:
             self.age = pickData
-            self.selectStatus = status
         case .tempResponse:
             self.tempResponse = pickData
-            self.selectStatus = status
         }
         selectCollectionView.reloadData()
     }
+    
+//    func 데이터선택(status: String) {
+//        self.selectStatus = status
+//        selectCollectionView.reloadData()
+//    }
 }
 

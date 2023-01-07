@@ -29,6 +29,7 @@ final class ListViewController: UIViewController {
     private var titleText: String
     private var listDatas: [String]
     private var selectStatus: String
+    private let data: String = ""
     
     // MARK: - Initializer
     
@@ -128,14 +129,16 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueCell(type: ListTableViewCell.self, indexPath: indexPath)
         cell.setDataBind(model: listDatas[indexPath.section])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectStatus = "blue"
+//        selectStatus = "blue"
         delegate?.sendData(pickData: listDatas[indexPath.section], listType: listType, status: selectStatus)
+//        print(selectStatus)
         if navigationController == nil {
             dismiss(animated: true, completion: nil)
         }

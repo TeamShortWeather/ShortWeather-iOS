@@ -13,23 +13,15 @@ import Then
 
 
 class SelectCollectionViewCell: UICollectionViewCell {
+    
+    let identifier = "SelectCollectionViewCell"
         
     // MARK: - UI Components
-
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                lineView.backgroundColor = Color.pointColor
-            }
-            else {
-                lineView.backgroundColor = Color.gray0
-            }
-        }
-    }
+    
     private let explainLabel: UILabel = UILabel()
     private let bottomArrowImageView: UIImageView = UIImageView()
     private let selectDataLabel: UILabel = UILabel()
-    private let lineView: UIView = UIView()
+    public let lineView: UIView = UIView()
     
     // MARK: - Initializer
 
@@ -37,6 +29,7 @@ class SelectCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setUI()
         setLayout()
+//        selectCell()
     }
     
     required init?(coder: NSCoder) {
@@ -107,16 +100,15 @@ extension SelectCollectionViewCell {
         selectDataLabel.text = pickData
     }
     
-    public func statusChange(status: String) {
-        if (status == "blue") {
-            lineView.backgroundColor = Color.pointColor
-        }
-        else if (status == "red") {
-            lineView.backgroundColor = Color.dustBad2
-        }
-        else if (status == ""){
-            lineView.backgroundColor = Color.gray0
-        }
+    public func selectCell() {
+        lineView.backgroundColor = Color.pointColor
+        print("Tapp!!!!")
+    }
+    
+    public func unselectCell() {
+        lineView.backgroundColor = Color.dustBad2
+        explainLabel.textColor = Color.dustBad2
+        bottomArrowImageView.tintColor = Color.dustBad2
     }
 }
 
