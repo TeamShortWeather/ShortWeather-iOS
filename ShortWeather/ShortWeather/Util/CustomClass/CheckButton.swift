@@ -5,53 +5,43 @@
 //  Created by KJ on 2023/01/07.
 //
 
-enum ButtonState {
+import UIKit
+
+enum CheckButtonState {
     case allow
     case notAllow
 }
 
-import UIKit
-
 class CheckButton: UIButton {
     
-    private let buttonName: String
-    private let buttonState: ButtonState
+    // MARK: - Initializer
     
-    init(buttonName: String, buttonState: ButtonState) {
-        self.buttonName = buttonName
-        self.buttonState = buttonState
+    init() {
         super.init(frame: .zero)
-        setUIButton()
+        setUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUIButton() {
-        setTitle(buttonName, for: .normal)
+    // MARK: - UI Components Property
+    
+    func setUI() {
         layer.cornerRadius = 15
         titleLabel?.font = .fontGuide(.subhead2)
-        switch buttonState {
-        case .allow:
-            allowButton()
-        case.notAllow:
-            notAllowButton()
+        setState(.notAllow)
+    }
+    
+    // MARK: - Methods
+    
+    public func setState(_ state: CheckButtonState) {
+        if state == .allow {
+            setTitleColor(Color.white, for: .normal)
+            backgroundColor = Color.pointColor
+        } else {
+            setTitleColor(Color.black, for: .normal)
+            backgroundColor = Color.gray2
         }
-    }
-    
-    func allowButton() {
-        setTitleColor(Color.white, for: .normal)
-        backgroundColor = Color.pointColor
-    }
-    
-    func notAllowButton() {
-        setTitleColor(Color.black, for: .normal)
-        backgroundColor = Color.gray2
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        let size = UIScreen.main.bounds.width - 56
-        return CGSize(width: size, height: 57)
     }
 }

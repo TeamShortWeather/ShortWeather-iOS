@@ -22,7 +22,7 @@ class SettingBaseViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    let checkButton: UIButton = UIButton()
+    let checkButton: CheckButton = CheckButton()
     
     // MARK: - View Life Cycle
 
@@ -51,13 +51,6 @@ extension SettingBaseViewController {
             $0.backgroundColor = .clear
             $0.isScrollEnabled = false
             $0.registerCells(SetSelectCollectionViewCell.self)
-        }
-
-        checkButton.do {
-            $0.setTitle("확인", for: .normal)
-            $0.setTitleColor(.black, for: .normal)
-            $0.backgroundColor = Color.gray2
-            $0.layer.cornerRadius = 15
         }
     }
     

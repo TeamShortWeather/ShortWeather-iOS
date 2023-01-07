@@ -12,7 +12,7 @@ import SnapKit
 import Then
 
 protocol TimeInfoViewControllerDelegate: AnyObject {
-    func sendData(pickData: String, listType: SecondInfoType)
+    func sendData(pickData: String)
 }
 
 final class TimeInfoViewController: UIViewController {
@@ -25,15 +25,13 @@ final class TimeInfoViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let listType: SecondInfoType
     private var titleText: String
     public weak var delegate: TimeInfoViewControllerDelegate?
     
     // MARK: - Initializer
     
-    init(titleText: String, listType: SecondInfoType) {
+    init(titleText: String) {
         self.titleText = titleText
-        self.listType = listType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -118,7 +116,7 @@ extension TimeInfoViewController {
         print(a)
         
         print(strDate)
-        delegate?.sendData(pickData: strDate, listType: listType)
+        delegate?.sendData(pickData: strDate)
         self.dismiss(animated: true, completion: nil)
     }
 }

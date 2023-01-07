@@ -54,6 +54,7 @@ extension FirstInfoViewController {
         }
         
         checkButton.do {
+            $0.setTitle("다음", for: .normal)
             $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
         }
         
