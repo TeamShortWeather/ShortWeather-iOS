@@ -14,6 +14,7 @@ final class TodayWeatherCollectionViewCell: UICollectionViewCell {
     private let scrollView: UIScrollView = UIScrollView()
     private let firstTodayWeatherView: FirstTodayWeatherView = FirstTodayWeatherView(frame: .zero)
     private let secondTodayWeatherView: SecondTodayWeatherView = SecondTodayWeatherView(frame: .zero)
+    private var refreshControl = UIRefreshControl()
     
     // MARK: - Initializer
     
@@ -36,9 +37,14 @@ extension TodayWeatherCollectionViewCell {
         scrollView.do {
             $0.isPagingEnabled = true
             $0.showsVerticalScrollIndicator = false
+            $0.refreshControl = refreshControl
         }
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        scrollView.delegate = self
     }
-    
+        
     // MARK: - Layout Helper
     
     private func setLayout() {
@@ -60,4 +66,23 @@ extension TodayWeatherCollectionViewCell {
             $0.bottom.equalToSuperview()
         }
     }
+    
+    // MARK: - Methods
+    
+    @objc private func refresh() {
+//            clearAllViewData()
+//            collectionView.reloadData() //
+        scrollView.reloadInputViews()
+        print("새로고침")
+    }
+}
+
+extension TodayWeatherCollectionViewCell: UIScrollViewDelegate {
+
+//    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if (refreshControl.isRefreshing) {
+//            self.refreshControl.endRefreshing()
+////            loadServer()
+//        }
+//    }
 }

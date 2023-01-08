@@ -12,6 +12,11 @@ import Then
 
 final class WakeUpTimeViewController: SettingBaseViewController {
     
+    // MARK: - Properties
+
+    let info: String = "기상시간"
+    private var wakeUpTime: String = ""
+    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -33,8 +38,14 @@ extension WakeUpTimeViewController {
         titleLabel.do {
             $0.text = "기상시간을 변경해주세요"
         }
+        
         infoCollectionView.do {
-            $0.registerCells(SetSelectCollectionViewCell.self)
+            $0.registerCells(EnterInfoCollectionViewCell.self)
+        }
+        
+        checkButton.do {
+            $0.setTitle("확인", for: .normal)
+            $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
         }
     }
     
@@ -42,6 +53,12 @@ extension WakeUpTimeViewController {
     
     private func setDelegate() {
         infoCollectionView.dataSource = self
+    }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func checkButtonDidTap() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -54,18 +71,26 @@ extension WakeUpTimeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: SetSelectCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(info: "기상시간", pickData: "")
+        let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(infoText: info, data: wakeUpTime)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        switch indexPath.row {
-//        case 0:
-//            halfModal(title: "기상시간 설정")
-//        default:
-//            halfModal(title: "기상시간 설정")
-//        }
+        let vc = TimeInfoViewController(infoText: "\(info) 설정", infoType: .outTime)
+        vc.delegate = self
+        presentToHalfModalViewController(vc)
     }
 }
 
+extension WakeUpTimeViewController: TimeInfoViewControllerDelegate {
+    func getNullData() {
+        infoCollectionView.reloadData()
+    }
+    
+    func getInfoData(userInfoData: UserInfo) {
+        wakeUpTime = userInfoData.infoData
+        infoCollectionView.reloadData()
+        checkButton.setState(.allow)
+    }
+}

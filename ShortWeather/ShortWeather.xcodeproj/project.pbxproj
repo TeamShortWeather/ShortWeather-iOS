@@ -38,6 +38,7 @@
 		52625C442967F62B007F483D /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C432967F62B007F483D /* ReportCollectionViewCell.swift */; };
 		52625C47296805B7007F483D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C46296805B7007F483D /* PaddingLabel.swift */; };
 		52625C562969B2AF007F483D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C552969B2AF007F483D /* UserInfo.swift */; };
+		52625C5A296B1E68007F483D /* WeekWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C59296B1E68007F483D /* WeekWeatherViewController.swift */; };
 		52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA496295C774A00DE6AE9 /* UIFont +.swift */; };
 		52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA499295C7BD800DE6AE9 /* URLConst.swift */; };
 		52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */; };
@@ -78,7 +79,6 @@
 		AB3D5B4D29681C9200105FC9 /* CommuteTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B4C29681C9200105FC9 /* CommuteTimeViewController.swift */; };
 		AB3D5B4F29681CBA00105FC9 /* WakeUpTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B4E29681CBA00105FC9 /* WakeUpTimeViewController.swift */; };
 		AB3D5B51296828E800105FC9 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */; };
-		AB3D5B552968679D00105FC9 /* SetSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B542968679D00105FC9 /* SetSelectCollectionViewCell.swift */; };
 		AB3D5B572968909A00105FC9 /* SettingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */; };
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -111,6 +111,7 @@
 		52625C432967F62B007F483D /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		52625C46296805B7007F483D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		52625C552969B2AF007F483D /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		52625C59296B1E68007F483D /* WeekWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherViewController.swift; sourceTree = "<group>"; };
 		52CBA496295C774A00DE6AE9 /* UIFont +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont +.swift"; sourceTree = "<group>"; };
 		52CBA499295C7BD800DE6AE9 /* URLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
 		52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
@@ -154,7 +155,6 @@
 		AB3D5B4C29681C9200105FC9 /* CommuteTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTimeViewController.swift; sourceTree = "<group>"; };
 		AB3D5B4E29681CBA00105FC9 /* WakeUpTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeViewController.swift; sourceTree = "<group>"; };
 		AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
-		AB3D5B542968679D00105FC9 /* SetSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBaseViewController.swift; sourceTree = "<group>"; };
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -290,10 +290,26 @@
 		52625C5429698EBB007F483D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				0346A30129658F3000E37FD2 /* ListTableViewCell.swift */,
 				0346A2F729644B7600E37FD2 /* EnterInfoCollectionViewCell.swift */,
+				0346A30129658F3000E37FD2 /* ListTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		52625C58296B1A21007F483D /* WeekWeather */ = {
+			isa = PBXGroup;
+			children = (
+				52625C5B296B1F7E007F483D /* View */,
+				52625C59296B1E68007F483D /* WeekWeatherViewController.swift */,
+			);
+			path = WeekWeather;
+			sourceTree = "<group>";
+		};
+		52625C5B296B1F7E007F483D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		52CBA498295C7BBA00DE6AE9 /* Foundation */ = {
@@ -449,6 +465,7 @@
 				52FBA6D92955C85300F263B3 /* Common */,
 				0346A2EC2964126000E37FD2 /* InfoSetting */,
 				AB09FF602962BB0B004C54EE /* TodayWeather */,
+				52625C58296B1A21007F483D /* WeekWeather */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -598,7 +615,6 @@
 			children = (
 				AB3D5B402967ED8400105FC9 /* SettingTableViewCell.swift */,
 				AB3D5B482968084000105FC9 /* AlarmTableViewCell.swift */,
-				AB3D5B542968679D00105FC9 /* SetSelectCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -752,6 +768,7 @@
 				AB3D5B4B29680EEF00105FC9 /* AlarmSetting.swift in Sources */,
 				AB2590CD29647C55008FEC2A /* TodayTableViewCell.swift in Sources */,
 				AB3D5B3D2967E86700105FC9 /* SettingViewController.swift in Sources */,
+				52625C5A296B1E68007F483D /* WeekWeatherViewController.swift in Sources */,
 				52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */,
 				0346A30229658F3000E37FD2 /* ListTableViewCell.swift in Sources */,
 				52625C47296805B7007F483D /* PaddingLabel.swift in Sources */,
@@ -763,7 +780,6 @@
 				52625C442967F62B007F483D /* ReportCollectionViewCell.swift in Sources */,
 				52625C422967E00A007F483D /* FirstTodayWeatherData.swift in Sources */,
 				AB09FF6929630D7A004C54EE /* WeatherTableViewCellType.swift in Sources */,
-				AB3D5B552968679D00105FC9 /* SetSelectCollectionViewCell.swift in Sources */,
 				523BB081295D69990004B343 /* FontLevel.swift in Sources */,
 				AB2590C92964522A008FEC2A /* HourCollectionViewCell.swift in Sources */,
 				52625C562969B2AF007F483D /* UserInfo.swift in Sources */,

@@ -32,10 +32,9 @@ extension ListTableViewCell {
     
     private func setUI() {
         backgroundColor = .clear
+        
         contentView.backgroundColor = .clear
-        [listLabel].forEach {
-            contentView.addSubview($0)
-        }
+        contentView.addSubview(listLabel)
         
         listLabel.do {
             $0.font = UIFont.fontGuide(.subhead2)
