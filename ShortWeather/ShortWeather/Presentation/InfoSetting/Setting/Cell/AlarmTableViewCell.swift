@@ -37,6 +37,8 @@ extension AlarmTableViewCell {
     // MARK: - UI Components Property
     
     private func setUI() {
+        selectionStyle = .none
+        
         alarmLabel.do {
             $0.text = "테스트"
             $0.font = .fontGuide(.subhead2)
