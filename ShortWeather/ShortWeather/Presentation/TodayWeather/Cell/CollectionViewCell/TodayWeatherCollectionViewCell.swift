@@ -66,6 +66,7 @@ extension TodayWeatherCollectionViewCell {
             $0.bottom.equalToSuperview()
         }
     }
+//    scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     
     // MARK: - Methods
     
@@ -79,10 +80,10 @@ extension TodayWeatherCollectionViewCell {
 
 extension TodayWeatherCollectionViewCell: UIScrollViewDelegate {
 
-//    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if (refreshControl.isRefreshing) {
-//            self.refreshControl.endRefreshing()
-////            loadServer()
-//        }
-//    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+            ////            loadServer()
+        }
+    }
 }
