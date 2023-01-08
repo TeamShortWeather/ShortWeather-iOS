@@ -37,7 +37,6 @@
 		52625C422967E00A007F483D /* FirstTodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C412967E00A007F483D /* FirstTodayWeatherData.swift */; };
 		52625C442967F62B007F483D /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C432967F62B007F483D /* ReportCollectionViewCell.swift */; };
 		52625C47296805B7007F483D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C46296805B7007F483D /* PaddingLabel.swift */; };
-		52625C5329696DD0007F483D /* ModalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C5229696DD0007F483D /* ModalType.swift */; };
 		52625C562969B2AF007F483D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C552969B2AF007F483D /* UserInfo.swift */; };
 		52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA496295C774A00DE6AE9 /* UIFont +.swift */; };
 		52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA499295C7BD800DE6AE9 /* URLConst.swift */; };
@@ -111,7 +110,6 @@
 		52625C412967E00A007F483D /* FirstTodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTodayWeatherData.swift; sourceTree = "<group>"; };
 		52625C432967F62B007F483D /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		52625C46296805B7007F483D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		52625C5229696DD0007F483D /* ModalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalType.swift; sourceTree = "<group>"; };
 		52625C552969B2AF007F483D /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		52CBA496295C774A00DE6AE9 /* UIFont +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont +.swift"; sourceTree = "<group>"; };
 		52CBA499295C7BD800DE6AE9 /* URLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
@@ -255,7 +253,6 @@
 		52625C4D29696971007F483D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				52625C5229696DD0007F483D /* ModalType.swift */,
 				52625C5429698EBB007F483D /* Cell */,
 				52625C5029696DA3007F483D /* ViewController */,
 			);
@@ -716,7 +713,6 @@
 			files = (
 				52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */,
 				5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */,
-				52625C5329696DD0007F483D /* ModalType.swift in Sources */,
 				521317722963F934009371E1 /* NSObject +.swift in Sources */,
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
 				52CBA4A7295C865A00DE6AE9 /* Encodable +.swift in Sources */,

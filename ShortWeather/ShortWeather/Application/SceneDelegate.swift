@@ -25,9 +25,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 //            let VC = FirstInfoViewController()
-            let VC = FirstInfoViewController()
-            let rootVC = UINavigationController(rootViewController: VC)
-//            let rootVC = SplashViewController()
+//            let VC = FirstInfoViewController()
+//            let rootVC = UINavigationController(rootViewController: VC)
+            let rootVC = SplashViewController()
             
             window.rootViewController = rootVC
             window.makeKeyAndVisible()
