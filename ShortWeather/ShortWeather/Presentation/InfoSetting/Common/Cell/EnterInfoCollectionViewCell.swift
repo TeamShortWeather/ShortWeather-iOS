@@ -26,8 +26,7 @@ class EnterInfoCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                print("cell Selected!")
-                lineView.backgroundColor = Color.weatherBlue
+                selectCell()
             }
         }
     }
