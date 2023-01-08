@@ -73,7 +73,6 @@ extension TimeInfoViewController {
             $0.backgroundColor = Color.white
             $0.datePickerMode = UIDatePicker.Mode.time
             $0.preferredDatePickerStyle = .wheels
-            $0.locale = Locale(identifier: "ko-KR")
             $0.minuteInterval = 30
         }
         
@@ -115,9 +114,12 @@ extension TimeInfoViewController {
         let timeFormatter = DateFormatter()
         timeFormatter.timeStyle = .none
         timeFormatter.dateFormat = "a h시 mm분"
-        let strDate = timeFormatter.string(from: datePicker.date)
-        timeFormatter.dateFormat = "a"
+        timeFormatter.amSymbol = "오전"
+        timeFormatter.pmSymbol = "오후"
         let time = timeFormatter.string(from: datePicker.date)
+//        timeFormatter.dateFormat = "HHmm" // 서버
+//        let strDate = timeFormatter.string(from: datePicker.date)
+//        print(strDate)
         delegate?.getInfoData(userInfoData: UserInfo(infoData: time, infoType: infoType))
         self.dismiss(animated: true)
     }
