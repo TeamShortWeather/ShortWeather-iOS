@@ -15,6 +15,9 @@ final class CommuteTimeViewController: SettingBaseViewController {
     // MARK: - Properties
     
     let info: [String] = ["외출시간", "귀가시간"]
+    private var outTime: String = ""
+    private var inTime: String = ""
+    private var isCellTouched: [Bool] = [false, false]
     
     // MARK: - View Life Cycle
 
@@ -37,8 +40,14 @@ extension CommuteTimeViewController {
         titleLabel.do {
             $0.text = "시간대를 변경해주세요"
         }
+        
         infoCollectionView.do {
-            $0.registerCells(SetSelectCollectionViewCell.self)
+            $0.registerCells(EnterInfoCollectionViewCell.self)
+        }
+        
+        checkButton.do {
+            $0.setTitle("확인", for: .normal)
+            $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
         }
     }
     
@@ -47,6 +56,12 @@ extension CommuteTimeViewController {
     private func setDelegate() {
         infoCollectionView.dataSource = self
     }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func checkButtonDidTap() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -54,28 +69,53 @@ extension CommuteTimeViewController {
 extension CommuteTimeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return info.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: SetSelectCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(info: info[indexPath.row], pickData: "")
+        let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
+        switch indexPath.row {
+        case 0:
+            cell.setDataBind(infoText: "\(info[indexPath.row]) 설정", data: outTime)
+        case 1:
+            cell.setDataBind(infoText: "\(info[indexPath.row]) 설정", data: inTime)
+        default:
+            break
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        isCellTouched[indexPath.row] = true
+        switch indexPath.row {
+        case 0:
+            let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .outTime)
+            vc.delegate = self
+            presentToHalfModalViewController(vc)
+        case 1:
+            let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .inTime)
+            vc.delegate = self
+            presentToHalfModalViewController(vc)
+        default:
+            break
+        }
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension CommuteTimeViewController {
+extension CommuteTimeViewController: TimeInfoViewControllerDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        switch indexPath.row {
-//        case 0:
-//            halfModal(title: "외출시간 설정")
-//        case 1:
-//            halfModal(title: "귀가시간 설정")
-//        default:
-//            halfModal(title: "외출시간 설정")
-//        }
+    func getNullData() {
+        infoCollectionView.reloadData()
+    }
+    
+    func getInfoData(userInfoData: UserInfo) {
+        let infoType = userInfoData.infoType
+        if infoType == .outTime {
+            outTime = userInfoData.infoData
+        } else if infoType == .inTime {
+            inTime = userInfoData.infoData
+        }
+        infoCollectionView.reloadData()
+        checkButton.setState(.allow)
     }
 }

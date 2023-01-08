@@ -53,13 +53,13 @@ extension FirstInfoViewController {
             $0.numberOfLines = 0
         }
         
+        infoCollectionView.do {
+            $0.registerCells(EnterInfoCollectionViewCell.self)
+        }
+        
         checkButton.do {
             $0.setTitle("다음", for: .normal)
             $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
-        }
-        
-        infoCollectionView.do {
-            $0.registerCells(EnterInfoCollectionViewCell.self)
         }
     }
     

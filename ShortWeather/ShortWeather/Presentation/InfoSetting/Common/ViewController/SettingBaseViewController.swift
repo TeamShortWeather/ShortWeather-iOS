@@ -50,7 +50,7 @@ extension SettingBaseViewController {
             $0.showsHorizontalScrollIndicator = false
             $0.backgroundColor = .clear
             $0.isScrollEnabled = false
-            $0.registerCells(SetSelectCollectionViewCell.self)
+            $0.registerCells(EnterInfoCollectionViewCell.self)
         }
     }
     

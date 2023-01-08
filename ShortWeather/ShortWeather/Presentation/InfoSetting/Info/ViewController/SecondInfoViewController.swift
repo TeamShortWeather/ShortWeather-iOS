@@ -36,10 +36,6 @@ final class SecondInfoViewController: SettingBaseViewController {
         setLayout()
         setDelegate()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
 }
 
 extension SecondInfoViewController {
@@ -55,9 +51,8 @@ extension SecondInfoViewController {
             $0.text = "여러분의 하루를 알려주세요"
         }
         
-        checkButton.do {
-            $0.setTitle("확인", for: .normal)
-            $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
+        infoCollectionView.do {
+            $0.registerCell(EnterInfoCollectionViewCell.self)
         }
         
         addInfoLabel.do {
@@ -66,8 +61,9 @@ extension SecondInfoViewController {
             $0.textColor = Color.gray4
         }
         
-        infoCollectionView.do {
-            $0.registerCell(EnterInfoCollectionViewCell.self)
+        checkButton.do {
+            $0.setTitle("확인", for: .normal)
+            $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
         }
     }
     
@@ -75,6 +71,7 @@ extension SecondInfoViewController {
     
     private func setLayout() {
         view.addSubviews(addInfoLabel)
+        
         addInfoLabel.snp.makeConstraints {
             $0.bottom.equalTo(checkButton.snp.bottom).inset(71)
             $0.leading.equalTo(checkButton)
@@ -84,7 +81,6 @@ extension SecondInfoViewController {
     // MARK: - Methods
     
     private func setDelegate() {
-        infoCollectionView.delegate = self
         infoCollectionView.dataSource = self
     }
     
@@ -128,7 +124,7 @@ extension SecondInfoViewController {
     // MARK: - @objc Methods
     
     @objc private func checkButtonDidTap() {
-        print("Check Button Tap!")
+        UIViewController.modifyRootViewController(TodayWeatherViewController())
     }
 }
 
