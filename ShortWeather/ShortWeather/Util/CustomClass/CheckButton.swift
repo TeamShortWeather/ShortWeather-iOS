@@ -39,9 +39,11 @@ class CheckButton: UIButton {
         if state == .allow {
             setTitleColor(Color.white, for: .normal)
             backgroundColor = Color.pointColor
+            isUserInteractionEnabled = true
         } else {
             setTitleColor(Color.black, for: .normal)
             backgroundColor = Color.gray2
+            isUserInteractionEnabled = false
         }
     }
 }

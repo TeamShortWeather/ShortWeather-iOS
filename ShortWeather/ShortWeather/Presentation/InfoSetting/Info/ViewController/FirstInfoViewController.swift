@@ -110,6 +110,14 @@ extension FirstInfoViewController {
         presentToHalfModalViewController(vc)
     }
     
+    private func checkButtonState() {
+        if !gender.isEmpty && !age.isEmpty && !tempResponse.isEmpty {
+            checkButton.setState(.allow)
+        } else {
+            checkButton.setState(.notAllow)
+        }
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func checkButtonDidTap() {
@@ -138,6 +146,7 @@ extension FirstInfoViewController: UICollectionViewDataSource {
             break
         }
         setCellState(cell: cell, indexPath: indexPath)
+        checkButtonState()
         return cell
     }
     

@@ -117,6 +117,14 @@ extension SecondInfoViewController {
         }
     }
     
+    private func checkButtonState() {
+        if !wakeUpTime.isEmpty && !outTime.isEmpty && !inTime.isEmpty {
+            checkButton.setState(.allow)
+        } else {
+            checkButton.setState(.notAllow)
+        }
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func checkButtonDidTap() {
@@ -143,6 +151,7 @@ extension SecondInfoViewController: UICollectionViewDataSource {
             break
         }
         setCellState(cell: cell, indexPath: indexPath)
+        checkButtonState()
         return cell
     }
     

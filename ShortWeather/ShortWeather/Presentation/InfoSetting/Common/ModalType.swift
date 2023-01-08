@@ -7,9 +7,7 @@
 
 import Foundation
 
-enum ModalType {
-    case List
-    case Time
-}
-
-
+//enum ModalType {
+//    case List
+//    case Time
+//}
