@@ -12,7 +12,6 @@ import Then
 
 enum HourButton {
     case weather
-    case dust
     case precipitation
 }
 
@@ -22,7 +21,6 @@ final class TimeTableViewCell: UITableViewCell {
     
     private let titleLabel: UILabel = UILabel()
     private let weatherButton: UIButton = UIButton()
-    private let dustButton: UIButton = UIButton()
     private let precipitationButton: UIButton = UIButton()
     private lazy var buttonStackView: UIStackView = UIStackView()
     private let hourCollectionView: UICollectionView = {
@@ -64,7 +62,7 @@ extension TimeTableViewCell {
         
         weatherButton.isSelected = true
         
-        setHourButton(weatherButton, dustButton, precipitationButton)
+        setHourButton(weatherButton, precipitationButton)
         
         titleLabel.do {
             $0.text = "시간대별 날씨"
@@ -79,10 +77,6 @@ extension TimeTableViewCell {
         
         weatherButton.do {
             $0.setTitle("날씨", for: .normal)
-        }
-        
-        dustButton.do {
-            $0.setTitle("미세먼지", for: .normal)
         }
         
         precipitationButton.do {
@@ -100,7 +94,7 @@ extension TimeTableViewCell {
     private func setLayout() {
         contentView.addSubviews(titleLabel, buttonStackView, hourCollectionView)
         
-        buttonStackView.addArrangedSubviews(weatherButton, dustButton, precipitationButton)
+        buttonStackView.addArrangedSubviews(weatherButton, precipitationButton)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(11)
@@ -126,7 +120,6 @@ extension TimeTableViewCell {
     
     private func setAddTarget() {
         weatherButton.addTarget(self, action: #selector(weatherButtonDidTap), for: .touchUpInside)
-        dustButton.addTarget(self, action: #selector(dustButtonDidTap), for: .touchUpInside)
         precipitationButton.addTarget(self, action: #selector(precipitationButtonDidTap), for: .touchUpInside)
     }
     
@@ -134,16 +127,10 @@ extension TimeTableViewCell {
         switch hourButtonState {
         case .weather:
             weatherButton.isSelected = true
-            dustButton.isSelected = false
-            precipitationButton.isSelected = false
-        case .dust:
-            dustButton.isSelected = true
-            weatherButton.isSelected = false
             precipitationButton.isSelected = false
         case .precipitation:
             precipitationButton.isSelected = true
             weatherButton.isSelected = false
-            dustButton.isSelected = false
         }
     }
     
@@ -170,12 +157,6 @@ extension TimeTableViewCell {
         hourButtonState = .weather
         checkHourButton()
         print("날씨 버튼 눌림")
-    }
-    
-    @objc private func dustButtonDidTap() {
-        hourButtonState = .dust
-        checkHourButton()
-        print("미세먼지 버튼 눌림")
     }
     
     @objc private func precipitationButtonDidTap() {
