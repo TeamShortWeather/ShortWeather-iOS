@@ -9,8 +9,6 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
     
-    static let identifier = "ListTableViewCell"
-    
     // MARK: - UI Components
     
     private let listLabel: UILabel = UILabel()
@@ -49,8 +47,7 @@ extension ListTableViewCell {
     
     private func setLayout() {
         listLabel.snp.makeConstraints {
-            $0.width.equalTo(319)
-            $0.height.equalTo(44)
+            $0.leading.equalToSuperview().offset(28)
             $0.centerY.equalToSuperview()
             $0.centerX.equalToSuperview()
         }

@@ -30,23 +30,29 @@ extension CommuteTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
+        addBackButtonNavigationBar()
+        
         navigationItem.title = "외출 / 귀가시간대 설정"
         
         titleLabel.do {
             $0.text = "시간대를 변경해주세요"
+        }
+        infoCollectionView.do {
+            $0.registerCells(SetSelectCollectionViewCell.self)
         }
     }
     
     // MARK: - Methods
 
     private func setDelegate() {
-        selectCollectionView.dataSource = self
+        infoCollectionView.dataSource = self
     }
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension CommuteTimeViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
@@ -63,13 +69,13 @@ extension CommuteTimeViewController: UICollectionViewDataSource {
 extension CommuteTimeViewController {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            halfModal(title: "외출시간 설정")
-        case 1:
-            halfModal(title: "귀가시간 설정")
-        default:
-            halfModal(title: "외출시간 설정")
-        }
+//        switch indexPath.row {
+//        case 0:
+//            halfModal(title: "외출시간 설정")
+//        case 1:
+//            halfModal(title: "귀가시간 설정")
+//        default:
+//            halfModal(title: "외출시간 설정")
+//        }
     }
 }

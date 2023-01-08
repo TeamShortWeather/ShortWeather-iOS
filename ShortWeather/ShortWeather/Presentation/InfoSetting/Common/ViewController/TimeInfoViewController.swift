@@ -11,29 +11,30 @@ import Moya
 import SnapKit
 import Then
 
-protocol TimeViewControllerDelegate: AnyObject {
-    func sendData(pickData: String, listType: SecondInfoType)
+protocol TimeInfoViewControllerDelegate: AnyObject {
+    func getNullData()
+    func getInfoData(userInfoData: UserInfo)
 }
 
-final class TimeViewController: UIViewController {
+final class TimeInfoViewController: UIViewController {
     
     // MARK: - UI Components
     
     private let titleLabel: UILabel = UILabel()
     private let datePicker: UIDatePicker = UIDatePicker()
-    private let saveButton: UIButton = UIButton()
+    private let saveButton: CheckButton = CheckButton()
     
     // MARK: - Properties
     
-    private let listType: SecondInfoType
+    public weak var delegate: TimeInfoViewControllerDelegate?
     private var titleText: String
-    public weak var delegate: TimeViewControllerDelegate?
+    private let infoType: InfoType
     
     // MARK: - Initializer
     
-    init(titleText: String, listType: SecondInfoType) {
-        self.titleText = titleText
-        self.listType = listType
+    init(infoText: String, infoType: InfoType) {
+        self.titleText = infoText
+        self.infoType = infoType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,9 +49,14 @@ final class TimeViewController: UIViewController {
         setUI()
         setLayout()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.getNullData()
+    }
 }
 
-extension TimeViewController {
+extension TimeInfoViewController {
     
     // MARK: - UI Components Property
     
@@ -60,23 +66,20 @@ extension TimeViewController {
         titleLabel.do {
             $0.text = titleText
             $0.font = .fontGuide(.headline1)
-            $0.textColor = .black
+            $0.textColor = Color.black
         }
         
         datePicker.do {
+            $0.backgroundColor = Color.white
             $0.datePickerMode = UIDatePicker.Mode.time
             $0.preferredDatePickerStyle = .wheels
-            $0.backgroundColor = UIColor.white
-            $0.locale = Locale(identifier: "ko-KR")
             $0.minuteInterval = 30
         }
         
         saveButton.do {
             $0.setTitle("저장", for: .normal)
-            $0.setTitleColor(Color.white, for: .normal)
-            $0.backgroundColor = Color.pointColor
-            $0.layer.cornerRadius = 15
-            $0.addTarget(self, action: #selector(backButton), for: .touchUpInside)
+            $0.setState(.allow)
+            $0.addTarget(self, action: #selector(saveButtonDidTap), for: .touchUpInside)
         }
     }
     
@@ -86,41 +89,38 @@ extension TimeViewController {
         view.addSubviews(titleLabel, datePicker, saveButton)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(41)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(319)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(24)
+            $0.leading.equalToSuperview().offset(41)
         }
         
         datePicker.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(24)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(320)
+            $0.leading.equalTo(titleLabel)
+            $0.trailing.equalToSuperview().offset(-28)
             $0.height.equalTo(101)
         }
         
         saveButton.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(200)
-            $0.centerX.equalTo(view.safeAreaLayoutGuide)
-            $0.width.equalTo(320)
+            $0.top.equalTo(datePicker.snp.bottom).offset(75)
+            $0.leading.equalTo(datePicker)
+            $0.centerX.equalToSuperview()
             $0.height.equalTo(57)
         }
     }
     
     // MARK: - @objc Methods
     
-    @objc private func backButton() {
+    @objc private func saveButtonDidTap() {
         let timeFormatter = DateFormatter()
         timeFormatter.timeStyle = .none
         timeFormatter.dateFormat = "a h시 mm분"
-        
-        let strDate = timeFormatter.string(from: datePicker.date) // String으로 변환
-        
-        timeFormatter.dateFormat = "a"
-        let a = timeFormatter.string(from: datePicker.date)
-        print(a)
-        
-        print(strDate)
-        delegate?.sendData(pickData: strDate, listType: listType)
-        self.dismiss(animated: true, completion: nil)
+        timeFormatter.amSymbol = "오전"
+        timeFormatter.pmSymbol = "오후"
+        let time = timeFormatter.string(from: datePicker.date)
+//        timeFormatter.dateFormat = "HHmm" // 서버
+//        let strDate = timeFormatter.string(from: datePicker.date)
+//        print(strDate)
+        delegate?.getInfoData(userInfoData: UserInfo(infoData: time, infoType: infoType))
+        self.dismiss(animated: true)
     }
 }
