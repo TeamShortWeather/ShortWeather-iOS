@@ -74,6 +74,7 @@ extension TimeInfoViewController {
             $0.datePickerMode = UIDatePicker.Mode.time
             $0.preferredDatePickerStyle = .wheels
             $0.minuteInterval = 30
+            $0.locale = Locale(identifier: "ko_KR")
         }
         
         saveButton.do {
