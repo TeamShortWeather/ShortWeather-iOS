@@ -66,7 +66,7 @@ extension TodayTableViewCell {
         setTodayView(humidityView, sunView, dustView, fineDustView)
         
         titleLabel.do {
-            $0.text = "오늘 날씨 정보"
+            $0.text = Letter.todayWeatherInfo
             $0.font = .fontGuide(.subhead4)
         }
 
@@ -75,7 +75,7 @@ extension TodayTableViewCell {
         }
         
         humidityTitleLabel.do {
-            $0.text = "습도"
+            $0.text = Letter.humidityInfo
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -93,7 +93,7 @@ extension TodayTableViewCell {
         }
         
         sunTitleLabel.do {
-            $0.text = "일출/일몰"
+            $0.text = Letter.sunInfo
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -138,7 +138,7 @@ extension TodayTableViewCell {
         }
         
         dustTitleLabel.do {
-            $0.text = "미세먼지"
+            $0.text = Letter.dustInfo
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -156,7 +156,7 @@ extension TodayTableViewCell {
         }
         
         fineDustTitleLabel.do {
-            $0.text = "초미세먼지"
+            $0.text = Letter.fineDustInfo
             $0.font = .fontGuide(.subhead2)
         }
         

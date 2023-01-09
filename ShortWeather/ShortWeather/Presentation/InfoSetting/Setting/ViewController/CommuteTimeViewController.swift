@@ -14,7 +14,7 @@ final class CommuteTimeViewController: SettingBaseViewController {
     
     // MARK: - Properties
     
-    let info: [String] = ["외출시간", "귀가시간"]
+    let info: [String] = [Letter.outTime, Letter.inTime]
     private var outTime: String = ""
     private var inTime: String = ""
     private var isCellTouched: [Bool] = [false, false]
@@ -35,10 +35,10 @@ extension CommuteTimeViewController {
     private func setUI() {
         addBackButtonNavigationBar()
         
-        navigationItem.title = "외출 / 귀가시간대 설정"
+        navigationItem.title = "\(Letter.commuteTime) 설정"
         
         titleLabel.do {
-            $0.text = "시간대를 변경해주세요"
+            $0.text = Letter.changeHour
         }
         
         infoCollectionView.do {
@@ -76,9 +76,9 @@ extension CommuteTimeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
         switch indexPath.row {
         case 0:
-            cell.setDataBind(infoText: "\(info[indexPath.row]) 설정", data: outTime)
+            cell.setDataBind(infoText: info[indexPath.row], data: outTime)
         case 1:
-            cell.setDataBind(infoText: "\(info[indexPath.row]) 설정", data: inTime)
+            cell.setDataBind(infoText: info[indexPath.row], data: inTime)
         default:
             break
         }

@@ -24,9 +24,9 @@ final class AlarmSettingViewController: UIViewController {
     
     // MARK: - Properties
     
-    var alarmSettingList: [AlarmSetting] = [AlarmSetting(title: "기상시간대 알림", description: "기상시간에 맞춰서 날씨를 알려드려요", isOn: true),
-                                            AlarmSetting(title: "취침시간대 알림", description: "취침시간에 맞춰서 날씨를 알려드려요", isOn: false),
-                                            AlarmSetting(title: "특보 알림", description: "실시간 날씨 특보를 알려드려요", isOn: false)]
+    var alarmSettingList: [AlarmSetting] = [AlarmSetting(title: "\(Letter.wakeUpTimeAlarm) 설정", description: Letter.wakeUpTimeAlarmDescription, isOn: true),
+                                            AlarmSetting(title: "\(Letter.bedtimeAlarm) 설정", description: Letter.bedtimeAlarmDescription, isOn: false),
+                                            AlarmSetting(title: "\(Letter.newsAlarm) 설정", description: Letter.newsAlarmDescription, isOn: false)]
     
     // MARK: - View Life Cycle
     
@@ -49,21 +49,21 @@ extension AlarmSettingViewController {
         
         addBackButtonNavigationBar()
         
-        navigationItem.title = "알림 설정"
+        navigationItem.title = "\(Letter.alarm) 설정"
         
         titleLabel.do {
-            $0.text = "알림 받을 시간대를\n설정해주세요"
+            $0.text = Letter.changeAlarm
             $0.numberOfLines = 0
             $0.font = .fontGuide(.headline1)
         }
         
         allAlarmLabel.do {
-            $0.text = "전체 알림"
+            $0.text = Letter.allAlarm
             $0.font = .fontGuide(.subhead2)
         }
         
         allAlarmDescriptionLabel.do {
-            $0.text = "날씨 정보를 알려드려요"
+            $0.text = Letter.allAlarmDescription
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray7
         }
