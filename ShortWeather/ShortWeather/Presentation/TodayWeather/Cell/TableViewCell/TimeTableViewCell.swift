@@ -65,7 +65,7 @@ extension TimeTableViewCell {
         setHourButton(weatherButton, precipitationButton)
         
         titleLabel.do {
-            $0.text = "시간대별 날씨"
+            $0.text = Letter.hourWeather
             $0.font = .fontGuide(.subhead4)
         }
         
@@ -76,11 +76,11 @@ extension TimeTableViewCell {
         }
         
         weatherButton.do {
-            $0.setTitle("날씨", for: .normal)
+            $0.setTitle(Letter.weather, for: .normal)
         }
         
         precipitationButton.do {
-            $0.setTitle("강수", for: .normal)
+            $0.setTitle(Letter.precipitation, for: .normal)
         }
         
         buttonStackView.do {

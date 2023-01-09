@@ -40,12 +40,10 @@ extension AlarmTableViewCell {
         selectionStyle = .none
         
         alarmLabel.do {
-            $0.text = "테스트"
             $0.font = .fontGuide(.subhead2)
         }
         
         alarmDescriptionLabel.do {
-            $0.text = "테스트"
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray7
         }
