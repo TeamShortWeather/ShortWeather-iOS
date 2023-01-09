@@ -63,7 +63,7 @@ extension WeekWeatherCollectionViewCell {
         }
         
         morningImage.do {
-            $0.image = Image.icnSnow
+            $0.image = Image.icnLotcloudDay
         }
         
         morningRain.do {
@@ -73,7 +73,7 @@ extension WeekWeatherCollectionViewCell {
         }
         
         afternoonImage.do {
-            $0.image = Image.icnFog
+            $0.image = Image.icnRain
         }
         
         afternoonRain.do {
@@ -129,6 +129,7 @@ extension WeekWeatherCollectionViewCell {
         morningImage.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.leading.equalToSuperview()
+            $0.width.height.equalTo(30)
         }
         
         morningRain.snp.makeConstraints {
@@ -146,6 +147,7 @@ extension WeekWeatherCollectionViewCell {
         afternoonImage.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.trailing.equalToSuperview()
+            $0.width.height.equalTo(30)
         }
         
         afternoonRain.snp.makeConstraints {
