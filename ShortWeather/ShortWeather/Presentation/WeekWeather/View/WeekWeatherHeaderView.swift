@@ -57,10 +57,6 @@ extension WeekWeatherHeaderView {
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray7
         }
-        
-        weekDescriptionView.do {
-            $0.backgroundColor = .clear
-        }
     }
     
     private func setLayout() {
@@ -68,8 +64,8 @@ extension WeekWeatherHeaderView {
         weekDescriptionView.addSubviews(dailyForecastLabel, timeZoneLabel, temperatureLabel)
         
         weekDescriptionView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.leading.equalToSuperview().offset(36)
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
             $0.centerX.equalToSuperview()
             $0.height.equalTo(18)
         }
@@ -85,7 +81,7 @@ extension WeekWeatherHeaderView {
         }
         
         temperatureLabel.snp.makeConstraints {
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(8)
             $0.centerY.equalToSuperview()
         }
     }

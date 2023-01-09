@@ -48,6 +48,7 @@ extension WeekWeatherUIView {
     private func setUI() {
         weekWeatherCollectionView.do {
             $0.registerCells(WeekWeatherCollectionViewCell.self)
+            $0.showsVerticalScrollIndicator = false
             $0.backgroundColor = .clear
             $0.register(WeekWeatherHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "WeekWeatherHeaderView")
         }
@@ -59,8 +60,7 @@ extension WeekWeatherUIView {
         addSubviews(weekWeatherCollectionView)
         
         weekWeatherCollectionView.snp.makeConstraints {
-            // 수정해야함
-            $0.top.equalToSuperview().offset(4)
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().offset(28)
             $0.trailing.equalToSuperview().inset(28)
             $0.bottom.equalToSuperview().inset(20)
@@ -87,6 +87,10 @@ extension WeekWeatherUIView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         let width = collectionView.frame.width
         return CGSize(width: width, height: 18)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+       return UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
     }
 }
 
