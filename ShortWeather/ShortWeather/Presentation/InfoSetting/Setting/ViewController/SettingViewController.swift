@@ -52,7 +52,7 @@ extension SettingViewController {
         view.addSubviews(settingTableView)
         
         settingTableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(22)
+            $0.top.equalTo(hamburgerButton.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalToSuperview()
         }
