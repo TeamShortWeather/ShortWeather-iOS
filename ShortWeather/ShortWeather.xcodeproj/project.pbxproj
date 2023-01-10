@@ -42,6 +42,7 @@
 		52625C47296805B7007F483D /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C46296805B7007F483D /* PaddingLabel.swift */; };
 		52625C562969B2AF007F483D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C552969B2AF007F483D /* UserInfo.swift */; };
 		52625C5A296B1E68007F483D /* WeekWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C59296B1E68007F483D /* WeekWeatherViewController.swift */; };
+		52C2FD49296DC18F002D53FB /* Int +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C2FD48296DC18F002D53FB /* Int +.swift */; };
 		52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA496295C774A00DE6AE9 /* UIFont +.swift */; };
 		52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA499295C7BD800DE6AE9 /* URLConst.swift */; };
 		52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */; };
@@ -118,6 +119,7 @@
 		52625C46296805B7007F483D /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		52625C552969B2AF007F483D /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		52625C59296B1E68007F483D /* WeekWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherViewController.swift; sourceTree = "<group>"; };
+		52C2FD48296DC18F002D53FB /* Int +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int +.swift"; sourceTree = "<group>"; };
 		52CBA496295C774A00DE6AE9 /* UIFont +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont +.swift"; sourceTree = "<group>"; };
 		52CBA499295C7BD800DE6AE9 /* URLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
 		52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 			children = (
 				52D6A38E2961A2F800BF4287 /* CGFloat +.swift */,
 				52CBA4A6295C865A00DE6AE9 /* Encodable +.swift */,
+				52C2FD48296DC18F002D53FB /* Int +.swift */,
 				521317712963F934009371E1 /* NSObject +.swift */,
 				AB102EB629655CA400BEBF90 /* UIButton +.swift */,
 				521317732963F9D5009371E1 /* UICollectionView +.swift */,
@@ -772,6 +775,7 @@
 				AB3D5B492968084000105FC9 /* AlarmTableViewCell.swift in Sources */,
 				521317642962B5A3009371E1 /* UIView +.swift in Sources */,
 				52625C402967DDF9007F483D /* UILabel +.swift in Sources */,
+				52C2FD49296DC18F002D53FB /* Int +.swift in Sources */,
 				033E7F752965DA2A0051B349 /* TimeInfoViewController.swift in Sources */,
 				AB2590C6296427A2008FEC2A /* TimeTableViewCell.swift in Sources */,
 				AB3D5B51296828E800105FC9 /* FirstInfoViewController.swift in Sources */,
