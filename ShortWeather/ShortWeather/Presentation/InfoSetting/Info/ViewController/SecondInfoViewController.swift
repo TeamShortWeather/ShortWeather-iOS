@@ -45,7 +45,7 @@ extension SecondInfoViewController {
     private func setUI() {
         view.backgroundColor = .white
         
-        addBackButtonNavigationBar()
+        addBackButton()
         
         titleLabel.do {
             $0.text = "여러분의 하루를 알려주세요"

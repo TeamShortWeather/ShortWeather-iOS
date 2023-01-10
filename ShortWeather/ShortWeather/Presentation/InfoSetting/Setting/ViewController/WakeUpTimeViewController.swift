@@ -31,7 +31,7 @@ extension WakeUpTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        addBackButtonNavigationBar()
+        addBackButton()
         
         navigationItem.title = "\(Letter.wakeUpTime) 설정"
         

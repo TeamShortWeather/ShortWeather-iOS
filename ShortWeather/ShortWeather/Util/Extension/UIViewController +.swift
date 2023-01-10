@@ -17,19 +17,11 @@ extension UIViewController {
         sceneDelegate?.window?.makeKeyAndVisible()
     }
     
-    public func addBackButtonNavigationBar() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnExpandLeft,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(backButtonDidTap))
-        navigationItem.leftBarButtonItem?.tintColor = Color.black
-    }
-    
-    @objc private func backButtonDidTap() {
-        popToSettingViewController()
-    }
-    
-    private func popToSettingViewController() {
-        navigationController?.popViewController(animated: true)
-    }
+//    @objc private func backButtonDidTap() {
+//        popToSettingViewController()
+//    }
+//    
+//    private func popToSettingViewController() {
+//        navigationController?.popViewController(animated: true)
+//    }
 }

@@ -33,7 +33,7 @@ extension CommuteTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        addBackButtonNavigationBar()
+        addBackButton()
         
         navigationItem.title = "\(Letter.commuteTime) 설정"
         
