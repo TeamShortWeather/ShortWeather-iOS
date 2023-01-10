@@ -124,6 +124,7 @@ extension FirstTodayWeatherView {
             $0.font = .fontGuide(.subhead2)
             $0.numberOfLines = 2
             $0.clipsToBounds = true
+            $0.isHidden = true
         }
     }
     
@@ -239,7 +240,12 @@ extension FirstTodayWeatherView {
     // MARK: - @objc Methods
     
     @objc private func showYesterdayButtonDidTap(){
-        yesterdayWeatherLabel.isHidden.toggle()
+        yesterdayWeatherLabel.isHidden = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            DispatchQueue.main.async { [weak self] in
+                self?.yesterdayWeatherLabel.isHidden = true
+            }
+        })
     }
 }
 
