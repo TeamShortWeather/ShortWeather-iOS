@@ -56,7 +56,6 @@ final class ListInfoViewController: UIViewController {
         super.viewWillDisappear(animated)
         delegate?.getNullData()
     }
-
 }
 
 extension ListInfoViewController {
@@ -68,7 +67,7 @@ extension ListInfoViewController {
         
         titleLabel.do {
             $0.text = infoText
-            $0.font = .fontGuide(.headline1)
+            $0.font = .fontGuide(.headline2)
             $0.textColor = .black
         }
         
@@ -91,7 +90,7 @@ extension ListInfoViewController {
         }
         
         listTableView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(24)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
