@@ -45,18 +45,18 @@ struct FirstTodayWeatherData {
     //MARK: - Dumy Data
     
     public static func dumyData() -> FirstTodayWeatherData {
-        return FirstTodayWeatherData(compareTemp: "어제보다 -2",
-                                     compareWeather: "어제보다 더워요",
+        return FirstTodayWeatherData(compareTemp: "어제보다 \((-2).temperature)",
+                                     compareWeather: "어제보다 추워요",
                                      mainReport: "한파 특보",
                                      mainReportType: .cold,
                                      dustReport: .good,
                                      fineDustReport: .bad,
-                                     weatherImage: Image.imgFog,
+                                     weatherImage: Image.imgClearDay,
                                      weathehr: "구름 많음",
-                                     lowestTemp: "-12",
-                                     presentTemp: "10",
-                                     highestTemp: "10",
+                                     lowestTemp: (-12).temperature,
+                                     presentTemp: (-10).temperature,
+                                     highestTemp: (10).temperature,
                                      todayWeather: "강풍으로 모자가 날라갈 수도 있어요 가나라다",
-                                     yesterdayWeather: "어제 -19로\n 함박눈이 펑펑왔어요 가나다라마바사")
+                                     yesterdayWeather: "어제 \((-19).temperature)로\n 함박눈이 펑펑왔어요 가나다라마바사")
     }
 }

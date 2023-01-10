@@ -66,15 +66,11 @@ extension TodayWeatherCollectionViewCell {
             $0.bottom.equalToSuperview()
         }
     }
-//    scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     
     // MARK: - Methods
     
     @objc private func refresh() {
-//            clearAllViewData()
-//            collectionView.reloadData() //
         scrollView.reloadInputViews()
-        print("새로고침")
     }
 }
 

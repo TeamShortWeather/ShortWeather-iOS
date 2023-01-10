@@ -226,7 +226,7 @@ extension FirstTodayWeatherView {
         highestTempLabel.text = firstTodayWeather.highestTemp
         todayWeatherLabel.text = firstTodayWeather.todayWeather
         yesterdayWeatherLabel.text = firstTodayWeather.yesterdayWeather
-        yesterdayWeatherLabel.asFontColor(targetString: "어제 -19로", font: .fontGuide(.caption1), color: Color.black)
+        yesterdayWeatherLabel.asFontColor(targetString: "어제 \((-19).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
     private func setAddTarget() {
