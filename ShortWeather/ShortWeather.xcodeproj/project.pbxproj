@@ -86,6 +86,7 @@
 		AB3D5B572968909A00105FC9 /* SettingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */; };
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 		ABA6C541296D800E0077E246 /* TimezonePrecipitationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */; };
+		ABA6C543296DBB4A0077E246 /* SecondTodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C542296DBB4A0077E246 /* SecondTodayWeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +168,7 @@
 		AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBaseViewController.swift; sourceTree = "<group>"; };
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 		ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezonePrecipitationData.swift; sourceTree = "<group>"; };
+		ABA6C542296DBB4A0077E246 /* SecondTodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTodayWeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +370,7 @@
 				52625C552969B2AF007F483D /* UserInfo.swift */,
 				AB05A343296D43BF0064CE1F /* TimezoneWeatherData.swift */,
 				ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */,
+				ABA6C542296DBB4A0077E246 /* SecondTodayWeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				AB2590CD29647C55008FEC2A /* TodayTableViewCell.swift in Sources */,
 				AB3D5B3D2967E86700105FC9 /* SettingViewController.swift in Sources */,
 				52625C5A296B1E68007F483D /* WeekWeatherViewController.swift in Sources */,
+				ABA6C543296DBB4A0077E246 /* SecondTodayWeatherData.swift in Sources */,
 				52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */,
 				0346A30229658F3000E37FD2 /* ListTableViewCell.swift in Sources */,
 				52625C47296805B7007F483D /* PaddingLabel.swift in Sources */,
