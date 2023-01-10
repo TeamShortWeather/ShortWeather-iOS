@@ -11,7 +11,6 @@ final class SideMenuView: UIView {
     
     // MARK: - UI Components
     
-    private let logoIconImageView: UIImageView = UIImageView()
     private let logoTextImageView: UIImageView = UIImageView()
     private let closeButton: UIButton = UIButton()
     private let menuLabel: UILabel = UILabel()
@@ -101,9 +100,6 @@ extension SideMenuView {
     
     private func setUI() {
         backgroundColor = Color.white
-        logoIconImageView.do {
-            $0.image = Image.logoIcon
-        }
         
         logoTextImageView.do {
             $0.image = Image.logoText
@@ -127,30 +123,24 @@ extension SideMenuView {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        addSubviews(logoIconImageView, logoTextImageView, closeButton, menuLabel, menuTableView)
-        
-        logoIconImageView.snp.makeConstraints {
-            $0.width.height.equalTo(36)
-            $0.leading.equalToSuperview().offset(28)
-            $0.top.equalToSuperview().offset(52)
-        }
+        addSubviews(logoTextImageView, closeButton, menuLabel, menuTableView)
         
         logoTextImageView.snp.makeConstraints {
-            $0.bottom.equalTo(logoIconImageView)
-            $0.height.equalTo(20)
-            $0.width.equalTo(59)
-            $0.leading.equalTo(logoIconImageView.snp.trailing).offset(8)
+            $0.height.equalTo(22)
+            $0.width.equalTo(99)
+            $0.leading.equalToSuperview().offset(28)
+            $0.top.equalToSuperview().offset(64)
         }
         
         closeButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(63)
-            $0.width.height.equalTo(29)
-            $0.trailing.equalToSuperview().offset(14)
+            $0.top.equalToSuperview().offset(65)
+            $0.width.height.equalTo(24)
+            $0.trailing.equalToSuperview().offset(17)
         }
         
         menuLabel.snp.makeConstraints {
-            $0.top.equalTo(logoIconImageView.snp.bottom).offset(32)
-            $0.leading.equalTo(logoIconImageView)
+            $0.top.equalTo(logoTextImageView.snp.bottom).offset(34)
+            $0.leading.equalTo(logoTextImageView)
         }
         
         menuTableView.snp.makeConstraints {

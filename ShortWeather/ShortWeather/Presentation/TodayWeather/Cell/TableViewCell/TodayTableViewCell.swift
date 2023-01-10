@@ -40,6 +40,10 @@ final class TodayTableViewCell: UITableViewCell {
     private let fineDustStateLabel: UILabel = UILabel()
     private let fineDustStateView: UIView = UIView()
     private lazy var todayStackView: UIStackView = UIStackView()
+    
+    // MARK: - Properties
+    
+    var secondWeatherData: SecondTodayWeather = SecondTodayWeather.dummyData()
 
     // MARK: - Initializer
     
@@ -80,11 +84,11 @@ extension TodayTableViewCell {
         }
         
         humidityImageView.do {
-            $0.backgroundColor = Color.gray2
+            $0.image = UIImage(named: "icn_humidity")
         }
         
         humidityLabel.do {
-            $0.text = "00%"
+            $0.text = "\(secondWeatherData.todayWeather.humidity)%"
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -98,20 +102,20 @@ extension TodayTableViewCell {
         }
         
         sunriseImageView.do {
-            $0.backgroundColor = Color.gray2
+            $0.image = UIImage(named: "icn_sunrise")
         }
         
         sunriseTimeLabel.do {
-            $0.text = "7:20"
+            $0.text = secondWeatherData.todayWeather.sunrise
             $0.font = .fontGuide(.caption2)
         }
         
         sunsetImageView.do {
-            $0.backgroundColor = Color.gray2
+            $0.image = UIImage(named: "icn_sunset")
         }
         
         sunsetTimeLabel.do {
-            $0.text = "8:20"
+            $0.text = secondWeatherData.todayWeather.sunset
             $0.font = .fontGuide(.caption2)
         }
         

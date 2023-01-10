@@ -36,17 +36,11 @@ extension HourCollectionViewCell {
         contentView.backgroundColor = .clear
         
         timeLabel.do {
-            $0.text = "지금"
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray7
         }
-        
-        iconImageView.do {
-            $0.backgroundColor = Color.gray2
-        }
-        
+
         stateLabel.do {
-            $0.text = "22°"
             $0.font = .fontGuide(.caption1)
         }
     }
@@ -70,5 +64,52 @@ extension HourCollectionViewCell {
             $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
         }
+    }
+    
+    // MARK: - Methods
+    
+    func setWeatherDataBind(_ model: TimezoneWeatherData) {
+        timeLabel.text = changeToHour(model.time)
+        stateLabel.text = "\(model.temperature)°"
+        iconImageView.image = UIImage(named: getIcon(model.day, model.image))
+    }
+    
+    func setPrecipitationDataBind(_ model: TimezonePrecipitationData) {
+        timeLabel.text = changeToHour(model.time)
+        stateLabel.text = "\(model.rain)%"
+        iconImageView.image = UIImage(named: TimezonePrecipitationType(rawValue: model.rain)?.setPrecipitationImage() ?? "")
+    }
+    
+    func setCurrent() {
+        timeLabel.text = "지금"
+    }
+    
+    private func changeToHour(_ time: String) -> String {
+        let endIndex: String.Index = time.index(time.startIndex, offsetBy: 1)
+        let result: Int = Int(String(time[...endIndex]))!
+        
+        if result > 12 {
+            return "오후 \(result-12)시"
+        } else {
+            return "오전 \(result)시"
+        }
+    }
+    
+    private func getIcon(_ day: Bool, _ image: String) -> String {
+        var result = ""
+        
+        result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
+        
+        if !day {
+            if image == WeatherType.clearDay.rawValue {
+                result = WeatherType.clearNight.setWeatherIcon()
+            } else if image == WeatherType.lotCloudDay.rawValue {
+                result = WeatherType.lotCloudNight.setWeatherIcon()
+            } else {
+                result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
+            }
+        }
+
+        return result
     }
 }
