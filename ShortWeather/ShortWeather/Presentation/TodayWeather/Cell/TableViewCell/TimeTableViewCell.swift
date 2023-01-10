@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-enum HourButton {
+enum HourWeather {
     case weather
     case precipitation
 }
@@ -32,8 +32,9 @@ final class TimeTableViewCell: UITableViewCell {
     
     // MARK: - Properties
 
-    var hourButtonState: HourButton = .weather
+    var hourWeatherState: HourWeather = .weather
     private var timezoneWeatherList: [TimezoneWeatherData] = TimezoneWeatherData.dummyData()
+    private var timezonePrecipitationList: [TimezonePrecipitationData] = TimezonePrecipitationData.dummyData()
     
     // MARK: - Initializer
 
@@ -125,7 +126,7 @@ extension TimeTableViewCell {
     }
     
     private func checkHourButton() {
-        switch hourButtonState {
+        switch hourWeatherState {
         case .weather:
             weatherButton.isSelected = true
             precipitationButton.isSelected = false
@@ -155,15 +156,15 @@ extension TimeTableViewCell {
     // MARK: - @objc Methods
     
     @objc private func weatherButtonDidTap() {
-        hourButtonState = .weather
+        hourWeatherState = .weather
+        hourCollectionView.reloadData()
         checkHourButton()
-        print("날씨 버튼 눌림")
     }
     
     @objc private func precipitationButtonDidTap() {
-        hourButtonState = .precipitation
+        hourWeatherState = .precipitation
+        hourCollectionView.reloadData()
         checkHourButton()
-        print("강수 버튼 눌림")
     }
 }
 
@@ -172,12 +173,23 @@ extension TimeTableViewCell {
 extension TimeTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return timezoneWeatherList.count
+        switch hourWeatherState {
+        case .weather:
+            return timezoneWeatherList.count
+        case .precipitation:
+            return timezonePrecipitationList.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: HourCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(timezoneWeatherList[indexPath.row])
+        
+        switch hourWeatherState {
+        case .weather:
+            cell.setWeatherDataBind(timezoneWeatherList[indexPath.row])
+        case .precipitation:
+            cell.setPrecipitationDataBind(timezonePrecipitationList[indexPath.row])
+        }
         
         if indexPath.row == 0 {
             cell.setCurrent()

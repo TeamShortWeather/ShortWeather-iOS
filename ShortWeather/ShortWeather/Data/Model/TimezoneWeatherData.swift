@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum TimezoneWeatherImageType: String {
+enum TimezoneWeatherType: String {
     case clearDay = "맑음"
 //    case clearNight = "맑음"
     case cloudy = "흐림"

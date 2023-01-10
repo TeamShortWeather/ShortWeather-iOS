@@ -85,6 +85,7 @@
 		AB3D5B51296828E800105FC9 /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */; };
 		AB3D5B572968909A00105FC9 /* SettingBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */; };
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
+		ABA6C541296D800E0077E246 /* TimezonePrecipitationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,6 +166,7 @@
 		AB3D5B50296828E800105FC9 /* FirstInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
 		AB3D5B562968909A00105FC9 /* SettingBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingBaseViewController.swift; sourceTree = "<group>"; };
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
+		ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezonePrecipitationData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +367,7 @@
 				52625C412967E00A007F483D /* FirstTodayWeatherData.swift */,
 				52625C552969B2AF007F483D /* UserInfo.swift */,
 				AB05A343296D43BF0064CE1F /* TimezoneWeatherData.swift */,
+				ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -801,6 +804,7 @@
 				521317662962B5CA009371E1 /* UIStackView +.swift in Sources */,
 				52625C442967F62B007F483D /* ReportCollectionViewCell.swift in Sources */,
 				03AF5DF7296B413A004598EF /* WeekWeatherCollectionViewCell.swift in Sources */,
+				ABA6C541296D800E0077E246 /* TimezonePrecipitationData.swift in Sources */,
 				03AF5DFB296C1AA4004598EF /* WeekWeatherHeaderView.swift in Sources */,
 				52625C422967E00A007F483D /* FirstTodayWeatherData.swift in Sources */,
 				AB09FF6929630D7A004C54EE /* WeatherTableViewCellType.swift in Sources */,

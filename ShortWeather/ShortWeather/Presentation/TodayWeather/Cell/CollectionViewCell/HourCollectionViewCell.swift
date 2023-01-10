@@ -74,10 +74,16 @@ extension HourCollectionViewCell {
     
     // MARK: - Methods
     
-    func setDataBind(_ model: TimezoneWeatherData) {
+    func setWeatherDataBind(_ model: TimezoneWeatherData) {
         timeLabel.text = changeToHour(model.time)
         stateLabel.text = "\(model.temperature)°"
-        iconImageView.image = UIImage(named: TimezoneWeatherImageType(rawValue: model.image)?.setWeatherImage() ?? "")
+        iconImageView.image = UIImage(named: TimezoneWeatherType(rawValue: model.image)?.setWeatherImage() ?? "")
+    }
+    
+    func setPrecipitationDataBind(_ model: TimezonePrecipitationData) {
+        timeLabel.text = changeToHour(model.time)
+        stateLabel.text = "\(model.rain)%"
+        iconImageView.image = UIImage(named: TimezonePrecipitationType(rawValue: model.rain)?.setPrecipitationImage() ?? "")
     }
     
     func setCurrent() {
