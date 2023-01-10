@@ -107,7 +107,7 @@ extension FirstInfoViewController {
     private func presentToListViewController(indexPath: IndexPath, infoType: InfoType) {
         let vc = ListInfoViewController(infoText: info[indexPath.row], listData: cellInfo[indexPath.row], infoType: infoType)
         vc.delegate = self
-        presentToHalfModalViewController(vc)
+        presentToHalfModalViewController(vc, infoType: infoType)
     }
     
     private func checkButtonState() {
