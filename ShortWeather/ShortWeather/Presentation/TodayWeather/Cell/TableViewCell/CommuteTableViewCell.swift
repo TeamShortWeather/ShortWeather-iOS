@@ -50,7 +50,7 @@ extension CommuteTableViewCell {
         selectionStyle = .none
         
         outLabel.do {
-            $0.text = "외출 시간"
+            $0.text = Letter.outTime
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray7
         }
@@ -82,7 +82,7 @@ extension CommuteTableViewCell {
         }
         
         comeLabel.do {
-            $0.text = "귀가 시간"
+            $0.text = Letter.inTime
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray7
         }

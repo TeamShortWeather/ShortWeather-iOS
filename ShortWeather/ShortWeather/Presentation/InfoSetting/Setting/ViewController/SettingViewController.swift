@@ -18,7 +18,7 @@ final class SettingViewController: BaseViewController {
     
     // MARK: - Properties
     
-    let settingList: [String] = ["외출 / 귀가시간대 설정", "알림 설정", "기상시간 설정"]
+    let settingList: [String] = [Letter.commuteTime, Letter.alarm, Letter.wakeUpTime]
     
     // MARK: - View Life Cycle
 
@@ -52,7 +52,7 @@ extension SettingViewController {
         view.addSubviews(settingTableView)
         
         settingTableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(22)
+            $0.top.equalTo(hamburgerButton.snp.bottom).offset(22)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalToSuperview()
         }
@@ -76,7 +76,7 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: SettingTableViewCell.self, indexPath: indexPath)
-        cell.setDataBind(settingList[indexPath.row])
+        cell.setDataBind("\(settingList[indexPath.row]) 설정")
         return cell
     }
 }

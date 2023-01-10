@@ -14,7 +14,7 @@ final class WakeUpTimeViewController: SettingBaseViewController {
     
     // MARK: - Properties
 
-    let info: String = "기상시간"
+    let info: String = Letter.wakeUpTime
     private var wakeUpTime: String = ""
     
     // MARK: - View Life Cycle
@@ -31,12 +31,12 @@ extension WakeUpTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        addBackButtonNavigationBar()
+        addBackButton()
         
-        navigationItem.title = "기상시간 설정"
+        navigationItem.title = "\(Letter.wakeUpTime) 설정"
         
         titleLabel.do {
-            $0.text = "기상시간을 변경해주세요"
+            $0.text = Letter.changeWakeUpTime
         }
         
         infoCollectionView.do {
