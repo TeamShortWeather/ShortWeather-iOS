@@ -37,16 +37,10 @@ public enum Image {
     public static let icnDustGood = UIImage(named: "icn_dust_good")!
     public static let icnDustNomal = UIImage(named: "icn_dust_nomal")!
     public static let icnDustWorst = UIImage(named: "icn_dust_worst")!
-    public static let icnFog = UIImage(named: "icn_fog")!
-    public static let icnHail = UIImage(named: "icn_hail")!
-    public static let icnHeavyrain = UIImage(named: "icn_heavyrain")!
     public static let icnHeavysnow = UIImage(named: "icn_heavysnow")!
     public static let icnHumidity = UIImage(named: "icn_humidity")!
-    public static let icnLightning = UIImage(named: "icn_lightning")!
     public static let icnLightrain = UIImage(named: "icn_lightrain")!
     public static let icnLightsnow = UIImage(named: "icn_lightsnow")!
-    public static let icnLittlecloudDay = UIImage(named: "icn_littlecloud_day")!
-    public static let icnLittlecloudNight = UIImage(named: "icn_littlecloud_night")!
     public static let icnLotcloudDay = UIImage(named: "icn_lotcloud_day")!
     public static let icnLotcloudNight = UIImage(named: "icn_lotcloud_night")!
     public static let icnPrecipitation1 = UIImage(named: "icn_precipitation_1")!
@@ -62,34 +56,24 @@ public enum Image {
     public static let icnRain = UIImage(named: "icn_rain")!
     public static let icnRainsnow = UIImage(named: "icn_rainsnow")!
     public static let icnShower = UIImage(named: "icn_shower")!
-    public static let icnSnow = UIImage(named: "icn_snow")!
+    public static let icnSnowdrifting = UIImage(named: "icn_snowdrifting")!
     public static let icnSunrise = UIImage(named: "icn_sunrise")!
     public static let icnSunset = UIImage(named: "icn_sunset")!
-    public static let icnWindy = UIImage(named: "icn_windy")!
-    public static let icnYellowdust = UIImage(named: "icn_yellowdust")!
     
     //MARK: - Weather Image
     
     public static let imgClearDay = UIImage(named: "img_clear_day")!
     public static let imgClearNight = UIImage(named: "img_clear_night")!
     public static let imgCloudy = UIImage(named: "img_cloudy")!
-    public static let imgFog = UIImage(named: "img_fog")!
-    public static let imgHail = UIImage(named: "img_hail")!
-    public static let imgHeavyrain = UIImage(named: "img_heavyrain")!
-    public static let imgHeavysnow = UIImage(named: "img_heavysnow")!
-    public static let imgLightning = UIImage(named: "img_lightning")!
     public static let imgLightrain = UIImage(named: "img_lightrain")!
     public static let imgLightsnow = UIImage(named: "img_lightsnow")!
-    public static let imgLittlecloudDay = UIImage(named: "img_littlecloud_day")!
     public static let imgLotcloudDay = UIImage(named: "img_lotcloud_day")!
-    public static let imgLittlecloudNight = UIImage(named: "img_littlecloud_night")!
     public static let imgLotcloudNight = UIImage(named: "img_lotcloud_night")!
     public static let imgRain = UIImage(named: "img_rain")!
     public static let imgRainsnow = UIImage(named: "img_rainsnow")!
     public static let imgShower = UIImage(named: "img_shower")!
     public static let imgSnow = UIImage(named: "img_snow")!
-    public static let imgWindy = UIImage(named: "img_windy")!
-    public static let imgYellowdust = UIImage(named: "img_yellowdust")!
+    public static let imgSnowdrifting = UIImage(named: "img_snowdrifting")!
     
     //MARK: - Background View
     
