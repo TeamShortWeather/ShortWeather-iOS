@@ -97,17 +97,17 @@ extension SettingBaseViewController {
         
         if let vc = viewController as? TimeInfoViewController {
             self.present(vc, animated: true) {
-                vc.datePickerTest.reloadAllComponents()
+                vc.datePicker.reloadAllComponents()
                 switch infoType {
                 case .wakeUpTime:
-                    vc.datePickerTest.selectRow(6, inComponent: 1, animated: true)
+                    vc.datePicker.selectRow(6, inComponent: 1, animated: true)
                 case .outTime:
-                    vc.datePickerTest.selectRow(7, inComponent: 1, animated: true)
+                    vc.datePicker.selectRow(7, inComponent: 1, animated: true)
                 case .inTime:
-                    vc.datePickerTest.selectRow(1, inComponent: 0, animated: true)
-                    vc.datePickerTest.selectRow(5, inComponent: 1, animated: true)
+                    vc.datePicker.selectRow(1, inComponent: 0, animated: true)
+                    vc.datePicker.selectRow(5, inComponent: 1, animated: true)
                 default:
-                    vc.datePickerTest.selectRow(0, inComponent: 0, animated: true)
+                    vc.datePicker.selectRow(0, inComponent: 0, animated: true)
                 }
             }
         }

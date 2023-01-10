@@ -21,9 +21,8 @@ final class TimeInfoViewController: UIViewController {
     // MARK: - UI Components
     
     private let titleLabel: UILabel = UILabel()
-    private let datePicker: UIDatePicker = UIDatePicker()
+    let datePicker: UIPickerView = UIPickerView()
     private let saveButton: CheckButton = CheckButton()
-    var datePickerTest: UIPickerView = UIPickerView()
     
     // MARK: - Properties
     
@@ -80,7 +79,7 @@ extension TimeInfoViewController {
             $0.textColor = Color.black
         }
         
-        datePickerTest.do {
+        datePicker.do {
             $0.backgroundColor = .clear
             $0.delegate = self
             $0.dataSource = self
@@ -96,14 +95,14 @@ extension TimeInfoViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        view.addSubviews(titleLabel, datePickerTest, saveButton)
+        view.addSubviews(titleLabel, datePicker, saveButton)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(24)
             $0.leading.equalToSuperview().offset(41)
         }
         
-        datePickerTest.snp.makeConstraints {
+        datePicker.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(24)
             $0.leading.equalTo(titleLabel)
             $0.trailing.equalToSuperview().offset(-28)
@@ -111,8 +110,8 @@ extension TimeInfoViewController {
         }
         
         saveButton.snp.makeConstraints {
-            $0.top.equalTo(datePickerTest.snp.bottom).offset(75)
-            $0.leading.equalTo(datePickerTest)
+            $0.top.equalTo(datePicker.snp.bottom).offset(75)
+            $0.leading.equalTo(datePicker)
             $0.centerX.equalToSuperview()
             $0.height.equalTo(57)
         }
