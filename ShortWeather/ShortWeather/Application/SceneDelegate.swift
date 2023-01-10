@@ -25,8 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
             let vc = TodayWeatherViewController()
-//            let rootVC = UINavigationController(rootViewController: vc)
-            let rootVC = SplashViewController()
+            let rootVC = UINavigationController(rootViewController: vc)
+//            let rootVC = SplashViewController()
             
             window.rootViewController = rootVC
             window.makeKeyAndVisible()

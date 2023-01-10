@@ -31,8 +31,9 @@ final class TimeTableViewCell: UITableViewCell {
     }()
     
     // MARK: - Properties
-    
+
     var hourButtonState: HourButton = .weather
+    private var timezoneWeatherList: [TimezoneWeatherData] = TimezoneWeatherData.dummyData()
     
     // MARK: - Initializer
 
@@ -171,11 +172,17 @@ extension TimeTableViewCell {
 extension TimeTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return timezoneWeatherList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: HourCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(timezoneWeatherList[indexPath.row])
+        
+        if indexPath.row == 0 {
+            cell.setCurrent()
+        }
+        
         return cell
     }
 }

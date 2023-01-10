@@ -36,17 +36,17 @@ extension HourCollectionViewCell {
         contentView.backgroundColor = .clear
         
         timeLabel.do {
-            $0.text = "지금"
+//            $0.text = "지금"
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray7
         }
         
-        iconImageView.do {
-            $0.backgroundColor = Color.gray2
-        }
+//        iconImageView.do {
+//            $0.backgroundColor = Color.gray2
+//        }
         
         stateLabel.do {
-            $0.text = "22°"
+//            $0.text = "22°"
             $0.font = .fontGuide(.caption1)
         }
     }
@@ -69,6 +69,29 @@ extension HourCollectionViewCell {
         stateLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview()
             $0.centerX.equalToSuperview()
+        }
+    }
+    
+    // MARK: - Methods
+    
+    func setDataBind(_ model: TimezoneWeatherData) {
+        timeLabel.text = changeToHour(model.time)
+        stateLabel.text = "\(model.temperature)°"
+        iconImageView.image = UIImage(named: TimezoneWeatherImageType(rawValue: model.image)?.setWeatherImage() ?? "")
+    }
+    
+    func setCurrent() {
+        timeLabel.text = "지금"
+    }
+    
+    private func changeToHour(_ time: String) -> String {
+        let endIndex: String.Index = time.index(time.startIndex, offsetBy: 1)
+        let result = Int(String(time[...endIndex]))!
+        
+        if result > 12 {
+            return "오후 \(result-12)시"
+        } else {
+            return "오전 \(result)시"
         }
     }
 }

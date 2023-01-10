@@ -68,6 +68,7 @@
 		52FBA6B7295590D700F263B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6B5295590D700F263B3 /* LaunchScreen.storyboard */; };
 		52FBA6D02955BC3B00F263B3 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6CF2955BC3B00F263B3 /* Color.xcassets */; };
 		52FBA6D22955BC4E00F263B3 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52FBA6D12955BC4E00F263B3 /* Image.xcassets */; };
+		AB05A344296D43BF0064CE1F /* TimezoneWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB05A343296D43BF0064CE1F /* TimezoneWeatherData.swift */; };
 		AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */; };
 		AB09FF6929630D7A004C54EE /* WeatherTableViewCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB09FF6829630D7A004C54EE /* WeatherTableViewCellType.swift */; };
 		AB102EB729655CA400BEBF90 /* UIButton +.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB102EB629655CA400BEBF90 /* UIButton +.swift */; };
@@ -147,6 +148,7 @@
 		52FBA6B8295590D700F263B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52FBA6CF2955BC3B00F263B3 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		52FBA6D12955BC4E00F263B3 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
+		AB05A343296D43BF0064CE1F /* TimezoneWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezoneWeatherData.swift; sourceTree = "<group>"; };
 		AB09FF612962BB2C004C54EE /* SecondTodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTodayWeatherView.swift; sourceTree = "<group>"; };
 		AB09FF6829630D7A004C54EE /* WeatherTableViewCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCellType.swift; sourceTree = "<group>"; };
 		AB102EB629655CA400BEBF90 /* UIButton +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton +.swift"; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			children = (
 				52625C412967E00A007F483D /* FirstTodayWeatherData.swift */,
 				52625C552969B2AF007F483D /* UserInfo.swift */,
+				AB05A343296D43BF0064CE1F /* TimezoneWeatherData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				52CBA4A2295C814600DE6AE9 /* MainAPI.swift in Sources */,
 				523BB083295D73350004B343 /* Image.swift in Sources */,
 				AB09FF622962BB2C004C54EE /* SecondTodayWeatherView.swift in Sources */,
+				AB05A344296D43BF0064CE1F /* TimezoneWeatherData.swift in Sources */,
 				523BB085295D735D0004B343 /* Color.swift in Sources */,
 				52D6A38D2961A08D00BF4287 /* SideMenuView.swift in Sources */,
 				033E7F712965A8560051B349 /* ListInfoViewController.swift in Sources */,
