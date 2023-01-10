@@ -1,8 +1,9 @@
-<img src="https://user-images.githubusercontent.com/81281190/210077859-e40e5b7c-8472-4510-8a37-ef0cde2a8461.png" height="200"> <img src="https://user-images.githubusercontent.com/81281190/210070574-5791cfbc-5f16-476d-87b8-e8c035b31f80.png" height="150">
+<img src="https://user-images.githubusercontent.com/81281190/211613378-5c33482b-7dac-408e-8bdc-04d5d618cc32.png" height="200">
 
 <br>
 
-# 어제와 비교하여 오늘의 날씨를 쉽게 알아보는, 숏웨더 ☔️
+
+# 어제의 날씨로 알아 보는 오늘의 날씨, 숏웨더 ☔️
 
 날씨를 어제와 비교하여 알고싶다면?
 
