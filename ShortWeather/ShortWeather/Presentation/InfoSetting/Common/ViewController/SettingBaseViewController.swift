@@ -104,15 +104,35 @@ extension SettingBaseViewController {
         backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
-    public func presentToHalfModalViewController(_ viewController: UIViewController) {
+    public func presentToHalfModalViewController(_ viewController: UIViewController, infoType: InfoType) {
         viewController.modalPresentationStyle = .pageSheet
         if let sheet = viewController.sheetPresentationController {
             sheet.detents = [.medium()] // 반만 고정
-//            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
+            //            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }
-        self.present(viewController, animated: true, completion: nil);
+        
+        if viewController is ListInfoViewController {
+            self.present(viewController, animated: true, completion:nil);
+        }
+        
+        if let vc = viewController as? TimeInfoViewController {
+            self.present(vc, animated: true) {
+                vc.datePicker.reloadAllComponents()
+                switch infoType {
+                case .wakeUpTime:
+                    vc.datePicker.selectRow(6, inComponent: 1, animated: true)
+                case .outTime:
+                    vc.datePicker.selectRow(7, inComponent: 1, animated: true)
+                case .inTime:
+                    vc.datePicker.selectRow(1, inComponent: 0, animated: true)
+                    vc.datePicker.selectRow(5, inComponent: 1, animated: true)
+                default:
+                    vc.datePicker.selectRow(0, inComponent: 0, animated: true)
+                }
+            }
+        }
     }
     
     public func addBackButton() {

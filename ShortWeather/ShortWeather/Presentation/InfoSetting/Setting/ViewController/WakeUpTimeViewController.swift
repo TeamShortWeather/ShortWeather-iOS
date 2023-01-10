@@ -79,7 +79,7 @@ extension WakeUpTimeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = TimeInfoViewController(infoText: "\(info) 설정", infoType: .outTime)
         vc.delegate = self
-        presentToHalfModalViewController(vc)
+        presentToHalfModalViewController(vc, infoType: .outTime)
     }
 }
 
