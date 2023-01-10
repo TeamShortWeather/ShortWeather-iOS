@@ -28,6 +28,10 @@ final class CommuteTableViewCell: UITableViewCell {
     private lazy var comeStackView: UIStackView = UIStackView()
     private lazy var baseStackView: UIStackView = UIStackView()
     
+    // MARK: - Properties
+    
+    var secondWeatherData: SecondTodayWeather = SecondTodayWeather.dummyData()
+    
     // MARK: - Initializer
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,7 +60,7 @@ extension CommuteTableViewCell {
         }
         
         outTimeLabel.do {
-            $0.text = "오전 8시"
+            $0.text = secondWeatherData.goOut.time
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -71,7 +75,7 @@ extension CommuteTableViewCell {
         }
         
         outTemperatureLabel.do {
-            $0.text = "-12°"
+            $0.text = String(secondWeatherData.goOut.temp)
             $0.font = .fontGuide(.subhead1)
         }
         
@@ -88,7 +92,7 @@ extension CommuteTableViewCell {
         }
         
         comeTimeLabel.do {
-            $0.text = "오후 8시"
+            $0.text = secondWeatherData.goHome.time
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -103,7 +107,7 @@ extension CommuteTableViewCell {
         }
         
         comeTemperatureLabel.do {
-            $0.text = "-17°"
+            $0.text = String(secondWeatherData.goHome.temp)
             $0.font = .fontGuide(.subhead1)
         }
         
