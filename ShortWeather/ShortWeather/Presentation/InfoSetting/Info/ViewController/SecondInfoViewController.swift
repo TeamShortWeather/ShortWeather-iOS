@@ -45,7 +45,7 @@ extension SecondInfoViewController {
     private func setUI() {
         view.backgroundColor = .white
         
-        addBackButtonNavigationBar()
+        addBackButton()
         
         titleLabel.do {
             $0.text = "여러분의 하루를 알려주세요"
@@ -157,15 +157,15 @@ extension SecondInfoViewController: UICollectionViewDataSource {
         case 0:
             let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .wakeUpTime)
             vc.delegate = self
-            presentToHalfModalViewController(vc)
+            presentToHalfModalViewController(vc, infoType: .wakeUpTime)
         case 1:
             let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .outTime)
             vc.delegate = self
-            presentToHalfModalViewController(vc)
+            presentToHalfModalViewController(vc, infoType: .outTime)
         case 2:
             let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .inTime)
             vc.delegate = self
-            presentToHalfModalViewController(vc)
+            presentToHalfModalViewController(vc, infoType: .inTime)
         default:
             break
         }

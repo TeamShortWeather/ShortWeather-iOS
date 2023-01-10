@@ -15,6 +15,7 @@ final class AlarmSettingViewController: UIViewController {
     // MARK: - UI Components
     
     private let titleLabel: UILabel = UILabel()
+    private let backButton: UIButton = UIButton()
     private let allAlarmView: UIView = UIView()
     private let allAlarmLabel: UILabel = UILabel()
     private let allAlarmDescriptionLabel: UILabel = UILabel()
@@ -47,7 +48,9 @@ extension AlarmSettingViewController {
     private func setUI() {
         view.backgroundColor = .white
         
-        addBackButtonNavigationBar()
+        backButton.do {
+            $0.setImage(Image.icnExpandLeft, for: .normal)
+        }
         
         navigationItem.title = "\(Letter.alarm) 설정"
         
@@ -93,11 +96,17 @@ extension AlarmSettingViewController {
         allAlarmLabelStackView.addArrangedSubviews(allAlarmLabel, allAlarmDescriptionLabel)
         allAlarmView.addSubviews(allAlarmLabelStackView, allAlarmSwitchButton)
         
-        view.addSubviews(titleLabel, allAlarmView, alarmTableView)
+        view.addSubviews(backButton, titleLabel, allAlarmView, alarmTableView)
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(28)
+            $0.width.height.equalTo(24)
+        }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(28)
-            $0.leading.equalToSuperview().offset(28)
+            $0.top.equalTo(backButton.snp.bottom).offset(28)
+            $0.leading.equalTo(backButton)
         }
         
         allAlarmLabelStackView.snp.makeConstraints {
@@ -132,6 +141,7 @@ extension AlarmSettingViewController {
     }
     
     private func setAddTarget() {
+        backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
         allAlarmSwitchButton.addTarget(self, action: #selector(allAlarmButtonDidTap), for: .touchUpInside)
     }
     
@@ -152,6 +162,10 @@ extension AlarmSettingViewController {
     
     @objc private func allAlarmButtonDidTap() {
         checkAlarmOn()
+    }
+    
+    @objc public func backButtonDidTap() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

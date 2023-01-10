@@ -33,7 +33,7 @@ extension CommuteTimeViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        addBackButtonNavigationBar()
+        addBackButton()
         
         navigationItem.title = "\(Letter.commuteTime) 설정"
         
@@ -91,11 +91,11 @@ extension CommuteTimeViewController: UICollectionViewDataSource {
         case 0:
             let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .outTime)
             vc.delegate = self
-            presentToHalfModalViewController(vc)
+            presentToHalfModalViewController(vc, infoType: .outTime)
         case 1:
             let vc = TimeInfoViewController(infoText: "\(info[indexPath.row]) 설정", infoType: .inTime)
             vc.delegate = self
-            presentToHalfModalViewController(vc)
+            presentToHalfModalViewController(vc, infoType: .inTime)
         default:
             break
         }

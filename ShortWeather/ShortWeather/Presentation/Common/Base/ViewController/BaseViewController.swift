@@ -19,6 +19,8 @@ class BaseViewController: UIViewController {
     private let sideMenuView: SideMenuView = SideMenuView()
     private let backgroundView: UIView = UIView()
     private let tapBackgroundViewGesture: UITapGestureRecognizer = UITapGestureRecognizer()
+    public let hamburgerButton: UIButton = UIButton()
+    public let viewTitleLabel: UILabel = UILabel()
     
     // MARK: - View Life Cycle
     
@@ -36,7 +38,8 @@ extension BaseViewController {
     
     private func setUI() {
         view.backgroundColor = Color.white
-        view.addSubviews(backgroundView, sideMenuView)
+        
+        navigationController?.navigationBar.isHidden = true
         
         backgroundView.do {
             $0.isHidden = true
@@ -44,25 +47,34 @@ extension BaseViewController {
             $0.addGestureRecognizer(tapBackgroundViewGesture)
         }
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: Image.icnHamburgermenu,
-                                                                style: .done,
-                                                                target: self,
-                                                                action: #selector(showSideMenuView))
-        navigationItem.title = "오늘 날씨"
-        navigationItem.leftBarButtonItem?.tintColor = .black
-        navigationItem.rightBarButtonItem?.tintColor = .black
-    }
-    
-    // MARK: - Methods
-    
-    private func setAddTarget() {
-        tapBackgroundViewGesture.addTarget(self, action: #selector(hideSideMenuView))
+        hamburgerButton.do {
+            $0.setImage(Image.icnHamburgermenu, for: .normal)
+        }
+        
+        viewTitleLabel.do{
+            $0.text = "오늘 날씨"
+            $0.font = .fontGuide(.subhead2)
+            $0.textColor = Color.black
+        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
+        view.addSubviews(hamburgerButton, viewTitleLabel, backgroundView, sideMenuView)
+        
         let sideMenuViewWidth = CGFloat(263).adjusted
+        
+        hamburgerButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(18)
+            $0.width.height.equalTo(44)
+        }
+        
+        viewTitleLabel.snp.makeConstraints {
+            $0.centerY.equalTo(hamburgerButton)
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
+        }
         
         sideMenuView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
@@ -73,6 +85,13 @@ extension BaseViewController {
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    // MARK: - Methods
+    
+    private func setAddTarget() {
+        hamburgerButton.addTarget(self, action: #selector(showSideMenuView), for: .touchUpInside)
+        tapBackgroundViewGesture.addTarget(self, action: #selector(hideSideMenuView))
     }
     
     // MARK: - @objc Methods
