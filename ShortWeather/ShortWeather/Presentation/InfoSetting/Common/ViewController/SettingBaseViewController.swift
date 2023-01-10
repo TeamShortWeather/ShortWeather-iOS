@@ -16,6 +16,7 @@ class SettingBaseViewController: UIViewController {
     // MARK: - UI Components
     
     let titleLabel: UILabel = UILabel()
+    private let backButton: UIButton = UIButton()
     let infoCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -31,6 +32,7 @@ class SettingBaseViewController: UIViewController {
         setUI()
         setLayout()
         setDelegate()
+        setAddTarget()
     }
 }
 
@@ -39,8 +41,15 @@ extension SettingBaseViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
+        navigationController?.navigationBar.isHidden = true
+        
         view.backgroundColor = .white
 
+        backButton.do {
+            $0.setImage(Image.icnExpandLeft, for: .normal)
+            $0.isHidden = true
+        }
+        
         titleLabel.do {
             $0.font = .fontGuide(.headline1)
         }
@@ -57,11 +66,17 @@ extension SettingBaseViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        view.addSubviews(titleLabel, infoCollectionView, checkButton)
+        view.addSubviews(titleLabel, backButton, infoCollectionView, checkButton)
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(28)
+            $0.width.height.equalTo(24)
+        }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(29)
-            $0.leading.equalToSuperview().offset(28)
+            $0.top.equalTo(backButton.snp.bottom).offset(29)
+            $0.leading.equalTo(backButton)
         }
         
         infoCollectionView.snp.makeConstraints {
@@ -85,6 +100,10 @@ extension SettingBaseViewController {
         infoCollectionView.delegate = self
     }
     
+    private func setAddTarget() {
+        backButton.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
+    }
+    
     public func presentToHalfModalViewController(_ viewController: UIViewController) {
         viewController.modalPresentationStyle = .pageSheet
         if let sheet = viewController.sheetPresentationController {
@@ -94,6 +113,16 @@ extension SettingBaseViewController {
             sheet.prefersGrabberVisible = true
         }
         self.present(viewController, animated: true, completion: nil);
+    }
+    
+    public func addBackButton() {
+        backButton.isHidden = false
+    }
+
+    // MARK: - @objc Methods
+    
+    @objc public func backButtonDidTap() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
