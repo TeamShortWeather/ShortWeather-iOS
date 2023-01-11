@@ -24,11 +24,19 @@ final class FirstInfoViewController: SettingBaseViewController {
         ["10대", "20대", "30대", "40대", "50대", "60대 이상"],
         ["추위를 잘 타요", "보통이에요", "더위를 잘 타요", "추위, 더위 모두 타요"]
     ]
-    
-    private var gender: String = ""
-    private var age: String = ""
-    private var tempResponse: String = ""
+    private var user: User
     private var isCellTouched: [Bool] = [false, false, false]
+    
+    // MARK: - Initializer
+    
+    init() {
+        user = User(gender: "", age: "", tempSens: "", wakeUpTime: "", goOutTime: "", goHomeTime: "", deviceToken: "")
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View Life Cycle
 
@@ -71,7 +79,7 @@ extension FirstInfoViewController {
     }
     
     private func pushToSecondViewController() {
-        let secondVC = SecondInfoViewController()
+        let secondVC = SecondInfoViewController(user: user)
         navigationController?.pushViewController(secondVC, animated: true)
     }
     
@@ -79,19 +87,19 @@ extension FirstInfoViewController {
         if isCellTouched[indexPath.row] {
             switch indexPath.row {
             case 0:
-                if gender.isEmpty {
+                if user.gender.isEmpty {
                     cell.unselectCell()
                 } else {
                     cell.selectCell()
                 }
             case 1:
-                if age.isEmpty {
+                if user.age.isEmpty {
                     cell.unselectCell()
                 } else {
                     cell.selectCell()
                 }
             case 2:
-                if tempResponse.isEmpty {
+                if user.tempSens.isEmpty {
                     cell.unselectCell()
                 } else {
                     cell.selectCell()
@@ -111,7 +119,7 @@ extension FirstInfoViewController {
     }
     
     private func checkButtonState() {
-        if !gender.isEmpty && !age.isEmpty && !tempResponse.isEmpty {
+        if !user.gender.isEmpty && !user.age.isEmpty && !user.tempSens.isEmpty {
             checkButton.setState(.allow)
         } else {
             checkButton.setState(.notAllow)
@@ -137,11 +145,11 @@ extension FirstInfoViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
         switch indexPath.row {
         case 0:
-            cell.setDataBind(infoText: info[indexPath.row], data: gender)
+            cell.setDataBind(infoText: info[indexPath.row], data: user.gender)
         case 1:
-            cell.setDataBind(infoText: info[indexPath.row], data: age)
+            cell.setDataBind(infoText: info[indexPath.row], data: user.age)
         case 2:
-            cell.setDataBind(infoText: info[indexPath.row], data: tempResponse)
+            cell.setDataBind(infoText: info[indexPath.row], data: user.tempSens)
         default:
             break
         }
@@ -173,11 +181,11 @@ extension FirstInfoViewController: ListInfoViewControllerDelegate {
     func getInfoData(userInfoData: UserInfo) {
         let infoType = userInfoData.infoType
         if infoType == .gender {
-            self.gender = userInfoData.infoData
+            self.user.gender = userInfoData.infoData
         } else if infoType == .age {
-            self.age = userInfoData.infoData
+            self.user.age = userInfoData.infoData
         } else if infoType == .tempResponse {
-            self.tempResponse = userInfoData.infoData
+            self.user.tempSens = userInfoData.infoData
         }
         infoCollectionView.reloadData()
     }

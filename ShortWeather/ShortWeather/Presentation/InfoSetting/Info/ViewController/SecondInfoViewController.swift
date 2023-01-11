@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Moya
 import SnapKit
 import Then
 
@@ -18,15 +19,27 @@ final class SecondInfoViewController: SettingBaseViewController {
     
     // MARK: - Properties
     
+    private var user: User
     private let info: [String] = [
         "기상시간",
         "외출시간",
         "귀가시간",
     ]
-    private var wakeUpTime: String = ""
-    private var outTime: String = ""
-    private var inTime: String = ""
     private var isCellTouched: [Bool] = [false, false, false]
+    private let userProvider = MoyaProvider<UserService>(plugins:[NetworkLoggerPlugin()])
+    private let defaults = UserDefaults.standard
+    
+    
+    // MARK: - Initializer
+    
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View Life Cycle
     
@@ -56,7 +69,7 @@ extension SecondInfoViewController {
         }
         
         addInfoLabel.do {
-            $0.text = "* 입력한 시간을 바탕으로 날씨를 알려드려요"
+            $0.text = Letter.explainPurposeInfo
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray4
         }
@@ -88,19 +101,19 @@ extension SecondInfoViewController {
         if isCellTouched[indexPath.row] {
             switch indexPath.row {
             case 0:
-                if wakeUpTime.isEmpty {
+                if user.wakeUpTime.isEmpty {
                     cell.unselectCell()
                 } else {
                     cell.selectCell()
                 }
             case 1:
-                if outTime.isEmpty {
+                if user.goOutTime.isEmpty {
                     cell.unselectCell()
                 } else {
                     cell.selectCell()
                 }
             case 2:
-                if inTime.isEmpty {
+                if user.goHomeTime.isEmpty {
                     cell.unselectCell()
                 } else {
                     cell.selectCell()
@@ -114,7 +127,7 @@ extension SecondInfoViewController {
     }
     
     private func checkButtonState() {
-        if !wakeUpTime.isEmpty && !outTime.isEmpty && !inTime.isEmpty {
+        if !user.wakeUpTime.isEmpty && !user.goOutTime.isEmpty && !user.goHomeTime.isEmpty {
             checkButton.setState(.allow)
         } else {
             checkButton.setState(.notAllow)
@@ -124,7 +137,39 @@ extension SecondInfoViewController {
     // MARK: - @objc Methods
     
     @objc private func checkButtonDidTap() {
-        UIViewController.modifyRootViewController(TodayWeatherViewController())
+        user.deviceToken = String.createDeviceToken()
+        print("6-6-6-6-6-6-6-6-")
+        userProvider.request(.postUser(param: user.makePostUserRequest())) { response in
+            print("5-5-5-5-5-5-5-5-55-")
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status<300{
+                    do{
+                        print("!111111111")
+                        print(result.data)
+                        let data = try result.map(GeneralResponse<PostUserResponse>.self).data!
+                        print("40404-4-4-4-4-4-")
+                        print(data)
+                        self.defaults.set(self.user.deviceToken, forKey: DataKey.deviceToken)
+                        print("@22=2-2-2-2-2-2-2-1")
+                        print(self.defaults.set(self.user.deviceToken, forKey: DataKey.deviceToken))
+                        UIViewController.modifyRootViewController(TodayWeatherViewController())
+                    }
+                    catch(let error){
+                        print("실패!")
+                        print(error.localizedDescription)
+                    }
+                }
+                else if status >= 400{
+                    print("요청 오류")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        print("3-3-3-3-3-3-33-")
+        UIViewController.modifyRootViewController(FirstInfoViewController())
     }
 }
 
@@ -138,11 +183,11 @@ extension SecondInfoViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
         switch indexPath.row {
         case 0:
-            cell.setDataBind(infoText: info[indexPath.row], data: wakeUpTime)
+            cell.setDataBind(infoText: info[indexPath.row], data: user.wakeUpTime)
         case 1:
-            cell.setDataBind(infoText: info[indexPath.row], data: outTime)
+            cell.setDataBind(infoText: info[indexPath.row], data: user.goOutTime)
         case 2:
-            cell.setDataBind(infoText: info[indexPath.row], data: inTime)
+            cell.setDataBind(infoText: info[indexPath.row], data: user.goHomeTime)
         default:
             break
         }
@@ -181,11 +226,11 @@ extension SecondInfoViewController: TimeInfoViewControllerDelegate {
     func getInfoData(userInfoData: UserInfo) {
         let infoType = userInfoData.infoType
         if infoType == .wakeUpTime {
-            wakeUpTime = userInfoData.infoData
+            user.wakeUpTime = userInfoData.infoData
         } else if infoType == .outTime {
-            outTime = userInfoData.infoData
+            user.goOutTime = userInfoData.infoData
         } else if infoType == .inTime {
-            inTime = userInfoData.infoData
+            user.goHomeTime = userInfoData.infoData
         }
         infoCollectionView.reloadData()
     }
