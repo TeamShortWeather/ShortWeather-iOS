@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
 
 //            let vc = SplashViewController()
-            let vc = FirstInfoViewController()
+//            let vc = FirstInfoViewController()
+            let vc = TodayWeatherViewController()
             let rootVC = UINavigationController(rootViewController: vc)
 //            let rootVC = SplashViewController()
             

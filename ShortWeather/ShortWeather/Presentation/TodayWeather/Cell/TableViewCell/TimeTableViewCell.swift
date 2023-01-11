@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Moya
 import SnapKit
 import Then
 
@@ -35,6 +36,10 @@ final class TimeTableViewCell: UITableViewCell {
     var hourWeatherState: HourWeather = .weather
     private var timezoneWeatherList: [TimezoneWeatherData] = TimezoneWeatherData.dummyData()
     private var timezonePrecipitationList: [TimezonePrecipitationData] = TimezonePrecipitationData.dummyData()
+    let detailTempProvider = MoyaProvider<TodayWeatherDetailService>(
+        plugins: [NetworkLoggerPlugin(verbose: true)]
+    )
+    var detailTempList: [TimezoneWeatherData] = []
     
     // MARK: - Initializer
 
@@ -45,6 +50,7 @@ final class TimeTableViewCell: UITableViewCell {
         setLayout()
         setAddTarget()
         setDelegate()
+        fetchDetailTemp()
     }
     
     required init?(coder: NSCoder) {
@@ -153,12 +159,45 @@ extension TimeTableViewCell {
         }
     }
     
+    private func fetchDetailTemp() {
+        var list: [TimezoneWeatherData] = []
+        
+        detailTempProvider.request(.fetchDetailTemp) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let response = try result.map(GeneralResponse<[DetailTempDto]>.self)
+                    print(response)
+                    
+                    let status = response.status
+                    
+                    if status == 200 {
+                        guard let data = response.data else {return}
+                        
+                        for dto in data {
+                            list.append(dto.convertToDetaiTemp())
+                        }
+                        self.detailTempList = list
+                        self.hourCollectionView.reloadData()
+                    } else if status == 400 {
+                        print("시간별 오늘 날씨 정보 조회 실패")
+                    }
+                } catch {
+                    
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func weatherButtonDidTap() {
         hourWeatherState = .weather
         hourCollectionView.reloadData()
         checkHourButton()
+        fetchDetailTemp()
     }
     
     @objc private func precipitationButtonDidTap() {
@@ -175,7 +214,7 @@ extension TimeTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch hourWeatherState {
         case .weather:
-            return timezoneWeatherList.count
+            return detailTempList.count
         case .precipitation:
             return timezonePrecipitationList.count
         }
@@ -186,7 +225,7 @@ extension TimeTableViewCell: UICollectionViewDataSource {
         
         switch hourWeatherState {
         case .weather:
-            cell.setWeatherDataBind(timezoneWeatherList[indexPath.row])
+            cell.setWeatherDataBind(detailTempList[indexPath.row])
         case .precipitation:
             cell.setPrecipitationDataBind(timezonePrecipitationList[indexPath.row])
         }
