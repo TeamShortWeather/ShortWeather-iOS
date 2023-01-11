@@ -12,8 +12,8 @@
 <br><br>
 ##  🫶 Short Weather iOS Developers
 
-<img src="https://user-images.githubusercontent.com/48792069/211770069-79adee40-d98e-4f0a-922c-16d1231489fe.jpeg" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/211770060-8a01c640-9467-4acc-9098-3505d924fd00.jpeg" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/211770069-79adee40-d98e-4f0a-922c-16d1231489fe.jpeg" width="200"> |
-:---------:|:----------:|:---------:
+<img src="https://user-images.githubusercontent.com/48792069/211770069-79adee40-d98e-4f0a-922c-16d1231489fe.jpeg" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/211770060-8a01c640-9467-4acc-9098-3505d924fd00.jpeg" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/211770589-fdccd3cf-203a-4a1b-99ab-6423c1b5e770.jpeg" width="200"> |
+:---------:|:----------:|:---------:|
 유서린 | 김 민 | 권 정 |
 [SeorinY](https://github.com/SeorinY) | [minnnidev](https://github.com/minnnidev) | [kwonjeong](https://github.com/kwonjeong) |
 <br>
