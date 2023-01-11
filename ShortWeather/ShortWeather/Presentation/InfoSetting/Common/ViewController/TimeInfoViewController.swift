@@ -137,10 +137,23 @@ extension TimeInfoViewController {
         }
     }
     
+    private func timeToString(dayTime: String, hourTime: Int, minuteTime: String) -> String {
+        var stringTime: String = ""
+        if dayTime == "오전" {
+            stringTime = "0" + String(hourTime) + minuteTime
+        }
+        else if dayTime == "오후" {
+            stringTime = String(hourTime + 12) + minuteTime
+        }
+        return stringTime
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func saveButtonDidTap() {
-        fixedTime = dayTime + " " + String(hourTime) + "시 " + minuteTime + "분"
+        fixedTime = dayTime + " " + String(hourTime) + "시 " + minuteTime + "분" // 뷰컨에뜨는거
+        let stringTime = timeToString(dayTime: dayTime, hourTime: hourTime, minuteTime: minuteTime)
+        print(stringTime) // 서린이오빠꺼
         delegate?.getInfoData(userInfoData: UserInfo(infoData: fixedTime, infoType: infoType))
         self.dismiss(animated: true)
     }

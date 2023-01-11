@@ -19,11 +19,8 @@ enum APIConstants {
     static let accept: String = "Accept"
     static let auth: String = "x-auth-token"
     static let applicationJSON = "application/json"
-    //    static let contentType: String = "Content-Type"
-    
-    
-    static var testDeviceToken: String = ""
-    public static var jwtToken: String = ""
+    static var deviceToken: String = ""
+    static var jwtToken: String = ""
     
     //MARK: - Header
     
@@ -34,7 +31,7 @@ enum APIConstants {
     static var headerWithDeviceToken: [String: String] {
         [
             NetworkHeaderKey.contentType.rawValue: APIConstants.applicationJSON,
-            NetworkHeaderKey.deviceToken.rawValue: APIConstants.testDeviceToken
+            NetworkHeaderKey.deviceToken.rawValue: APIConstants.deviceToken
         ]
     }
     

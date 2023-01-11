@@ -138,22 +138,16 @@ extension SecondInfoViewController {
     
     @objc private func checkButtonDidTap() {
         user.deviceToken = String.createDeviceToken()
-        print("6-6-6-6-6-6-6-6-")
         userProvider.request(.postUser(param: user.makePostUserRequest())) { response in
-            print("5-5-5-5-5-5-5-5-55-")
             switch response {
             case .success(let result):
                 let status = result.statusCode
-                if status >= 200 && status<300{
+                if status >= 200 && status<300 {
                     do{
-                        print("!111111111")
-                        print(result.data)
                         let data = try result.map(GeneralResponse<PostUserResponse>.self).data!
-                        print("40404-4-4-4-4-4-")
-                        print(data)
                         self.defaults.set(self.user.deviceToken, forKey: DataKey.deviceToken)
-                        print("@22=2-2-2-2-2-2-2-1")
-                        print(self.defaults.set(self.user.deviceToken, forKey: DataKey.deviceToken))
+                        APIConstants.deviceToken = self.user.deviceToken
+                        APIConstants.jwtToken = data.accessToken
                         UIViewController.modifyRootViewController(TodayWeatherViewController())
                     }
                     catch(let error){
@@ -168,7 +162,6 @@ extension SecondInfoViewController {
                 print(error.localizedDescription)
             }
         }
-        print("3-3-3-3-3-3-33-")
         UIViewController.modifyRootViewController(FirstInfoViewController())
     }
 }

@@ -67,12 +67,13 @@ extension SplashViewController {
             UIViewController.modifyRootViewController(FirstInfoViewController())
             return
         }
-        APIConstants.testDeviceToken = deviceToken
+        APIConstants.deviceToken = deviceToken
         userProvider.request(.checkUser) { response in
             switch response {
             case .success(let result):
                 do {
                     let data = try result.map(GeneralResponse<CheckUserResponse>.self).data!
+                    APIConstants.jwtToken = data.accessToken
                     UIViewController.modifyRootViewController(TodayWeatherViewController())
                 } catch(let error){
                     print("실패!")
