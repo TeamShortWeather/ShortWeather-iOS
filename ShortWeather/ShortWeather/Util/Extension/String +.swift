@@ -15,6 +15,10 @@ extension String {
         
         if result > 12 {
             return "오후 \(result-12)시"
+        } else if result == 0 {
+            return "오전 12시"
+        } else if result == 12 {
+            return "오후 12시"
         } else {
             return "오전 \(result)시"
         }
