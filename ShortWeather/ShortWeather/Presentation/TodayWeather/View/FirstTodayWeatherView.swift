@@ -39,6 +39,10 @@ final class FirstTodayWeatherView: UIView {
     // MARK: - Properties
     
     private let firstTodayWeather: FirstTodayWeatherData
+    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NzM0MjQxMzEsImV4cCI6MTY3MzUxMDUzMX0.funiySHoTL1xpPBaUcUBn80eNMnKSwqXCpwsANwYCEc"
+    let todayWeatherProvider = MoyaProvider<TodayWeatherService>(
+        plugins: [NetworkLoggerPlugin(verbose: true)]
+    )
     
     // MARK: - Initializer
     
@@ -50,6 +54,7 @@ final class FirstTodayWeatherView: UIView {
         setDataBind()
         setAddTarget()
         setDelegate()
+        fetchWeather()
     }
     
     required init?(coder: NSCoder) {
@@ -300,6 +305,44 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
                 return cell.adjustCellSize(label: Letter.dust)
             } else {
                 return cell.adjustCellSize(label: Letter.fineDust)
+            }
+        }
+    }
+}
+
+extension FirstTodayWeatherView {
+    
+    func fetchWeather() {
+        print("dalsdjf;ajd;faje;ja;sdj;l")
+//        todayWeatherProvider.request(.fetchWeather) { response in
+//            switch response {
+//            case .success(let result):
+//                let status = result.statusCode
+//                if status >= 200 && status < 300 {
+//                    print("\n성공")
+//                }
+//                else if status >= 400 {
+//                    print("\nerror")
+//                }
+//            case .failure(let error):
+//                print("\n error ???")
+//                print(error.localizedDescription)
+//            }
+//        }
+        todayWeatherProvider.request(.fetchWeather(authorization: token)) { response in
+            switch response {
+            case .success(let result):
+                print(result)
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    print("\n성공")
+                }
+                else if status >= 400 {
+                    print("\nerror")
+                }
+            case .failure(let error):
+                print("\n server 안대는 즁~~~")
+                print(error.localizedDescription)
             }
         }
     }
