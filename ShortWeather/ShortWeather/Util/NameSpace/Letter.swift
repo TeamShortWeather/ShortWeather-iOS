@@ -49,6 +49,8 @@ public enum Letter {
     public static let newsAlarm = "특보"
     public static let newsAlarmDescription = "실시간 날씨 특보를 알려드려요"
     
+    public static let explainPurposeInfo = "* 입력한 시간을 바탕으로 날씨를 알려드려요"
+    
 }
 
 extension Letter {
