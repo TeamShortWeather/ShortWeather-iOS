@@ -9,36 +9,40 @@ import Foundation
 
 // MARK: - TodayWeatherDetailResponse
 
-struct DetailWeather: Codable {
-    let location: String
-    let goOut: GoOut
-    let goHome: GoHome
-    let todayWeather: TodayWeather
-    
-    struct GoOut: Codable {
-        let time: String
-        let temp: Int
-        let day: Bool
-        let image: String
-    }
-    
-    struct GoHome: Codable {
-        let time: String
-        let temp: Int
-        let day: Bool
-        let image: String
-    }
-    
-    struct TodayWeather: Codable {
-        let humidity: Int
-        let sunrise: String
-        let sunset: String
-        let fineDust: Int
-        let ultraFineDust: Int
-    }
+struct DetailGoOut: Codable {
+    let time: String
+    let temp: Int
+    let day: Bool
+    let image: String
 }
 
-struct DetailTemp: Codable {
+struct DetailGoHome: Codable {
+    let time: String
+    let temp: Int
+    let day: Bool
+    let image: String
+}
+
+struct DetailTodayWeather: Codable {
+    let humidity: Int
+    let sunrise: String
+    let sunset: String
+    let fineDust: Int
+    let ultraFineDust: Int
+}
+
+struct DetailWeatherResponse: Codable {
+    let location: String
+    let goOut: DetailGoOut
+    let goHome: DetailGoHome
+    let todayWeather: DetailTodayWeather
+    
+//    func convertToSecondWeather() -> SecondTodayWeather {
+//        return SecondTodayWeather(location: self.location, goOut: self.goOut, goHome: self.goHome, todayWeather: self.todayWeather)
+//    }
+}
+
+struct DetailTempResponse: Codable {
     let date: String
     let time: String
     let temperature: Int
@@ -50,7 +54,7 @@ struct DetailTemp: Codable {
     }
 }
 
-struct DetailRain: Codable {
+struct DetailRainResponse: Codable {
     let date: String
     let time: String
     let rain: Int

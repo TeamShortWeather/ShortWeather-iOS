@@ -168,7 +168,7 @@ extension TimeTableViewCell {
                     let status = result.statusCode
                     
                     if status >= 200 && status < 300 {
-                        guard let data = try result.map(GeneralResponse<[DetailTemp]>.self).data else {return}
+                        guard let data = try result.map(GeneralResponse<[DetailTempResponse]>.self).data else {return}
                         
                         for dto in data {
                             self.detailTempList.append(dto.convertToDetailTemp())
@@ -194,7 +194,7 @@ extension TimeTableViewCell {
                     let status = result.statusCode
                     
                     if status >= 200 && status < 300 {
-                        guard let data = try result.map(GeneralResponse<[DetailRain]>.self).data else {return}
+                        guard let data = try result.map(GeneralResponse<[DetailRainResponse]>.self).data else {return}
                         
                         for dto in data {
                             self.detailRainList.append(dto.convertToDetailRain())

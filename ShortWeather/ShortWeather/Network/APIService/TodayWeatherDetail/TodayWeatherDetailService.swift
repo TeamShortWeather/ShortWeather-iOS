@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum TodayWeatherDetailService {
-    case fetchWeatherDetail(authorization: String)
+    case fetchWeatherDetail
     case fetchDetailTemp
     case fetchDetailRain
 }
@@ -54,12 +54,12 @@ extension TodayWeatherDetailService: TargetType {
     
     var headers: [String : String]? {
         switch self {
-        case .fetchWeatherDetail(let authorization):
-            return ["Content-Type": "application/json", "authorization" : authorization]
+        case .fetchWeatherDetail:
+            return APIConstants.headerWithAuthorization
         case .fetchDetailTemp:
-            return APIConstants.headerWithNoToken
+            return APIConstants.headerWithOutToken
         case .fetchDetailRain:
-            return APIConstants.headerWithNoToken
+            return APIConstants.headerWithOutToken
         }
     }
 }

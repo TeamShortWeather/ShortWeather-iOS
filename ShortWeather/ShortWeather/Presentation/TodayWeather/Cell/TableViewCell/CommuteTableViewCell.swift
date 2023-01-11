@@ -32,10 +32,8 @@ final class CommuteTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     var secondWeatherData: SecondTodayWeather = SecondTodayWeather.dummyData()
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM2LCJpYXQiOjE2NzM0NDc1MzQsImV4cCI6MTY3MzUzMzkzNH0.JRUtbf2e3iVoa9QzTAbAONkaMOIctmWdeYxRKQmk2ck"
     let weatherDetailProvider = MoyaProvider<TodayWeatherDetailService>(
-        plugins: [NetworkLoggerPlugin(verbose: true)]
-    )
+        plugins: [NetworkLoggerPlugin()])
 
     
     // MARK: - Initializer
@@ -78,7 +76,6 @@ extension CommuteTableViewCell {
         }
         
         outWeatherImageView.do {
-//            $0.image = UIImage(named: WeatherType(rawValue: secondWeatherData.goOut.image)?.setWeatherImage() ?? "")
             $0.image = UIImage(named: getImage(secondWeatherData.goOut.day, secondWeatherData.goOut.image))
         }
         
@@ -186,17 +183,28 @@ extension CommuteTableViewCell {
     }
     
     private func fetchWeatherDetail() {
-        weatherDetailProvider.request(.fetchWeatherDetail(authorization: token)) { response in
-//            switch response {
-//            case .success(let result):
-//                let status = result.statusCode
-//                
-//                if status >= 200 && status < 300 {
-//                    guard let data = try result.map(GeneralResponse<DetailWeather>.self).data else {return}
+        print("f💖💖💖💖etchWeatherDetailfetchWeatherDetail~~~~~~시작💖💖💖💖💖")
+        print(APIConstants.jwtToken)
+        weatherDetailProvider.request(.fetchWeatherDetail) { response in
+            print("3-3-3-3-3-33-3-33-")
+            switch response {
+            case .success(let result):
+//                print("1111111")
+//                do {
+//                    print("2-2-2-2-2-22")
+//                    let data = try result.map(GeneralResponse<DetailWeatherResponse>.self).data!
+//                    try print("💚💚💚💚💚💚etchWeatherDetailfetchWeatherDetail~~~~~~시작💚💚💚💚")
+//                    print(data)
+//                } catch(let error) {
+//                    print(error)
 //                }
-//            case .failure(let error): 
+                print(result)
+            case .failure(let error):
+//                print("실패햇다~~🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨")
 //                print(error.localizedDescription)
-//            }
-//        }
+                print(error)
+            }
+        }
+        print("🍎🍎🍎🍎🍎fetchWeatherDetailfetchWeatherDetail~~~~~~시작🍎🍎🍎🍎🍎")
     }
 }
