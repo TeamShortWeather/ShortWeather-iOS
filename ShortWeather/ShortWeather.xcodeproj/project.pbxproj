@@ -340,6 +340,27 @@
 			path = TodayWeather;
 			sourceTree = "<group>";
 		};
+		52C2FD4D296E8773002D53FB /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		52C2FD4E296E8859002D53FB /* TodayWeatherDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodayWeatherDetail;
+			sourceTree = "<group>";
+		};
+		52C2FD4F296E8876002D53FB /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		52CBA498295C7BBA00DE6AE9 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,8 +375,11 @@
 		52CBA49B295C7E9700DE6AE9 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
-				52C2FD4A296DD274002D53FB /* TodayWeather */,
 				52CBA49E295C810A00DE6AE9 /* Main */,
+				52C2FD4F296E8876002D53FB /* Setting */,
+				52C2FD4D296E8773002D53FB /* Splash */,
+				52C2FD4A296DD274002D53FB /* TodayWeather */,
+				52C2FD4E296E8859002D53FB /* TodayWeatherDetail */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
