@@ -32,6 +32,8 @@ final class CommuteTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     var secondWeatherData: SecondTodayWeather = SecondTodayWeather.dummyData()
+//    var secondWeatherData: SecondTodayWeather?
+//    var testData: SecondTodayWeather?
     let weatherDetailProvider = MoyaProvider<TodayWeatherDetailService>(
         plugins: [NetworkLoggerPlugin()])
 
@@ -65,7 +67,6 @@ extension CommuteTableViewCell {
         }
         
         outTimeLabel.do {
-            $0.text = secondWeatherData.goOut.time.changeToHour()
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -73,10 +74,6 @@ extension CommuteTableViewCell {
             $0.axis = .vertical
             $0.alignment = .center
             $0.spacing = 2
-        }
-        
-        outWeatherImageView.do {
-            $0.image = UIImage(named: getImage(secondWeatherData.goOut.day, secondWeatherData.goOut.image))
         }
         
         outTemperatureLabel.do {
@@ -97,7 +94,6 @@ extension CommuteTableViewCell {
         }
         
         comeTimeLabel.do {
-            $0.text = secondWeatherData.goHome.time.changeToHour()
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -107,12 +103,7 @@ extension CommuteTableViewCell {
             $0.spacing = 2
         }
         
-        comeWeatherImageView.do {
-            $0.image = UIImage(named: getImage(secondWeatherData.goHome.day, secondWeatherData.goHome.image))
-        }
-        
         comeTemperatureLabel.do {
-            $0.text = secondWeatherData.goHome.temp.temperature
             $0.font = .fontGuide(.subhead1)
         }
         
@@ -183,28 +174,33 @@ extension CommuteTableViewCell {
     }
     
     private func fetchWeatherDetail() {
-        print("f💖💖💖💖etchWeatherDetailfetchWeatherDetail~~~~~~시작💖💖💖💖💖")
-        print(APIConstants.jwtToken)
         weatherDetailProvider.request(.fetchWeatherDetail) { response in
-            print("3-3-3-3-3-33-3-33-")
             switch response {
             case .success(let result):
-//                print("1111111")
-//                do {
-//                    print("2-2-2-2-2-22")
-//                    let data = try result.map(GeneralResponse<DetailWeatherResponse>.self).data!
-//                    try print("💚💚💚💚💚💚etchWeatherDetailfetchWeatherDetail~~~~~~시작💚💚💚💚")
-//                    print(data)
-//                } catch(let error) {
-//                    print(error)
-//                }
-                print(result)
+                do {
+                    let status = result.statusCode
+
+                    if status >= 200 && status < 300 {
+                        guard let data = try result.map(GeneralResponse<DetailWeatherResponse>.self).data else {return}
+                        print("💖💖💖💖💖💖Hihihihihihi~~~~~💖💖💖💖💖💖💖")
+                        print(data.convertToDetailWeather())
+                        self.setDataBind(data.convertToDetailWeather())
+                    }
+                } catch(let error) {
+                    print(error.localizedDescription)
+                }
             case .failure(let error):
-//                print("실패햇다~~🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨")
-//                print(error.localizedDescription)
-                print(error)
+                print(error.localizedDescription)
             }
         }
-        print("🍎🍎🍎🍎🍎fetchWeatherDetailfetchWeatherDetail~~~~~~시작🍎🍎🍎🍎🍎")
+    }
+    
+    private func setDataBind(_ model: SecondTodayWeather) {
+        outTimeLabel.text = model.goOut.time.changeToHour()
+        outWeatherImageView.image = UIImage(named: getImage(model.goOut.day, model.goOut.image))
+        outTemperatureLabel.text = model.goOut.temp.temperature
+        comeTimeLabel.text = model.goHome.time.changeToHour()
+        comeWeatherImageView.image = UIImage(named: getImage(model.goHome.day, model.goHome.image))
+        comeTemperatureLabel.text = model.goHome.temp.temperature
     }
 }

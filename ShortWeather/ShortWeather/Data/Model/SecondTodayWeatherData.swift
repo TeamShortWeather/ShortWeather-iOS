@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct GoOut {
+struct GoOut: Codable {
     let time: String
     let temp: Int
     let day: Bool
     let image: String
 }
 
-struct GoHome {
+struct GoHome: Codable {
     let time: String
     let temp: Int
     let day: Bool
     let image: String
 }
 
-struct TodayWeather {
+struct TodayWeather: Codable {
     let humidity: Int
     let sunrise: String
     let sunset: String
@@ -29,7 +29,7 @@ struct TodayWeather {
     let ultraFineDust: Int
 }
 
-struct SecondTodayWeather {
+struct SecondTodayWeather: Codable {
     let location: String
     let goOut: GoOut
     let goHome: GoHome
