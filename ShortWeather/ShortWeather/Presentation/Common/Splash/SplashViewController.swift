@@ -8,6 +8,7 @@
 import UIKit
 
 import Lottie
+import Moya
 import SnapKit
 import Then
 
@@ -20,6 +21,7 @@ final class SplashViewController: UIViewController {
     // MARK: - Properties
 
     private let defaults = UserDefaults.standard
+    private let userProvider = MoyaProvider<UserService>(plugins:[NetworkLoggerPlugin()])
     
     // MARK: - View Life Cycle
     
@@ -59,11 +61,29 @@ extension SplashViewController {
     
     // MARK: - Methods
     
-    private func isExistUserInform(){
+    private func isExistUserInform() {
         guard let deviceToken = defaults.string(forKey: DataKey.deviceToken) else {
+            print("No token!")
             UIViewController.modifyRootViewController(FirstInfoViewController())
-            return 
+            return
         }
-        UIViewController.modifyRootViewController(TodayWeatherViewController())
+        APIConstants.deviceToken = deviceToken
+        userProvider.request(.checkUser) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let data = try result.map(GeneralResponse<CheckUserResponse>.self).data!
+                    APIConstants.jwtToken = data.accessToken
+                    UIViewController.modifyRootViewController(TodayWeatherViewController())
+                } catch(let error){
+                    print("실패!")
+                    UIViewController.modifyRootViewController(FirstInfoViewController())
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                UIViewController.modifyRootViewController(FirstInfoViewController())
+                print(error.localizedDescription)
+            }
+        }
     }
 }

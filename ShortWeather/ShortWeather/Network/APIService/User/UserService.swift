@@ -10,7 +10,7 @@ import Moya
 
 enum UserService {
     case checkUser
-    case postUser(body: String)
+    case postUser(param: PostUserRequest)
 }
 
 extension UserService: TargetType {
@@ -40,12 +40,17 @@ extension UserService: TargetType {
         switch self {
         case .checkUser:
             return .requestPlain
-        case .postUser(let body):
-            return .requestPlain
+        case .postUser(let param):
+            return .requestParameters(parameters: try! param.asParameter(), encoding: JSONEncoding.default)
         }
     }
     
     var headers: [String : String]? {
-        return APIConstants.header
+        switch self {
+        case .checkUser:
+            return APIConstants.headerWithDeviceToken
+        case .postUser(param: let param):
+            return APIConstants.headerWithOutToken
+        }
     }
 }

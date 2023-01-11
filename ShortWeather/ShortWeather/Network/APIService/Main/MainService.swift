@@ -8,11 +8,6 @@
 import Foundation
 import Moya
 
-struct PostUser: Codable {
-    let gender, age, tempSens, wakeUpTime: String
-    let goOutTime, goHomeTime, deviceToken: String
-}
-
 enum MainService {
     case getexample
 }
@@ -39,7 +34,6 @@ extension MainService: TargetType {
     
     var task: Moya.Task {
         switch self {
-            
         case .getexample:
             return .requestPlain
         }
@@ -48,7 +42,7 @@ extension MainService: TargetType {
     var headers: [String : String]? {
         switch self {
         case .getexample:
-            return APIConstants.headerWithNoToken
+            return APIConstants.headerWithOutToken
         }
     }
     
