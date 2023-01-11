@@ -1,55 +1,52 @@
 //
-//  MainService.swift
+//  InfoService.swift
 //  ShortWeather
 //
-//  Created by Mac Book Pro on 2022/12/28.
+//  Created by Mac Book Pro on 2023/01/11.
 //
 
 import Foundation
 import Moya
 
-struct PostUser: Codable {
-    let gender, age, tempSens, wakeUpTime: String
-    let goOutTime, goHomeTime, deviceToken: String
+enum UserService {
+    case checkUser
+    case postUser(body: String)
 }
 
-enum MainService {
-    case getexample
-}
-
-extension MainService: TargetType {
+extension UserService: TargetType {
     var baseURL: URL {
         return URL(string: URLConst.baseURL)!
     }
     
     var path: String {
         switch self {
-        case .getexample:
+        case .checkUser:
             return URLConst.checkUserURL
+        case .postUser:
+            return URLConst.postUserURL
         }
     }
     
     var method: Moya.Method {
         switch self {
-            
-        case .getexample:
+        case .checkUser:
             return .get
+        case .postUser:
+            return .post
         }
     }
     
     var task: Moya.Task {
         switch self {
-            
-        case .getexample:
+        case .checkUser:
+            return .requestPlain
+        case .postUser(let body):
             return .requestPlain
         }
     }
     
     var headers: [String : String]? {
-        switch self {
-        case .getexample:
-            return APIConstants.headerWithNoToken
-        }
+        return APIConstants.header
     }
     
     
