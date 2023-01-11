@@ -60,7 +60,7 @@ extension CommuteTableViewCell {
         }
         
         outTimeLabel.do {
-            $0.text = secondWeatherData.goOut.time
+            $0.text = secondWeatherData.goOut.time.changeToHour()
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -92,7 +92,7 @@ extension CommuteTableViewCell {
         }
         
         comeTimeLabel.do {
-            $0.text = secondWeatherData.goHome.time
+            $0.text = secondWeatherData.goHome.time.changeToHour()
             $0.font = .fontGuide(.subhead2)
         }
         

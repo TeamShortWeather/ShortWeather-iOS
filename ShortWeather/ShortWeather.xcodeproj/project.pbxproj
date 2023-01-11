@@ -88,6 +88,7 @@
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 		ABA6C541296D800E0077E246 /* TimezonePrecipitationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */; };
 		ABA6C543296DBB4A0077E246 /* SecondTodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C542296DBB4A0077E246 /* SecondTodayWeatherData.swift */; };
+		ABA6C547296E7D5C0077E246 /* String +.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C546296E7D5C0077E246 /* String +.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +172,7 @@
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 		ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezonePrecipitationData.swift; sourceTree = "<group>"; };
 		ABA6C542296DBB4A0077E246 /* SecondTodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTodayWeatherData.swift; sourceTree = "<group>"; };
+		ABA6C546296E7D5C0077E246 /* String +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String +.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -575,6 +577,7 @@
 				5213176F2963F8B2009371E1 /* UITableView +.swift */,
 				521317632962B5A2009371E1 /* UIView +.swift */,
 				52D6A37F2961653000BF4287 /* UIViewController +.swift */,
+				ABA6C546296E7D5C0077E246 /* String +.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */,
 				5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */,
 				521317722963F934009371E1 /* NSObject +.swift in Sources */,
+				ABA6C547296E7D5C0077E246 /* String +.swift in Sources */,
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
 				52CBA4A7295C865A00DE6AE9 /* Encodable +.swift in Sources */,
 				AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */,
