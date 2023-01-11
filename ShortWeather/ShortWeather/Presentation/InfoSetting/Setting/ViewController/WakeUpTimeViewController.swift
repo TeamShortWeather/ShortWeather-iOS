@@ -16,6 +16,7 @@ final class WakeUpTimeViewController: SettingBaseViewController {
 
     let info: String = Letter.wakeUpTime
     private var wakeUpTime: String = ""
+    private var wakeUpNumTime: String = ""
     
     // MARK: - View Life Cycle
 
@@ -84,12 +85,14 @@ extension WakeUpTimeViewController: UICollectionViewDataSource {
 }
 
 extension WakeUpTimeViewController: TimeInfoViewControllerDelegate {
+    
     func getNullData() {
         infoCollectionView.reloadData()
     }
     
-    func getInfoData(userInfoData: UserInfo) {
+    func getInfoData(userInfoData: UserInfo, numTime: String) {
         wakeUpTime = userInfoData.infoData
+        wakeUpNumTime = numTime
         infoCollectionView.reloadData()
         checkButton.setState(.allow)
     }

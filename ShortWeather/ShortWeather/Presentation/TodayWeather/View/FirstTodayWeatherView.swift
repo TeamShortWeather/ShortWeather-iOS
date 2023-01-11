@@ -39,6 +39,9 @@ final class FirstTodayWeatherView: UIView {
     // MARK: - Properties
     
     private let firstTodayWeather: FirstTodayWeatherData
+    let todayWeatherProvider = MoyaProvider<TodayWeatherService>(
+        plugins: [NetworkLoggerPlugin(verbose: true)]
+    )
     
     // MARK: - Initializer
     
@@ -50,6 +53,7 @@ final class FirstTodayWeatherView: UIView {
         setDataBind()
         setAddTarget()
         setDelegate()
+        fetchWeather()
     }
     
     required init?(coder: NSCoder) {
@@ -300,6 +304,31 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
                 return cell.adjustCellSize(label: Letter.dust)
             } else {
                 return cell.adjustCellSize(label: Letter.fineDust)
+            }
+        }
+    }
+}
+
+extension FirstTodayWeatherView {
+    
+    func fetchWeather() {
+        todayWeatherProvider.request(.fetchWeather) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        guard let todayWeather = try result.map(GeneralResponse<TodayWeatherResponse>.self).data else { return }
+                    } catch (let error){
+                        print(error.localizedDescription)
+                    }
+                }
+                if status >= 400 {
+                    print("error")
+                }
+            case .failure(let error):
+                print("\n server 안대는 즁~~~")
+                print(error.localizedDescription)
             }
         }
     }
