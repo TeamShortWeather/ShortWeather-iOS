@@ -70,7 +70,7 @@ extension HourCollectionViewCell {
     
     func setWeatherDataBind(_ model: TimezoneWeatherData) {
         timeLabel.text = model.time.changeToHour()
-        stateLabel.text = "\(model.temperature)°"
+        stateLabel.text = model.temperature.temperature
         iconImageView.image = UIImage(named: getIcon(model.day, model.image))
     }
     
@@ -82,18 +82,7 @@ extension HourCollectionViewCell {
     
     func setCurrent() {
         timeLabel.text = "지금"
-    }
-    
-//    private func changeToHour(_ time: String) -> String {
-//        let endIndex: String.Index = time.index(time.startIndex, offsetBy: 1)
-//        let result: Int = Int(String(time[...endIndex]))!
-//
-//        if result > 12 {
-//            return "오후 \(result-12)시"
-//        } else {
-//            return "오전 \(result)시"
-//        }
-//    }
+    } 
     
     private func getIcon(_ day: Bool, _ image: String) -> String {
         var result = ""
