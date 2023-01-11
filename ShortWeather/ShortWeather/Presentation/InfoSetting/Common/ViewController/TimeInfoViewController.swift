@@ -75,12 +75,11 @@ extension TimeInfoViewController {
         
         titleLabel.do {
             $0.text = titleText
-            $0.font = .fontGuide(.headline1)
+            $0.font = .fontGuide(.headline2)
             $0.textColor = Color.black
         }
         
         datePicker.do {
-            $0.backgroundColor = .clear
             $0.delegate = self
             $0.dataSource = self
         }
@@ -98,14 +97,14 @@ extension TimeInfoViewController {
         view.addSubviews(titleLabel, datePicker, saveButton)
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(24)
-            $0.leading.equalToSuperview().offset(41)
+            $0.top.equalToSuperview().offset(41)
+            $0.leading.equalToSuperview().offset(28)
         }
         
         datePicker.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(24)
             $0.leading.equalTo(titleLabel)
-            $0.trailing.equalToSuperview().offset(-28)
+            $0.trailing.equalToSuperview().offset(-27)
             $0.height.equalTo(101)
         }
         
@@ -148,6 +147,7 @@ extension TimeInfoViewController {
 }
 
 extension TimeInfoViewController: UIPickerViewDelegate {
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch component {
         case 0:
@@ -166,6 +166,7 @@ extension TimeInfoViewController: UIPickerViewDelegate {
 }
 
 extension TimeInfoViewController: UIPickerViewDataSource {
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch component {
         case 0:
