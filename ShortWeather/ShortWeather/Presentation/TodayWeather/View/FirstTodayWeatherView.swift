@@ -39,7 +39,6 @@ final class FirstTodayWeatherView: UIView {
     // MARK: - Properties
     
     private let firstTodayWeather: FirstTodayWeatherData
-    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI1LCJpYXQiOjE2NzM0MjQxMzEsImV4cCI6MTY3MzUxMDUzMX0.funiySHoTL1xpPBaUcUBn80eNMnKSwqXCpwsANwYCEc"
     let todayWeatherProvider = MoyaProvider<TodayWeatherService>(
         plugins: [NetworkLoggerPlugin(verbose: true)]
     )
@@ -319,8 +318,7 @@ extension FirstTodayWeatherView {
                 let status = result.statusCode
                 if status >= 200 && status < 300 {
                     do {
-                        let todayWeather = try result.map(GeneralResponse<TodayWeatherResponse>.self).data!
-                        print(todayWeather)
+                        guard let todayWeather = try result.map(GeneralResponse<TodayWeatherResponse>.self).data else { return }
                     } catch (let error){
                         print(error.localizedDescription)
                     }
