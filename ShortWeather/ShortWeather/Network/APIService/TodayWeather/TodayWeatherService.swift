@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import Moya
+
+enum TodayWeatherService {
+    case fetchWeather
+    case fetchWeatherQuestion
+}

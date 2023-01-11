@@ -48,6 +48,4 @@ extension UserService: TargetType {
     var headers: [String : String]? {
         return APIConstants.header
     }
-    
-    
 }
