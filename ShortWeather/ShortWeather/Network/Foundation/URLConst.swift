@@ -9,5 +9,5 @@ import Foundation
 
 public enum URLConst {
     
-    public static let baseURL = ""
+    public static let baseURL = "54.180.113.172:8000"
 }

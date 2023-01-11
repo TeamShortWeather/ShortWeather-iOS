@@ -14,10 +14,12 @@ enum APIConstants {
         case contentType  = "Content-Type"
     }
 
+    
     static let authorization: String = "Authorization"
     static let accept: String = "Accept"
     static let auth: String = "x-auth-token"
     static let contentType: String = "Content-Type"
+    
     static let applicationJSON: String = "application/json"
     
     static var headerWithNoToken: [String: String] {
