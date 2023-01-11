@@ -12,7 +12,7 @@
 <br><br>
 ##  🫶 Short Weather iOS Developers
 
-<img src="https://user-images.githubusercontent.com/81281190/210082365-719c618a-bfed-49aa-b1d0-c8c3b9436956.png" width="200"> | <img src="https://user-images.githubusercontent.com/81281190/210067097-3584ccb0-5d10-4d2d-948a-4740293bb2fc.png" width="200"> | <img src="https://user-images.githubusercontent.com/81281190/210067164-cad51751-d4a9-4d9c-908e-e48d9b8a2e0b.png" width="200"> |
+<img src="https://user-images.githubusercontent.com/48792069/211770069-79adee40-d98e-4f0a-922c-16d1231489fe.jpeg" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/211770060-8a01c640-9467-4acc-9098-3505d924fd00.jpeg" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/211770069-79adee40-d98e-4f0a-922c-16d1231489fe.jpeg" width="200"> |
 :---------:|:----------:|:---------:
 유서린 | 김 민 | 권 정 |
 [SeorinY](https://github.com/SeorinY) | [minnnidev](https://github.com/minnnidev) | [kwonjeong](https://github.com/kwonjeong) |
@@ -20,7 +20,7 @@
 
 ## 💻 Development Environment
 
-<img src ="https://img.shields.io/badge/Swift-5.5-orange?logo=swift" height="30"> <img src ="https://img.shields.io/badge/Xcode-14.2-blue?logo=xcode" height="30"> <img src ="https://img.shields.io/badge/iOS-15.0-white.svg" height="30">
+<img src ="https://img.shields.io/badge/Swift-5.5-orange?logo=swift" height="30"> <img src ="https://img.shields.io/badge/Xcode-14.2-blue?logo=xcode" height="30"> <img src ="https://img.shields.io/badge/iOS-16.0-white.svg" height="30">
 
 <br>
 
