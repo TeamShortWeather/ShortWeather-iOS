@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import Moya
+
+public class UserAPI {
+    
+    static let shared = UserAPI()
+//    public let userProvider = MoyaProvider<UserService>(plugins:[NetworkLoggerPlugin()])
+    
+    private init() {}
+    
+//    func postUser(user: User, completion: @escaping ())
+}

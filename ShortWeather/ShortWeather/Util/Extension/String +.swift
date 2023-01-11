@@ -19,4 +19,12 @@ extension String {
             return "오전 \(result)시"
         }
     }
+    
+    static func createDeviceToken() -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String(
+            (0..<50)
+                .map { _ in letters.randomElement()! }
+        )
+    }
 }
