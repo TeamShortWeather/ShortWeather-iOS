@@ -106,9 +106,36 @@ extension SettingBaseViewController {
     
     public func presentToHalfModalViewController(_ viewController: UIViewController, infoType: InfoType) {
         viewController.modalPresentationStyle = .pageSheet
+        
+        let genderID = UISheetPresentationController.Detent.Identifier("genderID")
+        let ageID = UISheetPresentationController.Detent.Identifier("ageID")
+        let tempID = UISheetPresentationController.Detent.Identifier("tempID")
+        let timeID = UISheetPresentationController.Detent.Identifier("timeID")
+        let genderDetent = UISheetPresentationController.Detent.custom(identifier: genderID) { context in
+            return 211
+        }
+        let ageDetent = UISheetPresentationController.Detent.custom(identifier: ageID) { context in
+            return 477
+        }
+        let tempDetent = UISheetPresentationController.Detent.custom(identifier: tempID) { context in
+            return 349
+        }
+        let timeDetent = UISheetPresentationController.Detent.custom(identifier: timeID) { context in
+            return 331
+        }
+        
         if let sheet = viewController.sheetPresentationController {
-            sheet.detents = [.medium()] // 반만 고정
-            //            sheet.detents = [.medium(), .large()] // 반, 전체 다 자유롭게
+            switch infoType {
+            case .gender:
+                sheet.detents = [genderDetent, .large()]
+            case .age:
+                sheet.detents = [ageDetent, .large()]
+            case .tempResponse:
+                sheet.detents = [tempDetent, .large()]
+            default:
+                sheet.detents = [timeDetent, .large()]
+            }
+            sheet.preferredCornerRadius = 30
             sheet.delegate = self
             sheet.prefersGrabberVisible = true
         }

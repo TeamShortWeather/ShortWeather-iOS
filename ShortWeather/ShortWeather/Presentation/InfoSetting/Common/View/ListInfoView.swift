@@ -1,8 +1,8 @@
 //
-//  ListViewController.swift
+//  ListInfoView.swift
 //  ShortWeather
 //
-//  Created by KJ on 2023/01/04.
+//  Created by KJ on 2023/01/10.
 //
 
 import UIKit
@@ -11,12 +11,12 @@ import Moya
 import SnapKit
 import Then
 
-protocol ListInfoViewControllerDelegate: AnyObject {
+protocol ListInfoViewDelegate: AnyObject {
     func getInfoData(userInfoData: UserInfo)
     func getNullData()
 }
 
-final class ListInfoViewController: UIViewController {
+final class ListInfoView: UIView {
     
     // MARK: - UI Components
     
@@ -30,44 +30,29 @@ final class ListInfoViewController: UIViewController {
     private var listData: [String]
     private let infoType: InfoType
     
-    // MARK: - Initializer
-    
     init(infoText: String, listData: [String], infoType: InfoType) {
+        super.init(frame: .zero)
         self.infoText = infoText
         self.listData = listData
         self.infoType = infoType
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - View Life Cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         setUI()
         setLayout()
         setDelegate()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        delegate?.getNullData()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
-extension ListInfoViewController {
+extension ListInfoView {
     
     // MARK: - UI Components Property
     
     private func setUI() {
-        view.backgroundColor = .white
-        
         titleLabel.do {
             $0.text = infoText
-            $0.font = .fontGuide(.headline2)
+            $0.font = .fontGuide(.headline1)
             $0.textColor = .black
         }
         
@@ -82,7 +67,7 @@ extension ListInfoViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        view.addSubviews(titleLabel, listTableView)
+        addSubviews(titleLabel, listTableView)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(41)
@@ -90,7 +75,7 @@ extension ListInfoViewController {
         }
         
         listTableView.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(24)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
@@ -104,7 +89,7 @@ extension ListInfoViewController {
     }
 }
 
-extension ListInfoViewController: UITableViewDelegate {
+extension ListInfoView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
@@ -119,7 +104,7 @@ extension ListInfoViewController: UITableViewDelegate {
     }
 }
 
-extension ListInfoViewController: UITableViewDataSource {
+extension ListInfoView: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return listData.count
@@ -137,6 +122,6 @@ extension ListInfoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.getInfoData(userInfoData: UserInfo(infoData: listData[indexPath.section], infoType: infoType))
-        dismiss(animated: true)
+//        dismiss(animated: true)
     }
 }
