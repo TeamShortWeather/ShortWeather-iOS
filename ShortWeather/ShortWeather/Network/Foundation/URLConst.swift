@@ -11,7 +11,7 @@ public enum URLConst {
     
     //MARK: - Base URL
     
-    public static let baseURL = "http://54.180.113.172:8000"
+    public static let baseURL = "http://54.180.198.102:8000"
     
     //MARK: - URL Path
     

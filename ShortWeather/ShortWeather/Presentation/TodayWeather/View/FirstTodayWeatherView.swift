@@ -313,32 +313,20 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
 extension FirstTodayWeatherView {
     
     func fetchWeather() {
-        print("dalsdjf;ajd;faje;ja;sdj;l")
-//        todayWeatherProvider.request(.fetchWeather) { response in
-//            switch response {
-//            case .success(let result):
-//                let status = result.statusCode
-//                if status >= 200 && status < 300 {
-//                    print("\n성공")
-//                }
-//                else if status >= 400 {
-//                    print("\nerror")
-//                }
-//            case .failure(let error):
-//                print("\n error ???")
-//                print(error.localizedDescription)
-//            }
-//        }
-        todayWeatherProvider.request(.fetchWeather(authorization: token)) { response in
+        todayWeatherProvider.request(.fetchWeather) { response in
             switch response {
             case .success(let result):
-                print(result)
                 let status = result.statusCode
                 if status >= 200 && status < 300 {
-                    print("\n성공")
+                    do {
+                        let todayWeather = try result.map(GeneralResponse<TodayWeatherResponse>.self).data!
+                        print(todayWeather)
+                    } catch (let error){
+                        print(error.localizedDescription)
+                    }
                 }
-                else if status >= 400 {
-                    print("\nerror")
+                if status >= 400 {
+                    print("error")
                 }
             case .failure(let error):
                 print("\n server 안대는 즁~~~")
