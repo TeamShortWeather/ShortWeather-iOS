@@ -27,4 +27,16 @@ extension String {
                 .map { _ in letters.randomElement()! }
         )
     }
+    
+    private func stringToTime(dayTime: String, hourTime: Int, minuteTime: String) -> String {
+        var stringTime: String = ""
+        if dayTime == "오전" {
+            stringTime = "0" + String(hourTime) + minuteTime
+        }
+        else if dayTime == "오후" {
+            stringTime = String(hourTime + 12) + minuteTime
+        }
+        return stringTime
+    }
+    //stringToTime
 }

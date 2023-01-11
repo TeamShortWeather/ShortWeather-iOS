@@ -20,6 +20,9 @@ final class SecondInfoViewController: SettingBaseViewController {
     // MARK: - Properties
     
     private var user: User
+    private var wakeUpNumTime: String = ""
+    private var goOutNumTime: String = ""
+    private var goHomeNumTime: String = ""
     private let info: [String] = [
         "기상시간",
         "외출시간",
@@ -137,14 +140,26 @@ extension SecondInfoViewController {
     // MARK: - @objc Methods
     
     @objc private func checkButtonDidTap() {
+        postUserInfo()
+        UIViewController.modifyRootViewController(FirstInfoViewController())
+    }
+    
+    // MARK: - Network
+    
+    private func postUserInfo() {
         user.deviceToken = String.createDeviceToken()
+        user.wakeUpTime = wakeUpNumTime
+        user.goOutTime = goOutNumTime
+        user.goHomeTime = goHomeNumTime
         userProvider.request(.postUser(param: user.makePostUserRequest())) { response in
             switch response {
             case .success(let result):
                 let status = result.statusCode
                 if status >= 200 && status<300 {
                     do{
-                        let data = try result.map(GeneralResponse<PostUserResponse>.self).data!
+                        guard let data = try result.map(GeneralResponse<PostUserResponse>.self).data else {
+                            return
+                        }
                         self.defaults.set(self.user.deviceToken, forKey: DataKey.deviceToken)
                         APIConstants.deviceToken = self.user.deviceToken
                         APIConstants.jwtToken = data.accessToken
@@ -162,7 +177,6 @@ extension SecondInfoViewController {
                 print(error.localizedDescription)
             }
         }
-        UIViewController.modifyRootViewController(FirstInfoViewController())
     }
 }
 
@@ -216,14 +230,17 @@ extension SecondInfoViewController: TimeInfoViewControllerDelegate {
         infoCollectionView.reloadData()
     }
     
-    func getInfoData(userInfoData: UserInfo) {
+    func getInfoData(userInfoData: UserInfo, numTime: String) {
         let infoType = userInfoData.infoType
         if infoType == .wakeUpTime {
             user.wakeUpTime = userInfoData.infoData
+            wakeUpNumTime = numTime
         } else if infoType == .outTime {
             user.goOutTime = userInfoData.infoData
+            goOutNumTime = numTime
         } else if infoType == .inTime {
             user.goHomeTime = userInfoData.infoData
+            goHomeNumTime = numTime
         }
         infoCollectionView.reloadData()
     }

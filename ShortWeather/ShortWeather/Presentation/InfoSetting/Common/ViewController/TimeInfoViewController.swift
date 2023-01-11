@@ -13,7 +13,7 @@ import Then
 
 protocol TimeInfoViewControllerDelegate: AnyObject {
     func getNullData()
-    func getInfoData(userInfoData: UserInfo)
+    func getInfoData(userInfoData: UserInfo, numTime: String)
 }
 
 final class TimeInfoViewController: UIViewController {
@@ -32,7 +32,7 @@ final class TimeInfoViewController: UIViewController {
     private var dayTime: String = ""
     private var hourTime: Int = 0
     private var minuteTime: String = ""
-    private var fixedTime: String = ""
+    private var stringTime: String = ""
     
     let dayTimeList: [String] = ["오전", "오후"]
     let hourTimeList: [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -151,10 +151,9 @@ extension TimeInfoViewController {
     // MARK: - @objc Methods
     
     @objc private func saveButtonDidTap() {
-        fixedTime = dayTime + " " + String(hourTime) + "시 " + minuteTime + "분" // 뷰컨에뜨는거
-        let stringTime = timeToString(dayTime: dayTime, hourTime: hourTime, minuteTime: minuteTime)
-        print(stringTime) // 서린이오빠꺼
-        delegate?.getInfoData(userInfoData: UserInfo(infoData: fixedTime, infoType: infoType))
+        stringTime = dayTime + " " + String(hourTime) + "시 " + minuteTime + "분" // 뷰컨에뜨는거
+        let numTime = timeToString(dayTime: dayTime, hourTime: hourTime, minuteTime: minuteTime)
+        delegate?.getInfoData(userInfoData: UserInfo(infoData: stringTime, infoType: infoType), numTime: numTime)
         self.dismiss(animated: true)
     }
 }
@@ -218,6 +217,6 @@ extension TimeInfoViewController: UIPickerViewDataSource {
                 minuteTime = minuteTimeList[row]
             }
         }
-        fixedTime = dayTime + " " + String(hourTime) + "시 " + minuteTime + "분"
+        stringTime = dayTime + " " + String(hourTime) + "시 " + minuteTime + "분"
     }
 }

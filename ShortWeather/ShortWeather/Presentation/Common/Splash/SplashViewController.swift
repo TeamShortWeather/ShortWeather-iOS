@@ -59,7 +59,7 @@ extension SplashViewController {
         }
     }
     
-    // MARK: - Methods
+    // MARK: - Network
     
     private func isExistUserInform() {
         guard let deviceToken = defaults.string(forKey: DataKey.deviceToken) else {

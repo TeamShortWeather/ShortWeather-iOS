@@ -17,6 +17,9 @@ final class CommuteTimeViewController: SettingBaseViewController {
     let info: [String] = [Letter.outTime, Letter.inTime]
     private var outTime: String = ""
     private var inTime: String = ""
+    private var outNumTime: String = ""
+    private var inNumTime: String = ""
+    
     private var isCellTouched: [Bool] = [false, false]
     
     // MARK: - View Life Cycle
@@ -108,12 +111,14 @@ extension CommuteTimeViewController: TimeInfoViewControllerDelegate {
         infoCollectionView.reloadData()
     }
     
-    func getInfoData(userInfoData: UserInfo) {
+    func getInfoData(userInfoData: UserInfo, numTime: String) {
         let infoType = userInfoData.infoType
         if infoType == .outTime {
             outTime = userInfoData.infoData
+            outNumTime = numTime
         } else if infoType == .inTime {
             inTime = userInfoData.infoData
+            inNumTime = numTime
         }
         infoCollectionView.reloadData()
         checkButton.setState(.allow)
