@@ -17,6 +17,10 @@ final class SplashViewController: UIViewController {
     
     private let splashImageView: LottieAnimationView = LottieAnimationView(name: "splash")
     
+    // MARK: - Properties
+
+    private let defaults = UserDefaults.standard
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -38,7 +42,7 @@ extension SplashViewController {
         splashImageView.do {
             $0.contentMode = .scaleAspectFit
             $0.play { [weak self] _ in
-                self?.isExistInform()
+                self?.isExistUserInform()
             }
         }
     }
@@ -55,12 +59,11 @@ extension SplashViewController {
     
     // MARK: - Methods
     
-    private func isExistInform(){
-        let isUser: Bool = false
-        if isUser {
-            UIViewController.modifyRootViewController(TodayWeatherViewController())
-        } else {
+    private func isExistUserInform(){
+        guard let deviceToken = defaults.string(forKey: DataKey.deviceToken) else {
             UIViewController.modifyRootViewController(FirstInfoViewController())
+            return 
         }
+        UIViewController.modifyRootViewController(TodayWeatherViewController())
     }
 }

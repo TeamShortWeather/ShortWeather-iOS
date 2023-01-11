@@ -60,7 +60,7 @@ extension CommuteTableViewCell {
         }
         
         outTimeLabel.do {
-            $0.text = secondWeatherData.goOut.time
+            $0.text = secondWeatherData.goOut.time.changeToHour()
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -71,11 +71,12 @@ extension CommuteTableViewCell {
         }
         
         outWeatherImageView.do {
-            $0.backgroundColor = Color.gray3
+//            $0.image = UIImage(named: WeatherType(rawValue: secondWeatherData.goOut.image)?.setWeatherImage() ?? "")
+            $0.image = UIImage(named: getImage(secondWeatherData.goOut.day, secondWeatherData.goOut.image))
         }
         
         outTemperatureLabel.do {
-            $0.text = String(secondWeatherData.goOut.temp)
+            $0.text = secondWeatherData.goOut.temp.temperature
             $0.font = .fontGuide(.subhead1)
         }
         
@@ -92,7 +93,7 @@ extension CommuteTableViewCell {
         }
         
         comeTimeLabel.do {
-            $0.text = secondWeatherData.goHome.time
+            $0.text = secondWeatherData.goHome.time.changeToHour()
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -103,11 +104,12 @@ extension CommuteTableViewCell {
         }
         
         comeWeatherImageView.do {
-            $0.backgroundColor = Color.gray3
+//            $0.image = UIImage(named: WeatherType(rawValue: secondWeatherData.goHome.image)?.setWeatherImage() ?? "")
+            $0.image = UIImage(named: getImage(secondWeatherData.goHome.day, secondWeatherData.goHome.image))
         }
         
         comeTemperatureLabel.do {
-            $0.text = String(secondWeatherData.goHome.temp)
+            $0.text = secondWeatherData.goHome.temp.temperature
             $0.font = .fontGuide(.subhead1)
         }
         
@@ -155,5 +157,25 @@ extension CommuteTableViewCell {
             $0.width.equalTo(255)
             $0.height.equalTo(181)
         }
+    }
+    
+    // MARK: - Methods
+    
+    private func getImage(_ day: Bool, _ image: String) -> String {
+        var result = ""
+        
+        result = WeatherType(rawValue: image)?.setWeatherImage() ?? ""
+        
+        if !day {
+            if image == WeatherType.clearDay.rawValue {
+                result = WeatherType.clearNight.setWeatherImage()
+            } else if image == WeatherType.lotCloudDay.rawValue {
+                result = WeatherType.lotCloudNight.setWeatherImage()
+            } else {
+                result = WeatherType(rawValue: image)?.setWeatherImage() ?? ""
+            }
+        }
+
+        return result
     }
 }

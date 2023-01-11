@@ -43,6 +43,7 @@
 		52625C562969B2AF007F483D /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C552969B2AF007F483D /* UserInfo.swift */; };
 		52625C5A296B1E68007F483D /* WeekWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52625C59296B1E68007F483D /* WeekWeatherViewController.swift */; };
 		52C2FD49296DC18F002D53FB /* Int +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C2FD48296DC18F002D53FB /* Int +.swift */; };
+		52C2FD4C296E846B002D53FB /* DataKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C2FD4B296E846B002D53FB /* DataKey.swift */; };
 		52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA496295C774A00DE6AE9 /* UIFont +.swift */; };
 		52CBA49A295C7BD800DE6AE9 /* URLConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA499295C7BD800DE6AE9 /* URLConst.swift */; };
 		52CBA49D295C7F4C00DE6AE9 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */; };
@@ -88,6 +89,7 @@
 		AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */; };
 		ABA6C541296D800E0077E246 /* TimezonePrecipitationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */; };
 		ABA6C543296DBB4A0077E246 /* SecondTodayWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C542296DBB4A0077E246 /* SecondTodayWeatherData.swift */; };
+		ABA6C547296E7D5C0077E246 /* String +.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C546296E7D5C0077E246 /* String +.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +125,7 @@
 		52625C552969B2AF007F483D /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		52625C59296B1E68007F483D /* WeekWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherViewController.swift; sourceTree = "<group>"; };
 		52C2FD48296DC18F002D53FB /* Int +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int +.swift"; sourceTree = "<group>"; };
+		52C2FD4B296E846B002D53FB /* DataKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataKey.swift; sourceTree = "<group>"; };
 		52CBA496295C774A00DE6AE9 /* UIFont +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont +.swift"; sourceTree = "<group>"; };
 		52CBA499295C7BD800DE6AE9 /* URLConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConst.swift; sourceTree = "<group>"; };
 		52CBA49C295C7F4C00DE6AE9 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
@@ -171,6 +174,7 @@
 		AB868C362963D5F300A9AF94 /* CommuteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommuteTableViewCell.swift; sourceTree = "<group>"; };
 		ABA6C540296D800E0077E246 /* TimezonePrecipitationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimezonePrecipitationData.swift; sourceTree = "<group>"; };
 		ABA6C542296DBB4A0077E246 /* SecondTodayWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTodayWeatherData.swift; sourceTree = "<group>"; };
+		ABA6C546296E7D5C0077E246 /* String +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String +.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +349,34 @@
 			path = WeekWeather;
 			sourceTree = "<group>";
 		};
+		52C2FD4A296DD274002D53FB /* TodayWeather */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodayWeather;
+			sourceTree = "<group>";
+		};
+		52C2FD4D296E8773002D53FB /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		52C2FD4E296E8859002D53FB /* TodayWeatherDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TodayWeatherDetail;
+			sourceTree = "<group>";
+		};
+		52C2FD4F296E8876002D53FB /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		52CBA498295C7BBA00DE6AE9 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +392,10 @@
 			isa = PBXGroup;
 			children = (
 				52CBA49E295C810A00DE6AE9 /* Main */,
+				52C2FD4F296E8876002D53FB /* Setting */,
+				52C2FD4D296E8773002D53FB /* Splash */,
+				52C2FD4A296DD274002D53FB /* TodayWeather */,
+				52C2FD4E296E8859002D53FB /* TodayWeatherDetail */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -561,6 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				523BB084295D735D0004B343 /* Color.swift */,
+				52C2FD4B296E846B002D53FB /* DataKey.swift */,
 				523BB082295D73350004B343 /* Image.swift */,
 				521317682963F313009371E1 /* Letter.swift */,
 				52CBA4BC295C8EC800DE6AE9 /* PretendardType.swift */,
@@ -583,6 +620,7 @@
 				5213176F2963F8B2009371E1 /* UITableView +.swift */,
 				521317632962B5A2009371E1 /* UIView +.swift */,
 				52D6A37F2961653000BF4287 /* UIViewController +.swift */,
+				ABA6C546296E7D5C0077E246 /* String +.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -767,6 +805,7 @@
 				52CBA497295C774A00DE6AE9 /* UIFont +.swift in Sources */,
 				5213177729641479009371E1 /* MenuLineHeaderView.swift in Sources */,
 				521317722963F934009371E1 /* NSObject +.swift in Sources */,
+				ABA6C547296E7D5C0077E246 /* String +.swift in Sources */,
 				52FBA6AF295590D500F263B3 /* BaseViewController.swift in Sources */,
 				52CBA4A7295C865A00DE6AE9 /* Encodable +.swift in Sources */,
 				AB868C372963D5F300A9AF94 /* CommuteTableViewCell.swift in Sources */,
@@ -814,6 +853,7 @@
 				0346A30229658F3000E37FD2 /* ListTableViewCell.swift in Sources */,
 				52625C47296805B7007F483D /* PaddingLabel.swift in Sources */,
 				52CBA4A9295C881400DE6AE9 /* NetworkLoggerPlugin.swift in Sources */,
+				52C2FD4C296E846B002D53FB /* DataKey.swift in Sources */,
 				521317702963F8B2009371E1 /* UITableView +.swift in Sources */,
 				5212EADD296496DD0084B95E /* LocationView.swift in Sources */,
 				5212EADA296493380084B95E /* TodayWeatherViewController.swift in Sources */,
