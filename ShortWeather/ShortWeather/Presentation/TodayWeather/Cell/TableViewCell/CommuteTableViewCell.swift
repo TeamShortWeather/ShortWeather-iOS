@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Moya
 import SnapKit
 import Then
 
@@ -31,6 +32,11 @@ final class CommuteTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     var secondWeatherData: SecondTodayWeather = SecondTodayWeather.dummyData()
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjM2LCJpYXQiOjE2NzM0NDc1MzQsImV4cCI6MTY3MzUzMzkzNH0.JRUtbf2e3iVoa9QzTAbAONkaMOIctmWdeYxRKQmk2ck"
+    let weatherDetailProvider = MoyaProvider<TodayWeatherDetailService>(
+        plugins: [NetworkLoggerPlugin(verbose: true)]
+    )
+
     
     // MARK: - Initializer
     
@@ -38,6 +44,7 @@ final class CommuteTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
         setLayout()
+        fetchWeatherDetail()
     }
     
     required init?(coder: NSCoder) {
@@ -104,7 +111,6 @@ extension CommuteTableViewCell {
         }
         
         comeWeatherImageView.do {
-//            $0.image = UIImage(named: WeatherType(rawValue: secondWeatherData.goHome.image)?.setWeatherImage() ?? "")
             $0.image = UIImage(named: getImage(secondWeatherData.goHome.day, secondWeatherData.goHome.image))
         }
         
@@ -177,5 +183,20 @@ extension CommuteTableViewCell {
         }
 
         return result
+    }
+    
+    private func fetchWeatherDetail() {
+        weatherDetailProvider.request(.fetchWeatherDetail(authorization: token)) { response in
+//            switch response {
+//            case .success(let result):
+//                let status = result.statusCode
+//                
+//                if status >= 200 && status < 300 {
+//                    guard let data = try result.map(GeneralResponse<DetailWeather>.self).data else {return}
+//                }
+//            case .failure(let error): 
+//                print(error.localizedDescription)
+//            }
+//        }
     }
 }
