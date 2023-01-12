@@ -34,12 +34,16 @@ final class FirstTodayWeatherView: UIView {
     private let yesterdayWeatherLabel: PaddingLabel = PaddingLabel(topInset: 12, bottomInset: 12, leftInset: 20, rightInset: 20)
     private let showYesterdayWeatherButton: UIButton = UIButton()
     private let bottomArrowImageView: UIImageView = UIImageView()
+    private var weatherQuestionList: WeatherQuestionModel?
     
     
     // MARK: - Properties
     
     private let firstTodayWeather: FirstTodayWeatherData
     let todayWeatherProvider = MoyaProvider<TodayWeatherService>(
+        plugins: [NetworkLoggerPlugin(verbose: true)]
+    )
+    let todayWeatherQuestionProvider = MoyaProvider<TodayWeatherService>(
         plugins: [NetworkLoggerPlugin(verbose: true)]
     )
     
@@ -54,6 +58,7 @@ final class FirstTodayWeatherView: UIView {
         setAddTarget()
         setDelegate()
         fetchWeather()
+        fetchWeatherQuestion()
     }
     
     required init?(coder: NSCoder) {
@@ -201,7 +206,7 @@ extension FirstTodayWeatherView {
         yesterdayWeatherLabel.snp.makeConstraints {
             $0.top.equalTo(todayWeatherLabel.snp.bottom).offset(10)
             $0.leading.equalTo(showYesterdayWeatherButton.snp.trailing).offset(10)
-            $0.height.equalTo(60)
+            $0.height.equalTo(70)
         }
         
         showYesterdayWeatherButton.snp.makeConstraints {
@@ -229,8 +234,14 @@ extension FirstTodayWeatherView {
         lowestTempLabel.text = firstTodayWeather.lowestTemp
         highestTempLabel.text = firstTodayWeather.highestTemp
         todayWeatherLabel.text = firstTodayWeather.todayWeather
-        yesterdayWeatherLabel.text = firstTodayWeather.yesterdayWeather
-        yesterdayWeatherLabel.asFontColor(targetString: "어제 \((-19).temperature)로", font: .fontGuide(.caption1), color: Color.black)
+//        yesterdayWeatherLabel.text = firstTodayWeather.yesterdayWeather
+//        yesterdayWeatherLabel.asFontColor(targetString: "어제 \((-19).temperature)로", font: .fontGuide(.caption1), color: Color.black)
+    }
+    
+    func kwonjeongDataBind(model: WeatherQuestionModel) {
+//        model.weatherMessage = "어제 \((model.temp).temperature)" + model.weatherMessage
+        yesterdayWeatherLabel.text = "어제는 \((model.temp).temperature)로 \n" + model.weatherMessage
+        yesterdayWeatherLabel.asFontColor(targetString: "어제는 \((model.temp).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
     private func setAddTarget() {
@@ -328,6 +339,33 @@ extension FirstTodayWeatherView {
                 }
             case .failure(let error):
                 print("\n server 안대는 즁~~~")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchWeatherQuestion() {
+        todayWeatherQuestionProvider.request(.fetchWeatherQuestion) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        print("----------------------------------")
+                        guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
+                        self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
+                        self.kwonjeongDataBind(model: self.weatherQuestionList!)
+                        print(todayWeatherQuestion)
+                        print(todayWeatherQuestion.temp)
+                    } catch (let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                if status >= 400 {
+                    print("question error")
+                }
+            case .failure(let error):
+                print("\n question server 안대는 즁~~~~!!!!!!")
                 print(error.localizedDescription)
             }
         }
