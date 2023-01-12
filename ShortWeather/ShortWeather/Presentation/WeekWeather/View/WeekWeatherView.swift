@@ -1,5 +1,5 @@
 //
-//  WeekWeatherUIView.swift
+//  WeekWeatherView.swift
 //  ShortWeather
 //
 //  Created by KJ on 2023/01/09.
@@ -7,11 +7,10 @@
 
 import UIKit
 
-import Moya
 import SnapKit
 import Then
 
-final class WeekWeatherUIView: UIView {
+final class WeekWeatherView: UIView {
     
     // MARK: - UI Components
     
@@ -22,13 +21,9 @@ final class WeekWeatherUIView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
-    private var weatherWeekModel: WeatherWeekModel = WeatherWeekModel.weatherWeekdummyData()
-    
-    // MARK: - Properties
+    private var weatherWeekModel: [WeatherWeekModel] = WeatherWeekModel.weatherWeekdummyData()
     
     // MARK: - Initializer
-    
-    // MARK: - View Life Cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,16 +37,16 @@ final class WeekWeatherUIView: UIView {
     }
 }
 
-extension WeekWeatherUIView {
+extension WeekWeatherView {
     
     // MARK: - UI Components Property
     
     private func setUI() {
         weekWeatherCollectionView.do {
-            $0.registerCells(WeekWeatherCollectionViewCell.self)
+            $0.registerCell(WeekWeatherCollectionViewCell.self)
             $0.showsVerticalScrollIndicator = false
             $0.backgroundColor = .clear
-            $0.register(WeekWeatherHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "WeekWeatherHeaderView")
+            $0.register(WeekWeatherHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeekWeatherHeaderView.identifier)
         }
     }
     
@@ -74,11 +69,36 @@ extension WeekWeatherUIView {
         weekWeatherCollectionView.delegate = self
         weekWeatherCollectionView.dataSource = self
     }
-    
-    // MARK: - @objc Methods
 }
 
-extension WeekWeatherUIView: UICollectionViewDelegateFlowLayout {
+//MARK: - UICollectionViewDataSource
+
+extension WeekWeatherView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return weatherWeekModel.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(type: WeekWeatherCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(model: weatherWeekModel[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader,
+              let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                           withReuseIdentifier: WeekWeatherHeaderView.identifier,
+                                                                           for: indexPath) as? WeekWeatherHeaderView else {
+            return UICollectionReusableView()
+        }
+        return header
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension WeekWeatherView: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = bounds.size.width - 56
@@ -92,28 +112,5 @@ extension WeekWeatherUIView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
        return UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
-    }
-}
-
-extension WeekWeatherUIView: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(type: WeekWeatherCollectionViewCell.self, indexPath: indexPath)
-        cell.setDataBind(model: weatherWeekModel)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionView.elementKindSectionHeader,
-              let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: "WeekWeatherHeaderView",
-                for: indexPath
-              ) as? WeekWeatherHeaderView else { return UICollectionReusableView() }
-        return header
     }
 }

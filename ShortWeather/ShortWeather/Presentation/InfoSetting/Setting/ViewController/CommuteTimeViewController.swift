@@ -19,7 +19,6 @@ final class CommuteTimeViewController: SettingBaseViewController {
     private var inTime: String = ""
     private var outNumTime: String = ""
     private var inNumTime: String = ""
-    
     private var isCellTouched: [Bool] = [false, false]
     
     // MARK: - View Life Cycle
@@ -104,6 +103,8 @@ extension CommuteTimeViewController: UICollectionViewDataSource {
         }
     }
 }
+
+//MARK: - TimeInfoViewControllerDelegate
 
 extension CommuteTimeViewController: TimeInfoViewControllerDelegate {
     

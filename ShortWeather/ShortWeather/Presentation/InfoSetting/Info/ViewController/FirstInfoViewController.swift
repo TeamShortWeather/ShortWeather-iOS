@@ -173,6 +173,8 @@ extension FirstInfoViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - ListInfoViewControllerDelegate
+
 extension FirstInfoViewController: ListInfoViewControllerDelegate {
     func getNullData() {
         infoCollectionView.reloadData()

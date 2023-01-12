@@ -7,7 +7,6 @@
 
 import UIKit
 
-import Moya
 import SnapKit
 import Then
 
@@ -26,16 +25,11 @@ final class WeekWeatherCollectionViewCell: UICollectionViewCell {
     private let nightView: UIView = UIView()
     private let minTempLabel: UILabel = UILabel()
     private let maxTempLabel: UILabel = UILabel()
-    
-    // MARK: - Properties
-    
+
     // MARK: - Initializer
-    
-    // MARK: - View Life Cycle
     
     override init(frame:CGRect) {
         super.init(frame: frame)
-        print("cell")
         setUI()
         setLayout()
     }
@@ -53,12 +47,10 @@ extension WeekWeatherCollectionViewCell {
         contentView.backgroundColor = .clear
         
         dayWeekLabel.do {
-//            $0.text = "오늘"
             $0.font = .fontGuide(.subhead3)
         }
         
         dateWeekLabel.do {
-//            $0.text = "12.20"
             $0.font = .fontGuide(.body2)
             $0.textColor = Color.gray4
         }
@@ -68,7 +60,6 @@ extension WeekWeatherCollectionViewCell {
         }
         
         dayRainLabel.do {
-//            $0.text = "60%"
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray4
         }
@@ -78,19 +69,16 @@ extension WeekWeatherCollectionViewCell {
         }
         
         nightRainLabel.do {
-//            $0.text = "100%"
             $0.font = .fontGuide(.caption1)
             $0.textColor = Color.gray4
         }
         
         minTempLabel.do {
-//            $0.text = "-10°"
             $0.font = .fontGuide(.subhead2)
             $0.textColor = Color.gray4
         }
         
         maxTempLabel.do {
-//            $0.text = "-11°"
             $0.font = .fontGuide(.subhead2)
             $0.textColor = Color.gray7
         }
@@ -164,7 +152,6 @@ extension WeekWeatherCollectionViewCell {
         minTempLabel.snp.makeConstraints {
             $0.top.equalTo(maxTempLabel)
             $0.trailing.equalToSuperview().inset(30)
-//            $0.trailing.equalTo(maxTempLabel.snp.leading).inset(-12)
             $0.width.equalTo(36)
         }
     }
@@ -172,33 +159,42 @@ extension WeekWeatherCollectionViewCell {
     // MARK: - Methods
     
     func setDataBind(model: WeatherWeekModel) {
-        let model = WeatherWeekModel.weatherWeekdummyData()
-        
         dayWeekLabel.text = model.day
-        if model.day == "일" {
-            dayWeekLabel.textColor = .red
+        if model.day == "오늘" {
+            dayWeekLabel.textColor = .black
+        }
+        else if model.day == "일" || model.day ==  "내일" {
+            dayWeekLabel.textColor = .red // 수정해야댕!!!! 색 없슴
             dateWeekLabel.textColor = .red
         }
-        
         let monthSplit: Int = Int(model.date.prefix(2)) ?? 0
         let dateSplit: String = String(monthSplit) + "." + model.date.suffix(2)
         dateWeekLabel.text = dateSplit
-        
-        dayImage.image = UIImage(named: WeatherType(rawValue: model.dayImage)?.setWeatherIcon() ?? "맑음")
-        
+        dayImage.image = UIImage(named: getIcon(model.isDay, model.dayImage))
         if (model.dayRain != 0) {
             dayRainLabel.text = String(model.dayRain) + "%"
         }
-        
-        nightImage.image = UIImage(named: WeatherType(rawValue: model.nightImage)?.setWeatherIcon() ?? "맑음")
-        
+        nightImage.image = UIImage(named: getIcon(model.isDay, model.nightImage))
         if (model.nightRain != 0) {
             nightRainLabel.text = String(model.nightRain) + "%"
         }
-        
         minTempLabel.text = String(model.minTemp) + "°"
-        
         maxTempLabel.text = String(model.maxTemp) + "°"
+    }
+    
+    private func getIcon(_ day: Bool, _ image: String) -> String {
+        var result = ""
+        result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
+        if !day {
+            if image == WeatherType.clearDay.rawValue {
+                result = WeatherType.clearNight.setWeatherIcon()
+            } else if image == WeatherType.lotCloudDay.rawValue {
+                result = WeatherType.lotCloudNight.setWeatherIcon()
+            } else {
+                result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
+            }
+        }
+        return result
     }
     
     // MARK: - @objc Methods

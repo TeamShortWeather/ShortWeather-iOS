@@ -59,11 +59,4 @@ struct SecondTodayWeather: Codable {
     let goOut: GoOut
     let goHome: GoHome
     let todayWeather: TodayWeather
-    
-    public static func dummyData() -> SecondTodayWeather {
-        return SecondTodayWeather(location: "서울, 중구 명동",
-                                  goOut: GoOut(time: "0800", temp: 1, day: true, image: "맑음"),
-                                  goHome: GoHome(time: "2100", temp: -3, day: false, image: "구름많음"),
-                                  todayWeather: TodayWeather(humidity: 87, sunrise: "0747", sunset: "1731", fineDust: 0, ultraFineDust: 0))
-    }
 }

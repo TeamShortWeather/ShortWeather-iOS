@@ -12,7 +12,7 @@ import SnapKit
 import Then
 
 
-class EnterInfoCollectionViewCell: UICollectionViewCell {
+final class EnterInfoCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
@@ -38,7 +38,6 @@ class EnterInfoCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setUI()
         setLayout()
-//        selectCell()
     }
     
     required init?(coder: NSCoder) {

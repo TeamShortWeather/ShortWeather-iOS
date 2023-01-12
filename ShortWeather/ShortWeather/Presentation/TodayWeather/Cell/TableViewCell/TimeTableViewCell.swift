@@ -34,9 +34,7 @@ final class TimeTableViewCell: UITableViewCell {
     // MARK: - Properties
 
     var hourWeatherState: HourWeather = .weather
-    let detailProvider = MoyaProvider<TodayWeatherDetailService>(
-        plugins: [NetworkLoggerPlugin(verbose: true)]
-    )
+    let detailProvider = MoyaProvider<TodayWeatherDetailService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     var detailTempList: [TimezoneWeatherData] = []
     var detailRainList: [TimezonePrecipitationData] = []
     
@@ -44,7 +42,6 @@ final class TimeTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setUI()
         setLayout()
         setAddTarget()
@@ -55,7 +52,6 @@ final class TimeTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension TimeTableViewCell {
@@ -100,7 +96,6 @@ extension TimeTableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(titleLabel, buttonStackView, hourCollectionView)
-        
         buttonStackView.addArrangedSubviews(weatherButton, precipitationButton)
         
         titleLabel.snp.makeConstraints {
@@ -158,18 +153,33 @@ extension TimeTableViewCell {
         }
     }
     
+    // MARK: - @objc Methods
+    
+    @objc private func weatherButtonDidTap() {
+        hourWeatherState = .weather
+        hourCollectionView.reloadData()
+        checkHourButton()
+        fetchDetailTemp()
+    }
+    
+    @objc private func precipitationButtonDidTap() {
+        hourWeatherState = .precipitation
+        hourCollectionView.reloadData()
+        checkHourButton()
+        fetchDetailRain()
+    }
+    
+    // MARK: - Network
+    
     private func fetchDetailTemp() {
         detailTempList.removeAll()
-        
         detailProvider.request(.fetchDetailTemp) { response in
             switch response {
             case .success(let result):
                 do {
                     let status = result.statusCode
-                    
                     if status >= 200 && status < 300 {
-                        guard let data = try result.map(GeneralResponse<[DetailTempResponse]>.self).data else {return}
-                        
+                        guard let data = try result.map(GeneralResponse<[DetailTempResponse]>.self).data else { return }
                         for dto in data {
                             self.detailTempList.append(dto.convertToDetailTemp())
                         }
@@ -186,16 +196,13 @@ extension TimeTableViewCell {
     
     private func fetchDetailRain() {
         detailRainList.removeAll()
-        
         detailProvider.request(.fetchDetailRain) { response in
             switch response {
             case .success(let result):
                 do {
                     let status = result.statusCode
-                    
                     if status >= 200 && status < 300 {
-                        guard let data = try result.map(GeneralResponse<[DetailRainResponse]>.self).data else {return}
-                        
+                        guard let data = try result.map(GeneralResponse<[DetailRainResponse]>.self).data else { return }
                         for dto in data {
                             self.detailRainList.append(dto.convertToDetailRain())
                         }
@@ -208,22 +215,6 @@ extension TimeTableViewCell {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    // MARK: - @objc Methods
-    
-    @objc private func weatherButtonDidTap() {
-        hourWeatherState = .weather
-        hourCollectionView.reloadData()
-        checkHourButton()
-        fetchDetailTemp()
-    }
-    
-    @objc private func precipitationButtonDidTap() {
-        hourWeatherState = .precipitation
-        hourCollectionView.reloadData()
-        checkHourButton()
-        fetchDetailRain()
     }
 }
 
@@ -242,18 +233,15 @@ extension TimeTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: HourCollectionViewCell.self, indexPath: indexPath)
-        
         switch hourWeatherState {
         case .weather:
             cell.setWeatherDataBind(detailTempList[indexPath.row])
         case .precipitation:
             cell.setPrecipitationDataBind(detailRainList[indexPath.row])
         }
-        
         if indexPath.row == 0 {
             cell.setCurrent()
         }
-        
         return cell
     }
 }

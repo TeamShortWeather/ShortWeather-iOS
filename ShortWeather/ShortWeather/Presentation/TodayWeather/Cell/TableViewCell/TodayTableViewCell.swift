@@ -44,9 +44,7 @@ final class TodayTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var secondWeatherData: SecondTodayWeather = SecondTodayWeather.dummyData()
-    let weatherDetailProvider = MoyaProvider<TodayWeatherDetailService>(
-        plugins: [NetworkLoggerPlugin()])
+    let weatherDetailProvider = MoyaProvider<TodayWeatherDetailService>(plugins: [NetworkLoggerPlugin()])
 
     // MARK: - Initializer
     
@@ -109,7 +107,6 @@ extension TodayTableViewCell {
         }
         
         sunriseTimeLabel.do {
-            $0.text = secondWeatherData.todayWeather.sunrise
             $0.font = .fontGuide(.caption2)
         }
         
@@ -118,7 +115,6 @@ extension TodayTableViewCell {
         }
         
         sunsetTimeLabel.do {
-            $0.text = secondWeatherData.todayWeather.sunset
             $0.font = .fontGuide(.caption2)
         }
         
@@ -297,15 +293,26 @@ extension TodayTableViewCell {
         }
     }
     
+    private func setDataBind(_ model: SecondTodayWeather) {
+        humidityLabel.text = "\(model.todayWeather.humidity)%"
+        sunriseTimeLabel.text = model.todayWeather.sunrise.changeToTwelveHour()
+        sunsetTimeLabel.text = model.todayWeather.sunset.changeToTwelveHour()
+        dustStateLabel.text = DustState(rawValue: model.todayWeather.fineDust)?.setDustState()
+        dustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.fineDust)?.setDustIcon() ?? "")
+        fineDustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustIcon() ?? "")
+        fineDustStateLabel.text = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustState()
+    }
+
+    // MARK: - Network
+    
     private func fetchWeatherDetail() {
         weatherDetailProvider.request(.fetchWeatherDetail) { response in
             switch response {
             case .success(let result):
                 do {
                     let status = result.statusCode
-                    
                     if status >= 200 && status < 300 {
-                        guard let data = try result.map(GeneralResponse<DetailWeatherResponse>.self).data else {return}
+                        guard let data = try result.map(GeneralResponse<DetailWeatherResponse>.self).data else { return }
                         self.setDataBind(data.convertToDetailWeather())
                     }
                 } catch(let error) {
@@ -315,15 +322,5 @@ extension TodayTableViewCell {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    private func setDataBind(_ model: SecondTodayWeather) {
-        humidityLabel.text = "\(model.todayWeather.humidity)%"
-        sunriseTimeLabel.text = model.todayWeather.sunrise.changeToTwelveHour()
-        sunsetTimeLabel.text = model.todayWeather.sunset.changeToTwelveHour()
-        dustStateLabel.text = DustState(rawValue: model.todayWeather.fineDust)?.setDustState()
-        dustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.fineDust)?.setDustIcon() ?? "")
-        fineDustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustIcon() ?? "")
-        fineDustStateLabel.text = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustState()
     }
 }
