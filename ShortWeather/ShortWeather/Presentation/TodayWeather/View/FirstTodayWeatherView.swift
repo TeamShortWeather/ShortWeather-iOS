@@ -180,6 +180,7 @@ extension FirstTodayWeatherView {
         presentTempLabel.snp.makeConstraints {
             $0.top.equalTo(weatherLabel.snp.bottom).offset(10)
             $0.centerX.equalToSuperview()
+            $0.width.equalTo(145)
         }
         
         lowestTempLabel.snp.makeConstraints {
