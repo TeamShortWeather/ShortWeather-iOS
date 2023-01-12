@@ -12,4 +12,12 @@ extension Int {
     var temperature: String {
         return "\(self)˚"
     }
+    
+    func makeToCompareTemp() -> String {
+        if self <= 0 {
+            return "어제보다 \(self)˚"
+        } else {
+            return "어제보다 +\(self)˚"
+        }
+    }
 }

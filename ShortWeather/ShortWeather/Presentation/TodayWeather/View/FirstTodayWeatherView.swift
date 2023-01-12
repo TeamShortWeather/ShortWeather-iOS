@@ -39,25 +39,20 @@ final class FirstTodayWeatherView: UIView {
     
     // MARK: - Properties
     
-    private let firstTodayWeather: FirstTodayWeatherData
-    let todayWeatherProvider = MoyaProvider<TodayWeatherService>(
-        plugins: [NetworkLoggerPlugin(verbose: true)]
-    )
+    private let todayWeather: TodayWeatherResponse = TodayWeatherResponse(location: "", compareTemp: 0, compareMessage: "", breakingNews: "", fineDust: 0, ultrafineDust: 0, day: true, image: "", currentTemp: 0, minTemp: 0, maxTemp: 0, weatherMessage: "")
     let todayWeatherQuestionProvider = MoyaProvider<TodayWeatherService>(
         plugins: [NetworkLoggerPlugin(verbose: true)]
     )
     
     // MARK: - Initializer
     
-    override init(frame: CGRect) {
-        self.firstTodayWeather = FirstTodayWeatherData.dumyData()
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         setUI()
         setLayout()
         setDataBind()
         setAddTarget()
         setDelegate()
-        fetchWeather()
         fetchWeatherQuestion()
     }
     
@@ -134,6 +129,10 @@ extension FirstTodayWeatherView {
             $0.numberOfLines = 2
             $0.clipsToBounds = true
             $0.isHidden = true
+        }
+        
+        bottomArrowImageView.do {
+            $0.image = Image.icnExpandDown
         }
     }
     
@@ -217,24 +216,23 @@ extension FirstTodayWeatherView {
         
         bottomArrowImageView.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(CGFloat(44).adjusted)
-            $0.width.height.equalTo(44)
+            $0.width.height.equalTo(24)
             $0.centerX.equalToSuperview()
         }
     }
     
     // MARK: - Methods
     
-    public func setDataBind() {
-        compareTempLabel.text = firstTodayWeather.compareTemp
-        compareWeatherLabel.text = firstTodayWeather.compareWeather
-        weatherImageView.image = firstTodayWeather.weatherImage
-        weatherLabel.text = firstTodayWeather.weathehr
-        gradationView.image = Image.backViewDay
-        presentTempLabel.text = firstTodayWeather.presentTemp
-        lowestTempLabel.text = firstTodayWeather.lowestTemp
-        highestTempLabel.text = firstTodayWeather.highestTemp
-        todayWeatherLabel.text = firstTodayWeather.todayWeather
-//        yesterdayWeatherLabel.text = firstTodayWeather.yesterdayWeather
+    public func setDataBind(todayWeather: TodayWeatherResponse) {
+        compareTempLabel.text = todayWeather.compareTemp.makeToCompareTemp()
+        compareWeatherLabel.text = todayWeather.compareMessage
+        weatherImageView.image = WeatherType(rawValue: todayWeather.image)?.setTodayWeatherImage()
+        weatherLabel.text = todayWeather.image
+        gradationView.image = WeatherType(rawValue: todayWeather.image)?.setBackgroundImage()
+        presentTempLabel.text = todayWeather.currentTemp.temperature
+        lowestTempLabel.text = todayWeather.minTemp.temperature
+        highestTempLabel.text = todayWeather.maxTemp.temperature
+        todayWeatherLabel.text = todayWeather.weatherMessage
 //        yesterdayWeatherLabel.asFontColor(targetString: "어제 \((-19).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
@@ -252,6 +250,11 @@ extension FirstTodayWeatherView {
         reportCollectionView.delegate = self
         reportCollectionView.dataSource = self
     }
+    
+    public func setDataBind() {
+        
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func showYesterdayButtonDidTap(){
@@ -267,7 +270,7 @@ extension FirstTodayWeatherView {
 extension FirstTodayWeatherView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if firstTodayWeather.mainReportType == .none {
+        if todayWeather.breakingNews?.isEmpty == true {
             return 2
         } else {
             return 3
@@ -276,19 +279,19 @@ extension FirstTodayWeatherView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: ReportCollectionViewCell.self, indexPath: indexPath)
-        if firstTodayWeather.mainReportType == .none {
+        if todayWeather.breakingNews?.isEmpty == true {
             if indexPath.row == 0 {
-                cell.setDustCellBind(dustType: .dust, dustState: firstTodayWeather.dustReport)
+                cell.setDustCellBind(dustType: .dust, dustState: DustStateType(rawValue: todayWeather.fineDust) ?? .good)
             } else {
-                cell.setDustCellBind(dustType: .fineDust, dustState: firstTodayWeather.fineDustReport)
+                cell.setDustCellBind(dustType: .fineDust, dustState: DustStateType(rawValue: todayWeather.ultrafineDust) ?? .good)
             }
         } else {
             if indexPath.row == 0 {
-                cell.setMainReportCellData(reportType: firstTodayWeather.mainReportType, mainReport: firstTodayWeather.mainReport)
+                cell.setMainReportCellData(reportType: Report(rawValue: todayWeather.breakingNews ?? "폭염특보")!.setReportType(), mainReport: todayWeather.breakingNews ?? "")
             } else if indexPath.row == 1 {
-                cell.setDustCellBind(dustType: .dust, dustState: firstTodayWeather.dustReport)
+                cell.setDustCellBind(dustType: .dust, dustState: DustStateType(rawValue: todayWeather.fineDust) ?? .good)
             } else {
-                cell.setDustCellBind(dustType: .fineDust, dustState: firstTodayWeather.fineDustReport)
+                cell.setDustCellBind(dustType: .dust, dustState: DustStateType(rawValue: todayWeather.ultrafineDust) ?? .good)
             }
         }
         return cell
@@ -302,7 +305,7 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cell = collectionView.dequeueCell(type: ReportCollectionViewCell.self, indexPath: indexPath)
-        if firstTodayWeather.mainReportType == .none {
+        if todayWeather.breakingNews?.isEmpty == true {
             if indexPath.row == 0 {
                 return cell.adjustCellSize(label: Letter.dust)
             } else {
@@ -310,7 +313,7 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
             }
         } else {
             if indexPath.row == 0 {
-                return cell.adjustCellSize(label: firstTodayWeather.mainReport)
+                return cell.adjustCellSize(label: todayWeather.breakingNews ?? "폭염특보")
             } else if indexPath.row == 1 {
                 return cell.adjustCellSize(label: Letter.dust)
             } else {
@@ -322,44 +325,22 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
 
 extension FirstTodayWeatherView {
     
-    func fetchWeather() {
-        todayWeatherProvider.request(.fetchWeather) { response in
-            switch response {
-            case .success(let result):
-                let status = result.statusCode
-                if status >= 200 && status < 300 {
-                    do {
-                        guard let todayWeather = try result.map(GeneralResponse<TodayWeatherResponse>.self).data else { return }
-                    } catch (let error){
-                        print(error.localizedDescription)
-                    }
-                }
-                if status >= 400 {
-                    print("error")
-                }
-            case .failure(let error):
-                print("\n server 안대는 즁~~~")
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
     func fetchWeatherQuestion() {
         todayWeatherQuestionProvider.request(.fetchWeatherQuestion) { response in
             switch response {
             case .success(let result):
-                let status = result.statusCode
                 if status >= 200 && status < 300 {
-                    do {
                         print("----------------------------------")
+                let status = result.statusCode
+                    do {
+                    }
                         guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
                         self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
-                        self.kwonjeongDataBind(model: self.weatherQuestionList!)
-                        print(todayWeatherQuestion)
                         print(todayWeatherQuestion.temp)
+                        print(todayWeatherQuestion)
+                        self.kwonjeongDataBind(model: self.weatherQuestionList!)
                     } catch (let error) {
                         print(error.localizedDescription)
-                    }
                 }
                 if status >= 400 {
                     print("question error")
@@ -368,6 +349,6 @@ extension FirstTodayWeatherView {
                 print("\n question server 안대는 즁~~~~!!!!!!")
                 print(error.localizedDescription)
             }
-        }
     }
+        }
 }
