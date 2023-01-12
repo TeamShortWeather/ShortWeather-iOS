@@ -207,7 +207,7 @@ extension FirstTodayWeatherView {
         yesterdayWeatherLabel.snp.makeConstraints {
             $0.top.equalTo(todayWeatherLabel.snp.bottom).offset(10)
             $0.leading.equalTo(showYesterdayWeatherButton.snp.trailing).offset(10)
-            $0.height.equalTo(60)
+            $0.height.equalTo(65)
         }
         
         showYesterdayWeatherButton.snp.makeConstraints {
