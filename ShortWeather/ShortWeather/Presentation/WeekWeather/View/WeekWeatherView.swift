@@ -21,6 +21,7 @@ final class WeekWeatherView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
+    private var weatherWeekModel: [WeatherWeekModel] = WeatherWeekModel.weatherWeekdummyData()
     
     // MARK: - Initializer
     
@@ -75,11 +76,12 @@ extension WeekWeatherView {
 extension WeekWeatherView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return weatherWeekModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: WeekWeatherCollectionViewCell.self, indexPath: indexPath)
+        cell.setDataBind(model: weatherWeekModel[indexPath.row])
         return cell
     }
     
