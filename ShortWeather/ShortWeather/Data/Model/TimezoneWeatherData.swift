@@ -16,7 +16,7 @@ enum WeatherType: String {
     case shower = "소나기"
     case lightRain = "이슬비"
     case rain = "비"
-    case rainSnow = "비또는눈"
+    case rainSnow = "비 또는 눈"
     case lightSnow = "진눈깨비"
     case snowDrifting = "눈날림"
     case snow = "눈"
