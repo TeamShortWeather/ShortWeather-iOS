@@ -14,6 +14,10 @@ final class HourCollectionViewCell: UICollectionViewCell {
     private let timeLabel: UILabel =  UILabel()
     private let iconImageView: UIImageView = UIImageView()
     private let stateLabel: UILabel = UILabel()
+    
+    // MARK: - Properties
+    
+    var timezonePrecipitationState: TimezonePrecipitationType?
 
     // MARK: - Initializer
     
@@ -77,7 +81,8 @@ extension HourCollectionViewCell {
     func setPrecipitationDataBind(_ model: TimezonePrecipitationData) {
         timeLabel.text = model.time.changeToMeridiem()
         stateLabel.text = "\(model.rain)%"
-        iconImageView.image = UIImage(named: TimezonePrecipitationType(rawValue: model.rain)?.setPrecipitationImage() ?? "")
+        setPrecipitationPercentage(model.rain)
+        iconImageView.image = UIImage(named: timezonePrecipitationState?.setPrecipitationImage() ?? "")
     }
     
     func setCurrent() {
@@ -100,5 +105,29 @@ extension HourCollectionViewCell {
         }
 
         return result
+    }
+    
+    private func setPrecipitationPercentage(_ precipitation: Int) {
+        if precipitation >= 0 && precipitation < 10 {
+            timezonePrecipitationState = .zero
+        } else if precipitation >= 10 && precipitation < 20 {
+            timezonePrecipitationState = .ten
+        } else if precipitation >= 20 && precipitation < 30 {
+            timezonePrecipitationState = .twenty
+        } else if precipitation >= 30 && precipitation < 40 {
+            timezonePrecipitationState = .thirty
+        } else if precipitation >= 40 && precipitation < 50 {
+            timezonePrecipitationState = .fourty
+        } else if precipitation >= 50 && precipitation < 60 {
+            timezonePrecipitationState = .fifty
+        } else if precipitation >= 60 && precipitation < 70 {
+            timezonePrecipitationState  = .sixty
+        } else if precipitation >= 70 && precipitation < 80 {
+            timezonePrecipitationState = .seventy
+        } else if precipitation >= 80 && precipitation < 90 {
+            timezonePrecipitationState = .eighty
+        } else {
+            timezonePrecipitationState = .ninety
+        }
     }
 }
