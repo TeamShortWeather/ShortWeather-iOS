@@ -20,3 +20,4 @@ struct TodayWeatherResponse: Codable {
     let currentTemp, minTemp, maxTemp: Int
     let weatherMessage: String
 }
+

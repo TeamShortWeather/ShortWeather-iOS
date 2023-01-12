@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum TimezonePrecipitationType: Int {
+enum TimezonePrecipitationType: Int  {
     case zero = 0
     case ten = 10
     case twenty = 20
