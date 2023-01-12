@@ -39,23 +39,4 @@ struct TimezonePrecipitationData {
     let date: String
     let time: String
     let rain: Int
-    
-    public static func dummyData() -> [TimezonePrecipitationData] {
-        return [TimezonePrecipitationData(date: "20230110",
-                                          time: "0200",
-                                          rain: 0),
-                 TimezonePrecipitationData(date: "20230110",
-                                            time: "0500",
-                                            rain: 20),
-                TimezonePrecipitationData(date: "20230110",
-                                           time: "1700",
-                                           rain: 30),
-                TimezonePrecipitationData(date: "20230110",
-                                           time: "1800",
-                                           rain: 40),
-                TimezonePrecipitationData(date: "20230110",
-                                           time: "2100",
-                                           rain: 90)
-                ]
-    }
 }

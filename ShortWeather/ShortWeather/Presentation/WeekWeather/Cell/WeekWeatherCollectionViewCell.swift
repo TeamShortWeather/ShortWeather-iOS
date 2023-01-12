@@ -7,7 +7,6 @@
 
 import UIKit
 
-import Moya
 import SnapKit
 import Then
 
@@ -26,16 +25,11 @@ final class WeekWeatherCollectionViewCell: UICollectionViewCell {
     private let afternoonView: UIView = UIView()
     private let minTempLabel: UILabel = UILabel()
     private let maxTempLabel: UILabel = UILabel()
-    
-    // MARK: - Properties
-    
+
     // MARK: - Initializer
-    
-    // MARK: - View Life Cycle
     
     override init(frame:CGRect) {
         super.init(frame: frame)
-        print("cell")
         setUI()
         setLayout()
     }
@@ -165,8 +159,4 @@ extension WeekWeatherCollectionViewCell {
             $0.trailing.equalTo(maxTempLabel.snp.leading).inset(-12)
         }
     }
-    
-    // MARK: - Methods
-    
-    // MARK: - @objc Methods
 }

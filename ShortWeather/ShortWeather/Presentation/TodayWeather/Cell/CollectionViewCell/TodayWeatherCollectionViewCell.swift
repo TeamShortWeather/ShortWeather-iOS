@@ -8,6 +8,8 @@
 import UIKit
 
 import Moya
+import SnapKit
+import Then
 
 final class TodayWeatherCollectionViewCell: UICollectionViewCell {
     
@@ -82,12 +84,13 @@ extension TodayWeatherCollectionViewCell {
     }
 }
 
+//MARK: - UIScrollViewDelegate
+
 extension TodayWeatherCollectionViewCell: UIScrollViewDelegate {
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if refreshControl.isRefreshing {
             refreshControl.endRefreshing()
-            ////            loadServer()
         }
     }
 }

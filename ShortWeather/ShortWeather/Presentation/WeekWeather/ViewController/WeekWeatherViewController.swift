@@ -7,30 +7,31 @@
 
 import UIKit
 
-import Moya
 import SnapKit
-import Then
 
 class WeekWeatherViewController: BaseLocationViewController {
     
-    private let weekWeatherUIView: UIView = WeekWeatherUIView()
+    // MARK: - UI Components
+    
+    private let weekWeatherView: UIView = WeekWeatherView()
     
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setting() // 임시 방편 ...
+        setLayout()
     }
 }
 
 extension WeekWeatherViewController {
     
-    // MARK: - Methods
+    // MARK: - Layout Helper
 
-    private func setting() {
+    private func setLayout() {
         view.backgroundColor = .white
-        view.addSubview(weekWeatherUIView)
-        weekWeatherUIView.snp.makeConstraints {
+        view.addSubview(weekWeatherView)
+        
+        weekWeatherView.snp.makeConstraints {
             $0.top.equalTo(locationView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()

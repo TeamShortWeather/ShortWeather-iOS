@@ -7,8 +7,6 @@
 
 import Foundation
 
-// MARK: - TodayWeatherQuestionResponse
-
 struct TodayWeatherQuestionResponse: Codable {
     let temp: Int
     let weatherMessage: String

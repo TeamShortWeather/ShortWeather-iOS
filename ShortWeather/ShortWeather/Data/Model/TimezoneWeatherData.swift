@@ -96,30 +96,5 @@ struct TimezoneWeatherData {
     let temperature: Int
     let day: Bool
     let image: String
-    
-    public static func dummyData() -> [TimezoneWeatherData] {
-        return [
-            TimezoneWeatherData(date: "20230110",
-                                time: "2200",
-                                temperature: 1,
-                                day: false,
-                                image: "흐림"),
-            TimezoneWeatherData(date: "20230111",
-                                time: "0000",
-                                temperature: 0,
-                                day: false,
-                                image: "맑음"),
-            TimezoneWeatherData(date: "20230111",
-                                time: "0100",
-                                temperature: 0,
-                                day: false,
-                                image: "구름많음"),
-            TimezoneWeatherData(date: "20230111",
-                                time: "0200",
-                                temperature: 0,
-                                day: true,
-                                image: "맑음")
-        ]
-    }
 }
 

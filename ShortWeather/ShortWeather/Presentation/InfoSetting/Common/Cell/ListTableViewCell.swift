@@ -7,7 +7,10 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
+import SnapKit
+import Then
+
+final class ListTableViewCell: UITableViewCell {
     
     // MARK: - UI Components
     

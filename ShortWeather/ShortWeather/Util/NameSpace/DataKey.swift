@@ -8,5 +8,6 @@
 import Foundation
 
 public enum DataKey {
+    
     public static let deviceToken = "deviceToken"
 }

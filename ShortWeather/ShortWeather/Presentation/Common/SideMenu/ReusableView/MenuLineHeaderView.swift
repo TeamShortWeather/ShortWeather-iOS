@@ -13,6 +13,8 @@ final class MenuLineHeaderView: UITableViewHeaderFooterView {
     
     private let lineView: UIView = UIView()
 
+    // MARK: - Initializer
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setLineView()
@@ -22,10 +24,13 @@ final class MenuLineHeaderView: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Methods
+    
     private func setLineView() {
+        lineView.backgroundColor = Color.gray2
+        
         addSubview(lineView)
         
-        lineView.backgroundColor = Color.gray2
         lineView.snp.makeConstraints {
             $0.height.equalTo(1)
             $0.top.equalToSuperview()

@@ -84,6 +84,8 @@ extension WakeUpTimeViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - TimeInfoViewControllerDelegate
+
 extension WakeUpTimeViewController: TimeInfoViewControllerDelegate {
     
     func getNullData() {

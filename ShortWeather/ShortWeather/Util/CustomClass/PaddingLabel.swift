@@ -9,10 +9,14 @@ import UIKit
 
 class PaddingLabel: UILabel {
     
+    // MARK: - Properties
+
     @IBInspectable var topInset: CGFloat
     @IBInspectable var bottomInset: CGFloat
     @IBInspectable var leftInset: CGFloat
     @IBInspectable var rightInset: CGFloat
+    
+    // MARK: - Initializer
     
     init(topInset: CGFloat, bottomInset: CGFloat, leftInset: CGFloat, rightInset: CGFloat) {
         self.topInset = topInset
@@ -25,6 +29,8 @@ class PaddingLabel: UILabel {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Methods
     
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)

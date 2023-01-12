@@ -104,20 +104,7 @@ extension ListInfoViewController {
     }
 }
 
-extension ListInfoViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-}
+// MARK: - UITableViewDataSource
 
 extension ListInfoViewController: UITableViewDataSource {
     
@@ -138,5 +125,22 @@ extension ListInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.getInfoData(userInfoData: UserInfo(infoData: listData[indexPath.section], infoType: infoType))
         dismiss(animated: true)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ListInfoViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
     }
 }

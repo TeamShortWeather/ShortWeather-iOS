@@ -40,7 +40,6 @@ extension SplashViewController {
         view.backgroundColor = .white
         view.addSubview(splashImageView)
         
-//        splashImageView.backgroundColor = .red
         splashImageView.do {
             $0.contentMode = .scaleAspectFit
             $0.play { [weak self] _ in
@@ -63,7 +62,6 @@ extension SplashViewController {
     
     private func isExistUserInform() {
         guard let deviceToken = defaults.string(forKey: DataKey.deviceToken) else {
-            print("No token!")
             UIViewController.modifyRootViewController(FirstInfoViewController())
             return
         }
@@ -76,7 +74,6 @@ extension SplashViewController {
                 APIConstants.jwtToken = data.accessToken
                     UIViewController.modifyRootViewController(TodayWeatherViewController())
                 } catch(let error){
-                    print("실패!")
                     UIViewController.modifyRootViewController(FirstInfoViewController())
                     print(error.localizedDescription)
                 }

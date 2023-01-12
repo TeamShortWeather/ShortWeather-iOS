@@ -65,7 +65,6 @@ extension BaseLocationViewController {
     
     private func setLayout() {
         view.addSubviews(locationView, locationCollectionView, addLocationButton)
-        
         locationView.addSubview(pageController)
         
         locationView.snp.makeConstraints {

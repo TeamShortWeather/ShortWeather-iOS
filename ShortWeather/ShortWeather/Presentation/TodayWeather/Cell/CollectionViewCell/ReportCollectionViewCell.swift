@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ReportCollectionViewCell: UICollectionViewCell {
+import SnapKit
+
+final class ReportCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
@@ -33,6 +35,7 @@ extension ReportCollectionViewCell {
     private func setUI() {
         contentView.layer.cornerRadius = 13
         contentView.clipsToBounds = true
+        
         reportLabel.font = .fontGuide(.caption1)
     }
     
