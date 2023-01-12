@@ -18,8 +18,4 @@ public enum PretendardType: String {
     case regular = "Pretendard-Regular"
     case semibold = "Pretendard-SemiBold"
     case thin = "Pretendard-Thin"
-    
-//    var name: String {
-//        return self.rawValue
-//    }
 }

@@ -63,5 +63,4 @@ extension LocationView {
     public func setDataBind(_ location: String) {
         locationLabel.text = location
     }
-    
 }

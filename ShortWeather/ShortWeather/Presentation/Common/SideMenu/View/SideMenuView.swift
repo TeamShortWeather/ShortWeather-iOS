@@ -16,7 +16,7 @@ final class SideMenuView: UIView {
     private let menuLabel: UILabel = UILabel()
     private let menuTableView: UITableView = UITableView(frame: .zero, style: .grouped)
     
-    // MARK: - UI Components
+    // MARK: - Properties
     
     private let menuIcons: [UIImage?] = [Image.icnToday, Image.icnWeek, Image.icnCloth, Image.icnSetting]
     private let menuTexts: [String] = [Letter.todayWeather, Letter.weekWeather, Letter.cloth, Letter.setting]
@@ -32,65 +32,6 @@ final class SideMenuView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension SideMenuView: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return 20
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 {
-            return tableView.dequeueReusableView(type: MenuLineHeaderView.self)
-        }
-        return UIView()
-    }
-}
-
-extension SideMenuView: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? menuIcons.count-1 : 1
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = menuTableView.dequeueCell(type: MenuTableViewCell.self, indexPath: indexPath)
-        if indexPath.section == 0 {
-            cell.setDataBind(menuImage: menuIcons[indexPath.row]!, menuText: menuTexts[indexPath.row])
-        } else {
-            cell.setDataBind(menuImage: menuIcons[menuIcons.count-1]!, menuText: menuTexts[menuIcons.count-1])
-        }
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            switch indexPath.row {
-            case 0:
-                UIViewController.modifyRootViewController(TodayWeatherViewController())
-            case 1:
-                UIViewController.modifyRootViewController(WeekWeatherViewController())
-            case 2:
-                UIViewController.modifyRootViewController(TodayWeatherViewController())
-            default:
-                UIViewController.modifyRootViewController(TodayWeatherViewController())
-            }
-        } else {
-            UIViewController.modifyRootViewController(SettingViewController())
-        }
     }
 }
 
@@ -153,5 +94,68 @@ extension SideMenuView {
     private func setDelegate() {
         menuTableView.dataSource = self
         menuTableView.delegate = self
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension SideMenuView: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return section == 0 ? menuIcons.count-1 : 1
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = menuTableView.dequeueCell(type: MenuTableViewCell.self, indexPath: indexPath)
+        if indexPath.section == 0 {
+            cell.setDataBind(menuImage: menuIcons[indexPath.row]!, menuText: menuTexts[indexPath.row])
+        } else {
+            cell.setDataBind(menuImage: menuIcons[menuIcons.count-1]!, menuText: menuTexts[menuIcons.count-1])
+        }
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                UIViewController.modifyRootViewController(TodayWeatherViewController())
+            case 1:
+                UIViewController.modifyRootViewController(WeekWeatherViewController())
+            case 2:
+                UIViewController.modifyRootViewController(TodayWeatherViewController())
+            default:
+                UIViewController.modifyRootViewController(TodayWeatherViewController())
+            }
+        } else {
+            UIViewController.modifyRootViewController(SettingViewController())
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension SideMenuView: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 20
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            return tableView.dequeueReusableView(type: MenuLineHeaderView.self)
+        }
+        return UIView()
     }
 }

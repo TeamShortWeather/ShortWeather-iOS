@@ -36,13 +36,10 @@ final class FirstTodayWeatherView: UIView {
     private let bottomArrowImageView: UIImageView = UIImageView()
     private var weatherQuestionList: WeatherQuestionModel?
     
-    
     // MARK: - Properties
     
     private let todayWeather: TodayWeatherResponse = TodayWeatherResponse(location: "", compareTemp: 0, compareMessage: "", breakingNews: "", fineDust: 0, ultrafineDust: 0, day: true, image: "", currentTemp: 0, minTemp: 0, maxTemp: 0, weatherMessage: "")
-    let todayWeatherQuestionProvider = MoyaProvider<TodayWeatherService>(
-        plugins: [NetworkLoggerPlugin(verbose: true)]
-    )
+    let todayWeatherQuestionProvider = MoyaProvider<TodayWeatherService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     // MARK: - Initializer
     
@@ -50,7 +47,6 @@ final class FirstTodayWeatherView: UIView {
         super.init(frame: .zero)
         setUI()
         setLayout()
-        setDataBind()
         setAddTarget()
         setDelegate()
         fetchWeatherQuestion()
@@ -228,14 +224,21 @@ extension FirstTodayWeatherView {
     public func setDataBind(todayWeather: TodayWeatherResponse) {
         compareTempLabel.text = todayWeather.compareTemp.makeToCompareTemp()
         compareWeatherLabel.text = todayWeather.compareMessage
-        weatherImageView.image = WeatherType(rawValue: todayWeather.image)?.setTodayWeatherImage()
+        var weatherType = WeatherType(rawValue: todayWeather.image)
+        if todayWeather.day == false {
+            if weatherType == .clearDay {
+                weatherType = .clearNight
+            } else if weatherType == .lotCloudDay {
+                weatherType = .lotCloudNight
+            }
+        }
+        weatherImageView.image = weatherType?.setTodayWeatherImage()
         weatherLabel.text = todayWeather.image
-        gradationView.image = WeatherType(rawValue: todayWeather.image)?.setBackgroundImage()
+        gradationView.image = weatherType?.setBackgroundImage()
         presentTempLabel.text = " " + todayWeather.currentTemp.temperature
         lowestTempLabel.text = todayWeather.minTemp.temperature
         highestTempLabel.text = todayWeather.maxTemp.temperature
         todayWeatherLabel.text = todayWeather.weatherMessage
-//        yesterdayWeatherLabel.asFontColor(targetString: "어제 \((-19).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
     private func setAddTarget() {
@@ -247,10 +250,6 @@ extension FirstTodayWeatherView {
         reportCollectionView.dataSource = self
     }
     
-    public func setDataBind() {
-        
-    }
-    
     func weatherQuestionDataBind(model: WeatherQuestionModel) {
         yesterdayWeatherLabel.text = "어제는 \((model.temp).temperature)로 \n" + model.weatherMessage
         yesterdayWeatherLabel.asFontColor(targetString: "어제는 \((model.temp).temperature)로", font: .fontGuide(.caption1), color: Color.black)
@@ -258,7 +257,7 @@ extension FirstTodayWeatherView {
     
     // MARK: - @objc Methods
     
-    @objc private func showYesterdayButtonDidTap(){
+    @objc private func showYesterdayButtonDidTap() {
         yesterdayWeatherLabel.isHidden = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             DispatchQueue.main.async { [weak self] in
@@ -266,7 +265,36 @@ extension FirstTodayWeatherView {
             }
         })
     }
+    
+    // MARK: - Network
+    
+    func fetchWeatherQuestion() {
+        todayWeatherQuestionProvider.request(.fetchWeatherQuestion) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
+                        self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
+                        self.weatherQuestionDataBind(model: self.weatherQuestionList!)
+                        print(todayWeatherQuestion)
+                        print(todayWeatherQuestion.temp)
+                    } catch (let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                else if status >= 400 {
+                    print(Letter.requestError)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
+
+//MARK: - UICollectionViewDataSource
 
 extension FirstTodayWeatherView: UICollectionViewDataSource {
     
@@ -299,8 +327,7 @@ extension FirstTodayWeatherView: UICollectionViewDataSource {
     }
 }
 
-extension FirstTodayWeatherView: UICollectionViewDelegate {
-}
+//MARK: - UICollectionViewDelegateFlowLayout
 
 extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
     
@@ -319,36 +346,6 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
                 return cell.adjustCellSize(label: Letter.dust)
             } else {
                 return cell.adjustCellSize(label: Letter.fineDust)
-            }
-        }
-    }
-}
-
-extension FirstTodayWeatherView {
-    
-    func fetchWeatherQuestion() {
-        todayWeatherQuestionProvider.request(.fetchWeatherQuestion) { response in
-            switch response {
-            case .success(let result):
-                let status = result.statusCode
-                if status >= 200 && status < 300 {
-                    do {
-                        print("—————————————————")
-                        guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
-                        self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
-                        self.weatherQuestionDataBind(model: self.weatherQuestionList!)
-                        print(todayWeatherQuestion)
-                        print(todayWeatherQuestion.temp)
-                    } catch (let error) {
-                        print(error.localizedDescription)
-                    }
-                }
-                if status >= 400 {
-                    print("question error")
-                }
-            case .failure(let error):
-                print("\n question server 안대는 즁~~~~!!!!!!")
-                print(error.localizedDescription)
             }
         }
     }

@@ -7,8 +7,6 @@
 
 import Foundation
 
-// MARK: - TodayWeatherResponse
-
 struct TodayWeatherResponse: Codable {
     let location: String
     let compareTemp: Int

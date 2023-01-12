@@ -18,6 +18,4 @@ extension UIButton {
         UIGraphicsEndImageContext()
         self.setBackgroundImage(backgroundImage, for: state)
     }
-    
-    
 }

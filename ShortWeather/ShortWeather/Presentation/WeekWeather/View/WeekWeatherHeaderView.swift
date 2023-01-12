@@ -7,13 +7,12 @@
 
 import UIKit
 
-import Moya
 import SnapKit
 import Then
 
 class WeekWeatherHeaderView: UICollectionReusableView {
     
-    static let identifier = "WeekWeatherHeaderView"
+    public static let identifier = "WeekWeatherHeaderView"
     
     // MARK: - UI Components
     
@@ -22,7 +21,7 @@ class WeekWeatherHeaderView: UICollectionReusableView {
     private let timeZoneLabel: UILabel = UILabel()
     private let temperatureLabel: UILabel = UILabel()
     
-    // MARK: - View Life Cycle
+    // MARK: - Initializer
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +57,8 @@ extension WeekWeatherHeaderView {
             $0.textColor = Color.gray7
         }
     }
+    
+    // MARK: - Layout Helper
     
     private func setLayout() {
         addSubviews(weekDescriptionView)

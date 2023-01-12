@@ -32,7 +32,6 @@ final class SecondInfoViewController: SettingBaseViewController {
     private let userProvider = MoyaProvider<UserService>(plugins:[NetworkLoggerPlugin()])
     private let defaults = UserDefaults.standard
     
-    
     // MARK: - Initializer
     
     init(user: User) {
@@ -165,13 +164,12 @@ extension SecondInfoViewController {
                         APIConstants.jwtToken = data.accessToken
                         UIViewController.modifyRootViewController(TodayWeatherViewController())
                     }
-                    catch(let error){
-                        print("실패!")
+                    catch(let error) {
                         print(error.localizedDescription)
                     }
                 }
-                else if status >= 400{
-                    print("요청 오류")
+                else if status >= 400 {
+                    print(Letter.requestError)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -179,6 +177,8 @@ extension SecondInfoViewController {
         }
     }
 }
+
+//MARK: - UICollectionViewDataSource
 
 extension SecondInfoViewController: UICollectionViewDataSource {
 
@@ -223,6 +223,8 @@ extension SecondInfoViewController: UICollectionViewDataSource {
         }
     }
 }
+
+//MARK: - TimeInfoViewControllerDelegate
 
 extension SecondInfoViewController: TimeInfoViewControllerDelegate {
     

@@ -9,6 +9,12 @@ import Foundation
 
 struct PostUserResponse: Codable {
     let id: Int
-    let gender, age, tempSens, wakeUpTime: String
-    let goOutTime, goHomeTime, deviceToken, accessToken: String
+    let gender: String
+    let age: String
+    let tempSens: String
+    let wakeUpTime: String
+    let goOutTime: String
+    let goHomeTime: String
+    let deviceToken: String
+    let accessToken: String
 }

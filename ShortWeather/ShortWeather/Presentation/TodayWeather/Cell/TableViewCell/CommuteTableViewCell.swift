@@ -31,12 +31,7 @@ final class CommuteTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var secondWeatherData: SecondTodayWeather = SecondTodayWeather.dummyData()
-//    var secondWeatherData: SecondTodayWeather?
-//    var testData: SecondTodayWeather?
-    let weatherDetailProvider = MoyaProvider<TodayWeatherDetailService>(
-        plugins: [NetworkLoggerPlugin()])
-
+    let weatherDetailProvider = MoyaProvider<TodayWeatherDetailService>(plugins: [NetworkLoggerPlugin()])
     
     // MARK: - Initializer
     
@@ -77,7 +72,6 @@ extension CommuteTableViewCell {
         }
         
         outTemperatureLabel.do {
-            $0.text = secondWeatherData.goOut.temp.temperature
             $0.font = .fontGuide(.subhead1)
         }
         
@@ -157,9 +151,7 @@ extension CommuteTableViewCell {
     
     private func getImage(_ day: Bool, _ image: String) -> String {
         var result = ""
-        
         result = WeatherType(rawValue: image)?.setWeatherImage() ?? ""
-        
         if !day {
             if image == WeatherType.clearDay.rawValue {
                 result = WeatherType.clearNight.setWeatherImage()
@@ -169,9 +161,19 @@ extension CommuteTableViewCell {
                 result = WeatherType(rawValue: image)?.setWeatherImage() ?? ""
             }
         }
-
         return result
     }
+    
+    private func setDataBind(_ model: SecondTodayWeather) {
+        outTimeLabel.text = model.goOut.time.changeToMeridiem()
+        outWeatherImageView.image = UIImage(named: getImage(model.goOut.day, model.goOut.image))
+        outTemperatureLabel.text = model.goOut.temp.temperature
+        comeTimeLabel.text = model.goHome.time.changeToMeridiem()
+        comeWeatherImageView.image = UIImage(named: getImage(model.goHome.day, model.goHome.image))
+        comeTemperatureLabel.text = model.goHome.temp.temperature
+    }
+    
+    // MARK: - Network
     
     private func fetchWeatherDetail() {
         weatherDetailProvider.request(.fetchWeatherDetail) { response in
@@ -191,14 +193,5 @@ extension CommuteTableViewCell {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    private func setDataBind(_ model: SecondTodayWeather) {
-        outTimeLabel.text = model.goOut.time.changeToMeridiem()
-        outWeatherImageView.image = UIImage(named: getImage(model.goOut.day, model.goOut.image))
-        outTemperatureLabel.text = model.goOut.temp.temperature
-        comeTimeLabel.text = model.goHome.time.changeToMeridiem()
-        comeWeatherImageView.image = UIImage(named: getImage(model.goHome.day, model.goHome.image))
-        comeTemperatureLabel.text = model.goHome.temp.temperature
     }
 }

@@ -16,12 +16,4 @@ extension UIViewController {
         sceneDelegate?.window?.rootViewController = navigationViewController
         sceneDelegate?.window?.makeKeyAndVisible()
     }
-    
-//    @objc private func backButtonDidTap() {
-//        popToSettingViewController()
-//    }
-//    
-//    private func popToSettingViewController() {
-//        navigationController?.popViewController(animated: true)
-//    }
 }

@@ -7,6 +7,9 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 final class HourCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
@@ -91,9 +94,7 @@ extension HourCollectionViewCell {
     
     private func getIcon(_ day: Bool, _ image: String) -> String {
         var result = ""
-        
         result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
-        
         if !day {
             if image == WeatherType.clearDay.rawValue {
                 result = WeatherType.clearNight.setWeatherIcon()
@@ -103,7 +104,6 @@ extension HourCollectionViewCell {
                 result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
             }
         }
-
         return result
     }
     
