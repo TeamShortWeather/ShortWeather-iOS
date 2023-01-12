@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Moya
 import SnapKit
 import Then
 
@@ -33,8 +34,11 @@ final class TimeTableViewCell: UITableViewCell {
     // MARK: - Properties
 
     var hourWeatherState: HourWeather = .weather
-    private var timezoneWeatherList: [TimezoneWeatherData] = TimezoneWeatherData.dummyData()
-    private var timezonePrecipitationList: [TimezonePrecipitationData] = TimezonePrecipitationData.dummyData()
+    let detailProvider = MoyaProvider<TodayWeatherDetailService>(
+        plugins: [NetworkLoggerPlugin(verbose: true)]
+    )
+    var detailTempList: [TimezoneWeatherData] = []
+    var detailRainList: [TimezonePrecipitationData] = []
     
     // MARK: - Initializer
 
@@ -45,6 +49,7 @@ final class TimeTableViewCell: UITableViewCell {
         setLayout()
         setAddTarget()
         setDelegate()
+        fetchDetailTemp()
     }
     
     required init?(coder: NSCoder) {
@@ -153,18 +158,72 @@ extension TimeTableViewCell {
         }
     }
     
+    private func fetchDetailTemp() {
+        detailTempList.removeAll()
+        
+        detailProvider.request(.fetchDetailTemp) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let status = result.statusCode
+                    
+                    if status >= 200 && status < 300 {
+                        guard let data = try result.map(GeneralResponse<[DetailTempResponse]>.self).data else {return}
+                        
+                        for dto in data {
+                            self.detailTempList.append(dto.convertToDetailTemp())
+                        }
+                        self.hourCollectionView.reloadData()
+                    }
+                } catch(let error) {
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func fetchDetailRain() {
+        detailRainList.removeAll()
+        
+        detailProvider.request(.fetchDetailRain) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    let status = result.statusCode
+                    
+                    if status >= 200 && status < 300 {
+                        guard let data = try result.map(GeneralResponse<[DetailRainResponse]>.self).data else {return}
+                        
+                        for dto in data {
+                            self.detailRainList.append(dto.convertToDetailRain())
+                        }
+                        self.hourCollectionView.reloadData()
+                    }
+                } catch(let error) {
+                    print(error.localizedDescription)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - @objc Methods
     
     @objc private func weatherButtonDidTap() {
         hourWeatherState = .weather
         hourCollectionView.reloadData()
         checkHourButton()
+        fetchDetailTemp()
     }
     
     @objc private func precipitationButtonDidTap() {
         hourWeatherState = .precipitation
         hourCollectionView.reloadData()
         checkHourButton()
+        fetchDetailRain()
     }
 }
 
@@ -175,9 +234,9 @@ extension TimeTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch hourWeatherState {
         case .weather:
-            return timezoneWeatherList.count
+            return detailTempList.count
         case .precipitation:
-            return timezonePrecipitationList.count
+            return detailRainList.count
         }
     }
     
@@ -186,9 +245,9 @@ extension TimeTableViewCell: UICollectionViewDataSource {
         
         switch hourWeatherState {
         case .weather:
-            cell.setWeatherDataBind(timezoneWeatherList[indexPath.row])
+            cell.setWeatherDataBind(detailTempList[indexPath.row])
         case .precipitation:
-            cell.setPrecipitationDataBind(timezonePrecipitationList[indexPath.row])
+            cell.setPrecipitationDataBind(detailRainList[indexPath.row])
         }
         
         if indexPath.row == 0 {
