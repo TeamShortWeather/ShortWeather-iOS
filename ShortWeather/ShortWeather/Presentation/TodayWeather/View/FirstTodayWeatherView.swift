@@ -228,14 +228,21 @@ extension FirstTodayWeatherView {
     public func setDataBind(todayWeather: TodayWeatherResponse) {
         compareTempLabel.text = todayWeather.compareTemp.makeToCompareTemp()
         compareWeatherLabel.text = todayWeather.compareMessage
-        weatherImageView.image = WeatherType(rawValue: todayWeather.image)?.setTodayWeatherImage()
+        var weatherType = WeatherType(rawValue: todayWeather.image)
+        if todayWeather.day == false {
+            if weatherType == .clearDay {
+                weatherType = .clearNight
+            } else if weatherType == .lotCloudDay {
+                weatherType = .lotCloudNight
+            }
+        }
+        weatherImageView.image = weatherType?.setTodayWeatherImage()
         weatherLabel.text = todayWeather.image
-        gradationView.image = WeatherType(rawValue: todayWeather.image)?.setBackgroundImage()
+        gradationView.image = weatherType?.setBackgroundImage()
         presentTempLabel.text = " " + todayWeather.currentTemp.temperature
         lowestTempLabel.text = todayWeather.minTemp.temperature
         highestTempLabel.text = todayWeather.maxTemp.temperature
         todayWeatherLabel.text = todayWeather.weatherMessage
-//        yesterdayWeatherLabel.asFontColor(targetString: "어제 \((-19).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
     private func setAddTarget() {

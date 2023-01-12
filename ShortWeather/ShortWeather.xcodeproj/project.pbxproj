@@ -309,6 +309,14 @@
 			path = StyleGuide;
 			sourceTree = "<group>";
 		};
+		5257E55029707955000DA5BE /* TodayWeatherDetail */ = {
+			isa = PBXGroup;
+			children = (
+				AB03CA97296EE52300D81A2D /* TodayWeatherDetailResponse.swift */,
+			);
+			path = TodayWeatherDetail;
+			sourceTree = "<group>";
+		};
 		52625C482968682A007F483D /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,7 +477,7 @@
 		52CBA4A4295C836900DE6AE9 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				AB03CA97296EE52300D81A2D /* TodayWeatherDetailResponse.swift */,
+				5257E55029707955000DA5BE /* TodayWeatherDetail */,
 				52C2FD66296F54CF002D53FB /* TodayWeather */,
 				52C2FD5C296EAD45002D53FB /* User */,
 			);

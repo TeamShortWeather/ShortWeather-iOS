@@ -36,8 +36,8 @@ public enum Letter {
     public static let commuteTime = "외출 / 귀가시간대"
     public static let alarm = "알림"
     
-    public static let changeHour = "시간대를 변경해주세요"
-    public static let changeAlarm = "알림 받을 시간대를\n설정해주세요"
+    public static let changeHour = "시간대를 변경해 주세요"
+    public static let changeAlarm = "알림 받을 시간대를\n설정해 주세요"
     public static let changeWakeUpTime = "기상시간을 변경해 주세요"
 
     public static let allAlarm = "전체 알림"
