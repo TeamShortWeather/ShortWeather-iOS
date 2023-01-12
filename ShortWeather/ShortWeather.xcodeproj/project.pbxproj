@@ -406,6 +406,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		52C2FD66296F54CF002D53FB /* TodayWeather */ = {
+			isa = PBXGroup;
+			children = (
+				03AF5E05296F1E4F004598EF /* TodayWeatherResponse.swift */,
+			);
+			path = TodayWeather;
+			sourceTree = "<group>";
+		};
 		52CBA498295C7BBA00DE6AE9 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,8 +461,7 @@
 		52CBA4A4295C836900DE6AE9 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				52CBA4AA295C88C600DE6AE9 /*  .gitkeep */,
-				03AF5E05296F1E4F004598EF /* TodayWeatherResponse.swift */,
+				52C2FD66296F54CF002D53FB /* TodayWeather */,
 				52C2FD5C296EAD45002D53FB /* User */,
 			);
 			path = DTO;

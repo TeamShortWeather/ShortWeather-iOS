@@ -12,7 +12,7 @@ final class LocationView: UIView {
     // MARK: - UI Components
     
     private let locationImageView: UIImageView = UIImageView()
-    private let locationLabel: UILabel = UILabel()
+    public let locationLabel: UILabel = UILabel()
     
     // MARK: - Initializer
     

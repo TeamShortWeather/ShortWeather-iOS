@@ -7,13 +7,15 @@
 
 import UIKit
 
+import Moya
+
 final class TodayWeatherCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
     
     private let scrollView: UIScrollView = UIScrollView()
-    private let firstTodayWeatherView: FirstTodayWeatherView = FirstTodayWeatherView(frame: .zero)
-    private let secondTodayWeatherView: SecondTodayWeatherView = SecondTodayWeatherView(frame: .zero)
+    private var firstTodayWeatherView: FirstTodayWeatherView = FirstTodayWeatherView()
+    private var secondTodayWeatherView: SecondTodayWeatherView = SecondTodayWeatherView(frame: .zero)
     private var refreshControl = UIRefreshControl()
     
     // MARK: - Initializer
@@ -68,6 +70,12 @@ extension TodayWeatherCollectionViewCell {
     }
     
     // MARK: - Methods
+    
+    public func setDataBind(todayWeather: TodayWeatherResponse) {
+        firstTodayWeatherView.setDataBind(todayWeather: todayWeather)
+    }
+    
+    // MARK: - @objc Methods
     
     @objc private func refresh() {
         scrollView.reloadInputViews()
