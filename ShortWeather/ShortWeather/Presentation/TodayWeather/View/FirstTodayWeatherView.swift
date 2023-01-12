@@ -91,6 +91,7 @@ extension FirstTodayWeatherView {
         presentTempLabel.do {
             $0.textColor = Color.black
             $0.font = .fontGuide(.weather1)
+            $0.textAlignment = .center
         }
         
         lowestTempLabel.do {
@@ -225,7 +226,7 @@ extension FirstTodayWeatherView {
         weatherImageView.image = WeatherType(rawValue: todayWeather.image)?.setTodayWeatherImage()
         weatherLabel.text = todayWeather.image
         gradationView.image = WeatherType(rawValue: todayWeather.image)?.setBackgroundImage()
-        presentTempLabel.text = todayWeather.currentTemp.temperature
+        presentTempLabel.text = " " + todayWeather.currentTemp.temperature
         lowestTempLabel.text = todayWeather.minTemp.temperature
         highestTempLabel.text = todayWeather.maxTemp.temperature
         todayWeatherLabel.text = todayWeather.weatherMessage
