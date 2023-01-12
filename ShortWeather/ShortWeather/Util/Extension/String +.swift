@@ -24,25 +24,6 @@ extension String {
         }
     }
     
-//    func changeToHour() -> String {
-//        let hourEndIndex: String.Index = self.index(self.startIndex, offsetBy: 1)
-//        let minStartIndex: String.Index = self.index(hourEndIndex, offsetBy: 1)
-//        let minEndIndex: String.Index = self.index(minStartIndex, offsetBy: 1)
-//        let hour: Int = Int(String(self[...hourEndIndex]))!
-//        let min: String = String(self[minStartIndex...minEndIndex])
-//        
-//        if hour > 12 {
-//            return "\(hour-12)"+min
-//        } else if hour == 12 {
-//            return "12"+min
-//        } else {
-//            let oneHourEndIndex: String.Index = String(hour).index(self.startIndex, offsetBy: 1)
-//            print(oneHourEndIndex)
-//            let oneHour: String = ""
-//            return oneHour+min
-//        }
-//    }
-    
     static func createDeviceToken() -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String(
@@ -61,13 +42,22 @@ extension String {
         }
         return stringTime
     }
-
-//    func changeToDigitalTime() -> String {
-//        let hourEndIndex: String.Index = self.index(self.startIndex, offsetBy: 1)
-//        let minStartIndex: String.Index = self.index(hourEndIndex, offsetBy: 1)
-//        let minEndIndex: String.Index = self.index(minStartIndex, offsetBy: 1)
-//        let hour: String = String(self[...hourEndIndex])
-//        let min: String = String(self[minStartIndex...minEndIndex])
-//        return "\(hour):\(min)"
-//    }
+    
+    func changeToTwelveHour() -> String {
+        let hourEndIndex: String.Index = self.index(self.startIndex, offsetBy: 1)
+        let hour = Int(String(self[...hourEndIndex]))!
+        let minStartIndex: String.Index = self.index(self.startIndex, offsetBy: 2)
+        let minEndIndex: String.Index = self.index(self.startIndex, offsetBy: 3)
+        let min = String(self[minStartIndex...minEndIndex])
+        
+        if hour > 12 {
+            return "\(hour-12):"+min
+        } else if hour == 0 {
+            return "12:"+min
+        } else if hour == 12 {
+            return "12:"+min
+        } else {
+            return "\(hour):"+min
+        }
+    }
 }

@@ -21,6 +21,15 @@ enum DustState: Int {
         case .worst: return "icn_dust_worst"
         }
     }
+    
+    func setDustState() -> String {
+        switch self {
+        case .good: return "좋음"
+        case .normal: return "보통"
+        case .bad: return "나쁨"
+        case .worst: return "심각"
+        }
+    }
 }
 
 struct GoOut: Codable {

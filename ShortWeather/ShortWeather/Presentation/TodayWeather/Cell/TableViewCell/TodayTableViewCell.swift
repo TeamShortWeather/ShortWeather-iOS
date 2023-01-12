@@ -321,12 +321,11 @@ extension TodayTableViewCell {
     
     private func setDataBind(_ model: SecondTodayWeather) {
         humidityLabel.text = "\(model.todayWeather.humidity)%"
-        sunsetTimeLabel.text = model.todayWeather.sunset
-        sunriseTimeLabel.text = model.todayWeather.sunrise
-        sunsetTimeLabel.text = model.todayWeather.sunset
-        dustStateLabel.text = "\(model.todayWeather.fineDust)"
+        sunriseTimeLabel.text = model.todayWeather.sunrise.changeToTwelveHour()
+        sunsetTimeLabel.text = model.todayWeather.sunset.changeToTwelveHour()
+        dustStateLabel.text = DustState(rawValue: model.todayWeather.fineDust)?.setDustState()
         dustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.fineDust)?.setDustIcon() ?? "")
         fineDustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustIcon() ?? "")
-        fineDustStateLabel.text = "\(model.todayWeather.ultraFineDust)"
+        fineDustStateLabel.text = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustState()
     }
 }
