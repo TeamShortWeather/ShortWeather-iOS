@@ -306,8 +306,6 @@ extension TodayTableViewCell {
                     
                     if status >= 200 && status < 300 {
                         guard let data = try result.map(GeneralResponse<DetailWeatherResponse>.self).data else {return}
-                        print("💚💚💚💚💚💚💚💚💚💚💚💚💚💚💚💚💚💚")
-                        print(data.convertToDetailWeather())
                         self.setDataBind(data.convertToDetailWeather())
                     }
                 } catch(let error) {
