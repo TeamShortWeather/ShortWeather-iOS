@@ -34,11 +34,12 @@ final class FirstTodayWeatherView: UIView {
     private let yesterdayWeatherLabel: PaddingLabel = PaddingLabel(topInset: 12, bottomInset: 12, leftInset: 20, rightInset: 20)
     private let showYesterdayWeatherButton: UIButton = UIButton()
     private let bottomArrowImageView: UIImageView = UIImageView()
-    
+    private var weatherQuestionList: WeatherQuestionModel?
     
     // MARK: - Properties
     
     private let todayWeather: TodayWeatherResponse = TodayWeatherResponse(location: "", compareTemp: 0, compareMessage: "", breakingNews: "", fineDust: 0, ultrafineDust: 0, day: true, image: "", currentTemp: 0, minTemp: 0, maxTemp: 0, weatherMessage: "")
+    let todayWeatherQuestionProvider = MoyaProvider<TodayWeatherService>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     // MARK: - Initializer
     
@@ -46,9 +47,9 @@ final class FirstTodayWeatherView: UIView {
         super.init(frame: .zero)
         setUI()
         setLayout()
-        setDataBind()
         setAddTarget()
         setDelegate()
+        fetchWeatherQuestion()
     }
     
     required init?(coder: NSCoder) {
@@ -140,8 +141,8 @@ extension FirstTodayWeatherView {
                     weatherImageView, weatherLabel,
                     presentTempLabel, lowestTempLabel,
                     highestTempLabel, todayWeatherLabel,
-                    showYesterdayWeatherButton, yesterdayWeatherLabel,
-                    bottomArrowImageView)
+                    showYesterdayWeatherButton, bottomArrowImageView,
+                    yesterdayWeatherLabel)
         
         compareTempLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -202,7 +203,7 @@ extension FirstTodayWeatherView {
         yesterdayWeatherLabel.snp.makeConstraints {
             $0.top.equalTo(todayWeatherLabel.snp.bottom).offset(10)
             $0.leading.equalTo(showYesterdayWeatherButton.snp.trailing).offset(10)
-            $0.height.equalTo(60)
+            $0.height.equalTo(65)
         }
         
         showYesterdayWeatherButton.snp.makeConstraints {
@@ -223,14 +224,21 @@ extension FirstTodayWeatherView {
     public func setDataBind(todayWeather: TodayWeatherResponse) {
         compareTempLabel.text = todayWeather.compareTemp.makeToCompareTemp()
         compareWeatherLabel.text = todayWeather.compareMessage
-        weatherImageView.image = WeatherType(rawValue: todayWeather.image)?.setTodayWeatherImage()
+        var weatherType = WeatherType(rawValue: todayWeather.image)
+        if todayWeather.day == false {
+            if weatherType == .clearDay {
+                weatherType = .clearNight
+            } else if weatherType == .lotCloudDay {
+                weatherType = .lotCloudNight
+            }
+        }
+        weatherImageView.image = weatherType?.setTodayWeatherImage()
         weatherLabel.text = todayWeather.image
-        gradationView.image = WeatherType(rawValue: todayWeather.image)?.setBackgroundImage()
+        gradationView.image = weatherType?.setBackgroundImage()
         presentTempLabel.text = " " + todayWeather.currentTemp.temperature
         lowestTempLabel.text = todayWeather.minTemp.temperature
         highestTempLabel.text = todayWeather.maxTemp.temperature
         todayWeatherLabel.text = todayWeather.weatherMessage
-//        yesterdayWeatherLabel.asFontColor(targetString: "어제 \((-19).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
     private func setAddTarget() {
@@ -242,13 +250,14 @@ extension FirstTodayWeatherView {
         reportCollectionView.dataSource = self
     }
     
-    public func setDataBind() {
-        
+    func weatherQuestionDataBind(model: WeatherQuestionModel) {
+        yesterdayWeatherLabel.text = "어제는 \((model.temp).temperature)로 \n" + model.weatherMessage
+        yesterdayWeatherLabel.asFontColor(targetString: "어제는 \((model.temp).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
     // MARK: - @objc Methods
     
-    @objc private func showYesterdayButtonDidTap(){
+    @objc private func showYesterdayButtonDidTap() {
         yesterdayWeatherLabel.isHidden = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
             DispatchQueue.main.async { [weak self] in
@@ -256,7 +265,36 @@ extension FirstTodayWeatherView {
             }
         })
     }
+    
+    // MARK: - Network
+    
+    func fetchWeatherQuestion() {
+        todayWeatherQuestionProvider.request(.fetchWeatherQuestion) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
+                        self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
+                        self.weatherQuestionDataBind(model: self.weatherQuestionList!)
+                        print(todayWeatherQuestion)
+                        print(todayWeatherQuestion.temp)
+                    } catch (let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                else if status >= 400 {
+                    print(Letter.requestError)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
+
+//MARK: - UICollectionViewDataSource
 
 extension FirstTodayWeatherView: UICollectionViewDataSource {
     
@@ -289,8 +327,7 @@ extension FirstTodayWeatherView: UICollectionViewDataSource {
     }
 }
 
-extension FirstTodayWeatherView: UICollectionViewDelegate {
-}
+//MARK: - UICollectionViewDelegateFlowLayout
 
 extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
     
@@ -312,31 +349,4 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
             }
         }
     }
-}
-
-extension FirstTodayWeatherView {
-    
-    // MARK: - Network
-    
-//    func fetchWeather() {
-//        todayWeatherProvider.request(.fetchWeather) { response in
-//            switch response {
-//            case .success(let result):
-//                let status = result.statusCode
-//                if status >= 200 && status < 300 {
-//                    do {
-//                        guard let todayWeather = try result.map(GeneralResponse<TodayWeatherResponse>.self).data else { return }
-//                        setDataBind()
-//                    } catch (let error){
-//                        print(error.localizedDescription)
-//                    }
-//                }
-//                if status >= 400 {
-//                    print("error")
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
 }

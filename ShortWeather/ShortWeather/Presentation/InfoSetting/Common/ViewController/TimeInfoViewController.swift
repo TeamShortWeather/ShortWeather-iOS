@@ -33,11 +33,10 @@ final class TimeInfoViewController: UIViewController {
     private var hourTime: Int = 0
     private var minuteTime: String = ""
     private var stringTime: String = ""
-    
-    let dayTimeList: [String] = ["오전", "오후"]
-    let hourTimeList: [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    let minuteTimeList: [String] = ["00"]
-    let wakeUpTimeList: [String] = ["00", "30"]
+    private let dayTimeList: [String] = ["오전", "오후"]
+    private let hourTimeList: [Int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    private let minuteTimeList: [String] = ["00"]
+    private let wakeUpTimeList: [String] = ["00", "30"]
     
     // MARK: - Initializer
     
@@ -158,24 +157,7 @@ extension TimeInfoViewController {
     }
 }
 
-extension TimeInfoViewController: UIPickerViewDelegate {
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch component {
-        case 0:
-            return dayTimeList[row]
-        case 1:
-            return "\(hourTimeList[row])"
-        default:
-            if infoType == .wakeUpTime {
-                return wakeUpTimeList[row]
-            }
-            else {
-                return minuteTimeList[row]
-            }
-        }
-    }
-}
+//MARK: - UIPickerViewDataSource
 
 extension TimeInfoViewController: UIPickerViewDataSource {
     
@@ -218,5 +200,26 @@ extension TimeInfoViewController: UIPickerViewDataSource {
             }
         }
         stringTime = dayTime + " " + String(hourTime) + "시 " + minuteTime + "분"
+    }
+}
+
+//MARK: - UIPickerViewDelegate
+
+extension TimeInfoViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch component {
+        case 0:
+            return dayTimeList[row]
+        case 1:
+            return "\(hourTimeList[row])"
+        default:
+            if infoType == .wakeUpTime {
+                return wakeUpTimeList[row]
+            }
+            else {
+                return minuteTimeList[row]
+            }
+        }
     }
 }

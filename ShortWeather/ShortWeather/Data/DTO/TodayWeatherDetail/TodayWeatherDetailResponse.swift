@@ -7,8 +7,6 @@
 
 import Foundation
 
-// MARK: - TodayWeatherDetailResponse
-
 struct DetailWeatherResponse: Codable {
     let location: String
     let goOut: DetailGoOut

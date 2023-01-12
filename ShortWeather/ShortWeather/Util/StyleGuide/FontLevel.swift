@@ -8,7 +8,6 @@
 import Foundation
 
 public enum FontLevel {
-    
     case display1           // 32pt / semibold
     case headline1          // 24pt / semibold
     case headline2          // 20pt / semibold
@@ -28,7 +27,6 @@ extension FontLevel {
     
     public var fontWeight: String {
         switch self {
-            
         case .display1:
             return PretendardType.semibold.rawValue
         case .headline1:
@@ -60,7 +58,6 @@ extension FontLevel {
     
     public var fontSize: CGFloat {
         switch self {
-
         case .display1:
             return 32
         case .headline1:

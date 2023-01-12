@@ -51,8 +51,9 @@ extension TodayWeatherViewController {
         locationCollectionView.dataSource = self
     }
     
+    // MARK: - Network
+    
     private func fetchWeather() {
-        print("오늘날씨 서버 통신해보자!")
         todayWeatherProvider.request(.fetchWeather) { response in
             switch response {
             case .success(let result):
@@ -66,13 +67,12 @@ extension TodayWeatherViewController {
                         self.todayWeather = data
                         self.locationCollectionView.reloadData()
                     }
-                    catch(let error){
-                        print("실패!")
+                    catch(let error) {
                         print(error.localizedDescription)
                     }
                 }
-                else if status >= 400{
-                    print("요청 오류")
+                else if status >= 400 {
+                    print(Letter.requestError)
                 }
             case .failure(let error):
                 print(error.localizedDescription)
