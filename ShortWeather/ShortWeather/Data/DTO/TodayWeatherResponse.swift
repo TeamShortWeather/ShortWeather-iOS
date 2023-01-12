@@ -13,7 +13,7 @@ struct TodayWeatherResponse: Codable {
     let location: String
     let compareTemp: Int
     let compareMessage: String
-    let breakingNews: String = ""
+    let breakingNews: String?
     let fineDust, ultrafineDust: Int
     let day: Bool
     let image: String
