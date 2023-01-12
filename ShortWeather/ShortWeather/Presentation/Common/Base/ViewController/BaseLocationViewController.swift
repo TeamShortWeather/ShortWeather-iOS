@@ -24,6 +24,7 @@ class BaseLocationViewController: BaseViewController {
         return collectionView
     }()
     private let pageController: UIPageControl = UIPageControl()
+    private let addLocationButton: UIButton = UIButton()
     
     // MARK: - View Life Cycle
     
@@ -54,12 +55,16 @@ extension BaseLocationViewController {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.isPagingEnabled = true
         }
+        
+        addLocationButton.do {
+            $0.setImage(Image.icnAdd, for: .normal)
+        }
     }
     
     // MARK: - Layout Helper
     
     private func setLayout() {
-        view.addSubviews(locationView, locationCollectionView)
+        view.addSubviews(locationView, locationCollectionView, addLocationButton)
         
         locationView.addSubview(pageController)
         
@@ -80,6 +85,18 @@ extension BaseLocationViewController {
             $0.top.equalTo(locationView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(CGFloat(667).adjusted)
+        }
+        
+        hamburgerButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(18)
+            $0.width.height.equalTo(44)
+        }
+        
+        addLocationButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-18)
+            $0.width.height.equalTo(44)
         }
     }
     
