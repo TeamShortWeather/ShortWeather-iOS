@@ -81,7 +81,7 @@ extension HourCollectionViewCell {
     func setPrecipitationDataBind(_ model: TimezonePrecipitationData) {
         timeLabel.text = model.time.changeToMeridiem()
         stateLabel.text = "\(model.rain)%"
-        setPrecipitationPercentage(model.rain)
+        setPrecipitationPercentage(model.rain)  
         iconImageView.image = UIImage(named: timezonePrecipitationState?.setPrecipitationImage() ?? "")
     }
     
