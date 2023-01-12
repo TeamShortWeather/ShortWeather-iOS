@@ -54,6 +54,40 @@ enum WeatherType: String {
         case .snow: return "img_heavysnow"
         }
     }
+    
+    func setTodayWeatherImage() -> UIImage {
+        switch self {
+        case .clearDay: return Image.imgClearDay
+        case .clearNight: return Image.imgClearNight
+        case .cloudy: return Image.imgCloudy
+        case .lotCloudDay: return Image.imgLotcloudDay
+        case .lotCloudNight: return Image.imgLotcloudNight
+        case .shower: return Image.imgShower
+        case .lightRain: return Image.imgLightrain
+        case .rain: return Image.imgRain
+        case .rainSnow: return Image.imgRainsnow
+        case .lightSnow: return Image.imgLightsnow
+        case .snowDrifting: return Image.imgSnowdrifting
+        case .snow: return Image.imgSnow
+        }
+    }
+    
+    func setBackgroundImage() -> UIImage {
+        switch self {
+        case .clearDay: return Image.backViewDay
+        case .clearNight: return Image.backViewNight
+        case .cloudy: return Image.backViewCloud
+        case .lotCloudDay: return Image.backViewDay
+        case .lotCloudNight: return Image.backViewNight
+        case .shower: return Image.backViewCloud
+        case .lightRain: return Image.backViewRain
+        case .rain: return Image.backViewRain
+        case .rainSnow: return Image.backViewSnow
+        case .lightSnow: return Image.backViewSnow
+        case .snowDrifting: return Image.backViewSnow
+        case .snow: return Image.backViewSnow
+        }
+    }
 }
 
 struct TimezoneWeatherData {
