@@ -149,10 +149,6 @@ extension TodayTableViewCell {
             $0.font = .fontGuide(.subhead2)
         }
         
-        dustImageView.do {
-            $0.backgroundColor = Color.gray2
-        }
-        
         dustStateLabel.do {
             $0.font = .fontGuide(.subhead2)
         }
@@ -164,10 +160,6 @@ extension TodayTableViewCell {
         fineDustTitleLabel.do {
             $0.text = Letter.fineDustInfo
             $0.font = .fontGuide(.subhead2)
-        }
-        
-        fineDustImageView.do {
-            $0.backgroundColor = Color.gray2
         }
         
         fineDustStateLabel.do {
@@ -333,6 +325,8 @@ extension TodayTableViewCell {
         sunriseTimeLabel.text = model.todayWeather.sunrise
         sunsetTimeLabel.text = model.todayWeather.sunset
         dustStateLabel.text = "\(model.todayWeather.fineDust)"
+        dustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.fineDust)?.setDustIcon() ?? "")
+        fineDustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustIcon() ?? "")
         fineDustStateLabel.text = "\(model.todayWeather.ultraFineDust)"
     }
 }

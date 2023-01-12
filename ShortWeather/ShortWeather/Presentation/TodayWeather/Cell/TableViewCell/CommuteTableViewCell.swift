@@ -196,10 +196,10 @@ extension CommuteTableViewCell {
     }
     
     private func setDataBind(_ model: SecondTodayWeather) {
-        outTimeLabel.text = model.goOut.time.changeToHour()
+        outTimeLabel.text = model.goOut.time.changeToMeridiem()
         outWeatherImageView.image = UIImage(named: getImage(model.goOut.day, model.goOut.image))
         outTemperatureLabel.text = model.goOut.temp.temperature
-        comeTimeLabel.text = model.goHome.time.changeToHour()
+        comeTimeLabel.text = model.goHome.time.changeToMeridiem()
         comeWeatherImageView.image = UIImage(named: getImage(model.goHome.day, model.goHome.image))
         comeTemperatureLabel.text = model.goHome.temp.temperature
     }

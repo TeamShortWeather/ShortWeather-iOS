@@ -69,13 +69,13 @@ extension HourCollectionViewCell {
     // MARK: - Methods
     
     func setWeatherDataBind(_ model: TimezoneWeatherData) {
-        timeLabel.text = model.time.changeToHour()
+        timeLabel.text = model.time.changeToMeridiem()
         stateLabel.text = model.temperature.temperature
         iconImageView.image = UIImage(named: getIcon(model.day, model.image))
     }
     
     func setPrecipitationDataBind(_ model: TimezonePrecipitationData) {
-        timeLabel.text = model.time.changeToHour()
+        timeLabel.text = model.time.changeToMeridiem()
         stateLabel.text = "\(model.rain)%"
         iconImageView.image = UIImage(named: TimezonePrecipitationType(rawValue: model.rain)?.setPrecipitationImage() ?? "")
     }

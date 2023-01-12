@@ -7,6 +7,22 @@
 
 import Foundation
 
+enum DustState: Int {
+    case good = 1
+    case normal = 2
+    case bad = 3
+    case worst = 4
+    
+    func setDustIcon() -> String {
+        switch self {
+        case .good: return "icn_dust_good"
+        case .normal: return "icn_dust_normal"
+        case .bad: return "icn_dust_bad"
+        case .worst: return "icn_dust_worst"
+        }
+    }
+}
+
 struct GoOut: Codable {
     let time: String
     let temp: Int

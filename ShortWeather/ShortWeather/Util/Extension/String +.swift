@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     
-    func changeToHour() -> String {
+    func changeToMeridiem() -> String {
         let endIndex: String.Index = self.index(self.startIndex, offsetBy: 1)
         let result: Int = Int(String(self[...endIndex]))!
         
@@ -23,6 +23,25 @@ extension String {
             return "오전 \(result)시"
         }
     }
+    
+//    func changeToHour() -> String {
+//        let hourEndIndex: String.Index = self.index(self.startIndex, offsetBy: 1)
+//        let minStartIndex: String.Index = self.index(hourEndIndex, offsetBy: 1)
+//        let minEndIndex: String.Index = self.index(minStartIndex, offsetBy: 1)
+//        let hour: Int = Int(String(self[...hourEndIndex]))!
+//        let min: String = String(self[minStartIndex...minEndIndex])
+//        
+//        if hour > 12 {
+//            return "\(hour-12)"+min
+//        } else if hour == 12 {
+//            return "12"+min
+//        } else {
+//            let oneHourEndIndex: String.Index = String(hour).index(self.startIndex, offsetBy: 1)
+//            print(oneHourEndIndex)
+//            let oneHour: String = ""
+//            return oneHour+min
+//        }
+//    }
     
     static func createDeviceToken() -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -42,5 +61,13 @@ extension String {
         }
         return stringTime
     }
-    //stringToTime
+
+//    func changeToDigitalTime() -> String {
+//        let hourEndIndex: String.Index = self.index(self.startIndex, offsetBy: 1)
+//        let minStartIndex: String.Index = self.index(hourEndIndex, offsetBy: 1)
+//        let minEndIndex: String.Index = self.index(minStartIndex, offsetBy: 1)
+//        let hour: String = String(self[...hourEndIndex])
+//        let min: String = String(self[minStartIndex...minEndIndex])
+//        return "\(hour):\(min)"
+//    }
 }
