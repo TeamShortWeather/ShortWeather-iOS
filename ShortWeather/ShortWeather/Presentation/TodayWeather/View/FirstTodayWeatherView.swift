@@ -34,11 +34,15 @@ final class FirstTodayWeatherView: UIView {
     private let yesterdayWeatherLabel: PaddingLabel = PaddingLabel(topInset: 12, bottomInset: 12, leftInset: 20, rightInset: 20)
     private let showYesterdayWeatherButton: UIButton = UIButton()
     private let bottomArrowImageView: UIImageView = UIImageView()
+    private var weatherQuestionList: WeatherQuestionModel?
     
     
     // MARK: - Properties
     
     private let todayWeather: TodayWeatherResponse = TodayWeatherResponse(location: "", compareTemp: 0, compareMessage: "", breakingNews: "", fineDust: 0, ultrafineDust: 0, day: true, image: "", currentTemp: 0, minTemp: 0, maxTemp: 0, weatherMessage: "")
+    let todayWeatherQuestionProvider = MoyaProvider<TodayWeatherService>(
+        plugins: [NetworkLoggerPlugin(verbose: true)]
+    )
     
     // MARK: - Initializer
     
@@ -49,6 +53,7 @@ final class FirstTodayWeatherView: UIView {
         setDataBind()
         setAddTarget()
         setDelegate()
+        fetchWeatherQuestion()
     }
     
     required init?(coder: NSCoder) {
@@ -140,8 +145,8 @@ extension FirstTodayWeatherView {
                     weatherImageView, weatherLabel,
                     presentTempLabel, lowestTempLabel,
                     highestTempLabel, todayWeatherLabel,
-                    showYesterdayWeatherButton, yesterdayWeatherLabel,
-                    bottomArrowImageView)
+                    showYesterdayWeatherButton, bottomArrowImageView,
+                    yesterdayWeatherLabel)
         
         compareTempLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -202,7 +207,7 @@ extension FirstTodayWeatherView {
         yesterdayWeatherLabel.snp.makeConstraints {
             $0.top.equalTo(todayWeatherLabel.snp.bottom).offset(10)
             $0.leading.equalTo(showYesterdayWeatherButton.snp.trailing).offset(10)
-            $0.height.equalTo(60)
+            $0.height.equalTo(65)
         }
         
         showYesterdayWeatherButton.snp.makeConstraints {
@@ -244,6 +249,11 @@ extension FirstTodayWeatherView {
     
     public func setDataBind() {
         
+    }
+    
+    func weatherQuestionDataBind(model: WeatherQuestionModel) {
+        yesterdayWeatherLabel.text = "어제는 \((model.temp).temperature)로 \n" + model.weatherMessage
+        yesterdayWeatherLabel.asFontColor(targetString: "어제는 \((model.temp).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
     // MARK: - @objc Methods
@@ -316,27 +326,30 @@ extension FirstTodayWeatherView: UICollectionViewDelegateFlowLayout {
 
 extension FirstTodayWeatherView {
     
-    // MARK: - Network
-    
-//    func fetchWeather() {
-//        todayWeatherProvider.request(.fetchWeather) { response in
-//            switch response {
-//            case .success(let result):
-//                let status = result.statusCode
-//                if status >= 200 && status < 300 {
-//                    do {
-//                        guard let todayWeather = try result.map(GeneralResponse<TodayWeatherResponse>.self).data else { return }
-//                        setDataBind()
-//                    } catch (let error){
-//                        print(error.localizedDescription)
-//                    }
-//                }
-//                if status >= 400 {
-//                    print("error")
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
+    func fetchWeatherQuestion() {
+        todayWeatherQuestionProvider.request(.fetchWeatherQuestion) { response in
+            switch response {
+            case .success(let result):
+                let status = result.statusCode
+                if status >= 200 && status < 300 {
+                    do {
+                        print("—————————————————")
+                        guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
+                        self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
+                        self.weatherQuestionDataBind(model: self.weatherQuestionList!)
+                        print(todayWeatherQuestion)
+                        print(todayWeatherQuestion.temp)
+                    } catch (let error) {
+                        print(error.localizedDescription)
+                    }
+                }
+                if status >= 400 {
+                    print("question error")
+                }
+            case .failure(let error):
+                print("\n question server 안대는 즁~~~~!!!!!!")
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
