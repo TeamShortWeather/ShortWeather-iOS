@@ -140,8 +140,8 @@ extension FirstTodayWeatherView {
                     weatherImageView, weatherLabel,
                     presentTempLabel, lowestTempLabel,
                     highestTempLabel, todayWeatherLabel,
-                    showYesterdayWeatherButton, yesterdayWeatherLabel,
-                    bottomArrowImageView)
+                    showYesterdayWeatherButton, bottomArrowImageView,
+                    yesterdayWeatherLabel)
         
         compareTempLabel.snp.makeConstraints {
             $0.top.equalToSuperview()
