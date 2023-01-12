@@ -236,7 +236,7 @@ extension FirstTodayWeatherView {
 //        yesterdayWeatherLabel.asFontColor(targetString: "어제 \((-19).temperature)로", font: .fontGuide(.caption1), color: Color.black)
     }
     
-    func kwonjeongDataBind(model: WeatherQuestionModel) {
+    func weatherQuestionDataBind(model: WeatherQuestionModel) {
 //        model.weatherMessage = "어제 \((model.temp).temperature)" + model.weatherMessage
         yesterdayWeatherLabel.text = "어제는 \((model.temp).temperature)로 \n" + model.weatherMessage
         yesterdayWeatherLabel.asFontColor(targetString: "어제는 \((model.temp).temperature)로", font: .fontGuide(.caption1), color: Color.black)
@@ -335,7 +335,7 @@ extension FirstTodayWeatherView {
                         print("—————————————————")
                         guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
                         self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
-                        self.kwonjeongDataBind(model: self.weatherQuestionList!)
+                        self.weatherQuestionDataBind(model: self.weatherQuestionList!)
                         print(todayWeatherQuestion)
                         print(todayWeatherQuestion.temp)
                     } catch (let error) {
@@ -352,42 +352,3 @@ extension FirstTodayWeatherView {
         }
     }
 }
-
-
-//private var weatherQuestionList: WeatherQuestionModel?
-//    let todayWeatherQuestionProvider = MoyaProvider<TodayWeatherService>(
-//        plugins: [NetworkLoggerPlugin(verbose: true)]
-//    )
-//
-//    func kwonjeongDataBind(model: WeatherQuestionModel) {
-////        model.weatherMessage = "어제 \((model.temp).temperature)" + model.weatherMessage
-////        yesterdayWeatherLabel.text = "어제는 \((model.temp).temperature)로 \n" + model.weatherMessage
-////        yesterdayWeatherLabel.asFontColor(targetString: "어제는 \((model.temp).temperature)로", font: .fontGuide(.caption1), color: Color.black)
-////    }
-////
-//    func fetchWeatherQuestion() {
-//        todayWeatherQuestionProvider.request(.fetchWeatherQuestion) { response in
-//            switch response {
-//            case .success(let result):
-//                let status = result.statusCode
-//                if status >= 200 && status < 300 {
-//                    do {
-//                        print("—————————————————")
-//                        guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
-//                        self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
-//                        self.kwonjeongDataBind(model: self.weatherQuestionList!)
-//                        print(todayWeatherQuestion)
-//                        print(todayWeatherQuestion.temp)
-//                    } catch (let error) {
-//                        print(error.localizedDescription)
-//                    }
-//                }
-//                if status >= 400 {
-//                    print("question error")
-//                }
-//            case .failure(let error):
-//                print("\n question server 안대는 즁~~~~!!!!!!")
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }

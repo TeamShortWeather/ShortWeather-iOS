@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		032BF6A0296F6A29000DE7AA /* WeatherQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BF69F296F6A29000DE7AA /* WeatherQuestionModel.swift */; };
+		032BF6A22970367B000DE7AA /* WeatherWeekModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BF6A12970367B000DE7AA /* WeatherWeekModel.swift */; };
 		033BF9922969669D008B5BFB /* CheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033BF9912969669D008B5BFB /* CheckButton.swift */; };
 		033E7F712965A8560051B349 /* ListInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F702965A8560051B349 /* ListInfoViewController.swift */; };
 		033E7F732965C2FB0051B349 /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */; };
@@ -106,6 +107,7 @@
 
 /* Begin PBXFileReference section */
 		032BF69F296F6A29000DE7AA /* WeatherQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherQuestionModel.swift; sourceTree = "<group>"; };
+		032BF6A12970367B000DE7AA /* WeatherWeekModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWeekModel.swift; sourceTree = "<group>"; };
 		033BF9912969669D008B5BFB /* CheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckButton.swift; sourceTree = "<group>"; };
 		033E7F702965A8560051B349 /* ListInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInfoViewController.swift; sourceTree = "<group>"; };
 		033E7F722965C2FB0051B349 /* SecondInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
@@ -413,7 +415,6 @@
 		52C2FD66296F54CF002D53FB /* TodayWeather */ = {
 			isa = PBXGroup;
 			children = (
-				03AF5E05296F1E4F004598EF /* TodayWeatherResponse.swift */,
 			);
 			path = TodayWeather;
 			sourceTree = "<group>";
@@ -459,6 +460,7 @@
 				52C2FD64296EC175002D53FB /* User.swift */,
 				52625C552969B2AF007F483D /* UserInfo.swift */,
 				032BF69F296F6A29000DE7AA /* WeatherQuestionModel.swift */,
+				032BF6A12970367B000DE7AA /* WeatherWeekModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -910,6 +912,7 @@
 				52CBA4A9295C881400DE6AE9 /* NetworkLoggerPlugin.swift in Sources */,
 				52C2FD4C296E846B002D53FB /* DataKey.swift in Sources */,
 				521317702963F8B2009371E1 /* UITableView +.swift in Sources */,
+				032BF6A22970367B000DE7AA /* WeatherWeekModel.swift in Sources */,
 				5212EADD296496DD0084B95E /* LocationView.swift in Sources */,
 				5212EADA296493380084B95E /* TodayWeatherViewController.swift in Sources */,
 				521317662962B5CA009371E1 /* UIStackView +.swift in Sources */,
