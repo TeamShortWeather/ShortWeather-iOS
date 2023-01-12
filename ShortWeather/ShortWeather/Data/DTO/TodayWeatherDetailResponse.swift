@@ -9,28 +9,6 @@ import Foundation
 
 // MARK: - TodayWeatherDetailResponse
 
-//struct DetailGoOut: Codable {
-//    let time: String
-//    let temp: Int
-//    let day: Bool
-//    let image: String
-//}
-//
-//struct DetailGoHome: Codable {
-//    let time: String
-//    let temp: Int
-//    let day: Bool
-//    let image: String
-//}
-//
-//struct DetailTodayWeather: Codable {
-//    let humidity: Int
-//    let sunrise: String
-//    let sunset: String
-//    let fineDust: Int
-//    let ultraFineDust: Int
-//}
-
 struct DetailWeatherResponse: Codable {
     let location: String
     let goOut: DetailGoOut
