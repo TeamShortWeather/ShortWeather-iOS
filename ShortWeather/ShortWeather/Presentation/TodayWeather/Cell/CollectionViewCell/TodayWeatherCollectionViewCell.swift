@@ -11,6 +11,10 @@ import Moya
 import SnapKit
 import Then
 
+protocol TodayWeatherCollectionViewCellDelegste: AnyObject {
+    func fetchTodayWeather()
+}
+
 final class TodayWeatherCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Components
@@ -19,6 +23,10 @@ final class TodayWeatherCollectionViewCell: UICollectionViewCell {
     private var firstTodayWeatherView: FirstTodayWeatherView = FirstTodayWeatherView()
     private var secondTodayWeatherView: SecondTodayWeatherView = SecondTodayWeatherView(frame: .zero)
     private var refreshControl = UIRefreshControl()
+    
+    // MARK: - Properties
+
+    public weak var delegate: TodayWeatherCollectionViewCellDelegste?
     
     // MARK: - Initializer
     
@@ -90,6 +98,7 @@ extension TodayWeatherCollectionViewCell: UIScrollViewDelegate {
 
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if refreshControl.isRefreshing {
+            delegate?.fetchTodayWeather()
             refreshControl.endRefreshing()
         }
     }

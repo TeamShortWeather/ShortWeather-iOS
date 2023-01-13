@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class WeekWeatherHeaderView: UICollectionReusableView {
+final class WeekWeatherHeaderView: UICollectionReusableView {
     
     public static let identifier = "WeekWeatherHeaderView"
     

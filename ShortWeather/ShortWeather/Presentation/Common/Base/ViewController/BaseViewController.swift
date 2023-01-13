@@ -52,7 +52,6 @@ extension BaseViewController {
         }
         
         viewTitleLabel.do{
-            $0.text = "오늘 날씨"
             $0.font = .fontGuide(.subhead2)
             $0.textColor = Color.black
         }

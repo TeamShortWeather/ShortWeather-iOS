@@ -139,7 +139,9 @@ extension SecondInfoViewController {
     // MARK: - @objc Methods
     
     @objc private func checkButtonDidTap() {
-        postUserInfo()
+        DispatchQueue.main.async { [weak self] in
+            self?.postUserInfo()
+        }
         UIViewController.modifyRootViewController(FirstInfoViewController())
     }
     
