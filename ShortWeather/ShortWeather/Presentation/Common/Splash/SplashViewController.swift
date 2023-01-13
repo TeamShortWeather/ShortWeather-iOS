@@ -45,6 +45,8 @@ extension SplashViewController {
             $0.play { [weak self] _ in
                 self?.isExistUserInform()
             }
+//            animationView.loopMode = .loop
+            $0.loopMode = .loop
         }
     }
     
@@ -74,11 +76,9 @@ extension SplashViewController {
                     APIConstants.jwtToken = data.accessToken
                     UIViewController.modifyRootViewController(TodayWeatherViewController())
                 } catch(let error){
-                    UIViewController.modifyRootViewController(FirstInfoViewController())
                     print(error.localizedDescription)
                 }
             case .failure(let error):
-                UIViewController.modifyRootViewController(FirstInfoViewController())
                 print(error.localizedDescription)
             }
         }
