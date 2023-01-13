@@ -151,25 +151,26 @@ extension CommuteTableViewCell {
     
     private func getImage(_ day: Bool, _ image: String) -> String {
         var result = ""
-        result = WeatherType(rawValue: image)?.setWeatherImage() ?? ""
         if !day {
             if image == WeatherType.clearDay.rawValue {
-                result = WeatherType.clearNight.setWeatherImage()
+                result = WeatherType.clearNight.rawValue
             } else if image == WeatherType.lotCloudDay.rawValue {
-                result = WeatherType.lotCloudNight.setWeatherImage()
+                result = WeatherType.lotCloudNight.rawValue
             } else {
-                result = WeatherType(rawValue: image)?.setWeatherImage() ?? ""
+                result = WeatherType(rawValue: image)?.rawValue ?? ""
             }
+        } else {
+            result = WeatherType(rawValue: image)?.rawValue ?? ""
         }
         return result
-    }
+}
     
     private func setDataBind(_ model: SecondTodayWeather) {
         outTimeLabel.text = model.goOut.time.changeToMeridiem()
-        outWeatherImageView.image = UIImage(named: getImage(model.goOut.day, model.goOut.image))
+        outWeatherImageView.image = WeatherType(rawValue: getImage(model.goOut.day, model.goOut.image))?.setWeatherImage()
         outTemperatureLabel.text = model.goOut.temp.temperature
         comeTimeLabel.text = model.goHome.time.changeToMeridiem()
-        comeWeatherImageView.image = UIImage(named: getImage(model.goHome.day, model.goHome.image))
+        comeWeatherImageView.image = WeatherType(rawValue: getImage(model.goHome.day, model.goHome.image))?.setWeatherImage()
         comeTemperatureLabel.text = model.goHome.temp.temperature
     }
     

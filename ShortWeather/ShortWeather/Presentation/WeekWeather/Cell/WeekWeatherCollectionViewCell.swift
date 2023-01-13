@@ -170,11 +170,11 @@ extension WeekWeatherCollectionViewCell {
         let monthSplit: Int = Int(model.date.prefix(2)) ?? 0
         let dateSplit: String = String(monthSplit) + "." + model.date.suffix(2)
         dateWeekLabel.text = dateSplit
-        dayImage.image = UIImage(named: getIcon(model.isDay, model.dayImage))
+        dayImage.image = WeatherType(rawValue: getIcon(model.isDay, model.dayImage))?.setWeatherIcon()
         if (model.dayRain != 0) {
             dayRainLabel.text = String(model.dayRain) + "%"
         }
-        nightImage.image = UIImage(named: getIcon(model.isDay, model.nightImage))
+        nightImage.image = WeatherType(rawValue: getIcon(model.isDay, model.nightImage))?.setWeatherIcon()
         if (model.nightRain != 0) {
             nightRainLabel.text = String(model.nightRain) + "%"
         }
@@ -184,18 +184,17 @@ extension WeekWeatherCollectionViewCell {
     
     private func getIcon(_ day: Bool, _ image: String) -> String {
         var result = ""
-        result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
         if !day {
             if image == WeatherType.clearDay.rawValue {
-                result = WeatherType.clearNight.setWeatherIcon()
+                result = WeatherType.clearNight.rawValue
             } else if image == WeatherType.lotCloudDay.rawValue {
-                result = WeatherType.lotCloudNight.setWeatherIcon()
+                result = WeatherType.lotCloudNight.rawValue
             } else {
-                result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
+                result = WeatherType(rawValue: image)?.rawValue ?? ""
             }
+        } else {
+            result = WeatherType(rawValue: image)?.rawValue ?? ""
         }
         return result
     }
-    
-    // MARK: - @objc Methods
 }

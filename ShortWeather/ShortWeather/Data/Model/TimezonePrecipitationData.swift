@@ -19,18 +19,18 @@ enum TimezonePrecipitationType: Int  {
     case eighty = 80
     case ninety = 90
     
-    func setPrecipitationImage() -> String {
+    func setPrecipitationImage() -> UIImage {
         switch self {
-        case .zero: return "icn_precipitation_1"
-        case .ten: return "icn_precipitation_2"
-        case .twenty: return "icn_precipitation_3"
-        case .thirty: return "icn_precipitation_4"
-        case .fourty: return "icn_precipitation_5"
-        case .fifty: return "icn_precipitation_6"
-        case .sixty: return "icn_precipitation_7"
-        case .seventy: return "icn_precipitation_8"
-        case .eighty: return "icn_precipitation_9"
-        case .ninety: return "icn_precipitation_10"
+        case .zero: return UIImage(named: "icn_precipitation_1") ?? UIImage()
+        case .ten: return UIImage(named: "icn_precipitation_2") ?? UIImage()
+        case .twenty: return UIImage(named: "icn_precipitation_3") ?? UIImage()
+        case .thirty: return UIImage(named: "icn_precipitation_4") ?? UIImage()
+        case .fourty: return UIImage(named: "icn_precipitation_5") ?? UIImage()
+        case .fifty: return UIImage(named: "icn_precipitation_6") ?? UIImage()
+        case .sixty: return UIImage(named: "icn_precipitation_7") ?? UIImage()
+        case .seventy: return UIImage(named: "icn_precipitation_8") ?? UIImage()
+        case .eighty: return UIImage(named: "icn_precipitation_9") ?? UIImage()
+        case .ninety: return UIImage(named: "icn_precipitation_10") ?? UIImage()
         }
     }
 }
