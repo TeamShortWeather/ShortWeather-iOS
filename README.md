@@ -815,6 +815,7 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
 - collectionview cell을 이용해서 반복되는 부분을 구현
 	
 </details>
+<br>
 	
 ## ☔️ 프로젝트 회고
 
