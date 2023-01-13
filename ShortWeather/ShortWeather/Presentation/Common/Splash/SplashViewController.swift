@@ -71,7 +71,7 @@ extension SplashViewController {
             case .success(let result):
                 do {
                     let data = try result.map(GeneralResponse<CheckUserResponse>.self).data!
-                APIConstants.jwtToken = data.accessToken
+                    APIConstants.jwtToken = data.accessToken
                     UIViewController.modifyRootViewController(TodayWeatherViewController())
                 } catch(let error){
                     UIViewController.modifyRootViewController(FirstInfoViewController())
