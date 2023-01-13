@@ -17,6 +17,7 @@ class SettingBaseViewController: UIViewController {
     
     let titleLabel: UILabel = UILabel()
     private let backButton: UIButton = UIButton()
+    public let navigationTitleLabel: UILabel = UILabel()
     let infoCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -50,6 +51,11 @@ extension SettingBaseViewController {
             $0.isHidden = true
         }
         
+        navigationTitleLabel.do {
+            $0.font = .fontGuide(.subhead2)
+            $0.textColor = Color.black
+        }
+        
         titleLabel.do {
             $0.font = .fontGuide(.headline1)
         }
@@ -66,12 +72,17 @@ extension SettingBaseViewController {
     // MARK: - Layout Helper
     
     private func setLayout() {
-        view.addSubviews(titleLabel, backButton, infoCollectionView, checkButton)
+        view.addSubviews(titleLabel, backButton, navigationTitleLabel,infoCollectionView, checkButton)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(28)
             $0.width.height.equalTo(24)
+        }
+        
+        navigationTitleLabel.snp.makeConstraints {
+            $0.centerY.equalTo(backButton)
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
         }
         
         titleLabel.snp.makeConstraints {

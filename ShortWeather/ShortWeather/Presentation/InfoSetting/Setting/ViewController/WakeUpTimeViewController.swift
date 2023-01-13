@@ -34,7 +34,7 @@ extension WakeUpTimeViewController {
     private func setUI() {
         addBackButton()
         
-        navigationItem.title = "\(Letter.wakeUpTime) 설정"
+        navigationTitleLabel.text = "\(Letter.wakeUpTime) 설정"
         
         titleLabel.do {
             $0.text = Letter.changeWakeUpTime

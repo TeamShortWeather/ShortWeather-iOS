@@ -61,6 +61,7 @@ extension EnterInfoCollectionViewCell {
         bottomArrowImageView.do {
             $0.image = UIImage(systemName: "chevron.down")
             $0.tintColor = Color.gray4
+            $0.contentMode = .scaleAspectFit
         }
         
         dataLabel.do {
@@ -90,7 +91,7 @@ extension EnterInfoCollectionViewCell {
         
         bottomArrowImageView.snp.makeConstraints {
             $0.centerY.equalTo(dataLabel)
-            $0.height.width.equalTo(24)
+            $0.height.width.equalTo(18)
             $0.trailing.equalToSuperview().inset(10)
         }
         

@@ -26,6 +26,7 @@ final class CommuteTimeViewController: SettingBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setLayout()
         setDelegate()
     }
 }
@@ -37,11 +38,11 @@ extension CommuteTimeViewController {
     private func setUI() {
         addBackButton()
         
-        navigationItem.title = "\(Letter.commuteTime) 설정"
-        
         titleLabel.do {
             $0.text = Letter.changeHour
         }
+        
+        navigationTitleLabel.text = "외출 / 귀가시간대 설정"
         
         infoCollectionView.do {
             $0.registerCells(EnterInfoCollectionViewCell.self)
@@ -51,6 +52,12 @@ extension CommuteTimeViewController {
             $0.setTitle("확인", for: .normal)
             $0.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
         }
+    }
+    
+    // MARK: - Layout Helper
+    
+    private func setLayout() {
+        
     }
     
     // MARK: - Methods

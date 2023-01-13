@@ -15,6 +15,7 @@ final class AlarmSettingViewController: UIViewController {
     // MARK: - UI Components
     
     private let titleLabel: UILabel = UILabel()
+    private let navigationTitleLabel: UILabel = UILabel()
     private let backButton: UIButton = UIButton()
     private let allAlarmView: UIView = UIView()
     private let allAlarmLabel: UILabel = UILabel()
@@ -52,12 +53,16 @@ extension AlarmSettingViewController {
             $0.setImage(Image.icnExpandLeft, for: .normal)
         }
         
-        navigationItem.title = "\(Letter.alarm) 설정"
+        navigationTitleLabel.do{
+            $0.text = "\(Letter.alarm) 설정"
+            $0.font = .fontGuide(.subhead2)
+        }
         
         titleLabel.do {
             $0.text = Letter.changeAlarm
             $0.numberOfLines = 0
             $0.font = .fontGuide(.headline1)
+            $0.text = "알림 설정"
         }
         
         allAlarmLabel.do {
@@ -97,12 +102,17 @@ extension AlarmSettingViewController {
         allAlarmLabelStackView.addArrangedSubviews(allAlarmLabel, allAlarmDescriptionLabel)
         allAlarmView.addSubviews(allAlarmLabelStackView, allAlarmSwitchButton)
         
-        view.addSubviews(backButton, titleLabel, allAlarmView, alarmTableView)
+        view.addSubviews(backButton, titleLabel, allAlarmView, alarmTableView, navigationTitleLabel)
         
         backButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.leading.equalTo(view.safeAreaLayoutGuide).offset(28)
             $0.width.height.equalTo(24)
+        }
+        
+        navigationTitleLabel.snp.makeConstraints {
+            $0.centerY.equalTo(backButton)
+            $0.centerX.equalTo(view.safeAreaLayoutGuide)
         }
         
         titleLabel.snp.makeConstraints {
