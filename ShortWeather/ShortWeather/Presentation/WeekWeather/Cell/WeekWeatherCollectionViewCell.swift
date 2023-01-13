@@ -164,8 +164,8 @@ extension WeekWeatherCollectionViewCell {
             dayWeekLabel.textColor = .black
         }
         else if model.day == "일" || model.day ==  "내일" {
-            dayWeekLabel.textColor = .red // 수정해야댕!!!! 
-            dateWeekLabel.textColor = .red
+            dayWeekLabel.textColor = Color.weekend
+            dateWeekLabel.textColor = Color.weekend
         }
         let monthSplit: Int = Int(model.date.prefix(2)) ?? 0
         let dateSplit: String = String(monthSplit) + "." + model.date.suffix(2)
