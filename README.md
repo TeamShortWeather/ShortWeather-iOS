@@ -700,7 +700,7 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
 
 <br>
 	
-## ☔🌂 역할 분담
+## 🌂 역할 분담
 
 <details>
 <summary> 🐱 서린 </summary>
