@@ -20,7 +20,7 @@ final class HourCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var timezonePrecipitationState: TimezonePrecipitationType?
+    var timezonePrecipitationState: DetailRainType?
 
     // MARK: - Initializer
     
@@ -75,17 +75,17 @@ extension HourCollectionViewCell {
     
     // MARK: - Methods
     
-    func setWeatherDataBind(_ model: TimezoneWeatherData) {
+    func setWeatherDataBind(_ model: DetailTemp) {
         timeLabel.text = model.time.changeToMeridiem()
         stateLabel.text = model.temperature.temperature
-        iconImageView.image = UIImage(named: getIcon(model.day, model.image))
+        iconImageView.image = WeatherType(rawValue: getIcon(model.day, model.image))?.setWeatherIcon()
     }
     
-    func setPrecipitationDataBind(_ model: TimezonePrecipitationData) {
+    func setPrecipitationDataBind(_ model: DetailRain) {
         timeLabel.text = model.time.changeToMeridiem()
         stateLabel.text = "\(model.rain)%"
         setPrecipitationPercentage(model.rain)  
-        iconImageView.image = UIImage(named: timezonePrecipitationState?.setPrecipitationImage() ?? "")
+        iconImageView.image = DetailRainType(rawValue: model.rain)?.setRainImage()
     }
     
     func setCurrent() {
@@ -94,15 +94,16 @@ extension HourCollectionViewCell {
     
     private func getIcon(_ day: Bool, _ image: String) -> String {
         var result = ""
-        result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
         if !day {
             if image == WeatherType.clearDay.rawValue {
-                result = WeatherType.clearNight.setWeatherIcon()
+                result = WeatherType.clearNight.rawValue
             } else if image == WeatherType.lotCloudDay.rawValue {
-                result = WeatherType.lotCloudNight.setWeatherIcon()
+                result = WeatherType.lotCloudNight.rawValue
             } else {
-                result = WeatherType(rawValue: image)?.setWeatherIcon() ?? ""
+                result = WeatherType(rawValue: image)?.rawValue ?? ""
             }
+        } else {
+            result = WeatherType(rawValue: image)?.rawValue ?? ""
         }
         return result
     }

@@ -1,8 +1,8 @@
 //
-//  TodayWeatherDetailDto.swift
+//  DetailWeatherResponse.swift
 //  ShortWeather
 //
-//  Created by 김민 on 2023/01/11.
+//  Created by 김민 on 2023/01/13.
 //
 
 import Foundation
@@ -40,27 +40,5 @@ struct DetailWeatherResponse: Codable {
         let goHome = GoHome(time: self.goHome.time, temp: self.goHome.temp, day: self.goHome.day, image: self.goHome.image)
         let todayWeather = TodayWeather(humidity: self.todayWeather.humidity, sunrise: self.todayWeather.sunrise, sunset: self.todayWeather.sunset, fineDust: self.todayWeather.fineDust, ultraFineDust: self.todayWeather.ultraFineDust)
         return SecondTodayWeather(location: self.location, goOut: goOut, goHome: goHome, todayWeather: todayWeather)
-    }
-}
-
-struct DetailTempResponse: Codable {
-    let date: String
-    let time: String
-    let temperature: Int
-    let day: Bool
-    let image: String
-    
-    func convertToDetailTemp() -> TimezoneWeatherData {
-        return TimezoneWeatherData(date: self.date, time: self.time, temperature: self.temperature, day: self.day, image: self.image)
-    }
-}
-
-struct DetailRainResponse: Codable {
-    let date: String
-    let time: String
-    let rain: Int
-    
-    func convertToDetailRain() -> TimezonePrecipitationData {
-        return TimezonePrecipitationData(date: self.date, time: self.time, rain: self.rain)
     }
 }
