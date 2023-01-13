@@ -81,9 +81,8 @@ extension BaseLocationViewController {
         }
         
         locationCollectionView.snp.makeConstraints {
-            $0.top.equalTo(locationView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(CGFloat(667).adjusted)
+            $0.leading.trailing.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         hamburgerButton.snp.makeConstraints {
