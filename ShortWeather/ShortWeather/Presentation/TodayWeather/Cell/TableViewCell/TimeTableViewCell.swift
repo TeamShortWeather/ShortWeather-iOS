@@ -21,8 +21,8 @@ final class TimeTableViewCell: UITableViewCell {
     // MARK: - UI Components
     
     private let titleLabel: UILabel = UILabel()
-    private let weatherButton: UIButton = UIButton()
-    private let precipitationButton: UIButton = UIButton()
+    private let tempButton: UIButton = UIButton()
+    private let rainButton: UIButton = UIButton()
     private lazy var buttonStackView: UIStackView = UIStackView()
     private let hourCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -63,9 +63,9 @@ extension TimeTableViewCell {
         
         selectionStyle = .none
         
-        weatherButton.isSelected = true
+        tempButton.isSelected = true
         
-        setHourButton(weatherButton, precipitationButton)
+        setHourButton(tempButton, rainButton)
         
         titleLabel.do {
             $0.text = Letter.hourWeather
@@ -78,11 +78,11 @@ extension TimeTableViewCell {
             $0.registerCell(HourCollectionViewCell.self)
         }
         
-        weatherButton.do {
+        tempButton.do {
             $0.setTitle(Letter.weather, for: .normal)
         }
         
-        precipitationButton.do {
+        rainButton.do {
             $0.setTitle(Letter.precipitation, for: .normal)
         }
         
@@ -96,7 +96,7 @@ extension TimeTableViewCell {
     
     private func setLayout() {
         contentView.addSubviews(titleLabel, buttonStackView, hourCollectionView)
-        buttonStackView.addArrangedSubviews(weatherButton, precipitationButton)
+        buttonStackView.addArrangedSubviews(tempButton, rainButton)
         
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(11)
@@ -121,18 +121,18 @@ extension TimeTableViewCell {
     // MARK: - Methods
     
     private func setAddTarget() {
-        weatherButton.addTarget(self, action: #selector(weatherButtonDidTap), for: .touchUpInside)
-        precipitationButton.addTarget(self, action: #selector(precipitationButtonDidTap), for: .touchUpInside)
+        tempButton.addTarget(self, action: #selector(weatherButtonDidTap), for: .touchUpInside)
+        rainButton.addTarget(self, action: #selector(precipitationButtonDidTap), for: .touchUpInside)
     }
     
     private func checkHourButton() {
         switch hourWeatherState {
         case .weather:
-            weatherButton.isSelected = true
-            precipitationButton.isSelected = false
+            tempButton.isSelected = true
+            rainButton.isSelected = false
         case .precipitation:
-            precipitationButton.isSelected = true
-            weatherButton.isSelected = false
+            rainButton.isSelected = true
+            tempButton.isSelected = false
         }
     }
     
