@@ -147,6 +147,7 @@ extension TimeInfoViewController {
         else if dayTime == "오후" {
             stringTime = String(hourTime + 12) + minuteTime
         }
+        print(stringTime)
         return stringTime
     }
     
