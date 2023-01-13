@@ -127,13 +127,13 @@ extension SettingBaseViewController {
         if let sheet = viewController.sheetPresentationController {
             switch infoType {
             case .gender:
-                sheet.detents = [genderDetent, .large()]
+                sheet.detents = [genderDetent]
             case .age:
-                sheet.detents = [ageDetent, .large()]
+                sheet.detents = [ageDetent]
             case .tempResponse:
-                sheet.detents = [tempDetent, .large()]
+                sheet.detents = [tempDetent]
             default:
-                sheet.detents = [timeDetent, .large()]
+                sheet.detents = [timeDetent]
             }
             sheet.preferredCornerRadius = 30
             sheet.delegate = self
