@@ -14,6 +14,10 @@ final class WeekWeatherView: UIView {
     
     // MARK: - UI Components
     
+    private let weekDescriptionView: UIView = UIView()
+    private let dailyForecastLabel: UILabel = UILabel()
+    private let timeZoneLabel: UILabel = UILabel()
+    private let temperatureLabel: UILabel = UILabel()
     private let weekWeatherCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -42,6 +46,24 @@ extension WeekWeatherView {
     // MARK: - UI Components Property
     
     private func setUI() {
+        dailyForecastLabel.do {
+            $0.text = "일별예보"
+            $0.font = .fontGuide(.caption1)
+            $0.textColor = Color.gray7
+        }
+        
+        timeZoneLabel.do {
+            $0.text = "오전 / 오후"
+            $0.font = .fontGuide(.caption1)
+            $0.textColor = Color.gray7
+        }
+        
+        temperatureLabel.do {
+            $0.text = "최저 / 최고"
+            $0.font = .fontGuide(.caption1)
+            $0.textColor = Color.gray7
+        }
+        
         weekWeatherCollectionView.do {
             $0.registerCell(WeekWeatherCollectionViewCell.self)
             $0.showsVerticalScrollIndicator = false
@@ -53,7 +75,30 @@ extension WeekWeatherView {
     // MARK: - Layout Helper
     
     private func setLayout() {
+        weekDescriptionView.addSubviews(dailyForecastLabel, timeZoneLabel, temperatureLabel)
         addSubviews(weekWeatherCollectionView)
+        
+        weekDescriptionView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(18)
+        }
+        
+        dailyForecastLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview()
+        }
+        
+        timeZoneLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
+        
+        temperatureLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(8)
+            $0.centerY.equalToSuperview()
+        }
         
         weekWeatherCollectionView.snp.makeConstraints {
             $0.top.equalToSuperview()
