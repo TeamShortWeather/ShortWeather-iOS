@@ -28,10 +28,14 @@ public enum Letter {
     public static let sunInfo = "일출/일몰"
     public static let dustInfo = "미세먼지"
     public static let fineDustInfo = "초미세먼지"
-    
+ 
     public static let newsAlarm = "특보"
     public static let dust = "미세"
     public static let fineDust = "초미세"
+    
+    public static let secondOutTime = "외출시간"
+    public static let secondInTime = "귀가시간"
+    public static let secondWakeUpTime = "기상시간"
     
     public static let changeHour = "시간대를 변경해 주세요"
     public static let changeAlarm = "알림 받을 시간대를\n설정해 주세요"

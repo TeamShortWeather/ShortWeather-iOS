@@ -14,7 +14,7 @@ final class WakeUpTimeViewController: SettingBaseViewController {
     
     // MARK: - Properties
 
-    let info: String = Letter.wakeUpTime
+    let info: String = Letter.secondWakeUpTime
     private var wakeUpTime: String = ""
     private var wakeUpNumTime: String = ""
     

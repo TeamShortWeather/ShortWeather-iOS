@@ -100,7 +100,7 @@ extension SecondTodayWeatherView: UITableViewDelegate {
         case WeatherTableViewCellType.commute.rawValue:
             return 225
         case WeatherTableViewCellType.time.rawValue:
-            return 195
+            return 199
         case WeatherTableViewCellType.today.rawValue:
             return 450
         default:

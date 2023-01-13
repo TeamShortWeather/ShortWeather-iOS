@@ -700,6 +700,121 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
 
 <br>
 	
+## ☔🌂 역할 분담
+
+<details>
+<summary> 🐱 서린 </summary>
+<div markdown="1">
+
+- Splash 화면
+    - 로티파일을 실행하고, 애니메이션이 끝나면 아래 로직을 실행함
+    - User Default 에 device 토큰이 저장되어 있는지 검사함 (기기 등록 시 랜덤스트링으로 device 토큰을 구현했기 때문에)
+        - device 토큰이 있다면 서버에 device 토큰을 보내서 유저 정보가 디비에 있는지 확인
+            - 디비에 유저가 있다면  authorization - jwt 토큰을 저장해서 헤더에 넣어줌
+            - 디비에 유저가 없다면 정보입력 폼으로 이동
+        - device 토큰이 없다면 정보입력 폼으로 이동
+- Local(Base)ViewController
+    모든 뷰들의 공통적인 부분들을 BaseViewController 로 구현해서, 상속 받으면 저절도 생성되게 만들었다
+    
+    - BaseViewController
+        - sideMenuView의 레이아웃을 화면 밖으로 잡고, 햄버거 버튼이 눌렸을 때 sideMenuView의 레이아웃이 변경되게 했다, 그리고 애니메이션으로 구현했다
+    - LocalBaseViewController
+        - 지역을 등록할 수 있는 모든 뷰 들은, 여러 지역들을 각 Cell로 나타내기 위해 화면에 꽉차는 CollectionView 를 만들었다,
+        - page 방식으로 넘어가게 만들었다
+    
+- 오늘 날씨 1 뷰 ( UIView )
+    서버 통신을 하고 위 컴포넌트들에 데이터 바인딩 시켜주었다.
+    
+    특보, 미세, 초미세 먼지 라벨들을 CollectionView로 구현했고, 특보가 비었다면 미세, 초미세 셀만 나타나게 등록했다.
+    
+    날씨의 모든 경우의 수를 enum으로 만들었고, enum에 각 케이스에 맞는 반환값들을 리턴하는 함수를 만들어서 에셋과, 백그라운드 컬러 등을 매치시켰다.
+    
+    버튼이 눌렸을 때 어제 날씨와 비교하는 라벨을 hidden 처리를 풀어주고,
+    
+    3초가 지난 후 다시 hidden 처리를 해서 3초후 사라지게 만들었다.
+    
+    이 뷰와 오늘 날씨 뷰 2를 스크롤뷰에 넣었다 → 스크롤 뷰가 위로 당겨졌을 때 새로고침을 구현했다,
+    
+    새로 고침을 하기 전에 서버통신을 다시 해서 데이터를 바인딩 시켜주었다
+    
+- 정보 입력 서버 통신
+    정보 입력이 완료된 후 확인 버튼을 누르면 서버에 유저 정보와, 디바이스 토큰 (랜덤 스트링) 을 생성해서 전달해준다. 디바이스 토큰(랜덤 스트링) 을 기기에 저장하고, 서버에서 온 Autherization ( jwt Token ) 을 헤더에 넣어준다.
+	
+		
+</details>
+	
+<details>
+<summary> 🐰 민 </summary>
+<div markdown="1">
+
+	- 오늘 날씨 2 뷰
+    
+    * 시간대별 날씨에서 날씨, 미세먼지, 강수 ⇒ 날씨, 강수로 수정됨
+    
+    `전체 tableView`
+    
+    - 전체 뷰를 tableView로 구현하고 외출 시간, 귀가 시간/시간대별 날씨/오늘 날씨 정보를 각 셀로 구현함.
+    
+    `외출 시간, 귀가시간대 Cell`
+    
+    - 외출 시간, 외출 시간대 날씨 이미지, 외출 시간대 날씨로 이루어진 외출 시간대 stackVIew와 귀가 시간, 귀가 시간대 날씨 이미지, 귀가 시간대 날씨로 이루어진 귀가 시간대 stackView를 stackView로 묶어 구현함.
+    
+    `시간대별 날씨 Cell`
+    
+    - 시간대별 날씨 Cell 안에 collectionView를 추가하여 좌우 스와이프 구현함
+    - enum으로 시간별 날씨/시간별 강수로 구분함
+    - 데이터를 새로 불러오도록 함수를 정의하여 날씨 버튼 혹은 강수 버튼이 클릭될 때마다 함수를 실행하여 서버와 통신함.
+    
+    `오늘 날씨 정보 Cell` 
+    
+    - stackView로 습도, 일출/일몰, 미세먼지, 초미세먼지 뷰 구현
+    - 미세먼지/초미세먼지 - 서버로부터 [1: 좋음 2: 보통 3:나쁨 4: 심각] 형태로 받고, enum 사용하여 대응시키는 방법으로 미세먼지/초미세먼지 이미지 보여줌
+- 설정 뷰
+    
+    `설정 초기뷰`
+    
+    - 전체 tableView로 구현
+    
+    `외출/귀가시간대 설정`
+    
+    - 정이 뷰 쇽샥
+    
+    `알림 설정`
+    
+    - 전체 알림 뷰는 UIView로 만들고 기상시간대 알림/취침시간대 알림/특보 알림은 tableView로 구현
+        
+        ⇒ 전체 알림 토글 버튼을 클릭하여 알람 on시 `tableView.isHidden = false` 로 tableView 보여주고, 알람 off 시 `tableView.isHidden = true` 로 tableView 숨김 처리
+	
+</details>
+
+<details>
+<summary> 🐸 정 </summary>
+<div markdown="1">
+
+	- 정보 입력
+    
+    - 정보 입력폼을 FirstInfoViewController, SecondInfoViewController로 나누어서 구현
+    - 두개의 뷰컨트롤러 모두 EnterInfoCollectionView를 이용해 입력창을 구현
+    
+    `FirstInfoViewController`
+    
+    - EnterInfoCollectionView를 이용해 입력창을 구현히고, 각각의 셀을 누르면 SettingBaseViewController가 present 형식으로 나오게 만들었고, UISheetPresentationController를 이용해 뷰컨트롤러의 hgieht를 각각 지정해주었다
+    - SettingBaseViewController를 재사용해 ListTableViewCell을 이용해 성별, 연령대, 온도 민감도가 각각의 셀마다 다르게 뜨도록 설정
+        - ListTableViewCell을 선택하면 dismiss가 되고 선택한 내용이 FirstInfoController로 전달되고 그 내용이 또 EnterInfoControllerView가 생성될 때 전달되도록 delegate로 설정
+    
+    `SecondInfoViewController`
+    
+    - 위와 마찬가지롤 EnterInfoCollectionView를 이용해 입력창을 구현하고 셀을 누르면 TimeInfoViewController가 present 형식으로 나오도록 구현
+    - UIPickerView를 이용해 DatePicker과 유사하게 구현
+    - 저장 버튼을 누르면 dismiss 되고 선택한 String이 SecondInfoController로 전달 → EnterInfoControllerView로 전달
+    - timeToString 함수 → 서버에 보낼 데이터
+- 주간 날씨
+    
+    - collection reusable 뷰로 일별예보, 오전 / 오후, 최저 / 최고 라벨을 스크롤할 수 있도록 구현
+    - collectionview cell을 이용해서 반복되는 부분을 구현
+	
+</details>
+	
 ## ☔️ 프로젝트 회고
 
 <details>
@@ -722,10 +837,32 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
 <summary> ☃️ 민 </summary>
 <div markdown="1">
 
+- enum 사용하기
+    
+    <Swift enum을 이용해서 사소하게 코드를 개선해보자>라는 아티클을 보고 case로 나뉘어질 때 enum을 사용해 보기로 하였다. 참고하지 않고 처음부터 코드를 써 보는 것은 처음이라 rawValue와 이를 사용하는 방법을 공부하고 SOPT iOS 팀원들의 코드를 보며 공부하여 코드를 정리하고, 다른 팀원들도 이해할 수 있게 하려고 했다.
+    
+- 설정 뷰 - 전체 알림을 켰을 때 다른 알림들을 선택하는 창이 나오도록 하려면
+    
+    처음에 tableView Expandable Cell 같은 것을 사용해 보려 하였으나, cell을 선택하는 것이 아니라 토글 버튼을 선택하면 뷰가 나오도록 구현하기 위해서 tableView 숨김 처리를 했다.
+    
 </details>
 
 <details>
 <summary> ☃️ 정 </summary>
 <div markdown="1">
 
+- 테이블 뷰 생성 시 cell 마다 여백을 주는 것이 까다로움
+    - 섹션마다 여백을 주는 것이 아닌 cell마다 여백이 필요하다면 컬렉션 뷰 사용
+    - 위, 아래, 좌 우 여백 다 포함!
+        
+        → tableView 선언할 때 `UITableView(frame: .zero, style: .grouped)` 로 선언한 뒤 setDataBind 함수로 값 전달할 때 `listDatas[indexPath.section]` 로 전달하기 그렇게 하면 셀마다 여백을 줄 수 있음
+        
+- present할 때 modal의 높이를 조정하는 방법을 고민했는데 처음엔 서린이오빠가 햄버거 바를 만든 것처럼 직접 만들어보려고 했으나 iOS 16 버전에서 생긴 UIPresentationController를 이용해서 간단하게 높이를 조절할 수 있었다
+- width height를 직접 주는 방식보다는 leading trailing을 이용해서 레이아웃을 잡는 것이 더 다양한 기기에서 레이아웃이 잘 잡히는 것을 배웠다
+- DatePicker를 이용하면 1시간 간격으로 시간 선택이 불가해서 UIPicker를 이용해 DatePicker와 유사하게 제작
+    - enum 형식으로 셀 이름을 전달해주고 resetTime 함수를 만들어서 초기값을 설정
+- 시간을 오전 10시, 11시 ,12시로 설정하니 서버와 통신이 되지 않는 오류가 있었는데 값이 “오전”일때 두자리수 시간일 경우를 생각하지 않아서 값이 “01100” 으로 들어가는 경우였다. 두자리수일 때 리턴값을 다르게 설정해주었더니 해결되었다
+- 앱잼 전체 회고
+    - 기초가 많이 부족하다는 것을 느꼈고 단기간 내에 정말 많은 것을 배워서 언니오빠한테 감사했다. 그래도 맡은 일을 해낼 때마다 기분이 좋았다
+    
 </details>
