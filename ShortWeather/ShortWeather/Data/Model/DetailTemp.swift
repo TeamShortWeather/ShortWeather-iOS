@@ -21,37 +21,37 @@ enum WeatherType: String {
     case snowDrifting = "눈날림"
     case snow = "눈"
     
-    func setWeatherIcon() -> String {
+    func setWeatherIcon() -> UIImage {
         switch self {
-        case .clearDay: return "icn_clear_day"
-        case .clearNight: return "icn_clear_night"
-        case .cloudy: return "icn_cloudy"
-        case .lotCloudDay: return "icn_lotcloud_day"
-        case .lotCloudNight: return "icn_lotcloud_night"
-        case .shower: return "icn_shower"
-        case .lightRain: return "icn_lightrain"
-        case .rain: return "icn_rain"
-        case .rainSnow: return "icn_rainsnow"
-        case .lightSnow: return "icn_lightsnow"
-        case .snowDrifting: return "icn_snowdrifting"
-        case .snow: return "icn_heavysnow"
+        case .clearDay: return UIImage(named: "icn_clear_day") ?? UIImage()
+        case .clearNight: return UIImage(named: "icn_clear_night") ?? UIImage()
+        case .cloudy: return UIImage(named: "icn_cloudy") ?? UIImage()
+        case .lotCloudDay: return UIImage(named: "icn_lotcloud_day") ?? UIImage()
+        case .lotCloudNight: return UIImage(named: "icn_lotcloud_night") ?? UIImage()
+        case .shower: return UIImage(named: "icn_shower") ?? UIImage()
+        case .lightRain: return UIImage(named: "icn_lightrain") ?? UIImage()
+        case .rain: return UIImage(named: "icn_rain") ?? UIImage()
+        case .rainSnow: return UIImage(named: "icn_rainsnow" ) ?? UIImage()
+        case .lightSnow: return UIImage(named: "icn_lightsnow") ?? UIImage()
+        case .snowDrifting: return UIImage(named: "icn_snowdrifting") ?? UIImage()
+        case .snow: return UIImage(named: "icn_heavysnow") ?? UIImage()
         }
     }
     
-    func setWeatherImage() -> String {
+    func setWeatherImage() -> UIImage {
         switch self {
-        case .clearDay: return "img_clear_day"
-        case .clearNight: return "img_clear_night"
-        case .cloudy: return "img_cloudy"
-        case .lotCloudDay: return "img_lotcloud_day"
-        case .lotCloudNight: return "img_lotcloud_night"
-        case .shower: return "img_shower"
-        case .lightRain: return "img_lightrain"
-        case .rain: return "img_rain"
-        case .rainSnow: return "img_rainsnow"
-        case .lightSnow: return "img_lightsnow"
-        case .snowDrifting: return "img_snowdrifting"
-        case .snow: return "img_heavysnow"
+        case .clearDay: return UIImage(named: "img_clear_day") ?? UIImage()
+        case .clearNight: return UIImage(named: "img_clear_night") ?? UIImage()
+        case .cloudy: return UIImage(named: "img_cloudy") ?? UIImage()
+        case .lotCloudDay: return UIImage(named: "img_lotcloud_day") ?? UIImage()
+        case .lotCloudNight: return UIImage(named: "img_lotcloud_night") ?? UIImage()
+        case .shower: return UIImage(named: "img_shower") ?? UIImage()
+        case .lightRain: return UIImage(named: "img_lightrain") ?? UIImage()
+        case .rain: return UIImage(named: "img_rain") ?? UIImage()
+        case .rainSnow: return UIImage(named: "img_rainsnow") ?? UIImage()
+        case .lightSnow: return UIImage(named: "img_lightsnow") ?? UIImage()
+        case .snowDrifting: return UIImage(named: "img_snowdrifting") ?? UIImage()
+        case .snow: return UIImage(named: "img_heavysnow") ?? UIImage()
         }
     }
     
@@ -90,7 +90,7 @@ enum WeatherType: String {
     }
 }
 
-struct TimezoneWeatherData {
+struct DetailTemp {
     let date: String
     let time: String
     let temperature: Int

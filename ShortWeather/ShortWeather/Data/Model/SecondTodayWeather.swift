@@ -5,7 +5,7 @@
 //  Created by 김민 on 2023/01/11.
 //
 
-import Foundation
+import UIKit
 
 enum DustState: Int {
     case good = 1
@@ -13,12 +13,12 @@ enum DustState: Int {
     case bad = 3
     case worst = 4
     
-    func setDustIcon() -> String {
+    func setDustIcon() -> UIImage {
         switch self {
-        case .good: return "icn_dust_good"
-        case .normal: return "icn_dust_normal"
-        case .bad: return "icn_dust_bad"
-        case .worst: return "icn_dust_worst"
+        case .good: return UIImage(named: "icn_dust_good") ?? UIImage()
+        case .normal: return UIImage(named: "icn_dust_normal") ?? UIImage()
+        case .bad: return UIImage(named: "icn_dust_bad") ?? UIImage()
+        case .worst: return UIImage(named: "icn_dust_worst") ?? UIImage()
         }
     }
     

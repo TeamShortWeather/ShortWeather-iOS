@@ -298,8 +298,8 @@ extension TodayTableViewCell {
         sunriseTimeLabel.text = model.todayWeather.sunrise.changeToTwelveHour()
         sunsetTimeLabel.text = model.todayWeather.sunset.changeToTwelveHour()
         dustStateLabel.text = DustState(rawValue: model.todayWeather.fineDust)?.setDustState()
-        dustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.fineDust)?.setDustIcon() ?? "")
-        fineDustImageView.image = UIImage(named: DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustIcon() ?? "")
+        dustImageView.image = DustState(rawValue: model.todayWeather.fineDust)?.setDustIcon()
+        fineDustImageView.image = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustIcon()
         fineDustStateLabel.text = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustState()
     }
 
