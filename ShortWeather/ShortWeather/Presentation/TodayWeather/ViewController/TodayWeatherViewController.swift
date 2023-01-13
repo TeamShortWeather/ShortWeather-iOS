@@ -33,6 +33,7 @@ final class TodayWeatherViewController: BaseLocationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         setRegister()
         setDelegate()
         fetchWeather()
@@ -40,6 +41,12 @@ final class TodayWeatherViewController: BaseLocationViewController {
 }
 
 extension TodayWeatherViewController {
+    
+    // MARK: - UI Components Property
+    
+    private func setUI() {
+        viewTitleLabel.text = Letter.todayWeather
+    }
     
     // MARK: - Methods
     
@@ -63,7 +70,8 @@ extension TodayWeatherViewController {
                         guard let data = try result.map(GeneralResponse<TodayWeatherResponse>.self).data else {
                             return
                         }
-                        self.locationView.locationLabel.text = data.location
+//                        self.locationView.locationLabel.text = data.location
+                        self.locationView.setDataBind(data.location)
                         self.todayWeather = data
                         self.locationCollectionView.reloadData()
                     }
@@ -90,6 +98,15 @@ extension TodayWeatherViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = locationCollectionView.dequeueCell(type: TodayWeatherCollectionViewCell.self, indexPath: indexPath)
         cell.setDataBind(todayWeather: todayWeather)
+        cell.delegate = self
         return cell
+    }
+}
+
+//MARK: - TodayWeatherCollectionViewCellDelegste
+
+extension TodayWeatherViewController: TodayWeatherCollectionViewCellDelegste {
+    func fetchTodayWeather() {
+        fetchWeather()
     }
 }

@@ -44,4 +44,5 @@ public enum Color {
     public static let dustWorst1 = UIColor(named: "dustWorst1")!
     public static let dustWorst2 = UIColor(named: "dustWorst2")!
     public static let weatherPurple = UIColor(named: "weatherPurple")!
+    public static let weekend = UIColor(named: "weekend")!
 }

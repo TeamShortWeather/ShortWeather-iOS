@@ -35,7 +35,7 @@ extension SettingViewController {
     // MARK: - UI Components Property
     
     private func setUI() {
-        navigationItem.title = "설정"
+        viewTitleLabel.text = Letter.setting
         
         settingTableView.do {
             $0.translatesAutoresizingMaskIntoConstraints = false
