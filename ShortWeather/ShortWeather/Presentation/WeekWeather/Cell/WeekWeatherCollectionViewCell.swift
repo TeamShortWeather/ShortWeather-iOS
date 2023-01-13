@@ -105,7 +105,7 @@ extension WeekWeatherCollectionViewCell {
         weekImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(13)
             $0.centerX.equalToSuperview()
-            $0.width.equalTo(75)
+            $0.width.equalTo(77)
         }
         
         dayView.snp.makeConstraints {
@@ -146,13 +146,12 @@ extension WeekWeatherCollectionViewCell {
         
         maxTempLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(17)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(3)
         }
         
         minTempLabel.snp.makeConstraints {
             $0.top.equalTo(maxTempLabel)
-            $0.trailing.equalToSuperview().inset(30)
-            $0.width.equalTo(36)
+            $0.trailing.equalToSuperview().inset(40)
         }
     }
     
@@ -161,7 +160,8 @@ extension WeekWeatherCollectionViewCell {
     func setDataBind(model: WeatherWeekModel) {
         dayWeekLabel.text = model.day
         if model.day == "오늘" {
-            dayWeekLabel.textColor = .black
+            dayWeekLabel.textColor = Color.black
+            dateWeekLabel.textColor = Color.black
         }
         else if model.day == "일" || model.day ==  "내일" {
             dayWeekLabel.textColor = Color.weekend
