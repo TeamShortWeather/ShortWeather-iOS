@@ -53,8 +53,7 @@ extension SplashViewController {
     private func setLayout() {
         splashImageView.snp.makeConstraints {
             $0.centerY.centerX.equalToSuperview()
-            $0.width.equalTo(CGFloat(108).adjusted)
-            $0.height.equalTo(CGFloat(153).adjusted)
+            $0.width.equalTo(CGFloat(120).adjusted)
         }
     }
     
@@ -70,15 +69,18 @@ extension SplashViewController {
             switch response {
             case .success(let result):
                 do {
-                    let data = try result.map(GeneralResponse<CheckUserResponse>.self).data!
+                    guard let data = try result.map(GeneralResponse<CheckUserResponse>.self).data else {
+                        UIViewController.modifyRootViewController(FirstInfoViewController())
+                        return
+                    }
                     APIConstants.jwtToken = data.accessToken
                     UIViewController.modifyRootViewController(TodayWeatherViewController())
                 } catch(let error){
-                    UIViewController.modifyRootViewController(FirstInfoViewController())
                     print(error.localizedDescription)
+                    self.splashImageView.loopMode = .loop
                 }
             case .failure(let error):
-                UIViewController.modifyRootViewController(FirstInfoViewController())
+                self.splashImageView.loopMode = .loop
                 print(error.localizedDescription)
             }
         }

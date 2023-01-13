@@ -127,7 +127,8 @@ extension SideMenuView: UITableViewDataSource {
             case 1:
                 UIViewController.modifyRootViewController(WeekWeatherViewController())
             case 2:
-                UIViewController.modifyRootViewController(TodayWeatherViewController())
+                break
+//                UIViewController.modifyRootViewController(TodayWeatherViewController())
             default:
                 UIViewController.modifyRootViewController(TodayWeatherViewController())
             }

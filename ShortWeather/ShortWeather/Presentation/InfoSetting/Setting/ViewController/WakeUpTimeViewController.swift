@@ -34,7 +34,7 @@ extension WakeUpTimeViewController {
     private func setUI() {
         addBackButton()
         
-        navigationItem.title = "\(Letter.wakeUpTime) 설정"
+        navigationTitleLabel.text = "\(Letter.wakeUpTime) 설정"
         
         titleLabel.do {
             $0.text = Letter.changeWakeUpTime
@@ -73,6 +73,9 @@ extension WakeUpTimeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
+        if wakeUpTime.isEmpty == true {
+            cell.untouched()
+        }
         cell.setDataBind(infoText: info, data: wakeUpTime)
         return cell
     }
