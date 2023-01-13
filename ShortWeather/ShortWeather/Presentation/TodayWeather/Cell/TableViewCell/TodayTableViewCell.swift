@@ -285,10 +285,9 @@ extension TodayTableViewCell {
     
     private func setTodayView(_ views: UIView...) {
         views.forEach {
-            $0.layer.cornerRadius = 6
+            $0.layer.cornerRadius = 10
             $0.layer.shadowOpacity = 0.1
             $0.layer.shadowColor = UIColor.black.cgColor
-            $0.layer.shadowRadius = 6
             $0.layer.shadowOffset = CGSize(width: 0, height: 2)
         }
     }
