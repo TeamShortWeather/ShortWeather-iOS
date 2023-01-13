@@ -16,7 +16,7 @@ public enum Letter {
 
     public static let outTime = "외출 시간"
     public static let inTime = "귀가 시간"
-    public static let wakeUpTime = "기상 시간"
+    public static let wakeUpTime = "기상시간"
     public static let commuteTime = "외출 / 귀가시간대"
     
     public static let hourWeather = "시간대별 날씨"

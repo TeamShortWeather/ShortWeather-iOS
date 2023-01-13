@@ -77,6 +77,7 @@ extension AlarmSettingViewController {
         }
         
         allAlarmSwitchButton.do {
+            $0.isOn = true
             $0.tintColor = Color.pointColor
             $0.onTintColor = Color.pointColor
         }

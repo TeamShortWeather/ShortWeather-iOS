@@ -45,8 +45,6 @@ extension SplashViewController {
             $0.play { [weak self] _ in
                 self?.isExistUserInform()
             }
-//            animationView.loopMode = .loop
-            $0.loopMode = .loop
         }
     }
     
@@ -77,8 +75,10 @@ extension SplashViewController {
                     UIViewController.modifyRootViewController(TodayWeatherViewController())
                 } catch(let error){
                     print(error.localizedDescription)
+                    self.splashImageView.loopMode = .loop
                 }
             case .failure(let error):
+                self.splashImageView.loopMode = .loop
                 print(error.localizedDescription)
             }
         }

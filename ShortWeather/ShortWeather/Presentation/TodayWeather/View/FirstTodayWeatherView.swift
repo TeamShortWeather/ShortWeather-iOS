@@ -49,7 +49,7 @@ final class FirstTodayWeatherView: UIView {
         setLayout()
         setAddTarget()
         setDelegate()
-        fetchWeatherQuestion()
+//        fetchWeatherQuestion()
     }
     
     required init?(coder: NSCoder) {
