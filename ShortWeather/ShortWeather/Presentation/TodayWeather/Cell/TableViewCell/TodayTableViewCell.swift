@@ -30,16 +30,16 @@ final class TodayTableViewCell: UITableViewCell {
     private let sunsetTimeLabel: UILabel = UILabel()
     private lazy var sunsetStackView: UIStackView = UIStackView()
     private lazy var sunStackView: UIStackView = UIStackView()
-    private let dustView: UIView = UIView()
-    private let dustTitleLabel: UILabel = UILabel()
-    private let dustImageView: UIImageView = UIImageView()
-    private let dustStateLabel: UILabel = UILabel()
-    private let dustStateView: UIView = UIView()
     private let fineDustView: UIView = UIView()
     private let fineDustTitleLabel: UILabel = UILabel()
     private let fineDustImageView: UIImageView = UIImageView()
     private let fineDustStateLabel: UILabel = UILabel()
     private let fineDustStateView: UIView = UIView()
+    private let ultraFineDustView: UIView = UIView()
+    private let ultraFineDustTitleLabel: UILabel = UILabel()
+    private let ultraFineDustImageView: UIImageView = UIImageView()
+    private let ultraFineDustStateLabel: UILabel = UILabel()
+    private let ultraFineDustStateView: UIView = UIView()
     private lazy var todayStackView: UIStackView = UIStackView()
     
     // MARK: - Properties
@@ -69,7 +69,7 @@ extension TodayTableViewCell {
         
         selectionStyle = .none
         
-        setTodayView(humidityView, sunView, dustView, fineDustView)
+        setTodayView(humidityView, sunView, fineDustView, ultraFineDustView)
         
         titleLabel.do {
             $0.text = Letter.todayWeatherInfo
@@ -136,29 +136,29 @@ extension TodayTableViewCell {
             $0.spacing = 14
         }
         
-        dustView.do {
-            $0.backgroundColor = .white
-        }
-        
-        dustTitleLabel.do {
-            $0.text = Letter.dustInfo
-            $0.font = .fontGuide(.subhead2)
-        }
-        
-        dustStateLabel.do {
-            $0.font = .fontGuide(.subhead2)
-        }
-
         fineDustView.do {
             $0.backgroundColor = .white
         }
         
         fineDustTitleLabel.do {
-            $0.text = Letter.fineDustInfo
+            $0.text = Letter.dustInfo
             $0.font = .fontGuide(.subhead2)
         }
         
         fineDustStateLabel.do {
+            $0.font = .fontGuide(.subhead2)
+        }
+
+        ultraFineDustView.do {
+            $0.backgroundColor = .white
+        }
+        
+        ultraFineDustTitleLabel.do {
+            $0.text = Letter.fineDustInfo
+            $0.font = .fontGuide(.subhead2)
+        }
+        
+        ultraFineDustStateLabel.do {
             $0.font = .fontGuide(.subhead2)
         }
         
@@ -179,11 +179,11 @@ extension TodayTableViewCell {
         sunriseStackView.addArrangedSubviews(sunriseImageView, sunriseTimeLabel)
         sunsetStackView.addArrangedSubviews(sunsetImageView, sunsetTimeLabel)
         sunStackView.addArrangedSubviews(sunriseStackView, sunsetStackView)
-        dustStateView.addSubviews(dustImageView, dustStateLabel)
-        dustView.addSubviews(dustTitleLabel, dustStateView)
         fineDustStateView.addSubviews(fineDustImageView, fineDustStateLabel)
         fineDustView.addSubviews(fineDustTitleLabel, fineDustStateView)
-        todayStackView.addArrangedSubviews(humidityView, sunView, dustView, fineDustView)
+        ultraFineDustStateView.addSubviews(ultraFineDustImageView, ultraFineDustStateLabel)
+        ultraFineDustView.addSubviews(ultraFineDustTitleLabel, ultraFineDustStateView)
+        todayStackView.addArrangedSubviews(humidityView, sunView, fineDustView, ultraFineDustView)
          
         titleLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(28)
@@ -238,27 +238,6 @@ extension TodayTableViewCell {
             $0.trailing.equalToSuperview().offset(-26)
         }
         
-        dustTitleLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(30)
-        }
-        
-        dustStateLabel.snp.makeConstraints {
-            $0.centerY.trailing.equalToSuperview()
-        }
-
-        dustImageView.snp.makeConstraints {
-            $0.height.equalToSuperview()
-            $0.width.equalTo(dustImageView.snp.height)
-        }
-        
-        dustStateView.snp.makeConstraints {
-            $0.width.equalTo(82)
-            $0.height.equalTo(30)
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-30)
-        }
-        
         fineDustTitleLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
@@ -267,13 +246,34 @@ extension TodayTableViewCell {
         fineDustStateLabel.snp.makeConstraints {
             $0.centerY.trailing.equalToSuperview()
         }
-        
+
         fineDustImageView.snp.makeConstraints {
             $0.height.equalToSuperview()
             $0.width.equalTo(fineDustImageView.snp.height)
         }
         
         fineDustStateView.snp.makeConstraints {
+            $0.width.equalTo(82)
+            $0.height.equalTo(30)
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-30)
+        }
+        
+        ultraFineDustTitleLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        ultraFineDustStateLabel.snp.makeConstraints {
+            $0.centerY.trailing.equalToSuperview()
+        }
+        
+        ultraFineDustImageView.snp.makeConstraints {
+            $0.height.equalToSuperview()
+            $0.width.equalTo(ultraFineDustImageView.snp.height)
+        }
+        
+        ultraFineDustStateView.snp.makeConstraints {
             $0.width.equalTo(82)
             $0.height.equalTo(30)
             $0.centerY.equalToSuperview()
@@ -297,10 +297,10 @@ extension TodayTableViewCell {
         humidityLabel.text = "\(model.todayWeather.humidity)%"
         sunriseTimeLabel.text = model.todayWeather.sunrise.changeToTwelveHour()
         sunsetTimeLabel.text = model.todayWeather.sunset.changeToTwelveHour()
-        dustStateLabel.text = DustState(rawValue: model.todayWeather.fineDust)?.setDustState()
-        dustImageView.image = DustState(rawValue: model.todayWeather.fineDust)?.setDustIcon()
-        fineDustImageView.image = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustIcon()
-        fineDustStateLabel.text = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustState()
+        fineDustStateLabel.text = DustState(rawValue: model.todayWeather.fineDust)?.setDustState()
+        fineDustImageView.image = DustState(rawValue: model.todayWeather.fineDust)?.setDustIcon()
+        ultraFineDustImageView.image = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustIcon()
+        ultraFineDustStateLabel.text = DustState(rawValue: model.todayWeather.ultraFineDust)?.setDustState()
     }
 
     // MARK: - Network
