@@ -259,10 +259,8 @@ extension FirstTodayWeatherView {
     
     @objc private func showYesterdayButtonDidTap() {
         yesterdayWeatherLabel.isHidden = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-            DispatchQueue.main.async { [weak self] in
-                self?.yesterdayWeatherLabel.isHidden = true
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
+            self?.yesterdayWeatherLabel.isHidden = true
         })
     }
     
