@@ -14,7 +14,7 @@ final class CommuteTimeViewController: SettingBaseViewController {
     
     // MARK: - Properties
     
-    let info: [String] = [Letter.outTime, Letter.inTime]
+    let info: [String] = [Letter.secondOutTime, Letter.secondInTime]
     private var outTime: String = ""
     private var inTime: String = ""
     private var outNumTime: String = ""

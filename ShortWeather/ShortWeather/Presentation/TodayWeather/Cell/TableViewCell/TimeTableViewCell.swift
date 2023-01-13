@@ -105,9 +105,9 @@ extension TimeTableViewCell {
         
         buttonStackView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(12)
-            $0.leading.equalToSuperview().offset(28)
-            $0.trailing.equalToSuperview().offset(-28)
-            $0.height.equalTo(32)
+            $0.leading.equalToSuperview().offset(32)
+            $0.trailing.equalToSuperview().offset(-30)
+            $0.height.equalTo(36)
         }
         
         hourCollectionView.snp.makeConstraints {
@@ -149,7 +149,7 @@ extension TimeTableViewCell {
             $0.setTitleColor(Color.white, for: .selected)
             $0.setBackgroundColor(Color.pointColor, for: .selected)
             $0.clipsToBounds = true
-            $0.layer.cornerRadius = 16
+            $0.layer.cornerRadius = 18
         }
     }
     
