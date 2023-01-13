@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum TimezonePrecipitationType: Int  {
+enum DetailRainType: Int {
     case zero = 0
     case ten = 10
     case twenty = 20
@@ -19,7 +19,7 @@ enum TimezonePrecipitationType: Int  {
     case eighty = 80
     case ninety = 90
     
-    func setPrecipitationImage() -> UIImage {
+    func setRainImage() -> UIImage {
         switch self {
         case .zero: return UIImage(named: "icn_precipitation_1") ?? UIImage()
         case .ten: return UIImage(named: "icn_precipitation_2") ?? UIImage()
@@ -35,7 +35,7 @@ enum TimezonePrecipitationType: Int  {
     }
 }
 
-struct TimezonePrecipitationData {
+struct DetailRain {
     let date: String
     let time: String
     let rain: Int

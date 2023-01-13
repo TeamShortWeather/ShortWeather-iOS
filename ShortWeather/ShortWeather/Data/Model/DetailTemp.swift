@@ -90,7 +90,7 @@ enum WeatherType: String {
     }
 }
 
-struct TimezoneWeatherData {
+struct DetailTemp {
     let date: String
     let time: String
     let temperature: Int

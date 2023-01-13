@@ -35,8 +35,8 @@ final class TimeTableViewCell: UITableViewCell {
 
     var hourWeatherState: HourWeather = .weather
     let detailProvider = MoyaProvider<TodayWeatherDetailService>(plugins: [NetworkLoggerPlugin(verbose: true)])
-    var detailTempList: [TimezoneWeatherData] = []
-    var detailRainList: [TimezonePrecipitationData] = []
+    var detailTempList: [DetailTemp] = []
+    var detailRainList: [DetailRain] = []
     
     // MARK: - Initializer
 

@@ -50,8 +50,8 @@ struct DetailTempResponse: Codable {
     let day: Bool
     let image: String
     
-    func convertToDetailTemp() -> TimezoneWeatherData {
-        return TimezoneWeatherData(date: self.date, time: self.time, temperature: self.temperature, day: self.day, image: self.image)
+    func convertToDetailTemp() -> DetailTemp {
+        return DetailTemp(date: self.date, time: self.time, temperature: self.temperature, day: self.day, image: self.image)
     }
 }
 
@@ -60,7 +60,7 @@ struct DetailRainResponse: Codable {
     let time: String
     let rain: Int
     
-    func convertToDetailRain() -> TimezonePrecipitationData {
-        return TimezonePrecipitationData(date: self.date, time: self.time, rain: self.rain)
+    func convertToDetailRain() -> DetailRain {
+        return DetailRain(date: self.date, time: self.time, rain: self.rain)
     }
 }

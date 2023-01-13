@@ -20,7 +20,7 @@ final class HourCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var timezonePrecipitationState: TimezonePrecipitationType?
+    var timezonePrecipitationState: DetailRainType?
 
     // MARK: - Initializer
     
@@ -75,17 +75,17 @@ extension HourCollectionViewCell {
     
     // MARK: - Methods
     
-    func setWeatherDataBind(_ model: TimezoneWeatherData) {
+    func setWeatherDataBind(_ model: DetailTemp) {
         timeLabel.text = model.time.changeToMeridiem()
         stateLabel.text = model.temperature.temperature
         iconImageView.image = WeatherType(rawValue: getIcon(model.day, model.image))?.setWeatherIcon()
     }
     
-    func setPrecipitationDataBind(_ model: TimezonePrecipitationData) {
+    func setPrecipitationDataBind(_ model: DetailRain) {
         timeLabel.text = model.time.changeToMeridiem()
         stateLabel.text = "\(model.rain)%"
         setPrecipitationPercentage(model.rain)  
-        iconImageView.image = TimezonePrecipitationType(rawValue: model.rain)?.setPrecipitationImage()
+        iconImageView.image = DetailRainType(rawValue: model.rain)?.setRainImage()
     }
     
     func setCurrent() {
