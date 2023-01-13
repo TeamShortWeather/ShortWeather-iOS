@@ -12,7 +12,7 @@ enum CheckButtonState {
     case notAllow
 }
 
-class CheckButton: UIButton {
+final class CheckButton: UIButton {
     
     // MARK: - Initializer
     
