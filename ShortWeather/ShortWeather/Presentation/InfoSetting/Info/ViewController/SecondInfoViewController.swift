@@ -142,7 +142,6 @@ extension SecondInfoViewController {
         DispatchQueue.main.async { [weak self] in
             self?.postUserInfo()
         }
-        UIViewController.modifyRootViewController(FirstInfoViewController())
     }
     
     // MARK: - Network
