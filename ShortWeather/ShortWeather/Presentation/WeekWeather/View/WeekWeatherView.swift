@@ -26,6 +26,7 @@ final class WeekWeatherView: UIView {
         return collectionView
     }()
     private var weatherWeekModel: [WeatherWeekModel] = WeatherWeekModel.weatherWeekdummyData()
+    private var refreshControl = UIRefreshControl()
     
     // MARK: - Initializer
     
@@ -72,7 +73,10 @@ extension WeekWeatherView {
             $0.registerCell(WeekWeatherCollectionViewCell.self)
             $0.showsVerticalScrollIndicator = false
             $0.backgroundColor = .clear
+            $0.refreshControl = refreshControl
         }
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
     // MARK: - Layout Helper
@@ -117,6 +121,12 @@ extension WeekWeatherView {
         weekWeatherCollectionView.delegate = self
         weekWeatherCollectionView.dataSource = self
     }
+    
+    // MARK: - @objc Methods
+    
+    @objc private func refresh() {
+        weekWeatherCollectionView.reloadInputViews()
+    }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -142,4 +152,21 @@ extension WeekWeatherView: UICollectionViewDelegateFlowLayout {
         let width = bounds.size.width - 56
         return CGSize(width: width, height: 72)
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
+    }
 }
+
+////MARK: - UIScrollViewDelegate
+//
+//extension TodayWeatherCollectionViewCell: UIScrollViewDelegate {
+//
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if refreshControl.isRefreshing {
+//            refreshControl.endRefreshing()
+//        }
+//    }
+//}
