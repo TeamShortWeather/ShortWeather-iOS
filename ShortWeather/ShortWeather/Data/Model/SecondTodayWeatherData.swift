@@ -15,8 +15,8 @@ enum DustState: Int {
     
     func setDustIcon() -> UIImage {
         switch self {
-        case .good: return UIImage(named:"icn_dust_good") ?? UIImage()
-        case .normal: return UIImage(named:"icn_dust_normal") ?? UIImage()
+        case .good: return UIImage(named: "icn_dust_good") ?? UIImage()
+        case .normal: return UIImage(named: "icn_dust_normal") ?? UIImage()
         case .bad: return UIImage(named: "icn_dust_bad") ?? UIImage()
         case .worst: return UIImage(named: "icn_dust_worst") ?? UIImage()
         }
