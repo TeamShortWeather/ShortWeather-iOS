@@ -78,9 +78,19 @@ extension CommuteTimeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
         switch indexPath.row {
         case 0:
-            cell.setDataBind(infoText: info[indexPath.row], data: outTime)
+            if outTime.isEmpty == true {
+                cell.untouched()
+                cell.setDataBind(infoText: info[indexPath.row], data: outTime)
+            } else {
+                cell.setDataBind(infoText: info[indexPath.row], data: outTime)
+            }
         case 1:
-            cell.setDataBind(infoText: info[indexPath.row], data: inTime)
+            if inTime.isEmpty == true {
+                cell.untouched()
+                cell.setDataBind(infoText: info[indexPath.row], data: inTime)
+            } else {
+                cell.setDataBind(infoText: info[indexPath.row], data: inTime)
+            }
         default:
             break
         }

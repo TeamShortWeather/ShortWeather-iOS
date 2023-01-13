@@ -73,6 +73,9 @@ extension WakeUpTimeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: EnterInfoCollectionViewCell.self, indexPath: indexPath)
+        if wakeUpTime.isEmpty == true {
+            cell.untouched()
+        }
         cell.setDataBind(infoText: info, data: wakeUpTime)
         return cell
     }
