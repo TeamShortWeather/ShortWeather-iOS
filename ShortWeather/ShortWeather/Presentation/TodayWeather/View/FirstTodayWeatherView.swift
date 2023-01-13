@@ -31,7 +31,7 @@ final class FirstTodayWeatherView: UIView {
     private let presentTempLabel: UILabel = UILabel()
     private let highestTempLabel: UILabel = UILabel()
     private let todayWeatherLabel: PaddingLabel = PaddingLabel(topInset: 8, bottomInset: 8, leftInset: 22, rightInset: 22)
-    private let yesterdayWeatherLabel: PaddingLabel = PaddingLabel(topInset: 12, bottomInset: 12, leftInset: 20, rightInset: 20)
+    private let yesterdayWeatherLabel: PaddingLabel = PaddingLabel(topInset: 8, bottomInset: 12, leftInset: 20, rightInset: 20)
     private let showYesterdayWeatherButton: UIButton = UIButton()
     private let bottomArrowImageView: UIImageView = UIImageView()
     private var weatherQuestionList: WeatherQuestionModel?
@@ -111,6 +111,7 @@ extension FirstTodayWeatherView {
             $0.clipsToBounds = true
             $0.layer.borderWidth = 1.5
             $0.layer.borderColor = Color.white.cgColor
+            $0.font = .fontGuide(.subhead2)
         }
         
         showYesterdayWeatherButton.do {
@@ -121,7 +122,7 @@ extension FirstTodayWeatherView {
         yesterdayWeatherLabel.do {
             $0.textColor = Color.pointColor
             $0.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.9)
-            $0.layer.cornerRadius = 30
+            $0.layer.cornerRadius = 65/2
             $0.font = .fontGuide(.subhead2)
             $0.numberOfLines = 2
             $0.clipsToBounds = true
