@@ -274,7 +274,6 @@ extension FirstTodayWeatherView {
                 let status = result.statusCode
                 if status >= 200 && status < 300 {
                     do {
-                        print("1.1.1.1.1.1.11-1-1-1-1")
                         guard let todayWeatherQuestion = try result.map(GeneralResponse<TodayWeatherQuestionResponse>.self).data else { return }
                         self.weatherQuestionList = todayWeatherQuestion.convertToWeatherQuestion()
                         self.weatherQuestionDataBind(model: self.weatherQuestionList!)
