@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class WeekWeatherViewController: BaseLocationViewController {
+final class WeekWeatherViewController: BaseLocationViewController {
     
     // MARK: - UI Components
     
@@ -19,11 +19,18 @@ class WeekWeatherViewController: BaseLocationViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         setLayout()
     }
 }
 
 extension WeekWeatherViewController {
+    
+    // MARK: - UI Components Property
+    
+    private func setUI() {
+        viewTitleLabel.text = Letter.weekWeather
+    }
     
     // MARK: - Layout Helper
 
