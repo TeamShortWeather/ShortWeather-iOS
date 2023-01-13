@@ -33,6 +33,7 @@ final class TodayWeatherViewController: BaseLocationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         setRegister()
         setDelegate()
         fetchWeather()
@@ -40,6 +41,12 @@ final class TodayWeatherViewController: BaseLocationViewController {
 }
 
 extension TodayWeatherViewController {
+    
+    // MARK: - UI Components Property
+    
+    private func setUI() {
+        viewTitleLabel.text = Letter.todayWeather
+    }
     
     // MARK: - Methods
     

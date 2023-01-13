@@ -19,11 +19,18 @@ final class WeekWeatherViewController: BaseLocationViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         setLayout()
     }
 }
 
 extension WeekWeatherViewController {
+    
+    // MARK: - UI Components Property
+    
+    private func setUI() {
+        viewTitleLabel.text = Letter.weekWeather
+    }
     
     // MARK: - Layout Helper
 
