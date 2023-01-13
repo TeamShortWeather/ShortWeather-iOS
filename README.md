@@ -722,10 +722,32 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
 <summary> ☃️ 민 </summary>
 <div markdown="1">
 
+- enum 사용하기
+    
+    <Swift enum을 이용해서 사소하게 코드를 개선해보자>라는 아티클을 보고 case로 나뉘어질 때 enum을 사용해 보기로 하였다. 참고하지 않고 처음부터 코드를 써 보는 것은 처음이라 rawValue와 이를 사용하는 방법을 공부하고 SOPT iOS 팀원들의 코드를 보며 공부하여 코드를 정리하고, 다른 팀원들도 이해할 수 있게 하려고 했다.
+    
+- 설정 뷰 - 전체 알림을 켰을 때 다른 알림들을 선택하는 창이 나오도록 하려면
+    
+    처음에 tableView Expandable Cell 같은 것을 사용해 보려 하였으나, cell을 선택하는 것이 아니라 토글 버튼을 선택하면 뷰가 나오도록 구현하기 위해서 tableView 숨김 처리를 했다.
+    
 </details>
 
 <details>
 <summary> ☃️ 정 </summary>
 <div markdown="1">
 
+- 테이블 뷰 생성 시 cell 마다 여백을 주는 것이 까다로움
+    - 섹션마다 여백을 주는 것이 아닌 cell마다 여백이 필요하다면 컬렉션 뷰 사용
+    - 위, 아래, 좌 우 여백 다 포함!
+        
+        → tableView 선언할 때 `UITableView(frame: .zero, style: .grouped)` 로 선언한 뒤 setDataBind 함수로 값 전달할 때 `listDatas[indexPath.section]` 로 전달하기 그렇게 하면 셀마다 여백을 줄 수 있음
+        
+- present할 때 modal의 높이를 조정하는 방법을 고민했는데 처음엔 서린이오빠가 햄버거 바를 만든 것처럼 직접 만들어보려고 했으나 iOS 16 버전에서 생긴 UIPresentationController를 이용해서 간단하게 높이를 조절할 수 있었다
+- width height를 직접 주는 방식보다는 leading trailing을 이용해서 레이아웃을 잡는 것이 더 다양한 기기에서 레이아웃이 잘 잡히는 것을 배웠다
+- DatePicker를 이용하면 1시간 간격으로 시간 선택이 불가해서 UIPicker를 이용해 DatePicker와 유사하게 제작
+    - enum 형식으로 셀 이름을 전달해주고 resetTime 함수를 만들어서 초기값을 설정
+- 시간을 오전 10시, 11시 ,12시로 설정하니 서버와 통신이 되지 않는 오류가 있었는데 값이 “오전”일때 두자리수 시간일 경우를 생각하지 않아서 값이 “01100” 으로 들어가는 경우였다. 두자리수일 때 리턴값을 다르게 설정해주었더니 해결되었다
+- 앱잼 전체 회고
+    - 기초가 많이 부족하다는 것을 느꼈고 단기간 내에 정말 많은 것을 배워서 언니오빠한테 감사했다. 그래도 맡은 일을 해낼 때마다 기분이 좋았다
+    
 </details>
