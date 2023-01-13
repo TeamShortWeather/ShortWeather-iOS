@@ -1,5 +1,5 @@
-<img src="https://user-images.githubusercontent.com/81281190/211613378-5c33482b-7dac-408e-8bdc-04d5d618cc32.png" height="200">
-
+<br>
+<img src="https://user-images.githubusercontent.com/48792069/212345345-ae94cc27-c8d7-41f2-8033-03e6d6395b48.png" height="200">
 <br>
 
 
@@ -12,7 +12,7 @@
 <br><br>
 ##  🫶 Short Weather iOS Developers
 
-<img src="https://user-images.githubusercontent.com/48792069/211770069-79adee40-d98e-4f0a-922c-16d1231489fe.jpeg" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/211770060-8a01c640-9467-4acc-9098-3505d924fd00.jpeg" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/211770589-fdccd3cf-203a-4a1b-99ab-6423c1b5e770.jpeg" width="200"> |
+<img src="https://user-images.githubusercontent.com/48792069/212343055-ae397b39-205e-4215-a878-8cc9f49f5d28.png" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/212342777-d26b0f33-5271-470a-8d65-eb5b326127e0.png" width="200"> | <img src="https://user-images.githubusercontent.com/48792069/212343484-461a4849-8d4d-4e56-83f6-ff3119787b40.png" width="200"> |
 :---------:|:----------:|:---------:|
 유서린 | 김 민 | 권 정 |
 [SeorinY](https://github.com/SeorinY) | [minnnidev](https://github.com/minnnidev) | [kwonjeong](https://github.com/kwonjeong) |
@@ -747,71 +747,72 @@ final class MyViewController: UIViewController, UITableViewDataSource, UITableVi
 <summary> 🐰 민 </summary>
 <div markdown="1">
 
-	- 오늘 날씨 2 뷰
-    
-    * 시간대별 날씨에서 날씨, 미세먼지, 강수 ⇒ 날씨, 강수로 수정됨
-    
-    `전체 tableView`
-    
-    - 전체 뷰를 tableView로 구현하고 외출 시간, 귀가 시간/시간대별 날씨/오늘 날씨 정보를 각 셀로 구현함.
-    
-    `외출 시간, 귀가시간대 Cell`
-    
-    - 외출 시간, 외출 시간대 날씨 이미지, 외출 시간대 날씨로 이루어진 외출 시간대 stackVIew와 귀가 시간, 귀가 시간대 날씨 이미지, 귀가 시간대 날씨로 이루어진 귀가 시간대 stackView를 stackView로 묶어 구현함.
-    
-    `시간대별 날씨 Cell`
-    
-    - 시간대별 날씨 Cell 안에 collectionView를 추가하여 좌우 스와이프 구현함
-    - enum으로 시간별 날씨/시간별 강수로 구분함
-    - 데이터를 새로 불러오도록 함수를 정의하여 날씨 버튼 혹은 강수 버튼이 클릭될 때마다 함수를 실행하여 서버와 통신함.
-    
-    `오늘 날씨 정보 Cell` 
-    
-    - stackView로 습도, 일출/일몰, 미세먼지, 초미세먼지 뷰 구현
-    - 미세먼지/초미세먼지 - 서버로부터 [1: 좋음 2: 보통 3:나쁨 4: 심각] 형태로 받고, enum 사용하여 대응시키는 방법으로 미세먼지/초미세먼지 이미지 보여줌
-- 설정 뷰
-    
-    `설정 초기뷰`
-    
-    - 전체 tableView로 구현
-    
-    `외출/귀가시간대 설정`
-    
-    - 정이 뷰 쇽샥
-    
-    `알림 설정`
-    
-    - 전체 알림 뷰는 UIView로 만들고 기상시간대 알림/취침시간대 알림/특보 알림은 tableView로 구현
-        
-        ⇒ 전체 알림 토글 버튼을 클릭하여 알람 on시 `tableView.isHidden = false` 로 tableView 보여주고, 알람 off 시 `tableView.isHidden = true` 로 tableView 숨김 처리
+### 오늘날씨 2
+`전체 tableView`
+
+- 전체 뷰를 tableView로 구현하고 외출 시간, 귀가 시간/시간대별 날씨/오늘 날씨 정보를 각 셀로 구현함.
+
+`외출 시간, 귀가시간대 Cell`
+
+- 외출 시간, 외출 시간대 날씨 이미지, 외출 시간대 날씨로 이루어진 외출 시간대 stackVIew와 귀가 시간, 귀가 시간대 날씨 이미지, 귀가 시간대 날씨로 이루어진 귀가 시간대 stackView를 stackView로 묶어 구현함.
+
+`시간대별 날씨 Cell`
+
+- 시간대별 날씨 Cell 안에 collectionView를 추가하여 좌우 스와이프 구현함
+- enum으로 시간별 날씨/시간별 강수로 구분함
+- 데이터를 새로 불러오도록 함수를 정의하여 날씨 버튼 혹은 강수 버튼이 클릭될 때마다 함수를 실행하여 서버와 통신함.
+
+`오늘 날씨 정보 Cell` 
+
+- stackView로 습도, 일출/일몰, 미세먼지, 초미세먼지 뷰 구현
+- 미세먼지/초미세먼지 - 서버로부터 [1: 좋음 2: 보통 3:나쁨 4: 심각] 형태로 받고, enum 사용하여 대응시키는 방법으로 미세먼지/초미세먼지 이미지 보여줌
+
+---
 	
+### 설정
+`설정 초기뷰`
+
+- 전체 tableView로 구현
+
+`외출/귀가시간대 설정`
+
+- 정이 뷰 쇽샥
+
+`알림 설정`
+
+- 전체 알림 뷰는 UIView로 만들고 기상시간대 알림/취침시간대 알림/특보 알림은 tableView로 구현
+    
+    ⇒ 전체 알림 토글 버튼을 클릭하여 알람 on시 `tableView.isHidden = false` 로 tableView 보여주고, 알람 off 시 `tableView.isHidden = true` 로 tableView 숨김 처리
 </details>
 
 <details>
 <summary> 🐸 정 </summary>
 <div markdown="1">
 
-	- 정보 입력
+### 정보 입력
     
-    - 정보 입력폼을 FirstInfoViewController, SecondInfoViewController로 나누어서 구현
-    - 두개의 뷰컨트롤러 모두 EnterInfoCollectionView를 이용해 입력창을 구현
-    
-    `FirstInfoViewController`
-    
-    - EnterInfoCollectionView를 이용해 입력창을 구현히고, 각각의 셀을 누르면 SettingBaseViewController가 present 형식으로 나오게 만들었고, UISheetPresentationController를 이용해 뷰컨트롤러의 hgieht를 각각 지정해주었다
-    - SettingBaseViewController를 재사용해 ListTableViewCell을 이용해 성별, 연령대, 온도 민감도가 각각의 셀마다 다르게 뜨도록 설정
-        - ListTableViewCell을 선택하면 dismiss가 되고 선택한 내용이 FirstInfoController로 전달되고 그 내용이 또 EnterInfoControllerView가 생성될 때 전달되도록 delegate로 설정
-    
-    `SecondInfoViewController`
-    
-    - 위와 마찬가지롤 EnterInfoCollectionView를 이용해 입력창을 구현하고 셀을 누르면 TimeInfoViewController가 present 형식으로 나오도록 구현
-    - UIPickerView를 이용해 DatePicker과 유사하게 구현
-    - 저장 버튼을 누르면 dismiss 되고 선택한 String이 SecondInfoController로 전달 → EnterInfoControllerView로 전달
-    - timeToString 함수 → 서버에 보낼 데이터
-- 주간 날씨
-    
-    - collection reusable 뷰로 일별예보, 오전 / 오후, 최저 / 최고 라벨을 스크롤할 수 있도록 구현
-    - collectionview cell을 이용해서 반복되는 부분을 구현
+- 정보 입력폼을 FirstInfoViewController, SecondInfoViewController로 나누어서 구현
+- 두개의 뷰컨트롤러 모두 EnterInfoCollectionView를 이용해 입력창을 구현
+
+`FirstInfoViewController`
+
+- EnterInfoCollectionView를 이용해 입력창을 구현히고, 각각의 셀을 누르면 SettingBaseViewController가 present 형식으로 나오게 만들었고, UISheetPresentationController를 이용해 뷰컨트롤러의 hgieht를 각각 지정해주었다
+- SettingBaseViewController를 재사용해 ListTableViewCell을 이용해 성별, 연령대, 온도 민감도가 각각의 셀마다 다르게 뜨도록 설정
+    - ListTableViewCell을 선택하면 dismiss가 되고 선택한 내용이 FirstInfoController로 전달되고 그 내용이 또 EnterInfoControllerView가 생성될 때 전달되도록 delegate로 설정
+
+`SecondInfoViewController`
+
+- 위와 마찬가지롤 EnterInfoCollectionView를 이용해 입력창을 구현하고 셀을 누르면 TimeInfoViewController가 present 형식으로 나오도록 구현
+- UIPickerView를 이용해 DatePicker과 유사하게 구현
+- 저장 버튼을 누르면 dismiss 되고 선택한 String이 SecondInfoController로 전달 → EnterInfoControllerView로 전달
+- timeToString 함수 → 서버에 보낼 데이터
+	
+---
+	
+### 주간날씨
+
+- collection reusable 뷰로 일별예보, 오전 / 오후, 최저 / 최고 라벨을 스크롤할 수 있도록 구현
+- collectionview cell을 이용해서 반복되는 부분을 구현
 	
 </details>
 	
