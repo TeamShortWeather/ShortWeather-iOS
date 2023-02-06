@@ -9,8 +9,8 @@
 
 미세먼지 농도, 기온 등 수치만 봐서는 알 수 없는 정보들을 좀 더 직관적으로 알아보자!
 
+<br><br>
 ##  🌥 service introduction
-
 <img src="https://user-images.githubusercontent.com/70002218/212327582-b27fd2c9-5286-4ab2-9c13-2bf87efc32a7.png" width= "800">
 
 
