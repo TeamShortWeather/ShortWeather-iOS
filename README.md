@@ -493,7 +493,7 @@ func printProperty(property: Int) {
 </details>
 
 <details>
-<summary> 💦프로그래미 권장사항 </summary>
+<summary> 💦프로그래밍 권장사항 </summary>
 <div markdown="1">
 
 ### 💧**Type Annotation 사용**
